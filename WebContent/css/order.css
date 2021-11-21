@@ -1,0 +1,745 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+.container {
+  width: 1050px;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+
+.big_title {
+  overflow: hidden;
+  width: 1050px;
+  margin: 0 auto;
+  padding: 50px 0 51px;
+}
+
+.order_title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 35px;
+}
+
+.title_section {
+  width: 1050px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+.item_title {
+  padding: 14px 0;
+  font-size: 20px;
+  color: #333;
+  margin: 0;
+}
+
+.items_info {
+  position: relative;
+}
+
+.item_section {
+  border-top: 1px solid #333;
+  width: 1050px;
+  margin: 0 auto;
+}
+
+.items_btn {
+  overflow: hidden;
+  position: absolute;
+  right: 4px;
+  top: -40px;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  background: url(https://res.kurly.com/pc/service/cart/2007/ico_dropup.svg);
+  background-size: 30px 30px;
+}
+
+.items_btn:hover {
+  cursor: pointer;
+}
+
+.short_info {
+  display: block;
+  height: 80px;
+  padding-top: 29px;
+  border-bottom: 1px solid #f4f4f4;
+  font-weight: 700;
+  font-size: 16px;
+  color: #333;
+  line-height: 55px;
+  letter-spacing: -0.35px;
+  text-align: center;
+}
+
+.item_list {
+  display: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item_list li {
+  overflow: hidden;
+  height: 128px;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.emph {
+  font-weight: 700;
+  color: #f4f4f4;
+}
+
+.thumb {
+  overflow: hidden;
+  float: left;
+  width: 60px;
+  height: 78px;
+  margin: 25px 20px 0 0;
+  background-color: #f4f4f4;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.thumb img {
+  width: 60px;
+  height: 78px;
+}
+
+.name {
+  display: table;
+  float: left;
+  width: 739px;
+  height: 100%;
+  padding-right: 20px;
+}
+
+.inner_name {
+  display: table-cell;
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+  line-height: 24px;
+  vertical-align: middle;
+}
+
+.ea {
+  float: left;
+  width: 100px;
+  height: 100%;
+  padding-top: 52px;
+  font-size: 14px;
+  color: #333;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.22px;
+}
+
+.item_price {
+  display: table;
+  float: right;
+  width: 105px;
+  height: 100%;
+  padding-right: 4px;
+}
+
+.item_price .num {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+}
+
+.price {
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  color: #000;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.cost {
+  display: block;
+  padding-top: 1px;
+  font-size: 14px;
+  color: #999;
+  line-height: 24px;
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
+.section_title {
+  padding: 74px 0 16px;
+  font-size: 20px;
+  color: #333;
+  line-height: 29px;
+  clear: both;
+  margin: 0;
+}
+
+.section_table {
+  border-top: 1px solid #333;
+  width: 100%;
+  table-layout: fixed;
+  line-height: 180%;
+  border-collapse: collapse;
+}
+
+.section_table .fst th,
+.section_table .fst td {
+  padding-top: 19px;
+}
+
+.section_table th {
+  width: 190px;
+  padding: 8px 0 0;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.section_table td {
+  position: relative;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #333;
+  line-height: 24px;
+  vertical-align: top;
+}
+
+.email_guide {
+  padding: 16px 0 8px;
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+}
+
+.section_title .desc {
+  padding-left: 13px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #666;
+  vertical-align: 3px;
+}
+
+.delivery_section {
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.delivery_title {
+  float: left;
+  width: 190px;
+  padding-top: 19px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+  margin: 0;
+}
+
+.delivery_desc {
+  overflow: hidden;
+  padding: 19px 20px 20px 0;
+  margin: 0;
+}
+
+.address_block .default_loc {
+  display: block;
+  width: 74px;
+  height: 22px;
+  margin: 1px 0 7px;
+  border-radius: 11px;
+  background-color: #f4f4f4;
+  font-weight: 500;
+  font-size: 12px;
+  color: #666;
+  line-height: 20px;
+  text-align: center;
+}
+
+.address_block .address {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  line-height: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.address_block .star {
+  display: block;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  font-size: 14px;
+  line-height: 24px;
+  color: #5f0080;
+  margin: 0;
+  padding: 0;
+}
+
+.address_info {
+  position: relative;
+}
+
+.address_info .desc {
+  position: absolute;
+  right: 0;
+  top: -42px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #999;
+  line-height: 24px;
+  text-align: right;
+}
+
+#info_btn:after {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url(https://res.kurly.com/pc/service/order/2011/ico_question.svg?v=1);
+  background-repeat: no-repeat 50% 50%;
+  background-size: 24px 24px;
+  vertical-align: top;
+}
+
+.info_layer {
+  position: absolute;
+  opacity: 0;
+  right: 0;
+  top: -7px;
+  width: 140px;
+  height: 35px;
+  padding: 14px 36px 14px 14px;
+  border-radius: 6px;
+  background-color: #b277fe;
+  font-size: 12px;
+  color: #fff;
+  line-height: 17px;
+  margin: 0;
+  transition: opacity 0.3s;
+}
+
+.info_layer:before {
+  content: "";
+  position: absolute;
+  right: 54px;
+  top: -9px;
+  width: 18px;
+  height: 16px;
+  background: url(https://res.kurly.com/pc/service/order/2011/ico_location_picker.svg);
+  background-repeat: no-repeat 100% 50%;
+  background-size: 18px 16px;
+  transition: opacity 0.3s;
+}
+
+.receive_section {
+  overflow: hidden;
+  letter-spacing: -0.3px;
+}
+
+.dds_title {
+  display: block;
+  float: left;
+  width: 190px;
+  padding-top: 19px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+  margin: 0;
+}
+
+.receiver_info {
+  font-size: 14px;
+  color: #333;
+  line-height: 24px;
+  font-weight: 500px;
+}
+
+.receive_way {
+  padding-top: 9px;
+  margin: 0;
+}
+
+.place,
+.order_text {
+  font-size: 14px;
+  color: #666;
+  line-height: 24px;
+}
+
+.receive_way .order_text:before,
+.delivery_msg .order_text:before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 14px;
+  margin: 0 6px 0 9px;
+  background-color: #ddd;
+  vertical-align: -3px;
+}
+
+.delivery_msg {
+  font-size: 14px;
+  color: #333;
+  line-height: 24px;
+  font-weight: 500px;
+}
+
+.modify_btn {
+  display: block;
+  width: 60px;
+  height: 30px;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-color: #fff;
+  font-size: 12px;
+  text-align: center;
+  line-height: 18px;
+}
+
+.modify_btn:hover {
+  cursor: pointer;
+}
+
+.package_img {
+  padding: 41px 0 0;
+  height: 148px;
+}
+
+.package_img img {
+  max-width: 100%;
+}
+
+.payment_left {
+  float: left;
+  width: 742px;
+  margin: 0;
+  padding: 0;
+}
+
+.kakaopay {
+  display: block;
+  width: 414px;
+  height: 35px;
+  padding-top: 14px;
+  border: none;
+  background-color: #f6e500;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.kakaopay input,
+.card label input,
+.simple label input,
+.phone label input {
+  position: absolute;
+  opacity: 0;
+}
+
+.kakao_logo {
+  display: block;
+  width: 50px;
+  margin: 0 auto 0;
+}
+
+.icon_benefit {
+  position: absolute;
+  display: inline;
+  left: 11px;
+  top: 11px;
+  padding: 0 6px 1px 6px;
+  border-radius: 9px;
+  border: 1px solid #fa622f;
+  background-color: #fff;
+  font-weight: bold;
+  font-size: 10px;
+  color: #fa622f;
+  line-height: 14px;
+}
+
+.payment_menu {
+  height: 48px;
+  margin-top: 12px;
+}
+
+.card,
+.card_label {
+  padding: 1px 1px 1px 1px;
+  border-radius: 3px 0 0 3px;
+}
+
+.payment_menu li {
+  float: left;
+  width: 138px;
+  height: 100%;
+  background-color: #ddd;
+}
+
+.payment_menu label {
+  position: relative;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  height: 39px;
+  padding: 9px 0 0;
+  background-color: #fff;
+  text-align: center;
+}
+
+.simple,
+.simple_label {
+  padding: 1px 1px 1px 0;
+  border-radius: 0 0 0 0;
+}
+
+.phone,
+.phone_label {
+  padding: 1px 1px 1px 0;
+  border-radius: 0 3px 3px 0;
+}
+
+.td_notice {
+  padding: 26px 0 0;
+}
+
+.td_notice ul li {
+  width: 742px;
+  font-size: 12px;
+  color: #666;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+}
+
+.terms {
+  padding: 13px 0 18px;
+}
+
+.agree_check {
+  font-weight: 700;
+  font-size: 18px;
+  color: #333;
+  line-height: 24px;
+}
+
+.agree_check input {
+  margin-right: 15px;
+}
+
+.agree_list {
+  padding-top: 5px;
+}
+
+.agree_list li {
+  padding-top: 4px;
+}
+
+.subject {
+  display: inline-block;
+  width: 310px;
+  padding-left: 36px;
+  font-size: 14px;
+  color: #333;
+  line-height: 20px;
+  letter-spacing: -0.4px;
+  vertical-align: 0;
+}
+
+.price_info {
+  position: relative;
+  float: right;
+  width: 284px;
+  height: 1300px;
+  margin: 0;
+  padding: 0;
+}
+
+.sticky_price {
+  position: sticky;
+  top: 0;
+  right: 0;
+  width: 100%;
+}
+
+.price_block {
+  width: 251px;
+  padding: 17px 16px 18px 18px;
+  background: #fafafa;
+  border: 1px solid #f2f2f2;
+  margin: 0;
+}
+
+.order_price {
+  overflow: hidden;
+  letter-spacing: -0.5px;
+  padding-top: 12px;
+  margin: 0;
+}
+
+.order_price.first {
+  padding-top: 0;
+  padding-bottom: 4px;
+}
+
+.head_title {
+  float: left;
+  width: 96px;
+  vertical-align: top;
+}
+
+.prices {
+  float: right;
+  width: 120px;
+  text-align: right;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+}
+
+.order_price.sub {
+  padding-top: 8px;
+}
+
+.order_price.sub .head_title {
+  padding-left: 16px;
+  background: url(https://res.kurly.com/pc/service/order/2011/ico_sub_price_dot.svg)
+    no-repeat 0 0;
+  background-size: 16px 20px;
+}
+
+.order_price.sub .head_title,
+.order_price.sub .prices {
+  font-weight: normal;
+  font-size: 14px;
+  color: #999;
+  line-height: 20px;
+}
+
+.minus_symbol {
+  margin-right: 4px;
+}
+
+.order_price.last {
+  margin: 17px 0 0 0;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.order_price.last .prices {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.reserve {
+  padding: 16px 3px 0 0;
+  font-size: 12px;
+  color: #666;
+  line-height: 16px;
+  letter-spacing: 0;
+  text-align: right;
+  margin: 0;
+}
+
+#accum {
+  display: inline-block;
+  width: 30px;
+  height: 18px;
+  margin-right: 5px;
+  border: 1px solid #ffbf01;
+  border-radius: 9px;
+  background-color: #ffbf00;
+  font-size: 10px;
+  color: #fff;
+  line-height: 15px;
+  text-align: center;
+  vertical-align: top;
+}
+
+.emphasis {
+  font-weight: 700;
+  color: #333;
+}
+
+.payment_btn {
+  display: block;
+  width: 240px;
+  height: 56px;
+  margin: 40px auto 0;
+  padding-bottom: 2px;
+  border: 0 none;
+  border-radius: 3px;
+  background-color: #5f0080;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.bottom_wrap {
+  width: 1050px;
+  height: 1100px;
+}
+
+.notice_order {
+	left: 100px;
+  padding-top: 30px;
+  padding-bottom: 60px;
+  margin: 0;
+}
+
+.notice_order li {
+  font-size: 14px;
+  color: #666;
+  line-height: 20px;
+  text-align: center;
+}
+
+.benefit_block {
+  display: block;
+  border-bottom: 1px solid #f4f4f4;
+  padding-bottom: 24px;
+}
+
+.benefit_title {
+  display: block;
+  padding-top: 18px;
+  font-weight: 700;
+  font-size: 12px;
+  color: #333;
+  line-height: 17px;
+  letter-spacing: -0.26px;
+}
+
+.sub_benefit,
+.info_benefit {
+  margin-bottom: -2px;
+  padding-top: 4px;
+  font-weight: normal;
+  font-size: 12px;
+  color: #4c4c4c;
+  line-height: 18px;
+  letter-spacing: -0.3px;
+  margin: 0;
+}

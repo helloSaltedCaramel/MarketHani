@@ -1,0 +1,93 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+.container {
+  width: 370px;
+  margin: 0 auto;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  text-align: center;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.form {
+  margin-top: 30px;
+}
+
+.input {
+  width: 300px;
+  height: 50px;
+  padding: 0 19px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  outline-color: black;
+}
+
+.input:focus {
+  border: 0.5 solid black;
+}
+
+#pw {
+  margin-top: 20px;
+}
+
+.find {
+  margin-top: 10px;
+  font-size: 12px;
+  text-align: right;
+  padding-right: 15px;
+  font-weight: bold;
+}
+
+.find a {
+  color: black;
+  text-decoration: none;
+  margin-bottom: 30px;
+}
+
+.form_btn {
+  width: 340px;
+  height: 54px;
+  border: 1px solid #5f0080;
+  border-radius: 3px;
+  background-color: #5f0080;
+  color: white;
+  margin-top: 20px;
+  outline: none;
+  font-weight: bold;
+}
+
+.form_btn:hover {
+  cursor: pointer;
+}
+
+.form_btn span {
+  font-size: 16px;
+}
+
+.register {
+  display: inline-block;
+  width: 340px;
+  height: 54px;
+  border: 1px solid #5f0080;
+  border-radius: 3px;
+  background-color: #fff;
+  margin-top: 15px;
+  color: #5f0080;
+  text-decoration: none;
+}
+
+.register span {
+  line-height: 54px;
+  font-weight: bold;
+}

@@ -1,0 +1,156 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+/*reset*/
+* {margin: 0;padding: 0;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+a {color: inherit; text-decoration: inherit;}
+li {list-style: none;}
+img {vertical-align: middle;}
+
+body { font-family: 'Noto Sans KR', sans-serif; }
+
+
+
+/*bx 슬라이드 전체적용*/
+.bx-wrapper { margin: 0 auto; box-shadow: none !important; }
+.bx-wrapper img {
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* 메인유형 2,3,4,의 제목 css */
+.page_main .tit_goods {
+    padding: 33px 0 35px;
+}
+
+.page_main .tit_goods .tit {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: -0.3px;
+    text-align: center;
+}
+
+/* 메인유형2 관련 css */
+.main_type2 .list_goods {
+    width: 1050px;
+    height: 506px;
+    margin: 0 auto;
+}
+
+.main_type2 .list_goods li {
+    float: left;
+    width: 249px;
+    height: 506px;
+    margin-right: 18px;
+}
+
+.main_type2 .bx-wrapper { height: 340px;}
+.main_type2 .bx-wrapper .bx-controls-direction a { top: 28%; z-index: 100;}
+
+.main_type2 .product_list {
+    margin: 0 auto;
+    width: 1050px;
+    text-align: center;
+}
+
+.main_type4 .main_recipe {
+    margin: 0 auto;
+    width: 1050px;
+    text-align: center;
+}
+
+.main_type2 .list_goods .txt {
+    font-size: 16px;
+    line-height: 23px;
+}
+
+.main_type2 .list_goods .price {
+    display: block;
+    padding-top: 9px;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.main_type2 .list_goods .dc {
+    padding-right: 8px;
+    font-weight: 800;
+    font-size: 16px;
+    color: #fa622f;
+    line-height: 20px;
+}
+
+.main_type2 .list_goods .cost {
+    display: block;
+    padding-top: 5px;
+    font-size: 14px;
+    color: #999;
+    line-height: 18px;
+    text-decoration: line-through;
+}
+
+/*이미지 클릭시 사진 확대*/
+.list_goods ul li img:hover{
+    transform: scale(1.03);
+}
+
+.info_goods{
+    margin: 10px;
+    text-align: center;
+}
+
+
+/* 메인유형3 css*/
+.main_event .list_goods .inner_info {text-align: center; margin:14px;}
+.main_event .list_goods .desc .txt {
+    color: #999;
+    font-size: 16px;
+    line-height: 20px;
+}
+.page_main .bg { background-color: #f7f7f7; }
+.main_event .list_goods { overflow: hidden;height: 538px; }
+.main_event .list_goods .list { width: 1068px; margin: 0 auto; }
+
+.page_main .tit_goods .name .ico {
+    padding: 0 31px;
+    background: url(../img/main/ico_title_link_x1.png) no-repeat 100% 50%;
+    font-weight: 700;
+}
+
+.main_type3 .list_goods ul li img:hover{
+    transform: scale(1.03);
+}
+
+.main_type3 .list_goods ul li img{
+    width: 350px;
+    height: 501px;
+}
+
+
+
+
+/* 메인유형4  css*/
+.main_type3 .list_goods li {
+    float: left;
+    width: 338px;
+    margin-right: 18px;
+    overflow: hidden;
+}
+
+.main_type4{    
+    margin-top: 154px
+    ;}
+.main_type4 .recipeSlide li img:hover{
+    transform: scale(1.03);
+}
+
+
+/* 메인유형5 css*/
+/* 하단배너 css : 이미지 가운데 정렬시키기 */
+.banner_bottom .banner_img {
+    width: 1573px;
+    margin: 0 auto;
+    display: block;
+} 

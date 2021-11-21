@@ -1,0 +1,303 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.container {
+  width: 1050px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+#title {
+  margin: 50px 0;
+  text-align: center;
+}
+
+.inner_container {
+  width: 100%;
+}
+
+.bar {
+  margin: 0 15px;
+  color: #333;
+}
+
+.cart_item {
+  float: left;
+  width: 742px;
+}
+
+.select_items {
+  padding: 20px 0;
+  font-size: 13px;
+}
+
+#delete_item,
+#check_all {
+  text-decoration: none;
+  color: #333;
+}
+
+.item_box ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+.item_box li {
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.list {
+  padding: 0;
+}
+
+.item {
+  position: relative;
+  min-height: 80px;
+  padding: 0;
+}
+
+.item .check {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  margin-top: -5px;
+}
+
+.name {
+  display: table;
+  width: 463px;
+  min-height: 80px;
+  padding: 19px 0 18px 150px;
+  line-height: 80px;
+}
+
+.thumb_img {
+  position: absolute;
+  width: 60px;
+  height: 78px;
+  left: 56px;
+  top: 50%;
+  margin-top: -39px;
+}
+
+.thumb_img img {
+  width: 100%;
+  height: 100%;
+}
+
+.price {
+  position: absolute;
+  right: 49px;
+  top: 50%;
+  width: 116px;
+  text-align: right;
+  transform: translateY(-49%);
+}
+
+.btn {
+  float: left;
+  border-style: none;
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  background-position: 50% 50%;
+}
+
+.btn.minus {
+  background-image: url(https://res.kurly.com/pc/service/common/2009/ico_minus_on.svg);
+}
+
+.btn.plus {
+  float: right;
+  background-image: url(https://res.kurly.com/pc/service/common/2009/ico_plus_on.svg);
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.quantity {
+  position: absolute;
+  left: 473px;
+  top: 50%;
+  width: 90px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-top: -13px;
+}
+
+.quantity_num {
+  width: 30px;
+  height: 30px;
+  line-height: 18px;
+  padding: 0;
+  border-style: none;
+  text-align: center;
+}
+
+.quantity_num:focus {
+  outline: none;
+}
+
+.delete_btn {
+  overflow: hidden;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  width: 30px;
+  padding: 0;
+  margin-top: -7px;
+  border: 0;
+  background-image: url(https://res.kurly.com/pc/service/cart/2007/ico_delete.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  background-position: 50% 50%;
+  font-size: 1px;
+  text-indent: -9999px;
+}
+
+.delete_btn:hover {
+  cursor: pointer;
+}
+
+.cart_result {
+  position: relative;
+  float: right;
+  width: 284px;
+}
+
+.inner_result {
+  position: absolute;
+  top: 63px;
+  right: 0;
+  width: 284px;
+  background-color: #fff;
+}
+
+.delivery {
+  padding: 23px 19px 20px;
+  border: 1px solid #f2f2f2;
+  border-bottom: 0;
+}
+
+.delivery_title {
+  padding-left: 24px;
+  font-size: 16px;
+  line-height: 20px;
+  background-image: url(https://res.kurly.com/pc/service/cart/2007/ico_location.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: 0 50%;
+}
+
+.emphasis {
+  color: #5f0080;
+}
+
+.btn_default {
+  width: 100%;
+  height: 36px;
+  font-size: 12px;
+  line-height: 34px;
+  margin-top: 10px;
+  border: 1px solid #5f0080;
+  color: #5f0080;
+  background-color: #fff;
+}
+
+.btn_default:hover {
+  cursor: pointer;
+}
+
+.price_result {
+  padding: 9px 18px 18px 20px;
+  border: 1px solid #f2f2f2;
+  background-color: #fafafa;
+}
+
+.price_index {
+  overflow: hidden;
+  margin: 0;
+  padding-top: 17px;
+}
+
+.price_last {
+  overflow: hidden;
+  margin: 17px 0 0;
+  padding-top: 17px;
+  border-top: 1px solid #eee;
+}
+
+.index {
+  float: left;
+  width: 80px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.price_block {
+  float: right;
+  line-height: 24px;
+  text-align: right;
+}
+
+.won {
+  padding-left: 2px;
+  font-size: 16px;
+  vertical-align: 1px;
+}
+
+.price_block .num {
+  font-weight: 700;
+}
+
+.submit_block {
+  padding-top: 20px;
+}
+
+.submit_btn {
+  width: 100%;
+  height: 56px;
+  font-size: 17px;
+  background-color: #5f0080;
+  color: #fff;
+  border: 1px solid #5f0080;
+  border-radius: 5px;
+}
+
+.submit_btn:hover {
+  cursor: pointer;
+}
+
+.notice_block {
+  padding-top: 20px;
+}
+
+.notice_text {
+  display: block;
+  position: relative;
+  padding: 6px 0 0 10px;
+  font-size: 12px;
+  color: #666;
+  line-height: 18px;
+}

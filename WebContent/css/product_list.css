@@ -1,0 +1,166 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+.discount span {
+	line-height: 100%;
+}
+
+.category {
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+
+.category span {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.article {
+   	font-weight: 400;
+   	font-size: 12px;
+   	color: #4c4c4c;
+   	width: 1050px;
+}
+
+.item {
+	padding-left: 5px;
+	cursor: pointer;
+}
+
+div.title {
+	font-size: 20px;
+}
+
+div.contents {
+	color: #999;
+}
+
+div.nodiscount {
+	font-size: 18px;
+	font-weight: 800;
+}
+
+#percentage {
+	font-weight: 800;
+	font-size: 18px;
+	color: #fa622f;
+}
+
+#p_discount {
+	font-size: 18px;
+	font-weight: 800;
+}
+
+#p_original {
+	font-size: 16px;
+	color: gray;
+	text-decoration:line-through
+}
+
+.top_line {
+	margin-bottom: 10px;
+	margin-top: 10px;
+	
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.top_line::after {
+   content:'';
+   display:block;
+   clear:both;
+   valign: center;
+}	
+
+p#left{
+	float: left;
+}
+
+ul#right{
+	float: right;
+	color: #c9c9c9;
+	display: flex;
+    list-style-type: none;
+}
+
+ul#right li{
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+ul#right li:hover{
+	color: black;
+}
+
+span#title{
+	font-size:28px;
+	font-weight: 700;
+}
+
+
+img.product:hover{
+	transform: scale(1.03);
+	-webkit-transition: 0.5s;
+}
+
+div.image{
+	position: relative;
+	overflow: hidden;
+	width: 338px;
+	height: 435px;
+}
+
+img.product{
+	position: absolute;
+	z-index: 1;
+}
+
+.btn_cart{
+	position: absolute;
+	top: 377px;
+	left: 275px;
+	z-index: 2;
+	width: 45px;
+    height: 45px;
+    background: transparent;
+    border: 0;
+    margin-bottom: 20px;
+}
+
+ul#sub_category {
+	
+	margin-top: 23px;
+	padding: 12px 0 29px;
+	overflow: hidden;
+	border: 1px solid #e2e2e2;	
+}
+
+ul#sub_category li{
+	float: left;
+    width: 263px;
+    padding: 16px 44px 0 39px;
+}
+
+ul#sub_category::after {
+   content:'';
+   display:block;
+   clear:both;
+   valign: center;
+}
+
+ul#sub_category li a {
+	
+	text-decoration: none;
+	cursor: pointer;
+    color: #333;
+    max-width: 180px;
+    line-height: 20px;
+    font-size: 14px;	
+}
+
+ul#sub_category li a:hover {
+	font-weight: 700;
+    color: #5f0080;
+}
+
+
