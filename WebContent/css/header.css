@@ -125,6 +125,10 @@ body {
   margin: 0 auto;
 }
 
+#header3 {
+	z-index: 301;
+}
+
 /* 헤더영역 3번째 부분 gnb관련 css */
 #header3 .gnb_kurly {
   position: relative;
