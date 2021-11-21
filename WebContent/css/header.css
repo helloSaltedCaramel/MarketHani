@@ -153,7 +153,7 @@ body {
 }
 #header3 .gnb_main .gnb li {
   float: left;
-  height: 60px;
+  height: 56px;
 }
 #header3 .gnb_main .gnb a {
   overflow: hidden;
@@ -172,7 +172,7 @@ body {
 #header3 .gnb_main .gnb a .txt,
 #header3 .gnb_main .gnb a .total_txt {
   font-weight: 700;
-  margin-right: 30px;
+  margin-right: 40px;
 }
 
 #header3 .gnb_main .gnb a .total_txt:hover {
@@ -191,7 +191,7 @@ body {
   float: left;
   width: 16px;
   height: 14px;
-  margin: 4px 0 0 30px;
+  margin: 4px 0 0 4px;
   background: url(../img/header/icon_category.png) no-repeat;
 }
 
@@ -199,7 +199,7 @@ body {
 	float: left;
   width: 16px;
   height: 14px;
-  margin: 4px 0 0 30px;
+  margin: 4px 0 0 4px;
 	background: url(../img/header/ico_gnb_all.webp) no-repeat;
 }
 
@@ -286,7 +286,7 @@ body {
   width: 219px;
   position: absolute;
   z-index: 301;
-  left: 29px;
+  left: 3px;
   top: 55px;
   padding-top: 1px;
   background-color: #fff;
