@@ -235,3 +235,9 @@ $email.addEventListener("keyup", email_check);
 $phone.addEventListener("keyup", phone_check);
 $addr_detail.addEventListener("focusout", addrDetail_green);
 $birth.addEventListener("keyup", birth_check);
+
+
+// 가입하기 버튼 기능
+const regist = () => {
+	
+}
