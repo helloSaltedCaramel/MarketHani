@@ -21,6 +21,8 @@ public class UserLoginAction implements Action {
 		
 		boolean result = UserDAO.getInstance().loginCheck(dto);
 		
+		ActionForward forward = new ActionForward();
+		
 		if(result) {
 			HttpSession session = request.getSession();
 			
