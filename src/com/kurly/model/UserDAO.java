@@ -21,7 +21,7 @@ public class UserDAO {
 		return instance;
 	}
 	
-	public Connection connect() {
+	private Connection connect() {
 		
 		try {
 			Context ctx = new InitialContext();
@@ -38,7 +38,7 @@ public class UserDAO {
 		return con;
 	}
 	
-	public void connectClose() {
+	private void connectClose() {
 		try {
 			if(con != null) {con.close();}
 			if(pstmt != null) {pstmt.close();}
@@ -47,4 +47,35 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public int insertUser(UserDTO dto) {
+		int result = 0;
+		
+		final String sql = 
+				"insert into kurly_user values(?, ?, ?, ?, ?, ?, ?, ?, TO_DATE(?, 'YYYY-MM-DD'))";
+		
+		try {
+			pstmt = connect().prepareStatement(sql);
+			pstmt.setString(1, dto.getUser_id());
+			pstmt.setString(2, dto.getUser_pwd());
+			pstmt.setString(3, dto.getUser_name());
+			pstmt.setString(4, dto.getUser_email());
+			pstmt.setString(5, dto.getUser_phone());
+			pstmt.setString(6, dto.getUser_addr());
+			pstmt.setString(7, dto.getUser_gender());
+			pstmt.setInt(8, dto.getUser_point());
+			pstmt.setString(9, dto.getUser_birthday());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("UserDAO insertUser 에러발생");
+		} finally {
+			connectClose();
+		}
+		
+		return result;
+	}
+	
+	
 }
