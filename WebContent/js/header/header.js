@@ -77,5 +77,3 @@ $locZone.addEventListener("mouseover", locLayerIn);
 $locZone.addEventListener("mouseout", locLayerOut);
 $locLayer.addEventListener("mouseover", locLayerIn);
 $locLayer.addEventListener("mouseleave", locLayerOut);
-
-console.log('header loaded, github checked');

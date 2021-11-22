@@ -11,17 +11,17 @@
 <title>메인 화면</title>
 
 <%-- import main.css --%>
-<link rel="stylesheet" type="text/css" href="css/main.css?after"/>
+<link rel="stylesheet" type="text/css" href="css/main.css"/>
 
 <%-- import header.css --%>
-<link rel="stylesheet" type="text/css" href="css/header.css?after"/>
+<link rel="stylesheet" type="text/css" href="css/header.css"/>
 <link rel="icon" href="<%=request.getContextPath() %>/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script defer src="<%=request.getContextPath() %>/js/header/header.js"></script>
 <script defer src="<%=request.getContextPath() %>/js/header/location_postcode.js"></script>
 
 <%-- import footer.css --%>
-<link rel="stylesheet" type="text/css" href="css/footer.css?after"/>
+<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 
 <!-- jQuery library (served from Google) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -42,7 +42,7 @@
                 speed: 500, // 이동 속도를 설정
                 pager: false, // 현재 위치 페이징 표시 여부 설정
                 moveSlides: 1, // 슬라이드 이동시 개수
-                slideWidth: 200, // 슬라이드 너비
+                slideWidth: 1050, // 슬라이드 너비   (11/19 수정) 200 -> 1050
                 slideHeight: 300,
                 minSlides: 4, // 최소 노출 개수
                 maxSlides: 4, // 최대 노출 개수
@@ -78,7 +78,7 @@
 	    <%-- 메인타입1 - 상단 배너 ( 이미지 슬라이더 사용) --%>
 	    <div>
 	        <div class="main_type1">
-	            <div class="list_goods">
+	            <div class="list_goods_0">
 	                <%-- slide --%>
 	                <ul class="bannerSlide">
 	                    <li><a href="#"><img src="<%=request.getContextPath() %>/img/main/slide01.png" alt=""></a></li>
@@ -95,7 +95,9 @@
 	        <div class="main_type2">
 	            <div class="product_list">
 	                <div class="tit_goods">
-	                    <h3 class="tit"><span class="name">이 상품 어때요?</span></h3>
+	                    <h3 class="tit">
+	                    	<span class="name">이 상품 어때요?</span>
+	                    </h3>
 	                </div>
 	                <%-- slide --%>
 	                <div class="list_goods">
@@ -159,7 +161,7 @@
 	                <div class="tit_goods">
 	                    <h3 class="tit">
 	                        <a href="#" class="name">
-	                            <span class="ico">특가/혜택</span>
+	                            <span class="link_x1">특가/혜택</span>
 	                        </a>
 	                    </h3>
 	                </div>
@@ -197,7 +199,11 @@
 	    <div class="main_type4">
 	        <div class="main_recipe">
 	            <div class="tit_goods">
-	                <h3 class="tit"><a class="name"><span class="ico">컬리의 레시피</span></a></h3>
+	                <h3 class="tit">
+	                	<a href="#" class="name">
+	                		<span class="link_x1">컬리의 레시피</span>
+	                	</a>
+	                </h3>
 	            </div>
 	            <ul class="recipeSlide">
 					<li><a href="#"><img src="<%=request.getContextPath() %>/img/main/main_v2_92f3d901eee3a760.jpg"></a>

@@ -14,6 +14,39 @@
 
 
 /*게시글 수정 시작*/
+
+/*중복*/
+body, input, select, textarea, button {
+    font-family: noto sans,malgun gothic,AppleGothic,dotum;
+    line-height: 1;
+    letter-spacing: -.05em;
+    color: #4c4c4c;
+    font-size: 12px;
+    max-width: 100%;
+}  /*게시판 글씨 크기 조정 */
+
+body * {
+    font-family: 'Noto Sans';
+    font-weight: 400;
+    letter-spacing: 0;
+} /*게시판 글씨 간격 조정 */
+
+
+*, *:after, *:before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+ margin: 0; /*게시글 전체틀 마진 0*/
+ line-height: 1;
+ color: #4c4c4c;
+ max-width: 100
+}
+
+
 h2 {
 	display: block;
 	font-size: 1.5em;
@@ -23,6 +56,18 @@ h2 {
 	margin-inline-end: 0px;
 	font-weight: bold;
 } /*게시글 왼쪽으로 이동*/
+
+.xans-product-additional div.board h2 {
+    font-size: 13px;
+    font-weight: 700;
+    padding-bottom: 5px;
+}
+
+.xans-product-additional .sort-wrap {
+	position: relative;
+}
+
+
 .xans-product-additional .sort {
 	position: absolute;
 	bottom: 0;
@@ -30,15 +75,41 @@ h2 {
 	padding: 10px;
 	text-align: right;
 } /*최근등록일 순 정리등 select 위치*/
+
+
+
 ul {
 	display: block;
-	list-style-type: disc;
 	margin-block-start: 1em;
 	margin-block-end: 1em;
 	margin-inline-start: 0px;
 	margin-inline-end: 0px;
 	padding-inline-start: 40px;
+	list-style-type: none;  /*도트 제거*/
+	padding: 0; /*도트 사이 왼쪽 여백 없애기*/
+	
 }
+
+
+
+.list_type1.old .ico {
+    float: left;
+    width: 4px;
+    height: 4px;
+    margin: 7px 8px 0 0;
+    background-color: #514859;
+    vertical-align: 2px;
+} /*도트 표시를 사각형으로 표시*/
+
+
+.list_type1.old .txt {
+    overflow: hidden;
+    padding: 0;  /*아래 위 글자간 간격 조정*/
+    font-size: 12px; 
+    color: #666; 
+    line-height: 18px; /*아래 위 글자간 간격 조정*/
+    letter-spacing: -.3px; /*오른쪽 왼쪽 글자간 간격 조정*/
+} /*도트 부분 글씨 조정 */
 
 .xans-product-additional .sort select {
 	margin: 0 2px 0 0;
@@ -48,9 +119,6 @@ ul {
 	vertical-align: middle;
 	padding-bottom: 5px;
 } /*최근등록일 순 정리등 select */
-.xans-product-additional .sort-wrap {
-	position: relative;
-}
 
 .xans-product-additional table.xans-board-listheader {
 	margin: 15px 0 0;
@@ -103,21 +171,29 @@ iframe {
 	
 	<%-- 상품 후기 게시판  --%>
 
-	
+	<body style="overflow-y: hidden;">
+	<div id="contents-wrapper" class="goods_board">
+	<div class="xans-element- xans-product xans-product-additional detail_board  ">	
 		<div class="board">
 			<span class="line"></span>
 			<form name="frmList">
-				<input type="hidden" name="sort" value> <input type="hidden"
-					name="page_num" value> <input type="hidden" name="goodsno"
-					value="56491">
+				<input type="hidden" name="sort" value> 
+				<input type="hidden" name="page_num" value> 
+				<input type="hidden" name="goodsno"	value="56491">
 
 				<div class="title_txt">
 					<h2>PRODUCT REVIEW</h2>
 					<div class="sort-wrap">
 						<ul class="list_type1 old">
-							<li>상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로
-								이동될 수 있습니다.</li>
-							<li>배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내 1:1문의에 남겨주세요.</li>
+							<li>
+							<span class="ico"></span>
+							<p class="txt">상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로
+								이동될 수 있습니다.</p>
+							</li>
+							<li>
+							<span class="ico"></span>
+							<p class="txt">배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내 1:1문의에 남겨주세요.</p>
+							</li>
 						</ul>
 
 
@@ -134,8 +210,8 @@ iframe {
 
 
 				<table class="xans-board-listheader" width="100%" border="0"
-					cellspacing="0">
-
+				cellpadding="0"	cellspacing="0">
+					<caption style="display:none">구매후기 제목</caption>
 					<colgroup>
 						<col style="width: 70px;">
 						<col style="width: auto;">
@@ -147,11 +223,14 @@ iframe {
 					</colgroup>
 					<tbody>
 						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>작성일</th>
-							<th>조회</th>
+							<th scope="col" class="input_txt">번호</th>
+							<th scope="col" class="input_txt">제목</th>
+							<th scope="col" class="input_txt">
+								<span class="screen_out">회원 등급</span>
+							</th>
+							<th scope="col" class="input_txt" align="left">작성자</th>
+							<th scope="col" class="input_txt">작성일</th>
+							<th scope="col" class="input_txt">조회</th>
 						</tr>
 					</tbody>
 				</table>

@@ -20,14 +20,18 @@
                      </dl>
                  </div>
                  <div class="cc_view cc_kakao">
-                     <h3><span class="tit" >카카오톡 문의</span></h3>                            
+                     <h3>
+                    	 <a href class="tit" >카카오톡 문의</a>
+                     </h3>                            
                      <dl class="list">
 	                     <dt>365고객센터 </dt>
 	                     <dd>카카오톡에서 마켓하니 채널 추가 후 문의</dd>
                      </dl>
                  </div>
                  <div class="cc_view cc_qna">
-                      <h3><span class="tit">1:1 문의</span></h3>
+                      <h3>
+                      <a href class="tit">1:1 문의</a>
+                      </h3>
                       <dl class="list">
                           <dt>24시간 접수 가능</dt>
                           <dd>고객센터 운영시간에 순차적으로 답변해드리겠습니다.</dd>

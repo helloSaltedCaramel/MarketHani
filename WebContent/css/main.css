@@ -20,9 +20,26 @@ body { font-family: 'Noto Sans KR', sans-serif; }
 }
 
 /* 메인유형 2,3,4,의 제목 css */
-.page_main .tit_goods {
+.tit_goods {
     padding: 33px 0 35px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
 }
+
+
+.page_main .tit_goods .name {
+    position: relative;
+    font-weight: 700;
+}
+
+.name .link_x1 {
+    padding: 0 31px;
+    background: url(../img/main/ico_title_link_x1.png) no-repeat 100% 50%;
+    font-weight: 700;
+}
+
 
 .page_main .tit_goods .tit {
     font-weight: 700;
@@ -96,10 +113,14 @@ body { font-family: 'Noto Sans KR', sans-serif; }
     transform: scale(1.03);
 }
 
+
+
 .info_goods{
     margin: 10px;
     text-align: center;
 }
+
+
 
 
 /* 메인유형3 css*/
@@ -113,7 +134,7 @@ body { font-family: 'Noto Sans KR', sans-serif; }
 .main_event .list_goods { overflow: hidden;height: 538px; }
 .main_event .list_goods .list { width: 1068px; margin: 0 auto; }
 
-.page_main .tit_goods .name .ico {
+.page_main .tit_goods .name .ico_left {
     padding: 0 31px;
     background: url(../img/main/ico_title_link_x1.png) no-repeat 100% 50%;
     font-weight: 700;
@@ -150,7 +171,7 @@ body { font-family: 'Noto Sans KR', sans-serif; }
 /* 메인유형5 css*/
 /* 하단배너 css : 이미지 가운데 정렬시키기 */
 .banner_bottom .banner_img {
-    width: 1573px;
+    width: 1050px;  /* 11/19 수정 1573->1050*/
     margin: 0 auto;
     display: block;
 } 

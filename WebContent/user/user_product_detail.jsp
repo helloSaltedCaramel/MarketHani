@@ -4,8 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,117 +11,49 @@
 <title>${dto.p_name }상품상세페이지</title>
 
 
+<%-- import header.css --%>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
+<link rel="icon" href="<%=request.getContextPath() %>/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script defer src="<%=request.getContextPath() %>/js/header/header.js"></script>
+<script defer src="<%=request.getContextPath() %>/js/header/location_postcode.js"></script>
+
+<%-- import footer.css --%>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
+
 
 <style>
 
 
-.hr1 {
-	border: 0;
-	height: 1px;
-	background: #f4f4f4;
-}
 
-.button {
-	padding: 15px 32px;
-	text-align: center;
-}
-
-.cart_btn {
-	width: "100%";
-	background-color: #5f0080;
-	color: #fff;
-}
-
-.sticky {
-	background-color: #f4f4f4;
-	padding: 15px 32px;
-	position: sticky;
-	top: 0px;
-	color: #5f0080;
-}
-
-p, li {
-	font-size: 12px;
-	line-height: 1.5;
-	font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum,
-		'돋움', sans-serif;
-	color: #222;
-	letter-spacing: -1px;
-}
-
-select {
-	position: absolute;
-	padding: 10px;
-	right: 20%;
-}
-
-.reviewlist {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.reviewinfo {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.qnalist {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.qnainfo {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.reviewtable {
-	display: table;
-	width: 100%;
-	table-layout: fixed;
-	font-family: Noto Sans;
-	font-size: 14px;
-	line-height: 20px;
-	text-align: center;
-	border-bottom: 1px solid #f4f4f4;
-}
-
-/* 원래  내용  */
-/* 원래  내용  */
-/* 원래  내용  */
-/* 원래  내용  */
-/* 원래  내용  */
-#main {
-	border-bottom: 1px solid #f7f7f7;
-}
 
 .section_view {
 	width: 1050px;
 	margin: 0 auto;
 	padding-top: 20px;
+	height: 655px;
+	position: relative;
 }
 
-body, input, select, textarea, button {
-	font-family: noto sans, malgun gothic, AppleGothic, dotum;
+#body_product, #input_product, #select_product, #textarea_product, #button_product {  /*태그 수정 내용*/
 	line-height: 1;
 	letter-spacing: -.05em;
 	color: #4c4c4c;
 	font-size: 12px;
 	max-width: 100%;
+	font-family: 'Noto Sans KR', sans-serif; width:100%;
 }
 
-ul {
+
+#ul_product li { /*태그 수정 내용*/
 	display: block;
 	margin-block-start: 1em;
 	margin-block-end: 1em;
 	margin-inline-start: 0px;
 	margin-inline-end: 0px;
 	list-style-type: none;
-}
+	width: 262.5px;
+} /*ul 태그 내용*/
 
 *, *:after, *:before {
 	-webkit-box-sizing: border-box;
@@ -143,7 +73,8 @@ ul {
 
 content {
 	min-width: 1050px;
-	padding-bottom: 60px;
+	
+	border-bottom: 0;
 }
 
 #sectionView #btnShare { /*공유하기 버튼*/
@@ -152,7 +83,7 @@ content {
 	right: 0;
 	top: 0;
 	width: 40px;
-	height: 40px;
+	height: 90px;
 	border: 0;
 	background:
 		url(https://res.kurly.com/mobile/service/goodsview/1910/ico_view_sns.png)
@@ -253,6 +184,11 @@ content {
 	border-bottom: 1px solid #f4f4f4; /*회색 테이블 라인 그리기*/
 }
 
+#sectionView .goods_info .list.fst {
+    padding-bottom: 0;
+    border-bottom: 0;  /*아래 실선 없애기*/
+} /*판매단위 부분 영역 지정*/
+
 #sectionView .goods_info .desc {
 	overflow: hidden;
 	font-size: 14px;
@@ -261,8 +197,10 @@ content {
 }
 
 div, th, td, li, dt, dd, p {
-	word-break: break-all;
+	word-break: break-all; /* 문자 단위로 줄바꿈*/
 }
+
+
 
 #sectionView .thumb .bg {
 	width: 430px;
@@ -296,6 +234,7 @@ div, th, td, li, dt, dd, p {
 }
 
 #cartPut .cart_type2 .list_goods {
+	height: 53px;
 	padding-bottom: 18px;
 }
 
@@ -456,7 +395,7 @@ div, th, td, li, dt, dd, p {
 	width: 38px;
 	height: 20px;
 	margin-right: 2px;
-	border-radius: 10px;
+	border-radius: 10px;  /*꼭지점 둥글게 */
 	background-color: #ffbf00;
 	font-weight: 700;
 	font-size: 11px;
@@ -464,6 +403,7 @@ div, th, td, li, dt, dd, p {
 	line-height: 20px;
 	text-align: center;
 	vertical-align: 1px;
+	float: none;
 }
 
 
@@ -471,7 +411,6 @@ div, th, td, li, dt, dd, p {
 	border: 1px solid #ddd;
 	color: #ddd;
 } /*재입고 버튼 테두리 */
-
 
 
 
@@ -487,12 +426,12 @@ div, th, td, li, dt, dd, p {
 	height: 56px;
 	margin-right: 12px;
 	padding-bottom: 2px;
-	border: 1px solid #5f0080;
+	/* border: 1px solid #5f0080;  *//*컬리 보라색*/
 	border-radius: 3px;
 	background: #fff;
 	font-weight: 700;
 	font-size: 16px;
-	color: #5f0080;
+	/* color: #5f0080; */
 	line-height: 52px;
 	letter-spacing: -.1px;
 	text-align: center;
@@ -503,6 +442,7 @@ div, th, td, li, dt, dd, p {
 #cartPut .cart_option .group_btn .btn_type1 {
 	width: 408px;
 	height: 56px;
+	float: right; /*장바구니 버튼 오른쪽으로 이동*/
 } /*장바구니 담기 버튼 위치 조절*/
 
 .btn_type1 {
@@ -553,8 +493,7 @@ div, th, td, li, dt, dd, p {
 	border-top: 2px solid #5f0080;
 } /*하단 상품 선택 탭 구현*/
 #cartPut .cart_result, #cartPut .cart_option.off, #cartPut .cart_option .tit_cart,
-	#cartPut .cart_option .box_select, #cartPut .cart_option .bar_open,
-	#cartPut .cart_option .view_function {
+	#cartPut .cart_option .box_select, #cartPut .cart_option .bar_open {  /*view_function 제거*/
 	display: none;
 } /*상품 담았을 때 뜨는 팝업 창 안보이게 하는 것*/
 #cartPut .cart_type1 .btn_close {
@@ -629,6 +568,7 @@ div, th, td, li, dt, dd, p {
 /*상세 내역 시작*/
 .layout-wrapper.goods-view-area {
 	padding-right: 40px;
+	
 }
 
 .layout-wrapper {
@@ -655,7 +595,7 @@ div, th, td, li, dt, dd, p {
 	border: 1px solid #eee;
 	border-left: none;
 } /*탭 버튼 */
-a {
+#a_product {  /*태그 수정 내용*/
 	background-color: transparent;
 	text-decoration: none;
 	color: inherit;
@@ -663,31 +603,33 @@ a {
 .goods-view-infomation-tab-group {
 	display: flex;
 	flex-direction: row;
-	width: 1010px;
+	width: 1050px;
 	margin: 0 auto;
 	
 	/*탭 고정 코드*/
 	position:-webkit-sticky;
 	position:sticky;
-	top:0;
+	top:42px;  /*높이 지정*/
 	/*탭 고정 코드*/
 }
 
-출처: https://juahnpop.tistory.com/182 [Blacklog]
 	
 	
 } /*탭 위치 맞게 조정*/
 
 /*게시글 수정 시작*/
-h2 {
-	display: block;
-	font-size: 1.5em;
-	margin-block-start: 0.83em;
-	margin-block-end: 0.83em;
-	margin-inline-start: 0px;
-	margin-inline-end: 0px;
-	font-weight: bold;
+#h2 {
+	font-size: 13px;
+	margin: 0;
+
+
+	
 } /*게시글 왼쪽으로 이동*/
+
+.xans-product-additional .sort-wrap {
+	position: relative;
+}
+
 .xans-product-additional .sort {
 	position: absolute;
 	bottom: 0;
@@ -704,9 +646,8 @@ h2 {
 	vertical-align: middle;
 	padding-bottom: 5px;
 } /*최근등록일 순 정리등 select */
-.xans-product-additional .sort-wrap {
-	position: relative;
-}
+
+
 
 .xans-product-additional table.xans-board-listheader {
 	margin: 15px 0 0;
@@ -734,26 +675,61 @@ tbody {
 .goods-view-infomation-board {
 	width: 100%;
 } /*게시글 전체 틀*/
-iframe[Attributes Style] {
-	border-top-width: 0px;
-	border-right-width: 0px;
-	border-bottom-width: 0px;
-	border-left-width: 0px;
-	height: 730px;
+
+.list_type1.old .ico {
+    float: left;
+    width: 4px;
+    height: 4px;
+    margin: 7px 8px 0 0;
+    background-color: #514859;
+    vertical-align: 2px;
 }
 
-iframe {
-	border-width: 2px;
-	border-style: inset;
-	border-color: initial;
-	border-image: initial;
+
+#pageTop {  /*페이지 위로 올리는 버튼*/
+    overflow: hidden;
+    position: fixed;
+    z-index: 300;
+    right: 31px;
+    bottom: 0;
+    width: 58px;
+    height: 58px;
+    border: 0;
+    background: url(https://res.kurly.com/pc/service/common/1903/btn_pagetop_v2.png) no-repeat 50% 50%;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+    opacity: 0;
+    transition: background .5s;
 }
+
+#select_product {
+    float: right;
+}
+
+
+#tr_product {
+    padding: 25px 0 23px;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+#tr_product {
+    padding: 20px 0;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+}  /*폰트 지정*/
+
+
 </style>
 
 <script type="text/javascript">
-
-
-
 
 
 function goCart() {
@@ -763,20 +739,16 @@ function goCart() {
 }
 
 
-
-
-
 </script>
 
 </head>
-<body>
+<body id="body_product">
 
-	<jsp:include page="<%=request.getContextPath() %>/include/user_top.jsp" />
+	<jsp:include page="../include/header.jsp" />
 	<br>
 
 	<c:set var="dto" value="${productCont }" />
 	<c:if test="${!empty dto }">
-
 
 		<div id="main">
 			<div id="content" style="opacity: 1;">
@@ -785,7 +757,7 @@ function goCart() {
 						<div class="inner_view">
 							<div class="thumb">
 								<img
-									src="<%=request.getContextPath() %>/upload/${dto.getP_image()}"
+									src="<%=request.getContextPath() %>/img/product/${dto.getP_image()}"
 									class="bg">
 
 							</div>
@@ -794,14 +766,14 @@ function goCart() {
 							<p class="goods_name">
 								<span class="btn_share">
 									<button id="btnShare">공유하기</button>
-								</span> <strong class="name">[조공] 나 게살 좋아해 스틱</strong> <span
+								</span> <strong class="name">${dto.p_name }</strong> <span
 									class="short_desc">특별한 기회로 만나보는 홍게 간식</span>
 							</p>
 
 							<p class="goods_price">
 								<span class="position"> <span class="dc"> <span
-										class="dc_price"> 2900 <span class="won">원</span>
-									</span> <%-- --%>
+										class="dc_price"><fmt:formatNumber type="number" value="${dto.p_price }"/><span class="won">원</span>
+									</span> <%-- 숫자 3자리 수마다 콤마 금액--%>
 								</span> <%-- --%>
 
 								</span>
@@ -814,7 +786,7 @@ function goCart() {
 							<div class="goods_info">
 								<dl class="list fst">
 									<dt class="tit">판매단위</dt>
-									<dd>1팩</dd>
+									<dd class="desc">1팩</dd>
 								</dl>
 
 								<dl class="list">
@@ -850,19 +822,19 @@ function goCart() {
 										<!---->
 										<!---->
 										<!---->
-										<ul class="list list_nopackage">
+										<ul id="ul_product" class="list list_nopackage">
 											<li class="on"><span class="btn_position">
-													<button type="button" class="btn_del">
+													<button id="button_product" type="button" class="btn_del">
 														<span class="txt">삭제하기</span>
 													</button>
 											</span> <span class="name"> <!----> [조공] 나 게살 좋아해 스틱 <!---->
 											</span> <span class="tit_item">구매수량</span>
 												<div class="option">
 													<span class="count">
-														<button type="button" class="btn down on">수량내리기</button> 
-														<input type="number" readonly="readonly" onfocus="this.blur()" value="1"
+														<button id="button_product" type="button" class="btn down on">수량내리기</button> 
+														<input id="input_product" type="number" readonly="readonly" onfocus="this.blur()" value="1"
 														class="inp">
-														<button type="button" class="btn up on">수량올리기</button>
+														<button id="button_product" type="button" class="btn up on">수량올리기</button>
 													</span> <span class="price"> <!----> <span class="dc_price">2,900원</span>
 													</span>
 												</div></li>
@@ -885,10 +857,10 @@ function goCart() {
 								</div>
 								<div class="group_btn off">
 									<div class="view_function">
-										<button type="button" class="btn btn_alarm">재입고 알림</button>
+										<button id="button_product" type="button" class="btn btn_alarm">재입고 알림</button>
 									</div>
 									<span class="btn_type1">
-										<button type="button" class="txt_type">장바구니 담기</button> <!---->
+										<button id="button_product" type="button" class="txt_type">장바구니 담기</button> <!---->
 									</span>
 									<!---->
 									<!---->
@@ -907,7 +879,7 @@ function goCart() {
 								<div class="in_option">
 									<div class="list_goods">
 										<div class="bar_open">
-											<button type="button" class="btn_close">
+											<button id="button_product" type="button" class="btn_close">
 												<span class="ico">상품 선택</span>
 											</button>
 										</div>
@@ -919,9 +891,9 @@ function goCart() {
 								</div>
 								<div class="group_btn off">
 									<div class="view_function">
-										<button type="button" class="btn btn_alarm">재입고 알림</button>
+										<button id="button_product" type="button" class="btn btn_alarm">재입고 알림</button>
 									</div>
-									<span class="btn_type1"><button type="button"
+									<span class="btn_type1"><button id="button_product" type="button"
 											class="txt_type">장바구니 담기</button> <!----> </span>
 									<!---->
 									<!---->
@@ -944,24 +916,24 @@ function goCart() {
 								</p>
 								<div class="group_btn layer_btn2">
 									<span class="btn_type2">
-										<button type="button" class="txt_type">취소</button>
+										<button id="button_product" type="button" class="txt_type">취소</button>
 									</span> <span class="btn_type1">
-										<button type="button" class="txt_type">신청하기</button>
+										<button id="button_product" type="button" class="txt_type">신청하기</button>
 									</span>
 								</div>
 							</div>
 						</div>
 						<div class="cart_option cart_result cart_type3">
 							<div class="inner_option">
-								<button type="button" class="btn_close1">pc레이어닫기</button>
+								<button id="button_product" type="button" class="btn_close1">pc레이어닫기</button>
 								<p class="success">
 									상품 구매를 위한 <span class="bar"></span> 배송지를 설정해주세요
 								</p>
 								<div class="group_btn layer_btn2">
 									<span class="btn_type2">
-										<button type="button" class="txt_type">취소</button>
+										<button id="button_product" type="button" class="txt_type">취소</button>
 									</span> <span class="btn_type1">
-										<button type="button" class="txt_type">
+										<button id="button_product" type="button" class="txt_type">
 											<span class="ico_search"></span> 주소 검색
 										</button>
 									</span>
@@ -970,7 +942,7 @@ function goCart() {
 						</div>
 						<form name="frmBuyNow" method="post"
 							action="/shop/order/order.php">
-							<input type="hidden" name="mode" value="addItem"> <input
+							<input id="input_product" type="hidden" name="mode" value="addItem"> <input id="input_product"
 								type="hidden" name="goodsno" value="">
 						</form>
 						<form name="frmWishlist" method="post"></form>
@@ -981,142 +953,188 @@ function goCart() {
 			</div>
 		</div>
 
-	
-	
+
+
 		<div class="layout-wrapper goods-view-area">
 			<%-- 상단 탭  --%>
 
-			<ul class="goods-view-infomation-tab-group">
+			<ul id="ul_product" class="goods-view-infomation-tab-group">
 
-				<a
-					href="<%=request.getContextPath() %>/upload/${dto.getP_contents()}"
-					class="goods-view-infomation-tab-anchor __active">상품설명</a>
+				<li><a href="#tab_01"
+					class="goods-view-infomation-tab-anchor __active">상품설명</a></li>
 
-				<a
-					href="<%=request.getContextPath() %>/upload/${dto.getP_contents_spec()}"
-					class="goods-view-infomation-tab-anchor __active">상세정보</a>
+				<li><a
+					href="<%=request.getContextPath() %>/img/product/${dto.getP_contents_spec()}"
+					class="goods-view-infomation-tab-anchor __active">상세정보</a></li>
 
+				<li><a
+					href="<%=request.getContextPath()%>/user_product_review_list.do"
+					class="goods-view-infomation-tab-anchor __active">후기</a></li>
 
-				<a href="<%=request.getContextPath()%>/user_product_review_list.do"
-					class="goods-view-infomation-tab-anchor __active">후기</a>
-
-				<a href="<%=request.getContextPath()%>/user_product_qna_list.do"
-					class="goods-view-infomation-tab-anchor __active">문의</a>
+				<li><a
+					href="<%=request.getContextPath()%>/user_product_qna_list.do"
+					class="goods-view-infomation-tab-anchor __active">문의</a></li>
 			</ul>
 
-
-
-
-
-
+			<%-- 페이지 위로 올리는 버튼  --%>
+			<a href="#top" id="pageTop" class="on" style="opacity: 1; bottom:25px;">맨 위로가기</a>
+	
 			<%-- 상세페이지 이미지  --%>
 
 			<img
-				src="<%=request.getContextPath() %>/upload/${dto.getP_contents()}"
-				align="center" width="960" height="2700">
-	</c:if>
+				src="<%=request.getContextPath() %>/img/product/${dto.getP_contents()}"
+				align="center" width="960" height="2700"> <br> <br>
+			<br> <br> <br> <br> <br>
 
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+			<%-- 상품 후기 게시판  --%>
+			<div class="goods-view-infomation-content" id="good-review" data-load="0">
+				<iframe id="inreview" src="<%=request.getContextPath()%>/user/user_product_review_list.jsp"
+					frameborder="0" class="goods-view-infomation-board" height="734">
+				<div id="contents-wrapper" class="goods_board">
+					<div class="xans-element- xans-product xans-product-additional detail_board  ">
+						<div class="board">
+							<span class="line"></span>
+							<form name="frmList">
+								<input type="hidden" name="sort" value>
+								<input type="hidden" name="page_num" value>
+								<input type="hidden" name="goodsno" value="56491">
+
+								<div class="title_txt">
+									<h2>PRODUCT REVIEW</h2>
+									<div class="sort-wrap">
+										<ul class="list_type1 old">
+											<li>
+											<span class="ico"></span>
+												<p class="txt">상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은
+													사전동의 없이 담당 게시판으로 이동될 수 있습니다.
+												</p>
+											</li>
+											<li>
+											<span class="ico"></span>
+												<p class="txt">배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내
+													1:1문의에 남겨주세요.
+												</p>
+											</li>
+										</ul>
 
 
-	<%-- 상품 후기 게시판  --%>
-
-	<iframe id="inreview" src="<%=request.getContextPath() %>/user/user_product_review_list.jsp"
-		frameborder="0" class="goods-view-infomation-board" height="730">
-		<div class="board">
-			<span class="line"></span>
-			<form name="frmList">
-				<input type="hidden" name="sort" value> <input type="hidden"
-					name="page_num" value> <input type="hidden" name="goodsno"
-					value="56491">
-
-				<div class="title_txt">
-					<h2>PRODUCT REVIEW</h2>
-					<div class="sort-wrap">
-						<ul class="list_type1 old">
-							<li>상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로
-								이동될 수 있습니다.</li>
-							<li>배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내 1:1문의에 남겨주세요.</li>
-						</ul>
+										<div class="sort" style="bottom:-9px;">
+											<select
+												onchange="this.form.sort.value=this.value;this.form.submit()">
+												<option value="1">최근등록순</option>
+												<option value="2">좋아요많은순</option>
+												<option value="3">조회많은순</option>
+											</select>
+										</div>
+									</div>
+								</div>
 
 
-						<div class="sort" style="bottom: -9px">
-							<select
-								onchange="this.form.sort.value=this.value;this.form.submit()"">
-								<option value="1">최근등록순</option>
-								<option value="2">좋아요많은순</option>
-								<option value="3">조회많은순</option>
-							</select>
+									<table class="xans-board-listheader" width="100%" border="0"
+										cellpadding="0" cellspacing="0">
+										<caption style="display: none">구매후기 제목</caption>
+										<colgroup>
+											<col style="width: 70px;">
+											<col style="width: auto;">
+											<col style="width: 51px;">
+											<col style="width: 77px;">
+											<col style="width: 100px;">
+											<col style="width: 40px;">
+											<col style="width: 80px;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="col" class="input_txt">번호</th>
+												<th scope="col" class="input_txt" style="padding: 25px;">제목</th>
+												<th scope="col" class="input_txt"><span
+													class="screen_out">회원 등급</span></th>
+												<th scope="col" class="input_txt" align="left">작성자</th>
+												<th scope="col" class="input_txt">작성일</th>
+												<th scope="col" class="input_txt">도움</th>
+												<th scope="col" class="input_txt">조회</th>
+											</tr>
+										</tbody>
+									</table>
+									<div class="tr_line">
+										<table class="xans-board-listheaderd tbl_newtype1"
+											width="100%" cellpadding="0" cellspacing="0"
+											onclick="view_content(this,event,'notice')">
+											<colgroup>
+												<col style="width: 70px;">
+												<col style="width: auto;">
+												<col style="width: 51px;">
+												<col style="width: 77px;">
+												<col style="width: 100px;">
+												<col style="width: 40px;">
+												<col style="width: 80px;">
+											</colgroup>
+											<tbody>
+												<tr>
+
+													<input type="hidden" name="index" value="-1">
+													<input type="hidden" name="image" value="">
+													<input type="hidden" name="grade" value="0">
+													<input type="hidden" name="best" value="false">
+													<input type="hidden" name="pNo" value="">
+
+													<td align="center">공지</td>
+													<td class="subject">
+														<div>금주의 Best 후기 안내</div>
+													</td>
+													<td class="user_grade grade_comm"></td>
+													<td class="user_grade">Marketkurly</td>
+													<td class="time">2019-11-01</td>
+													<td><span class="review-like-cnt" data-sno="6412655">0</span>
+													</td>
+													<td><span class="review-hit-cnt" data-sno="6412655">433126</span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+
+
+
+									</div>
+
+
+									<c:set var="list" value="${List }" />
+								<c:if test="${!empty list }">
+									<c:forEach items="${list }" var="dto">
+										<tr>
+											<td>${dto.getR_num() }</td>
+											<td><a
+												href="<%=request.getContextPath()
+						%>/user_review_content.do?num=${dto.getR_num()}">${dto.getR_title() }</a></td>
+											<td>${dto.getUser_id() }</td>
+											<td>${dto.getR_date() }</td>
+											<td>${dto.getR_hit() }</td>
+
+										</tr>
+									</c:forEach>
+								</c:if>
+
+								<c:if test="${empty list }">
+									<tr>
+										<td colspan="5" align="center">
+											<h3>검색된 게시물이 없습니다.....</h3>
+										</td>
+									</tr>
+								</c:if>
+
+
+								<td colspan="5" align="right" style="border: none"><input
+									id="input_product" type="button" value="후기쓰기"
+									onclick="location.href='user_write.do'"></td>
+
+							</form>
+
 						</div>
 					</div>
-				</div>
-
-
-				<table class="xans-board-listheader" width="100%" border="0"
-					cellspacing="0">
-
-					<colgroup>
-						<col style="width: 70px;">
-						<col style="width: auto;">
-						<col style="width: 51px;">
-						<col style="width: 77px;">
-						<col style="width: 100px;">
-						<col style="width: 40px;">
-						<col style="width: 80px;">
-					</colgroup>
-					<tbody>
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>작성일</th>
-							<th>조회</th>
-						</tr>
-					</tbody>
-				</table>
-
-				<c:set var="list" value="${List }" />
-				<c:if test="${!empty list }">
-					<c:forEach items="${list }" var="dto">
-						<tr>
-							<td>${dto.getR_num() }</td>
-							<td><a
-								href="<%=request.getContextPath()
-						%>/user_review_content.do?num=${dto.getR_num()}">${dto.getR_title() }</a></td>
-							<td>${dto.getUser_id() }</td>
-							<td>${dto.getR_date() }</td>
-							<td>${dto.getR_hit() }</td>
-
-						</tr>
-					</c:forEach>
-				</c:if>
-
-				<c:if test="${empty list }">
-					<tr>
-						<td colspan="5" align="center">
-							<h3>검색된 게시물이 없습니다.....</h3>
-						</td>
-					</tr>
-				</c:if>
-	<tr>
-		<td colspan="5" align="right" style="border: none"><input
-			type="button" value="후기쓰기" onclick="location.href='user_write.do'">
-		</td>
-		</table>
-		</form>
-
+			</div>
 
 		</div>
-		</div>
 
-		</iframe>
 
 
 
@@ -1128,7 +1146,7 @@ function goCart() {
 		<%-- 상품 문의 게시판  --%>
 		<div class="qnainfo">
 
-			<ul>
+			<ul id="ul_product" >
 				<h2>PRODUCT Q&A</h2>
 				<li>상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로
 					이동될 수 있습니다.</li>
@@ -1151,8 +1169,7 @@ function goCart() {
 				<c:if test="${!empty list }">
 					<c:forEach items="${list }" var="dto">
 						<tr>
-							<td><a
-								href="<%=request.getContextPath()
+							<td><a href="<%=request.getContextPath()
 						%>/user_qna_content.do?num=${dto.getQna_num()}">${dto.getQna_title() }</a></td>
 							<td>${dto.getUser_id() }</td>
 							<td>${dto.getQna_date() }</td>
@@ -1172,7 +1189,7 @@ function goCart() {
 
 
 				<tr>
-					<td colspan="5" align="right" style="border: none"><input
+					<td colspan="5" align="right" style="border: none"><input id="input_product"
 						type="button" value="문의하기"
 						onclick="location.href='user_qna_write.do'"></td>
 			</table>
@@ -1180,17 +1197,19 @@ function goCart() {
 		</div>
 
 
+		</c:if>
 
 
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		
+		
 
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-
-		<jsp:include page="<%=request.getContextPath() %>/include/user_bottom.jsp" />
-</body>
-</html>
+		<jsp:include page="../include/footer.jsp" />
+<!-- </body>
+</html> -->
