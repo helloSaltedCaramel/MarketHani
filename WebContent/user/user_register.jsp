@@ -34,7 +34,7 @@
             <span class="essential">*</span>
             	필수입력사항
         </p>
-        <form action="#" method="post">
+        <form id="registForm" action="${pageContext.request.contextPath}/user_register.do" method="post">
             <table class="reg_table">
                 <tr>
                     <th>
@@ -147,7 +147,7 @@
                             </label>
                             
                             <label>
-                                <input class="radio_input" type="radio" name="reg_gender" value="none">
+                                <input class="radio_input" type="radio" name="reg_gender" value="none" checked>
                                 <span>선택안함</span>
                             </label>
                         </div>
@@ -212,7 +212,7 @@
                     </td>
                 </tr>
             </table>
-            <button type="submit" id="submit_btn">가입하기</button>
+            <button type="button" id="submit_btn" onclick="regist()">가입하기</button>
         </form>
     </div>
     
