@@ -104,7 +104,7 @@ public class ReviewDAO {
 					dto.setR_title(rs.getString("r_title"));
 					dto.setR_content(rs.getString("r_content"));
 					dto.setR_image(rs.getString("r_image"));
-					dto.setR_date(rs.getString("r_date"));
+					dto.setR_date(rs.getString("r_date").substring(0,10));  /*뒤에 시분초 자르는 방법*/
 					dto.setR_hit(rs.getInt("r_hit"));
 					
 					list.add(dto);

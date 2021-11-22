@@ -44,7 +44,8 @@ public class FrontController extends HttpServlet {
 		
 		Properties prop = new Properties();
 		FileInputStream fis =
-				new FileInputStream("E:\\NCS\\workspace(JSP)\\MarketHani_JSP_Cloned\\MarketHani\\src\\com\\kurly\\controller\\mapping.properties");
+				new FileInputStream("C:\\Users\\amorf\\git\\MarketHani\\src\\com\\kurly\\controller\\mapping.properties");
+
 		
 		prop.load(fis);
 		
