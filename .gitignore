@@ -3,7 +3,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,java,eclipse
 
 #FrontController
-FrontController.class
+FrontController.java
 
 ### Eclipse ###
 .metadata
