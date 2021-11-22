@@ -77,5 +77,29 @@ public class UserDAO {
 		return result;
 	}
 	
+	public boolean loginCheck(LoginDTO dto) {
+		boolean loginCheck = false;
+		
+		final String id_sql = "select user_id from kurly_user where user_id = ? and user_pw = ?";
+		
+		try {
+			pstmt = connect().prepareStatement(id_sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				loginCheck = true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			connectClose();
+		}
+		
+		return loginCheck;
+		
+	}
+	
 	
 }
