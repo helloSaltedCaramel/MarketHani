@@ -65,7 +65,7 @@
                                 <a href="<%=request.getContextPath() %>/user_onsale.do" class="link sale "><span class="txt">알뜰쇼핑</span></a>
                             </li>
                             <li class="menu5">
-                                <a href="#" class="link event "><span class="txt">특가/혜택</span></a>
+                                <a href="<%=request.getContextPath() %>/user/user_event.jsp" class="link event "><span class="txt">특가/혜택</span></a>
                             </li>
                         </ul> <!-- gnb end -->
                         
