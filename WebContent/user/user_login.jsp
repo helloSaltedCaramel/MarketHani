@@ -26,11 +26,19 @@
 
 	<div class="container">
 	
-		<c:if test="${param.register == true}">
+		<c:if test="${param.register}">
 			<div class="registed">
 				<span>회원가입이 완료되었습니다!</span> 
 				<br>
 				<span>가입한 계정으로 로그인할 수 있습니다.</span>
+			</div>
+		</c:if>
+		
+		<c:if test="${param.notFound}">
+			<div class="notfounduser">
+				<span>일치하지 않는 정보입니다.</span> 
+				<br>
+				<span>아이디와 비밀번호를 다시 입력해주세요.</span>
 			</div>
 		</c:if>
 		 

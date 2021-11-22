@@ -1,6 +1,8 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <%--
@@ -20,8 +22,45 @@
     <div id="header"> 
         <div id="header1">
         <ul class="header1_menu">
-            <li class="menu join"><a href="<%=request.getContextPath() %>/user/user_register.jsp" class="link_menu">회원가입</a></li>
-            <li class="menu login"><a href="<%=request.getContextPath() %>/user/user_login.jsp" class="link_menu">로그인</a></li> 
+        	<c:if test="${empty user_id }">
+            <li class="menu join">
+            	<a href="${pageContext.request.contextPath}/user/user_register.jsp" class="link_menu">회원가입</a>
+            </li>
+          </c:if>
+            	
+          <c:if test="${!empty user_id}">
+          	<li class="menu user">
+            	<a href="${pageContext.request.contextPath}/user/user_register.jsp" class="link_menu">${user_name }님</a>
+            	<ul class="us_sub">
+            		<li>
+            			<a href="#">주문내역</a>
+            		</li>
+            		<li>
+            			<a href="#">배송지 관리</a>
+            		</li>
+            		<li>
+            			<a href="#">적립금</a>
+            		</li>
+            		<li>
+            			<a href="#">상품 후기</a>
+            		</li>
+            		<li>
+            			<a href="#">상품 문의</a>
+            		</li>
+            		<li>
+            			<a href="#">개인정보 수정</a>
+            		</li>
+            	</ul>
+            </li>
+          </c:if>
+            <li class="menu login">
+            	<c:if test="${empty user_id }">
+            		<a href="${pageContext.request.contextPath}/user/user_login.jsp" class="link_menu">로그인</a>
+            	</c:if>
+            	<c:if test="${!empty user_id }">
+            		<a href="${pageContext.request.contextPath}/user_logout.do" class="link_menu">로그아웃</a>
+            	</c:if>
+            </li> 
             <li class="menu csCenter"><a href="#" class="link_menu">고객센터</a>
                 <ul class="cs_sub">
                     <li><a href="#">공지사항</a></li>

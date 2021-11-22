@@ -77,29 +77,53 @@ public class UserDAO {
 		return result;
 	}
 	
-	public boolean loginCheck(LoginDTO dto) {
-		boolean loginCheck = false;
+	public String loginCheck(LoginDTO dto) {
+		String username = null;
 		
-		final String id_sql = "select user_id from kurly_user where user_id = ? and user_pw = ?";
+		final String id_sql = "select user_id, user_name from kurly_user where user_id = ? and user_pwd = ?";
 		
 		try {
 			pstmt = connect().prepareStatement(id_sql);
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPw());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				username = rs.getString("user_name");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("UserDAO: loginCheck error occured");
+		} finally {
+			connectClose();
+		}
+		
+		return username;
+		
+	}
+	
+	public String ajaxIdDistinct(String id) {
+		String isAvailable = "true";
+		
+		final String sql = "select user_id from kurly_user where user_id = ?";
+		
+		try {
+			pstmt = connect().prepareStatement(sql);
+			pstmt.setString(1, id);
 			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				loginCheck = true;
+				isAvailable = "false";
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			connectClose();
 		}
 		
-		return loginCheck;
-		
+		return isAvailable;
 	}
-	
 	
 }
