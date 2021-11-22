@@ -209,7 +209,7 @@ div, th, td, li, dt, dd, p {
 
 #sectionView .thumb {
 	float: left;
-	background-color: #eee;
+	/* background-color: #eee; */  /*타이틀 사진 밑에 회색 줄 제거*/
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -622,9 +622,25 @@ div, th, td, li, dt, dd, p {
 	font-size: 13px;
 	margin: 0;
 
-
-	
 } /*게시글 왼쪽으로 이동*/
+
+.xans-product-additional table.xans-board-listheader th {
+    padding: 25px 0 23px;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.screen_out {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+} /*회원등급 안보이게하는 것*/
 
 .xans-product-additional .sort-wrap {
 	position: relative;
@@ -983,7 +999,11 @@ function goCart() {
 
 			<img
 				src="<%=request.getContextPath() %>/img/product/${dto.getP_contents()}"
-				align="center" width="960" height="2700"> <br> <br>
+				align="center" width="1000px" height="6000px"> 
+			<img
+				src="<%=request.getContextPath() %>/img/product/${dto.getP_contents_spec()}"
+				align="center" width="1000px" height="3300px"> 	
+				<br> <br>
 			<br> <br> <br> <br> <br>
 
 
