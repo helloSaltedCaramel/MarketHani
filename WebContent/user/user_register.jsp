@@ -20,8 +20,10 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/register.css">
     <link rel="icon" href="${pageContext.request.contextPath}/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
     <script defer src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script defer src="${pageContext.request.contextPath}/js/register/register_postcode.js"></script>
     <script defer src="${pageContext.request.contextPath}/js/register/register_regex.js"></script>
+
 </head>
 <body>
 		<jsp:include page="/include/header.jsp"/>

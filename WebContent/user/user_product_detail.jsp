@@ -12,21 +12,131 @@
 
 
 <%-- import header.css --%>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
-<link rel="icon" href="<%=request.getContextPath() %>/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script defer src="<%=request.getContextPath() %>/js/header/header.js"></script>
-<script defer src="<%=request.getContextPath() %>/js/header/location_postcode.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/header.css" />
+<link rel="icon"
+	href="<%=request.getContextPath()%>/img/favicon/favicon-32x32.ico"
+	type="image/x-icon" sizes="16x16">
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script defer src="<%=request.getContextPath()%>/js/header/header.js"></script>
+<script defer
+	src="<%=request.getContextPath()%>/js/header/location_postcode.js"></script>
 
 <%-- import footer.css --%>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/footer.css" />
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 
 <style>
 
+/*공유하기 버튼 액션*/
+#shareLayer {
+	position: relative;
+	display: none;
+}
 
+#shareLayer .layer_share {
+	position: absolute;
+	right: -25px;
+	top: 39px;
+	width: 278px;
+	height: 164px;
+   	background: url('./img/product/layer_share.png') no-repeat 0 0;
+}
 
+#shareLayer .list_share .btn img {
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+} /*트윗 페이스북 아이콘 크기 조절*/
 
+#shareLayer .list_share .txt {
+    float: left;
+    padding-top: 4px; /*글씨 위에서 아래로 좀 내려오기*/
+    font-size: 12px;
+    color: #000;
+    line-height: 20px;
+} /*페이스북 공유하기 글씨*/ 
+
+#shareLayer .inner_layersns {
+    overflow: hidden;
+    width: 238px;
+    height: 120px;
+}
+#shareLayer .list_share .btn_fb {
+    left: 154px;
+    top: 44px;
+}/*페이스북 아이콘 조절*/
+
+#shareLayer .list_share .btn_tw {
+    left: 41px;
+    top: 44px;
+} /*트위터 아이콘 조절*/
+
+#shareLayer .list_share .btn_url {
+    overflow: hidden;
+    position: absolute;
+    left: 40px;
+    top: 94px;
+    width: 198px;
+    height: 30px;
+    clear: both;
+} /*url 클릭 창*/
+
+#shareLayer .list_share .inp {
+    float: left;
+    width: 114px;
+    height: 30px;
+    padding: 7px 0 6px 3px;
+    border: 1px solid #f3f2f3;
+    background-color: #f3f2f4;
+    font-size: 11px;
+    color: #666;
+}/*url 클릭 창*/
+
+#shareLayer .list_share .btn_copy {
+    float: left;
+    width: 84px;
+    height: 30px;
+    border: 1px solid #5f0080;
+    font-size: 12px;
+    color: #5f0080;
+    line-height: 28px;
+    text-align: center;
+} /*링크복사 버튼 구현*/
+
+#shareLayer .list_share .btn_copy.off img {
+    display: none; 
+} /*링크 복사 오른쪽 체크 표시*/
+#shareLayer .list_share .btn_copy img {
+     width: 10px; 
+     height: 9px; 
+     margin-left: 5px; 
+}/*링크 복사 오른쪽 체크 표시*/
+
+#shareLayer .list_share .btn {
+    position: absolute;
+    width: 113px;
+} /*페이스북 위치 조절*/
+
+.screen_out {
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0,0,0,0);
+}
+.screen_out {
+    display: block;
+    left: -9999px;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+}
 .section_view {
 	width: 1050px;
 	margin: 0 auto;
@@ -35,15 +145,17 @@
 	position: relative;
 }
 
-#body_product, #input_product, #select_product, #textarea_product, #button_product {  /*태그 수정 내용*/
+
+#body_product, #input_product, #select_product, #textarea_product,
+	#button_product { /*태그 수정 내용*/
 	line-height: 1;
 	letter-spacing: -.05em;
 	color: #4c4c4c;
 	font-size: 12px;
 	max-width: 100%;
-	font-family: 'Noto Sans KR', sans-serif; width:100%;
+	font-family: 'Noto Sans KR', sans-serif;
+	width: 100%;
 }
-
 
 #ul_product li { /*태그 수정 내용*/
 	display: block;
@@ -54,7 +166,6 @@
 	list-style-type: none;
 	width: 262.5px;
 } /*ul 태그 내용*/
-
 *, *:after, *:before {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -73,7 +184,6 @@
 
 content {
 	min-width: 1050px;
-	
 	border-bottom: 0;
 }
 
@@ -90,6 +200,7 @@ content {
 		no-repeat 50% 50%;
 	font-size: 0;
 	text-indent: -9999px;
+	cursor: pointer;
 }
 
 #sectionView .goods_price .not_point, #sectionView .goods_price .not_login span,
@@ -185,10 +296,9 @@ content {
 }
 
 #sectionView .goods_info .list.fst {
-    padding-bottom: 0;
-    border-bottom: 0;  /*아래 실선 없애기*/
+	padding-bottom: 0;
+	border-bottom: 0; /*아래 실선 없애기*/
 } /*판매단위 부분 영역 지정*/
-
 #sectionView .goods_info .desc {
 	overflow: hidden;
 	font-size: 14px;
@@ -200,8 +310,6 @@ div, th, td, li, dt, dd, p {
 	word-break: break-all; /* 문자 단위로 줄바꿈*/
 }
 
-
-
 #sectionView .thumb .bg {
 	width: 430px;
 	height: 552px;
@@ -209,7 +317,7 @@ div, th, td, li, dt, dd, p {
 
 #sectionView .thumb {
 	float: left;
-	/* background-color: #eee; */  /*타이틀 사진 밑에 회색 줄 제거*/
+	/* background-color: #eee; */ /*타이틀 사진 밑에 회색 줄 제거*/
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -223,8 +331,8 @@ div, th, td, li, dt, dd, p {
 }
 
 #cartPut .cart_type2 .view_function {
-    display: block;
-    float: left;
+	display: block;
+	float: left;
 }
 
 #cartPut * {
@@ -237,8 +345,6 @@ div, th, td, li, dt, dd, p {
 	height: 53px;
 	padding-bottom: 18px;
 }
-
-
 
 #cartPut .cart_type2 .list_nopackage .price, #cartPut .cart_type2 .list_nopackage .name,
 	#cartPut .cart_type2 .list_nopackage .btn_position {
@@ -395,7 +501,7 @@ div, th, td, li, dt, dd, p {
 	width: 38px;
 	height: 20px;
 	margin-right: 2px;
-	border-radius: 10px;  /*꼭지점 둥글게 */
+	border-radius: 10px; /*꼭지점 둥글게 */
 	background-color: #ffbf00;
 	font-weight: 700;
 	font-size: 11px;
@@ -406,19 +512,14 @@ div, th, td, li, dt, dd, p {
 	float: none;
 }
 
-
 #cartPut .cart_option .view_function .btn_alarm {
 	border: 1px solid #ddd;
 	color: #ddd;
 } /*재입고 버튼 테두리 */
-
-
-
 #cartPut .cart_type2 .view_function {
 	display: block;
 	float: left;
 } /*재입고 버튼 */
-
 #cartPut .cart_option .view_function .btn {
 	overflow: hidden;
 	float: right;
@@ -426,7 +527,7 @@ div, th, td, li, dt, dd, p {
 	height: 56px;
 	margin-right: 12px;
 	padding-bottom: 2px;
-	/* border: 1px solid #5f0080;  *//*컬리 보라색*/
+	/* border: 1px solid #5f0080;  */ /*컬리 보라색*/
 	border-radius: 3px;
 	background: #fff;
 	font-weight: 700;
@@ -436,15 +537,11 @@ div, th, td, li, dt, dd, p {
 	letter-spacing: -.1px;
 	text-align: center;
 } /*재입고 버튼 크기 조절 */
-
-
-
 #cartPut .cart_option .group_btn .btn_type1 {
 	width: 408px;
 	height: 56px;
 	float: right; /*장바구니 버튼 오른쪽으로 이동*/
 } /*장바구니 담기 버튼 위치 조절*/
-
 .btn_type1 {
 	border: 1px solid #5f0081;
 	background-color: #5f0080;
@@ -493,7 +590,8 @@ div, th, td, li, dt, dd, p {
 	border-top: 2px solid #5f0080;
 } /*하단 상품 선택 탭 구현*/
 #cartPut .cart_result, #cartPut .cart_option.off, #cartPut .cart_option .tit_cart,
-	#cartPut .cart_option .box_select, #cartPut .cart_option .bar_open {  /*view_function 제거*/
+	#cartPut .cart_option .box_select, #cartPut .cart_option .bar_open {
+	/*view_function 제거*/
 	display: none;
 } /*상품 담았을 때 뜨는 팝업 창 안보이게 하는 것*/
 #cartPut .cart_type1 .btn_close {
@@ -553,8 +651,6 @@ div, th, td, li, dt, dd, p {
 	-ms-transform: translate(0, -50%);
 	transform: translate(0, -50%);
 } /*신청하기 버튼*/
-
-
 #cartPut .cart_type2 .list_nopackage li {
 	float: none;
 	width: 100%;
@@ -563,12 +659,9 @@ div, th, td, li, dt, dd, p {
 	border: 0;
 }
 
-
-
 /*상세 내역 시작*/
 .layout-wrapper.goods-view-area {
 	padding-right: 40px;
-	
 }
 
 .layout-wrapper {
@@ -595,53 +688,49 @@ div, th, td, li, dt, dd, p {
 	border: 1px solid #eee;
 	border-left: none;
 } /*탭 버튼 */
-#a_product {  /*태그 수정 내용*/
+#a_product { /*태그 수정 내용*/
 	background-color: transparent;
 	text-decoration: none;
 	color: inherit;
 } /*a 태그 밑줄 제거*/
-.goods-view-infomation-tab-group {
+
+.goods-view-infomation-tab-group{
 	display: flex;
 	flex-direction: row;
 	width: 1050px;
 	margin: 0 auto;
 	
 	/*탭 고정 코드*/
-	position:-webkit-sticky;
-	position:sticky;
-	top:42px;  /*높이 지정*/
+	position: -webkit-sticky;
+	position: sticky;
+	top: 42px; /*높이 지정*/
 	/*탭 고정 코드*/
 }
 
-	
-	
 } /*탭 위치 맞게 조정*/
 
 /*게시글 수정 시작*/
 #h2 {
 	font-size: 13px;
 	margin: 0;
-
 } /*게시글 왼쪽으로 이동*/
-
 .xans-product-additional table.xans-board-listheader th {
-    padding: 25px 0 23px;
-    vertical-align: middle;
-    font-size: 12px;
+	padding: 25px 0 23px;
+	vertical-align: middle;
+	font-size: 12px;
 }
 
 .screen_out {
-    display: block;
-    overflow: hidden;
-    position: absolute;
-    left: -9999px;
-    width: 1px;
-    height: 1px;
-    font-size: 0;
-    line-height: 0;
-    text-indent: -9999px;
+	display: block;
+	overflow: hidden;
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	font-size: 0;
+	line-height: 0;
+	text-indent: -9999px;
 } /*회원등급 안보이게하는 것*/
-
 .xans-product-additional .sort-wrap {
 	position: relative;
 }
@@ -653,7 +742,6 @@ div, th, td, li, dt, dd, p {
 	padding: 10px;
 	text-align: right;
 } /*최근등록일 순 정리등 select 위치*/
-
 .xans-product-additional .sort select {
 	margin: 0 2px 0 0;
 	border: 1px solid #bfbfbf;
@@ -662,9 +750,6 @@ div, th, td, li, dt, dd, p {
 	vertical-align: middle;
 	padding-bottom: 5px;
 } /*최근등록일 순 정리등 select */
-
-
-
 .xans-product-additional table.xans-board-listheader {
 	margin: 15px 0 0;
 	color: #353535;
@@ -691,70 +776,122 @@ tbody {
 .goods-view-infomation-board {
 	width: 100%;
 } /*게시글 전체 틀*/
-
 .list_type1.old .ico {
-    float: left;
-    width: 4px;
-    height: 4px;
-    margin: 7px 8px 0 0;
-    background-color: #514859;
-    vertical-align: 2px;
+	float: left;
+	width: 4px;
+	height: 4px;
+	margin: 7px 8px 0 0;
+	background-color: #514859;
+	vertical-align: 2px;
 }
 
-
-#pageTop {  /*페이지 위로 올리는 버튼*/
-    overflow: hidden;
-    position: fixed;
-    z-index: 300;
-    right: 31px;
-    bottom: 0;
-    width: 58px;
-    height: 58px;
-    border: 0;
-    background: url(https://res.kurly.com/pc/service/common/1903/btn_pagetop_v2.png) no-repeat 50% 50%;
-    font-size: 0;
-    line-height: 0;
-    text-indent: -9999px;
-    opacity: 0;
-    transition: background .5s;
+#pageTop { /*페이지 위로 올리는 버튼*/
+	overflow: hidden;
+	position: fixed;
+	z-index: 300;
+	right: 31px;
+	bottom: 0;
+	width: 58px;
+	height: 58px;
+	border: 0;
+	background:
+		url(https://res.kurly.com/pc/service/common/1903/btn_pagetop_v2.png)
+		no-repeat 50% 50%;
+	font-size: 0;
+	line-height: 0;
+	text-indent: -9999px;
+	opacity: 0;
+	transition: background .5s;
 }
 
 #select_product {
-    float: right;
-}
-
-
-#tr_product {
-    padding: 25px 0 23px;
-    vertical-align: middle;
-    font-size: 12px;
+	float: right;
 }
 
 #tr_product {
-    padding: 20px 0;
-    vertical-align: middle;
-    font-size: 12px;
+	padding: 25px 0 23px;
+	vertical-align: middle;
+	font-size: 12px;
 }
 
-
+#tr_product {
+	padding: 20px 0;
+	vertical-align: middle;
+	font-size: 12px;
+}
 
 * {
-  font-family: "Noto Sans KR", sans-serif;
-}  /*폰트 지정*/
-
-
+	font-family: "Noto Sans KR", sans-serif;
+} /*폰트 지정*/
 </style>
 
 <script type="text/javascript">
 
+$(document).ready(function() {
+	$('#tab_01').click(function(){
+		var offset = $('#tab_01 scroll').offset();   //선택한 태그의 위치를 반환
 
-function goCart() {
-	document.frm.action="<%=request.getContextPath() %>/user_cart_add.do";
+		//animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
+
+        $('html').animate({scrollTop : offset.top}, 1000);
+
+	});
+
+});
+
+$(document).ready(function() {
+	$('#tab_02').click(function(){
+		var offset = $('#tab_02 scroll').offset();   //선택한 태그의 위치를 반환
+
+		//animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
+
+        $('html').animate({scrollTop : offset.top}, 1000);
+
+		
+		
+	});
+
+});
+
+$(document).ready(function() {
+	$('#tab_03').click(function(){
+		var offset = $('#tab_03 scroll').offset();   //선택한 태그의 위치를 반환
+
+		//animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
+
+        $('html').animate({scrollTop : offset.top}, 1000);
+
+		
+		
+	});
+
+});
+
+$(document).ready(function() {
+	$('#tab_04').click(function(){
+		var offset = $('#tab_04 scroll').offset();   //선택한 태그의 위치를 반환
+
+		//animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
+
+        $('html').animate({scrollTop : offset.top}, 1000);
+
+		
+		
+	});
+
+});
+
+
+
+
+
+function onDisplay(){
 	
-	document.frm.submit();
-}
+	$('#shareLayer').toggle();
+	
+} // 공유하기 버튼 클릭시 보이고 안보이고
 
-
+	
 </script>
 
 </head>
@@ -769,6 +906,31 @@ function goCart() {
 		<div id="main">
 			<div id="content" style="opacity: 1;">
 				<div class="section_view">
+
+					<div id="shareLayer">
+						<div class="layer_share">
+							<div class="inner_layersns">
+								<h3 class="screen_out">SNS 공유하기</h3>
+								<ul class="list_share">
+									<li><a class="btn btn_fb" data-sns-name="페이스북"
+										data-sns="facebook" href="#none"><img
+											src="./img/product/ico_facebook.jpg"
+											alt="페이스북"><span class="txt">공유하기</span></a></li>
+									<li><a class="btn btn_tw" data-sns-name="트위터"
+										data-sns="twitter" href="#none"><img
+											src="./img/product/ico_twitter.jpg"
+											alt="트위터"><span class="txt">트윗하기</span></a></li>
+									<li class="btn_url">
+									<input type="text" class="inp"
+										value="http://localhost:8282/MarketHani/user_product_view.do?p_num=2" readonly="readonly"> 
+										
+										<a class="btn_copy off" data-sns-name="링크 복사" data-sns="copy" href="#none" >URL 복사<img
+											src="./img/product/ico_checked_x2.jpg" alt=""></a></li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
 					<div id="sectionView">
 						<div class="inner_view">
 							<div class="thumb">
@@ -781,15 +943,15 @@ function goCart() {
 
 							<p class="goods_name">
 								<span class="btn_share">
-									<button id="btnShare">공유하기</button>
+									<button id="btnShare" onclick="onDisplay();">공유하기</button>
 								</span> <strong class="name">${dto.p_name }</strong> <span
 									class="short_desc">특별한 기회로 만나보는 홍게 간식</span>
 							</p>
 
 							<p class="goods_price">
 								<span class="position"> <span class="dc"> <span
-										class="dc_price"><fmt:formatNumber type="number" value="${dto.p_price }"/><span class="won">원</span>
-									</span> <%-- 숫자 3자리 수마다 콤마 금액--%>
+										class="dc_price"><fmt:formatNumber type="number"
+												value="${dto.p_price }" /><span class="won">원</span> </span> <%-- 숫자 3자리 수마다 콤마 금액--%>
 								</span> <%-- --%>
 
 								</span>
@@ -847,10 +1009,12 @@ function goCart() {
 											</span> <span class="tit_item">구매수량</span>
 												<div class="option">
 													<span class="count">
-														<button id="button_product" type="button" class="btn down on">수량내리기</button> 
-														<input id="input_product" type="number" readonly="readonly" onfocus="this.blur()" value="1"
-														class="inp">
-														<button id="button_product" type="button" class="btn up on">수량올리기</button>
+														<button id="button_product" type="button"
+															class="btn down on">수량내리기</button> <input
+														id="input_product" type="number" readonly="readonly"
+														onfocus="this.blur()" value="1" class="inp">
+														<button id="button_product" type="button"
+															class="btn up on">수량올리기</button>
 													</span> <span class="price"> <!----> <span class="dc_price">2,900원</span>
 													</span>
 												</div></li>
@@ -873,10 +1037,12 @@ function goCart() {
 								</div>
 								<div class="group_btn off">
 									<div class="view_function">
-										<button id="button_product" type="button" class="btn btn_alarm">재입고 알림</button>
+										<button id="button_product" type="button"
+											class="btn btn_alarm">재입고 알림</button>
 									</div>
 									<span class="btn_type1">
-										<button id="button_product" type="button" class="txt_type">장바구니 담기</button> <!---->
+										<button id="button_product" type="button" class="txt_type"
+											onclick="alert('장바구니에 담겼습니다')">장바구니 담기</button> <!---->
 									</span>
 									<!---->
 									<!---->
@@ -907,10 +1073,11 @@ function goCart() {
 								</div>
 								<div class="group_btn off">
 									<div class="view_function">
-										<button id="button_product" type="button" class="btn btn_alarm">재입고 알림</button>
+										<button id="button_product" type="button"
+											class="btn btn_alarm">재입고 알림</button>
 									</div>
-									<span class="btn_type1"><button id="button_product" type="button"
-											class="txt_type">장바구니 담기</button> <!----> </span>
+									<span class="btn_type1"><button id="button_product"
+											type="button" class="txt_type">장바구니 담기</button> <!----> </span>
 									<!---->
 									<!---->
 									<!---->
@@ -958,8 +1125,9 @@ function goCart() {
 						</div>
 						<form name="frmBuyNow" method="post"
 							action="/shop/order/order.php">
-							<input id="input_product" type="hidden" name="mode" value="addItem"> <input id="input_product"
-								type="hidden" name="goodsno" value="">
+							<input id="input_product" type="hidden" name="mode"
+								value="addItem"> <input id="input_product" type="hidden"
+								name="goodsno" value="">
 						</form>
 						<form name="frmWishlist" method="post"></form>
 					</div>
@@ -971,84 +1139,87 @@ function goCart() {
 
 
 
+		
 		<div class="layout-wrapper goods-view-area">
 			<%-- 상단 탭  --%>
 
 			<ul id="ul_product" class="goods-view-infomation-tab-group">
 
-				<li><a href="#tab_01"
+				<li id="tab_01"><a href="#tab_01"
 					class="goods-view-infomation-tab-anchor __active">상품설명</a></li>
 
-				<li><a
-					href="<%=request.getContextPath() %>/img/product/${dto.getP_contents_spec()}"
+				<li id="tab_02"><a href="#tab_02"
 					class="goods-view-infomation-tab-anchor __active">상세정보</a></li>
 
-				<li><a
+				<li id="tab_03"><a
 					href="<%=request.getContextPath()%>/user_product_review_list.do"
 					class="goods-view-infomation-tab-anchor __active">후기</a></li>
 
-				<li><a
-					href="<%=request.getContextPath()%>/user_product_qna_list.do"
+				<li id="tab_05"><a href="#tab_04"
 					class="goods-view-infomation-tab-anchor __active">문의</a></li>
 			</ul>
+	</div>
+	
 
 			<%-- 페이지 위로 올리는 버튼  --%>
-			<a href="#top" id="pageTop" class="on" style="opacity: 1; bottom:25px;">맨 위로가기</a>
-	
-			<%-- 상세페이지 이미지  --%>
+			<a href="#top" id="pageTop" class="on"
+				style="opacity: 1; bottom: 25px;">맨 위로가기</a>
 
+			<%-- 상세페이지 이미지  --%>
+	
+<div id="contents_top" align="center">	
+	<div id="tab_01 scroll">
 			<img
 				src="<%=request.getContextPath() %>/img/product/${dto.getP_contents()}"
 				align="center" width="1000px" height="6000px"> 
+	</div>			
+	<div id="tab_02 scroll">		
 			<img
 				src="<%=request.getContextPath() %>/img/product/${dto.getP_contents_spec()}"
-				align="center" width="1000px" height="3300px"> 	
-				<br> <br>
+				align="center" width="1000px" height="3300px"> <br> <br>
 			<br> <br> <br> <br> <br>
 
-
+	</div>
 			<%-- 상품 후기 게시판  --%>
-			<div class="goods-view-infomation-content" id="good-review" data-load="0">
-				<iframe id="inreview" src="<%=request.getContextPath()%>/user/user_product_review_list.jsp"
+		<div id="tab_03 scroll">	
+			<div class="goods-view-infomation-content" id="good-review"
+				data-load="0">
+				<iframe id="inreview"
+					src="<%=request.getContextPath()%>/user/user_product_review_list.jsp"
 					frameborder="0" class="goods-view-infomation-board" height="734">
-				<div id="contents-wrapper" class="goods_board">
-					<div class="xans-element- xans-product xans-product-additional detail_board  ">
-						<div class="board">
-							<span class="line"></span>
-							<form name="frmList">
-								<input type="hidden" name="sort" value>
-								<input type="hidden" name="page_num" value>
-								<input type="hidden" name="goodsno" value="56491">
+					<div id="contents-wrapper" class="goods_board">
+						<div
+							class="xans-element- xans-product xans-product-additional detail_board  ">
+							<div class="board">
+								<span class="line"></span>
+								<form name="frmList">
+									<input type="hidden" name="sort" value> <input
+										type="hidden" name="page_num" value> <input
+										type="hidden" name="goodsno" value="56491">
 
-								<div class="title_txt">
-									<h2>PRODUCT REVIEW</h2>
-									<div class="sort-wrap">
-										<ul class="list_type1 old">
-											<li>
-											<span class="ico"></span>
-												<p class="txt">상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은
-													사전동의 없이 담당 게시판으로 이동될 수 있습니다.
-												</p>
-											</li>
-											<li>
-											<span class="ico"></span>
-												<p class="txt">배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내
-													1:1문의에 남겨주세요.
-												</p>
-											</li>
-										</ul>
+									<div class="title_txt">
+										<h2>PRODUCT REVIEW</h2>
+										<div class="sort-wrap">
+											<ul class="list_type1 old">
+												<li><span class="ico"></span>
+													<p class="txt">상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은
+														사전동의 없이 담당 게시판으로 이동될 수 있습니다.</p></li>
+												<li><span class="ico"></span>
+													<p class="txt">배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내
+														1:1문의에 남겨주세요.</p></li>
+											</ul>
 
 
-										<div class="sort" style="bottom:-9px;">
-											<select
-												onchange="this.form.sort.value=this.value;this.form.submit()">
-												<option value="1">최근등록순</option>
-												<option value="2">좋아요많은순</option>
-												<option value="3">조회많은순</option>
-											</select>
+											<div class="sort" style="bottom: -9px;">
+												<select
+													onchange="this.form.sort.value=this.value;this.form.submit()">
+													<option value="1">최근등록순</option>
+													<option value="2">좋아요많은순</option>
+													<option value="3">조회많은순</option>
+												</select>
+											</div>
 										</div>
 									</div>
-								</div>
 
 
 									<table class="xans-board-listheader" width="100%" border="0"
@@ -1119,41 +1290,42 @@ function goCart() {
 
 
 									<c:set var="list" value="${List }" />
-								<c:if test="${!empty list }">
-									<c:forEach items="${list }" var="dto">
-										<tr>
-											<td>${dto.getR_num() }</td>
-											<td><a
-												href="<%=request.getContextPath()
+									<c:if test="${!empty list }">
+										<c:forEach items="${list }" var="dto">
+											<tr>
+												<td>${dto.getR_num() }</td>
+												<td><a
+													href="<%=request.getContextPath()
 						%>/user_review_content.do?num=${dto.getR_num()}">${dto.getR_title() }</a></td>
-											<td>${dto.getUser_id() }</td>
-											<td>${dto.getR_date() }</td>
-											<td>${dto.getR_hit() }</td>
+												<td>${dto.getUser_id() }</td>
+												<td>${dto.getR_date() }</td>
+												<td>${dto.getR_hit() }</td>
 
+											</tr>
+										</c:forEach>
+									</c:if>
+
+									<c:if test="${empty list }">
+										<tr>
+											<td colspan="5" align="center">
+												<h3>검색된 게시물이 없습니다.....</h3>
+											</td>
 										</tr>
-									</c:forEach>
-								</c:if>
-
-								<c:if test="${empty list }">
-									<tr>
-										<td colspan="5" align="center">
-											<h3>검색된 게시물이 없습니다.....</h3>
-										</td>
-									</tr>
-								</c:if>
+									</c:if>
 
 
-								<td colspan="5" align="right" style="border: none"><input
-									id="input_product" type="button" value="후기쓰기"
-									onclick="location.href='user_write.do'"></td>
+									<td colspan="5" align="right" style="border: none"><input
+										id="input_product" type="button" value="후기쓰기"
+										onclick="location.href='user_write.do'"></td>
 
-							</form>
+								</form>
 
+							</div>
 						</div>
 					</div>
 			</div>
 
-		</div>
+</div>
 
 
 
@@ -1161,75 +1333,76 @@ function goCart() {
 
 
 
+			<%-- 상품 문의 게시판  --%>
+	<div class="tab_04 scroll">	
+			<div class="qnainfo">
+
+				<ul id="ul_product">
+					<h2>PRODUCT Q&A</h2>
+					<li>상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로
+						이동될 수 있습니다.</li>
+					<li>배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내 1:1문의에 남겨주세요.</li>
+				</ul>
 
 
-		<%-- 상품 문의 게시판  --%>
-		<div class="qnainfo">
+			</div>
 
-			<ul id="ul_product" >
-				<h2>PRODUCT Q&A</h2>
-				<li>상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로
-					이동될 수 있습니다.</li>
-				<li>배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내 1:1문의에 남겨주세요.</li>
-			</ul>
-
-
-		</div>
-
-		<div class="qnalist">
-			<table border="1" cellspacing="0" width="800">
-				<tr>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>작성일</th>
-					<th>답변상태</th>
-				</tr>
-
-				<c:set var="list" value="${List }" />
-				<c:if test="${!empty list }">
-					<c:forEach items="${list }" var="dto">
-						<tr>
-							<td><a href="<%=request.getContextPath()
-						%>/user_qna_content.do?num=${dto.getQna_num()}">${dto.getQna_title() }</a></td>
-							<td>${dto.getUser_id() }</td>
-							<td>${dto.getQna_date() }</td>
-							<td>${dto.getQna_status() }</td>
-
-						</tr>
-					</c:forEach>
-				</c:if>
-
-				<c:if test="${empty list }">
+			<div class="qnalist">
+				<table border="1" cellspacing="0" width="800">
 					<tr>
-						<td colspan="5" align="center">
-							<h3>검색된 게시물이 없습니다.....</h3>
-						</td>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>작성일</th>
+						<th>답변상태</th>
 					</tr>
-				</c:if>
+
+					<c:set var="list" value="${List }" />
+					<c:if test="${!empty list }">
+						<c:forEach items="${list }" var="dto">
+							<tr>
+								<td><a
+									href="<%=request.getContextPath()
+						%>/user_qna_content.do?num=${dto.getQna_num()}">${dto.getQna_title() }</a></td>
+								<td>${dto.getUser_id() }</td>
+								<td>${dto.getQna_date() }</td>
+								<td>${dto.getQna_status() }</td>
+
+							</tr>
+						</c:forEach>
+					</c:if>
+
+					<c:if test="${empty list }">
+						<tr>
+							<td colspan="5" align="center">
+								<h3>검색된 게시물이 없습니다.....</h3>
+							</td>
+						</tr>
+					</c:if>
 
 
-				<tr>
-					<td colspan="5" align="right" style="border: none"><input id="input_product"
-						type="button" value="문의하기"
-						onclick="location.href='user_qna_write.do'"></td>
-			</table>
+					<tr>
+						<td colspan="5" align="right" style="border: none"><input
+							id="input_product" type="button" value="문의하기"
+							onclick="location.href='user_qna_write.do'"></td>
+				</table>
 
-		</div>
+			</div>
+			</div>
+			</div>
+			</div>
+	</c:if>
 
 
-		</c:if>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
 
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		
-		
 
-		<jsp:include page="../include/footer.jsp" />
-<!-- </body>
+	<jsp:include page="../include/footer.jsp" />
+	<!-- </body>
 </html> -->

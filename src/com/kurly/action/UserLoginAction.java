@@ -19,25 +19,25 @@ public class UserLoginAction implements Action {
 		
 		LoginDTO dto = new LoginDTO(request.getParameter("id"), request.getParameter("pw"));
 		
-		boolean result = UserDAO.getInstance().loginCheck(dto);
+		String username = UserDAO.getInstance().loginCheck(dto);
 		
 		ActionForward forward = new ActionForward();
 		
-		if(result) {
+		if(username != null) {
 			HttpSession session = request.getSession();
 			
 			session.setAttribute("user_id", request.getParameter("id"));
-		} else {
-			PrintWriter writer = response.getWriter();
+			session.setAttribute("user_name", username);
 			
-			writer.println("<script>");
-			writer.println("alert('아이디와 비밀번호가 일치하지 않습니다.)");
-			writer.println("history.back()");
-			writer.println("</script>");
+			forward.setRedirect(true);
+			forward.setPath(request.getContextPath() + "/main.jsp");
+		} else {
+			forward.setRedirect(true);
+			forward.setPath(request.getContextPath() + "/user/user_login.jsp?notFound=true");
 		}
 		
 		
-		return null;
+		return forward;
 	}
 
 }

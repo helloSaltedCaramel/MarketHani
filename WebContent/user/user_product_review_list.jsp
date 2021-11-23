@@ -29,6 +29,23 @@ body * {
 	letter-spacing: 0;
 } /*게시판 글씨 간격 조정 */
 
+#p_btnReview {
+	padding: 10px 0;
+    text-align: right;
+    width: 100%;
+    display: table;
+    border-top: 1px solid #6a3664;
+}
+#btnReview {	
+	display: inline-block;
+    line-height: 40px;
+    text-align: center;
+    background-color: #795b8f;
+    border: 1px solid #5f0080;
+    color: #fff;
+    float: right;
+} /*후기쓰기 버튼 위치 조정*/
+
 a {
 text-decoration: none;
 color: #4c4c4c;
@@ -290,11 +307,11 @@ iframe {
 
 				</form>
 				
-					<p class="btnArea after">
-
-						<td colspan="5" align="right" style="border: none"><input
-							type="button" value="후기쓰기"
-							onclick="location.href='user_write.do'"></td>
+					<p id="p_btnReview">
+						<span id="btnReview" style="line-height:30px; width:130px;" 
+						onclick="location.href='user_write.do'">후기쓰기
+						</span>
+						
 				
 					</p>
 			</div>

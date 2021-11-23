@@ -18,8 +18,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마켓하니 :: 내일의 장보기 마켓하니</title>
 
-    <%-- import product_list.css --%>
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/eventMain.css">
+    <%-- import eventMain.css --%>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/event.css">
 
 </head>
 <body>
@@ -33,22 +33,24 @@
         		 	<ul class="list">
         		 		<li>
         		 			<a href="<%=request.getContextPath() %>/user/user_event_ban1.jsp">
-        		 			<img alt="이벤트 배너1" src="../img/main/banner1.jpg"></a>
+        		 			<img alt="이벤트 배너1" src="<%=request.getContextPath() %>/img/main/banner1.jpg"></a>
         		 		</li>
         		 		<li>
-        		 			<a href="#" ><img alt="" src="../img/main/banner2.jpg"></a>
+        		 			<a href="<%=request.getContextPath() %>/user/user_event_ban2.jsp" >
+        		 			<img alt="이벤트 배너2" src="<%=request.getContextPath() %>/img/main/banner3.jpg"></a>
         		 		</li>
         		 		<li>
-        		 			<a href="#" ><img alt="" src="../img/main/banner3.jpg"></a>
+        		 			<a href="<%=request.getContextPath() %>/user/user_event_ban3.jsp" >
+        		 			<img alt="이벤트 배너3" src="<%=request.getContextPath() %>/img/main/banner7.jpg"></a>
         		 		</li>
         		 		<li>
-        		 			<a href="#" ><img alt="" src="../img/main/banner4.jpg"></a>
+        		 			<a href="<%=request.getContextPath() %>" ><img alt="" src="../img/main/banner4.jpg"></a>
         		 		</li>
         		 		<li>
-        		 			<a href="#" ><img alt="" src="../img/main/banner5.jpg"></a>
+        		 			<a href="<%=request.getContextPath() %>" ><img alt="" src="../img/main/banner5.jpg"></a>
         		 		</li>
         		 		<li>
-        		 			<a href="#" ><img alt="" src="../img/main/banner6.jpg"></a>
+        		 			<a href="<%=request.getContextPath() %>" ><img alt="" src="../img/main/banner6.jpg"></a>
         		 		</li>
         		 	</ul>
         		</div>

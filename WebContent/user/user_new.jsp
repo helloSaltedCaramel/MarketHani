@@ -22,6 +22,10 @@
 <%-- import footer.css --%>
 <link rel="stylesheet" type="text/css" href="css/footer.css"/>
 
+<%-- 20211123: javascript 연동 (허민회) --%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script defer src="${pageContext.request.contextPath}/js/productList/addCart.js"></script>
+
 </head>
 
 <body>
@@ -57,6 +61,7 @@
 						<a href="<%=request.getContextPath() %>/user_product_view.do?p_num=${dto.getP_num()}">
 						<div class="image">
 							<img class="product" src="<%=request.getContextPath() %>/img/product/${dto.getP_image()}" width="auto" height="435">
+							<input type="hidden" name="p_num" value="${dto.getP_num()}" /> <%-- 2021123: input hidden 추가 (허민회) --%>
 							<button type="button" class="btn_cart"><img src="<%=request.getContextPath() %>/img/product/btn_cart.svg"></button>
 						</div>
 						

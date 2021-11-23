@@ -86,9 +86,14 @@ body {
   position: absolute;
   top: 30px;
   width: 115px;
-  padding: 3px 9px;
+  padding: 5px 9px;
   border: 1px solid #ddd;
   background-color: #fff;
+}
+
+#header1 .cs_sub li,
+#header1 .us_sub li {
+	padding-top: 3px;
 }
 
 /*유저메뉴, 고객센터 메뉴와 화살표 사이 간격 주기*/

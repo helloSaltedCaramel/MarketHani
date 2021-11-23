@@ -32,8 +32,28 @@ const id_check = () => {
   const isCorrect = id_regex.test(text);
 
   if (isCorrect) {
-    $id.style.border = "1px solid green";
-    id_checking = true;
+		$.ajax({
+			type: "post",
+			url: getContextPath() + "/id_distinct",
+			async: true,
+			data: { "id" : $('#form_id').val() },
+			dataType: "text",
+			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+			success: function(isAvailable) {
+				if(isAvailable === "false") {
+					alert('이미 사용중인 아이디입니다. 다른 아이디를 입력해주세요.');
+					$('#form_id').css("border", "1px solid salmon");
+					id_checking = false;
+				} else {
+					alert('사용가능한 아이디입니다.')
+					$('#form_id').css("border", "1px solid green");
+					id_checking = true;
+				}
+			},
+			error: function() {
+				alert('서버 통신에 실패하였습니다. 잠시 후 다시 시도해주세요.');
+			}
+		});
   } else {
     alert("아이디는 알파벳으로 시작하며, 6~16자 사이로 입력해주세요.");
     $id.style.border = "1px solid salmon";
@@ -258,6 +278,7 @@ const allCheck = () => {
   }
 };
 
+
 $pw.addEventListener("keyup", pw_check);
 $pwCheck.addEventListener("keyup", pw_check);
 $name.addEventListener("keyup", name_check);
@@ -268,6 +289,12 @@ $birth.addEventListener("keyup", birth_check);
 
 // 가입하기 버튼 기능
 const regist = () => {
+	if(!id_checking) {
+		alert('입력한 아이디가 중복된 아이디거나 올바르지 않습니다. 다시 입력해주세요.');
+		document.querySelector('#form_id').focus();
+		return;
+	}
+	
 	if(!pw_checking) {
 		alert('비밀번호가 올바르지 않습니다. 다시 입력해주세요.');
 		document.querySelector('#pw').focus();
