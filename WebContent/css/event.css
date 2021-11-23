@@ -1,0 +1,205 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+/**********************************************************************/
+/*user_event.jsp관련 css*/
+#eventContent {
+    min-width: 1050px;
+    padding-bottom: 60px;
+}
+    
+.page_section_event {
+    width: 1050px;
+    margin: 0 auto;
+}
+
+#mainEvent li {
+    padding-bottom: 10px;
+}
+
+/*user_event_ban1.jsp관련 css*/
+.page_event {
+    min-width: 960px;
+    max-width: 1900px;
+    margin: 0 auto;
+}
+.page_event .view_event {
+    width: 960px;
+    margin: 0 auto;
+}
+.view_main {
+    height: 720px;
+
+}
+
+.view_search {
+    background-color: #fffcf2;
+}
+
+.view_search .img_mo {
+    position: absolute;
+    bottom: 96px;
+    left: 95px;
+}
+
+
+
+.bx-wrapper img {
+    margin: 0 auto;
+}
+
+#view_event {
+    min-height: 100vh;
+}
+
+
+/**********************************************************************/
+/*user_event_ban2.jsp관련 css*/
+#page2_main{
+	border-bottom: 1px solid #f7f7f7;
+}
+
+#page2_event {
+    width: 1050px;
+    margin: 0 auto;
+    padding-bottom: 60px;
+}
+
+#lnbMenu {
+    padding-top: 26px;
+}
+
+#bnrCategory {
+    position: relative;
+    margin: 0 auto 20px;
+}
+
+#lnbMenu .inner_lnb {
+    position: relative;
+}
+
+#lnbMenu .lnb_title {
+    padding-top: 23px;
+    font-weight: 700;
+    font-size: 28px;
+    color: #333;
+    line-height: 35px;
+    letter-spacing: -1px;
+    text-align: center;
+}
+
+#lnbMenu .list {
+    overflow: hidden;
+    margin-top: 23px;
+    padding: 12px 0 29px;
+    border: 1px solid #e2e2e2;
+}
+
+#lnbMenu li {
+    float: left;
+    width: 263px;
+    padding: 16px 44px 0 39px;
+}
+
+/**********************************************************************/
+/*user_event_ban3.jsp관련 css*/
+.page3_main {
+border-bottom: 1px solid #f7f7f7;
+}
+
+#page3_event {
+    padding-bottom: 100px;
+    min-width: 1050px;
+}
+
+#page3_view {
+    min-height: 100vh;
+}
+
+#view_body {
+    min-width: 1050px;
+    color: #666;
+}
+
+
+
+.view_cont {
+    width: 780px;
+    margin: 0 auto;
+}
+
+
+/* class="event_tit pay_tit" 관련  css*/
+.pay_tit {
+    padding-bottom: 10px;
+}
+
+.event_tit {
+    position: relative;
+    padding: 65px 0 45px;
+    border-bottom: 1px solid #eee;
+}
+
+/* class="tit_event"관련 css */
+.event_tit .tit_event {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 31px;
+    color: #333;
+    letter-spacing: -1.5px;
+}
+
+.pay_tit .ico_kakaopay {
+    background-image: url(https://res.kurly.com/images/event/fixed/common/etc-logo-kakaopay.png);
+}
+
+/*event_info kakaopay_info관련 css*/
+.event_info {
+    padding: 60px 0 70px;
+}
+.event_info .cont_info:last-child {
+    margin-bottom: 0;
+}
+.event_info .tit_info {
+    float: left;
+    width: 220px;
+    font-weight: 200;
+    font-size: 24px;
+    line-height: 35px;
+    color: #282828;
+    letter-spacing: -1px;
+}
+
+.event_info .desc_info {
+    overflow: hidden;
+}
+
+/* class="event_noti"관련 css */
+.event_noti {
+    padding-left: 40px;
+}
+.event_noti .tit_noti {
+    float: left;
+    width: 120px;
+    font-weight: 500;
+}
+.event_noti .desc_noti {
+    overflow: hidden;
+}
+
+.event_noti .list_noti {
+    padding-bottom: 20px;
+}
+
+.list_noti li {
+    position: relative;
+    padding-left: 7px;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 23px;
+    color: #999;
+    letter-spacing: -.5px;
+}
