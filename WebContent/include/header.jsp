@@ -130,7 +130,9 @@
                                         	구매가능한 상품을 확인하세요!
                                     </div>
                                     <div class="address_btns">
-                                        <button type="button" class="double address_login">로그인</button>
+                                    		<c:if test="${empty user_id }">
+                                        	<button type="button" class="double address_login" onclick="location.href='${pageContext.request.contextPath}/user/user_login.jsp'">로그인</button>
+                                        </c:if>
                                         <button type="button" class="double address_search" onclick="getPostcode()">주소검색</button>
                                     </div>
                                 </div>
