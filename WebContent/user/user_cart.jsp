@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 		<%-- import header.css --%>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css"/>
-		<link rel="icon" href="<%=request.getContextPath() %>/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
+		<link rel="icon" href="${pageContext.request.contextPath}/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
 		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-		<script defer src="<%=request.getContextPath() %>/js/header/header.js"></script>
-		<script defer src="<%=request.getContextPath() %>/js/header/location_postcode.js"></script>
+		<script defer src="${pageContext.request.contextPath}/js/header/header.js"></script>
+		<script defer src="${pageContext.request.contextPath}/js/header/location_postcode.js"></script>
 		
 		<%-- import footer.css --%>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css"/>
@@ -40,10 +42,10 @@
                     <ul class="item_list">
                         <li> <!-- Item start -->
                             <div class="item">
-                                <input class="check" type="checkbox" value="item_id">
+                                <input class="check" type="checkbox" value="item_id" checked>
                                 <div class="name">
                                     <div class="inner_name">
-                                        <a href="#" class="package">[푸글리제] 모짜렐라</a>
+                                        <a href="#" class="package">[해밀:바다가 주는 식사]오징어&홍합 로제 파스타 세트 869g(냉장)</a>
                                     </div>
                                 </div>
 
@@ -72,7 +74,7 @@
 
                         <li> <!-- Item start -->
                             <div class="item">
-                                <input class="check" type="checkbox" value="item_id">
+                                <input class="check" type="checkbox" value="item_id" checked>
                                 <div class="name">
                                     <div class="inner_name">
                                         <a href="#" class="package">[블루보틀] 콜드브루 커피 236mL 3종</a>
@@ -104,7 +106,7 @@
 
                         <li> <!-- Item start -->
                             <div class="item">
-                                <input class="check" type="checkbox" value="item_id">
+                                <input class="check" type="checkbox" value="item_id" checked>
                                 <div class="name">
                                     <div class="inner_name">
                                         <a href="#" class="package">[비바니] 유기농 초콜릿 7종</a>

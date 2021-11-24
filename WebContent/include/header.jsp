@@ -1,11 +1,11 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html>
+
 <%--
+<html>
 <head>
 
     <meta charset="UTF-8">
@@ -17,8 +17,9 @@
     <script defer src="../js/header/location_postcode.js"></script>
 
 </head>
---%>
 <body>
+--%>
+
     <div id="header"> 
         <div id="header1">
         <ul class="header1_menu">
@@ -73,16 +74,16 @@
             </li>
         </ul>
         <div class="claerfix"></div>
-        </div> <!-- header1 끝 -->
-        <!-- header2 시작  -->               
+        </div> <%-- header1 끝 --%>
+        <%-- header2 시작  --%>               
         <div id="header2" class="layout-wrapper">
             <h1 class="logo">
                 <a href="${pageContext.request.contextPath}/main.jsp" class="link_main">
                     <img src="<%=request.getContextPath() %>/img/header/logo_hani_header.png" alt="마켓컬리 로고">
                 </a>
             </h1>
-        </div> <!--header2 끝-->
-        <!-- header3 시작-->
+        </div> <%--header2 끝--%>
+        <%-- header3 시작--%>
         <div id="header3">
             <div class="gnb_kurly">
                 <div class="inner_gnbkurly">
@@ -106,17 +107,17 @@
                             <li class="menu5">
                                 <a href="<%=request.getContextPath() %>/user/user_event.jsp" class="link event "><span class="txt">특가/혜택</span></a>
                             </li>
-                        </ul> <!-- gnb end -->
+                        </ul> <%-- gnb end --%>
                         
-                        <!-- 검색창 -->
+                        <%-- 검색창 --%>
                         <div id="side_search" class="gnb_search">
                             <form action="/">
                                     <input type="text" placeholder="검색어를 입력해주세요." class="inp_search"> 
                                     <input type="image" src="<%=request.getContextPath() %>/img/header/icon_search.png" class="search_icon">
                             </form>          
-                        </div> <!-- 검색창 end -->
+                        </div> <%-- 검색창 end --%>
                         
-                        <!-- 주소 검색 -->
+                        <%-- 주소 검색 --%>
                         <div class="gnb_location">
                             <div class="location_zone">
                                 <input type="image" src="<%=request.getContextPath() %>/img/header/icon_map.png" class="location_icon">
@@ -137,17 +138,17 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> <!-- 주소 검색 end -->   
-                        <!-- 장바구니 -->                                  
+                        </div> <%-- 주소 검색 end --%>   
+                        <%-- 장바구니 --%>                                  
                         <div class="gnb_cart">
                             <div class="inner_cart">
                                 <a href="<%=request.getContextPath() %>/user/user_cart.jsp" class="cart_btn">
                                     <img src="<%=request.getContextPath() %>/img/header/icon_cart.png" class="cart_icon">
                                 </a>
                             </div>
-                        </div> <!-- 장바구니 end -->   
-                    </div> <!-- gnb_main end -->
-                    <!-- 카테고리 div -->
+                        </div> <%-- 장바구니 end --%>   
+                    </div> <%-- gnb_main end --%>
+                    <%-- 카테고리 div --%>
                     <div class="gnb_sub">
                     <div class="inner_sub">
                         <ul class="gnb_menu">
@@ -572,11 +573,11 @@
                             </li>
                         </ul>
                     </div>
-                </div> <!-- 카테고리 end -->
-                </div> <!-- inner_gnbkurly end -->
-            </div> <!-- gnb_kurly end -->  
-        </div> <!-- header3 end -->
-    </div> <!-- 전체 헤더 end -->
+                </div> <%-- 카테고리 end --%>
+                </div> <%-- inner_gnbkurly end --%>
+            </div> <%-- gnb_kurly end --%>  
+        </div> <%-- header3 end --%>
+    </div> <%-- 전체 헤더 end --%>
 <%--
 </body>
 </html>
