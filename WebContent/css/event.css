@@ -203,3 +203,79 @@ border-bottom: 1px solid #f7f7f7;
     color: #999;
     letter-spacing: -.5px;
 }
+
+.box_bubble {
+    position: relative;
+    height: 30px;
+    margin-bottom: 22px;
+    padding: 7px 15px;
+    font-weight: 300;
+    font-size: 15px;
+    background-color: #875eb3;
+    color: #fff;
+    box-sizing: border-box;
+    letter-spacing: -.3px;
+}
+
+.kakaopay_info .box_bubble {
+    background-color: #ffeb00;
+    color: #000;
+}
+
+.event_info .tit_info {
+    float: left;
+    width: 220px;
+    font-weight: 200;
+    font-size: 24px;
+    line-height: 35px;
+    color: #282828;
+    letter-spacing: -1px;
+}
+
+.pay_tit .ico_kakaopay {
+    background-image: url(../img/main/etc-logo-kakaopay.png);
+}
+
+.pay_tit .ico_comm {
+    width: 28px;
+    height: 28px;
+    margin: -4px 0 0 12px;
+    background-size: 28px 28px;
+    border-radius: 4px;
+}
+
+.ico_comm {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.menu_event {
+    left: 0;
+    margin: 0;
+}
+
+.menu_event {
+    position: fixed;
+    top: 270px;
+    left: 50%;
+    min-width: 105px;
+    margin-left: -605px;
+    text-align: right;
+}
+
+.menu_event .menu li {
+    margin-bottom: 20px;
+}
+
+.menu_event .menu a {
+    position: relative;
+    padding-right: 15px;
+}
+
+.menu_event a {
+    font-weight: 500;
+    font-size: 16px;
+    font-family: Noto Sans;
+    color: #999;
+    letter-spacing: -.4px;
+}

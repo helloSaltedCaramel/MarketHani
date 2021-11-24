@@ -246,10 +246,10 @@ iframe {
 						<colgroup>
 							<col style="width: 70px;">
 							<col style="width: auto;">
-							<%-- <col style="width: 51px;"> 회원등급 --%>
-							<col style="width: 77px;">
+							<%-- <col style="width: 51px;"> 회원등급 --%> 
+							<col style="width: 128px;"> <%-- 77px인데 회원등급 제거해서 128로 변경 --%>
 							<col style="width: 100px;">
-							<col style="width: 40px;">
+							<%-- <col style="width: 40px;">  도움--%>
 							<col style="width: 80px;">
 						</colgroup>
 						<tbody>
@@ -277,14 +277,14 @@ iframe {
 										<col style="width: 70px;">
 										<col style="width: auto;">
 										<%-- <col style="width: 51px;"> 회원등급--%>
-										<col style="width: 77px;">
+										<col style="width: 128px;">  <%-- 77px인데 회원등급 제거해서 128로 변경 --%>
 										<col style="width: 100px;">
-										<col style="width: 40px;">
+										<%-- <col style="width: 40px;"> --%>
 										<col style="width: 80px;">
 									</colgroup>
 									<tr>
 										<td align="center">${dto.getR_num() }</td>
-										<td class="subject"><a
+										<td class="subject"><a 
 											href="<%=request.getContextPath()
 						%>/user_review_content.do?num=${dto.getR_num()}">${dto.getR_title() }</a></td>
 										<td>${dto.getUser_id() }</td>
@@ -309,7 +309,7 @@ iframe {
 				
 					<p id="p_btnReview">
 						<span id="btnReview" style="line-height:30px; width:130px;" 
-						onclick="location.href='user_write.do'">후기쓰기
+						onclick="location.href='user_product_review_write.do'">후기쓰기
 						</span>
 						
 				

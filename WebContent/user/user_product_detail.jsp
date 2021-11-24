@@ -699,9 +699,8 @@ div, th, td, li, dt, dd, p {
 .goods-view-infomation-tab-group{
 	display: flex;
 	flex-direction: row;
-	width: 1050px;
-	margin: 0 auto;
-	
+	width: 1010px;
+	margin:0 auto;
 	/*탭 고정 코드*/
 	position: sticky;
 	top: 42px; /*높이 지정*/
@@ -956,7 +955,7 @@ function onDisplay(){
 							<p class="goods_name">
 								<span class="btn_share">
 									<button id="btnShare" onclick="onDisplay();">공유하기</button>
-								</span> <strong class="name">${dto.p_name }</strong> <span
+								</span> <strong class="name">[${dto.p_seller}]${dto.p_name }</strong> <span
 									class="short_desc">특별한 기회로 만나보는 홍게 간식</span>
 							</p>
 
@@ -1147,9 +1146,12 @@ function onDisplay(){
 			</div>
 		</div> <%-- div.main end --%>
 	
-		<div class="layout-wrapper goods-view-area">
+		<%-- 페이지 위로 올리는 버튼  --%>
+		<a href="#top" id="pageTop" class="on"
+			style="opacity: 1; bottom: 25px;">맨 위로가기</a>
+	
 			<%-- 상단 탭  --%>
-
+		
 			<ul id="ul_product" class="goods-view-infomation-tab-group">
 
 				<li id="tab_01"><a href="#tab_01"
@@ -1158,19 +1160,12 @@ function onDisplay(){
 				<li id="tab_02"><a href="#tab_02"
 					class="goods-view-infomation-tab-anchor __active">상세정보</a></li>
 
-				<li id="tab_03"><a
-					href="<%=request.getContextPath()%>/user_product_review_list.do"
+				<li id="tab_03"><a href="#tab_03"
 					class="goods-view-infomation-tab-anchor __active">후기</a></li>
 
 				<li id="tab_05"><a href="#tab_04"
 					class="goods-view-infomation-tab-anchor __active">문의</a></li>
 			</ul>
-		</div>
-		
-	
-		<%-- 페이지 위로 올리는 버튼  --%>
-		<a href="#top" id="pageTop" class="on"
-			style="opacity: 1; bottom: 25px;">맨 위로가기</a>
 	
 		
 		<div id="contents_top" align="center">	
@@ -1179,14 +1174,14 @@ function onDisplay(){
 			<div id="tab_01 scroll">
 					<img
 						src="<%=request.getContextPath() %>/img/product/${dto.getP_contents()}"
-						align="center" width="1000px" height="100%"> 
+						align="center" width="1010px" height="100%"> 
 			</div> <%-- tab_01 scroll end --%>		
 		
 			<%-- 상세정보 이미지  --%>
 			<div id="tab_02 scroll">		
 					<img
 						src="<%=request.getContextPath() %>/img/product/${dto.getP_contents_spec()}"
-						align="center" width="1000px" height="100%"> <br> <br>
+						align="center" width="1010px" height="100%"> <br> <br>
 					<br> <br> <br> <br> <br>
 		
 			</div> <%-- tab_02 scroll end --%>
@@ -1196,7 +1191,7 @@ function onDisplay(){
 				<div class="review_container">
 				
 					<iframe id="inreview"
-						src="<%=request.getContextPath()%>/user/user_product_review_list.jsp"
+						src="<%=request.getContextPath()%>/user_product_review_list.do"
 						frameborder="0" class="goods-view-infomation-board">
 						
 						<%-- 여기있던 내용 전부 삭제함 --%>
