@@ -63,12 +63,12 @@
                                     <div class="price_qty">
                                         <div class="price">
                                             <span class="selling">
-                                            	<fmt:formatNumber value="${dto.getP_price() * dto.getCart_qty()}"/>
+                                            	<fmt:formatNumber value="${dto.getSalePrice() * dto.getCart_qty()}"/>
                                               <span>원</span>
                                             </span>
                                           <c:if test="${dto.getP_price() != dto.getSalePrice()}">
                                            	<span class="cost">
-                                           		<fmt:formatNumber value="${dto.getSalePrice() * dto.getCart_qty()}"/>
+                                           		<fmt:formatNumber value="${dto.getP_price() * dto.getCart_qty()}"/>
                                            		<span>원</span>
                                            	</span>
                                           </c:if>
