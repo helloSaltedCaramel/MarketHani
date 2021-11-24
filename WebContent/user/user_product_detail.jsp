@@ -10,7 +10,6 @@
 <meta charset="UTF-8">
 <title>${dto.p_name }상품상세페이지</title>
 
-
 <%-- import header.css --%>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/header.css" />
@@ -23,12 +22,15 @@
 <script defer
 	src="<%=request.getContextPath()%>/js/header/location_postcode.js"></script>
 
+<%-- include product_qna.css --%>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/product_qna.css" />
+
 <%-- import footer.css --%>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/footer.css" />
 	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
 
 <style>
 
@@ -701,13 +703,12 @@ div, th, td, li, dt, dd, p {
 	margin: 0 auto;
 	
 	/*탭 고정 코드*/
-	position: -webkit-sticky;
 	position: sticky;
 	top: 42px; /*높이 지정*/
 	/*탭 고정 코드*/
 }
 
-} /*탭 위치 맞게 조정*/
+/*탭 위치 맞게 조정*/
 
 /*게시글 수정 시작*/
 #h2 {
@@ -823,6 +824,18 @@ tbody {
 * {
 	font-family: "Noto Sans KR", sans-serif;
 } /*폰트 지정*/
+
+.review_container {
+	
+	min-height: 850px;
+}
+
+iframe#inreview {
+	
+	width: 1010px;
+	height: 734px;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -881,28 +894,27 @@ $(document).ready(function() {
 
 });
 
-
-
-
-
 function onDisplay(){
 	
 	$('#shareLayer').toggle();
 	
 } // 공유하기 버튼 클릭시 보이고 안보이고
 
-	
 </script>
 
 </head>
-<body id="body_product">
+
+<body>
 
 	<jsp:include page="../include/header.jsp" />
+
+	<div id="body_product">
+	
 	<br>
-
-	<c:set var="dto" value="${productCont }" />
-	<c:if test="${!empty dto }">
-
+		<c:set var="dto" value="${productCont }" />
+		
+		<c:if test="${!empty dto }">
+	
 		<div id="main">
 			<div id="content" style="opacity: 1;">
 				<div class="section_view">
@@ -931,15 +943,15 @@ function onDisplay(){
 						</div>
 
 					</div>
+					
 					<div id="sectionView">
 						<div class="inner_view">
+						
 							<div class="thumb">
 								<img
 									src="<%=request.getContextPath() %>/img/product/${dto.getP_image()}"
 									class="bg">
-
 							</div>
-
 
 							<p class="goods_name">
 								<span class="btn_share">
@@ -986,8 +998,6 @@ function onDisplay(){
 						</div>
 						<%-- --%>
 					</div>
-
-
 
 					<%--cart_put --%>
 					<div id="cartPut">
@@ -1135,11 +1145,8 @@ function onDisplay(){
 
 				</div>
 			</div>
-		</div>
-
-
-
-		
+		</div> <%-- div.main end --%>
+	
 		<div class="layout-wrapper goods-view-area">
 			<%-- 상단 탭  --%>
 
@@ -1158,251 +1165,136 @@ function onDisplay(){
 				<li id="tab_05"><a href="#tab_04"
 					class="goods-view-infomation-tab-anchor __active">문의</a></li>
 			</ul>
-	</div>
+		</div>
+		
 	
-
-			<%-- 페이지 위로 올리는 버튼  --%>
-			<a href="#top" id="pageTop" class="on"
-				style="opacity: 1; bottom: 25px;">맨 위로가기</a>
-
-			<%-- 상세페이지 이미지  --%>
+		<%-- 페이지 위로 올리는 버튼  --%>
+		<a href="#top" id="pageTop" class="on"
+			style="opacity: 1; bottom: 25px;">맨 위로가기</a>
 	
-<div id="contents_top" align="center">	
-	<div id="tab_01 scroll">
-			<img
-				src="<%=request.getContextPath() %>/img/product/${dto.getP_contents()}"
-				align="center" width="1000px" height="6000px"> 
-	</div>			
-	<div id="tab_02 scroll">		
-			<img
-				src="<%=request.getContextPath() %>/img/product/${dto.getP_contents_spec()}"
-				align="center" width="1000px" height="3300px"> <br> <br>
-			<br> <br> <br> <br> <br>
-
-	</div>
+		
+		<div id="contents_top" align="center">	
+		
+			<%-- 상품설명 이미지  --%>
+			<div id="tab_01 scroll">
+					<img
+						src="<%=request.getContextPath() %>/img/product/${dto.getP_contents()}"
+						align="center" width="1000px" height="100%"> 
+			</div> <%-- tab_01 scroll end --%>		
+		
+			<%-- 상세정보 이미지  --%>
+			<div id="tab_02 scroll">		
+					<img
+						src="<%=request.getContextPath() %>/img/product/${dto.getP_contents_spec()}"
+						align="center" width="1000px" height="100%"> <br> <br>
+					<br> <br> <br> <br> <br>
+		
+			</div> <%-- tab_02 scroll end --%>
+		
 			<%-- 상품 후기 게시판  --%>
-		<div id="tab_03 scroll">	
-			<div class="goods-view-infomation-content" id="good-review"
-				data-load="0">
-				<iframe id="inreview"
-					src="<%=request.getContextPath()%>/user/user_product_review_list.jsp"
-					frameborder="0" class="goods-view-infomation-board" height="734">
-					<div id="contents-wrapper" class="goods_board">
-						<div
-							class="xans-element- xans-product xans-product-additional detail_board  ">
-							<div class="board">
-								<span class="line"></span>
-								<form name="frmList">
-									<input type="hidden" name="sort" value> <input
-										type="hidden" name="page_num" value> <input
-										type="hidden" name="goodsno" value="56491">
-
-									<div class="title_txt">
-										<h2>PRODUCT REVIEW</h2>
-										<div class="sort-wrap">
-											<ul class="list_type1 old">
-												<li><span class="ico"></span>
-													<p class="txt">상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은
-														사전동의 없이 담당 게시판으로 이동될 수 있습니다.</p></li>
-												<li><span class="ico"></span>
-													<p class="txt">배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내
-														1:1문의에 남겨주세요.</p></li>
-											</ul>
-
-
-											<div class="sort" style="bottom: -9px;">
-												<select
-													onchange="this.form.sort.value=this.value;this.form.submit()">
-													<option value="1">최근등록순</option>
-													<option value="2">좋아요많은순</option>
-													<option value="3">조회많은순</option>
-												</select>
-											</div>
-										</div>
-									</div>
-
-
-									<table class="xans-board-listheader" width="100%" border="0"
-										cellpadding="0" cellspacing="0">
-										<caption style="display: none">구매후기 제목</caption>
-										<colgroup>
-											<col style="width: 70px;">
-											<col style="width: auto;">
-											<col style="width: 51px;">
-											<col style="width: 77px;">
-											<col style="width: 100px;">
-											<col style="width: 40px;">
-											<col style="width: 80px;">
-										</colgroup>
-										<tbody>
-											<tr>
-												<th scope="col" class="input_txt">번호</th>
-												<th scope="col" class="input_txt" style="padding: 25px;">제목</th>
-												<th scope="col" class="input_txt"><span
-													class="screen_out">회원 등급</span></th>
-												<th scope="col" class="input_txt" align="left">작성자</th>
-												<th scope="col" class="input_txt">작성일</th>
-												<th scope="col" class="input_txt">도움</th>
-												<th scope="col" class="input_txt">조회</th>
-											</tr>
-										</tbody>
-									</table>
-									<div class="tr_line">
-										<table class="xans-board-listheaderd tbl_newtype1"
-											width="100%" cellpadding="0" cellspacing="0"
-											onclick="view_content(this,event,'notice')">
-											<colgroup>
-												<col style="width: 70px;">
-												<col style="width: auto;">
-												<col style="width: 51px;">
-												<col style="width: 77px;">
-												<col style="width: 100px;">
-												<col style="width: 40px;">
-												<col style="width: 80px;">
-											</colgroup>
-											<tbody>
-												<tr>
-
-													<input type="hidden" name="index" value="-1">
-													<input type="hidden" name="image" value="">
-													<input type="hidden" name="grade" value="0">
-													<input type="hidden" name="best" value="false">
-													<input type="hidden" name="pNo" value="">
-
-													<td align="center">공지</td>
-													<td class="subject">
-														<div>금주의 Best 후기 안내</div>
-													</td>
-													<td class="user_grade grade_comm"></td>
-													<td class="user_grade">Marketkurly</td>
-													<td class="time">2019-11-01</td>
-													<td><span class="review-like-cnt" data-sno="6412655">0</span>
-													</td>
-													<td><span class="review-hit-cnt" data-sno="6412655">433126</span>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-
-
-
-									</div>
-
-
-									<c:set var="list" value="${List }" />
-									<c:if test="${!empty list }">
-										<c:forEach items="${list }" var="dto">
-											<tr>
-												<td>${dto.getR_num() }</td>
-												<td><a
-													href="<%=request.getContextPath()
-						%>/user_review_content.do?num=${dto.getR_num()}">${dto.getR_title() }</a></td>
-												<td>${dto.getUser_id() }</td>
-												<td>${dto.getR_date() }</td>
-												<td>${dto.getR_hit() }</td>
-
-											</tr>
-										</c:forEach>
-									</c:if>
-
-									<c:if test="${empty list }">
-										<tr>
-											<td colspan="5" align="center">
-												<h3>검색된 게시물이 없습니다.....</h3>
-											</td>
-										</tr>
-									</c:if>
-
-
-									<td colspan="5" align="right" style="border: none"><input
-										id="input_product" type="button" value="후기쓰기"
-										onclick="location.href='user_write.do'"></td>
-
-								</form>
-
+			<div id="tab_03 scroll">	
+				<div class="review_container">
+				
+					<iframe id="inreview"
+						src="<%=request.getContextPath()%>/user/user_product_review_list.jsp"
+						frameborder="0" class="goods-view-infomation-board">
+						
+						<%-- 여기있던 내용 전부 삭제함 --%>
+						
+					</iframe>
+				</div>
+			</div> <%-- tab_03 scroll end --%>
+	
+		<%-- 상품 문의 게시판  --%>
+		<div class="tab_04 scroll">	
+			<div class="qna_container">
+					<div class="qna_header" align="left">
+						<strong>PRODUCT Q&A</strong>
+						<ul>
+							<li>상품에 대한 문의를 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로 이동될 수 있습니다.</li>
+							<li>배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내 <a>1:1문의</a>에 남겨주세요.</li>
+						</ul>
+					</div>
+					
+					<div class="qna_content">
+						<div class="qna_content_title">
+							<div style="width: 710px;">제목</div>
+							<div>작성자</div>
+							<div>작성일</div>
+							<div>답변상태</div>
+						</div>
+						
+						<%-- 비밀글 여부 표시 필요 : isSecret() 기능 필요 --%>
+						<ul class="qna_notice_list">
+							<li class="qna_notice_item">
+								<div class="notice-cell">
+									<span>공지</span>
+									<strong>판매 (일시)중단 제품 안내 (21.11.12 업데이트)</strong>
+								</div>
+								<div class="item-cell"><p>Marketkurly</p></div>
+								<div class="item-cell"><p>2021.11.18</p></div>
+								<div class="item-cell"><p>-</p></div>
+							</li>
+						</ul>
+						
+						<ul class="qna_content_list">
+							<li class="qna_content_item">
+								<div class="content-cell">
+									<strong>부스러기가 너무 많아요</strong>
+								</div>
+								<div class="item-cell"><p>김*현</p></div>
+								<div class="item-cell"><p>2021.11.19</p></div>
+								<div class="item-cell"><p>답변대기</p></div>
+							</li>
+							
+							<li class="qna_content_item">
+								<div class="content-cell">
+									<strong>언제 생산된 제품인 지 알 수 있나요?</strong>
+								</div>
+								<div class="item-cell"><p>이*욱</p></div>
+								<div class="item-cell"><p>2021.11.18</p></div>
+								<div class="item-cell"><p>답변대기</p></div>
+							</li>
+							
+							<li class="qna_content_item">
+								<div class="content-cell">
+									<strong>배송 일정 문의드립니다</strong>
+								</div>
+								<div class="item-cell"><p>박*신</p></div>
+								<div class="item-cell"><p>2021.11.18</p></div>
+								<div class="item-cell"><p>답변대기</p></div>
+							</li>
+							
+							<li class="qna_content_item">
+								<div class="content-cell">
+									<strong>재입고 문의</strong>
+								</div>
+								<div class="item-cell"><p>김*수</p></div>
+								<div class="item-cell"><p>2021.11.16</p></div>
+								<div class="item-cell"><p>답변대기</p></div>
+							</li>
+						</ul>
+						
+						<%-- Q&A 버튼의 활성화 유무 표시 필요함: 리뷰작성 가능 여부 판별 기능) --%>
+						<div class="qna_button_area">
+							<div class="qna_paging_nav">
+								<button type="button" class="prev"><span></span></button>
+								<button type="button" class="next"><span></span></button>
 							</div>
+							<button class="qna_write_btn">
+								<span>문의하기</span>
+							</button>
 						</div>
 					</div>
+				</div>		
 			</div>
-
-</div>
-
-
-
-
-
-
-
-			<%-- 상품 문의 게시판  --%>
-	<div class="tab_04 scroll">	
-			<div class="qnainfo">
-
-				<ul id="ul_product">
-					<h2>PRODUCT Q&A</h2>
-					<li>상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로
-						이동될 수 있습니다.</li>
-					<li>배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내 1:1문의에 남겨주세요.</li>
-				</ul>
-
-
-			</div>
-
-			<div class="qnalist">
-				<table border="1" cellspacing="0" width="800">
-					<tr>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>작성일</th>
-						<th>답변상태</th>
-					</tr>
-
-					<c:set var="list" value="${List }" />
-					<c:if test="${!empty list }">
-						<c:forEach items="${list }" var="dto">
-							<tr>
-								<td><a
-									href="<%=request.getContextPath()
-						%>/user_qna_content.do?num=${dto.getQna_num()}">${dto.getQna_title() }</a></td>
-								<td>${dto.getUser_id() }</td>
-								<td>${dto.getQna_date() }</td>
-								<td>${dto.getQna_status() }</td>
-
-							</tr>
-						</c:forEach>
-					</c:if>
-
-					<c:if test="${empty list }">
-						<tr>
-							<td colspan="5" align="center">
-								<h3>검색된 게시물이 없습니다.....</h3>
-							</td>
-						</tr>
-					</c:if>
-
-
-					<tr>
-						<td colspan="5" align="right" style="border: none"><input
-							id="input_product" type="button" value="문의하기"
-							onclick="location.href='user_qna_write.do'"></td>
-				</table>
-
-			</div>
-			</div>
-			</div>
-			</div>
+		</div>
+	</div>
+		
 	</c:if>
-
-
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
-
+	</div>
 
 	<jsp:include page="../include/footer.jsp" />
-	<!-- </body>
-</html> -->
+
+<%-- </body>
+</html> --%>
