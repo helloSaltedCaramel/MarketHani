@@ -54,12 +54,12 @@ public class CartDataDAO {
 		List<CartDataDTO> list = new ArrayList<>();
 		
 		final String sql = 
-				"select c.cart_pnum, p.p_image, p.p_name, p.p_price, ROUND(p.p_price*(1-p.p_discount*0.01)) salePrice, p.p_point, c.cart_qty" + 
-				"from kurly_cart c" + 
-				"join kurly_product p" + 
-				"on c.cart_pnum = p.p_num" + 
-				"where c.cart_userid = ?" +
-				"order by cart_pnum;";
+				"select c.cart_pnum, p.p_image, p.p_name, p.p_price, ROUND(p.p_price*(1-p.p_discount*0.01)) salePrice, p.p_point, c.cart_qty " + 
+				"from kurly_cart c " + 
+				"join kurly_product p " + 
+				"on c.cart_pnum = p.p_num " + 
+				"where c.cart_userid = ? " +
+				"order by c.cart_pnum";
 		
 		try {
 			pstmt = connect().prepareStatement(sql);
@@ -80,7 +80,7 @@ public class CartDataDAO {
 			}
 			
 		} catch (SQLException e) {
-			System.out.println("CartDataDAO 오류발생");
+			System.out.println("[CartDataDAO 오류발생]");
 			e.printStackTrace();
 		} finally {
 			connectClose();

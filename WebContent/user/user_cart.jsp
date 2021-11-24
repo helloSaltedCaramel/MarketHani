@@ -21,10 +21,15 @@
 		<title>마켓하니 :: 내일의 장보기 마켓하니</title>
 		<link rel="icon" href="${pageContext.request.contextPath}/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/cart.css">
+    <script defer src="${pageContext.request.contextPath}/js/cart/priceBlock.js"></script>
 </head>
 <body>
 		<jsp:include page="/include/header.jsp"/>
 		
+		<c:set var="list" value="${cartList}" />
+		<c:set var="count" value="${list.size()}"/>
+		<c:set var="saleSum" value="${saleSum}"/>
+		<c:set var="costSum" value="${costSum}"/>
     <div class="container">
         <h2 id="title">장바구니</h2>
         <div class="inner_container">
@@ -32,7 +37,7 @@
                 <div class="select_items">
                     <label for="check_all">
                         <input id="check_all" type="checkbox" checked>
-                        	전체선택(1/3)
+                        	전체선택(1/${count})
                     </label>
                     <span class="bar">|</span>
                     <a id="delete_item" href="#">선택 삭제</a>
@@ -40,30 +45,38 @@
 
                 <div class="item_box">
                     <ul class="item_list">
-                        <li> <!-- Item start -->
+                    	<c:forEach items="${list}" var="dto">
+                        <li><!-- Item start -->
                             <div class="item">
                                 <input class="check" type="checkbox" value="item_id" checked>
                                 <div class="name">
                                     <div class="inner_name">
-                                        <a href="#" class="package">[해밀:바다가 주는 식사]오징어&홍합 로제 파스타 세트 869g(냉장)</a>
+                                        <a href="#" class="package">${dto.getP_name()}</a>
                                     </div>
                                 </div>
 
                                 <div class="goods">
                                     <a href="#" class="thumb_img">
-                                        <img src="../img/1487213431670y0.jpg">
+                                        <img src="${pageContext.request.contextPath}/img/product/${dto.getP_image() }">
                                     </a>
 
                                     <div class="price_qty">
                                         <div class="price">
-                                            <span>5,500
-                                                <span>원</span>
+                                            <span class="selling">
+                                            	<fmt:formatNumber value="${dto.getP_price() * dto.getCart_qty()}"/>
+                                              <span>원</span>
                                             </span>
+                                          <c:if test="${dto.getP_price() != dto.getSalePrice()}">
+                                           	<span class="cost">
+                                           		<fmt:formatNumber value="${dto.getSalePrice() * dto.getCart_qty()}"/>
+                                           		<span>원</span>
+                                           	</span>
+                                          </c:if>
                                         </div>
 
                                         <div class="quantity">
                                             <button type="button" class="btn minus"></button>
-                                            <input type="number" class="quantity_num" value="1" readonly>
+                                            <input type="number" class="quantity_num" value="${dto.getCart_qty() }" readonly>
                                             <button type="button" class="btn plus"></button>
                                         </div>
                                     </div>
@@ -71,77 +84,14 @@
                                 <button class="delete_btn" type="button">상품삭제</button>
                             </div>
                         </li> <!-- Item end -->
-
-                        <li> <!-- Item start -->
-                            <div class="item">
-                                <input class="check" type="checkbox" value="item_id" checked>
-                                <div class="name">
-                                    <div class="inner_name">
-                                        <a href="#" class="package">[블루보틀] 콜드브루 커피 236mL 3종</a>
-                                    </div>
-                                </div>
-
-                                <div class="goods">
-                                    <a href="#" class="thumb_img">
-                                        <img src="../img/1636681893622y0.jpg">
-                                    </a>
-
-                                    <div class="price_qty">
-                                        <div class="price">
-                                            <span>6,300
-                                                <span>원</span>
-                                            </span>
-                                        </div>
-
-                                        <div class="quantity">
-                                            <button type="button" class="btn minus"></button>
-                                            <input type="number" class="quantity_num" value="1" readonly>
-                                            <button type="button" class="btn plus"></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="delete_btn" type="button">상품삭제</button>
-                            </div>
-                        </li> <!-- Item end -->
-
-                        <li> <!-- Item start -->
-                            <div class="item">
-                                <input class="check" type="checkbox" value="item_id" checked>
-                                <div class="name">
-                                    <div class="inner_name">
-                                        <a href="#" class="package">[비바니] 유기농 초콜릿 7종</a>
-                                    </div>
-                                </div>
-
-                                <div class="goods">
-                                    <a href="#" class="thumb_img">
-                                        <img src="../img/15094337717m0.jpg">
-                                    </a>
-
-                                    <div class="price_qty">
-                                        <div class="price">
-                                            <span>4,300
-                                                <span>원</span>
-                                            </span>
-                                        </div>
-
-                                        <div class="quantity">
-                                            <button type="button" class="btn minus"></button>
-                                            <input type="number" class="quantity_num" value="1" readonly>
-                                            <button type="button" class="btn plus"></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="delete_btn" type="button">상품삭제</button>
-                            </div>
-                        </li> <!-- Item end -->
+											</c:forEach>
                     </ul>
                 </div>
 
                 <div class="select_items">
                     <label for="check_all">
                         <input id="check_all" type="checkbox" checked>
-                        	전체선택(1/3)
+                        	전체선택(1/${count})
                     </label>
                     <span class="bar">|</span>
                     <a id="delete_item" href="#">선택 삭제</a>
@@ -158,7 +108,7 @@
                             	하고
                             <br>
                             	배송유형을 확인해 보세요!
-                            <button class="btn_default" type="button"  onclick="getPostcode()">
+                            <button class="btn_default" type="button" onclick="getPostcode()">
                                	 주소 검색
                             </button>
                         </div>
@@ -168,7 +118,9 @@
                         <dl class="price_index">
                             <dt class="index">상품금액</dt>
                             <dd class="price_block">
-                                <span class="num">16,100</span>
+                                <span class="num">
+                                	<fmt:formatNumber value="${costSum}" />
+                                </span>
                                 <span class="won">원</span>
                             </dd>
                         </dl>
@@ -176,7 +128,9 @@
                         <dl class="price_index">
                             <dt class="index">상품할인금액</dt>
                             <dd class="price_block">
-                                <span class="num">0</span>
+                                <span class="num">
+                                	<fmt:formatNumber value="${saleSum - costSum}"/>
+                                </span>
                                 <span class="won">원</span>
                             </dd>
                         </dl>
@@ -184,7 +138,12 @@
                         <dl class="price_index">
                             <dt class="index">배송비</dt>
                             <dd class="price_block">
+                            	<c:if test="${saleSum >= 30000}">
                                 <span class="num">3,000</span>
+                              </c:if>
+                              <c:if test="${saleSum < 30000 }">
+                              	<span class="num">0</span>
+                              </c:if>
                                 <span class="won">원</span>
                             </dd>
                         </dl>
@@ -192,7 +151,9 @@
                         <dl class="price_last">
                             <dt class="index">결제예정금액</dt>
                             <dd class="price_block">
-                                <span class="num">19,100</span>
+                                <span class="num">
+                                	<fmt:formatNumber value="${saleSum}" />
+                                </span>
                                 <span class="won">원</span>
                             </dd>
                         </dl>

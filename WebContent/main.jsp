@@ -28,6 +28,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css" rel="stylesheet" />
 
+<!--  --><style>
+    .bx-wrapper {border:0;background:#fbfbfb;box-shadow:none;}
+    
+    .bx-controls-direction .bx-prev {
+    background: url(./img/main/ico_prev1_x1.png) 0 -32px no-repeat;
+
+}
+    
+    </style> 
 
 <script>
      $(document).ready(function(){
@@ -81,10 +90,10 @@
 	            <div class="list_goods_0">
 	                <%-- slide --%>
 	                <ul class="bannerSlide">
-	                    <li><a href="#"><img src="<%=request.getContextPath() %>/img/main/slide01.png" alt=""></a></li>
-	                    <li><a href="#"><img src="<%=request.getContextPath() %>/img/main/slide01.png" alt=""></a></li>
-	                    <li><a href="#"><img src="<%=request.getContextPath() %>/img/main/slide01.png" alt=""></a></li>
-	                    <li><a href="#"><img src="<%=request.getContextPath() %>/img/main/slide01.png" alt=""></a></li>
+	                    <li><a href="<%=request.getContextPath() %>/user/user_event_ban1.jsp"><img src="<%=request.getContextPath() %>/img/main/banner1.jpg" alt="이벤트배너"></a></li>
+	                    <li><a href="<%=request.getContextPath() %>/user/user_event_ban2.jsp"><img src="<%=request.getContextPath() %>/img/main/banner3.jpg" alt="이벤트배너"></a></li>
+	                    <li><a href="<%=request.getContextPath() %>/user/user_event_ban3.jsp"><img src="<%=request.getContextPath() %>/img/main/banner7.jpg" alt="이벤트배너"></a></li>
+	               <%-- <li><a href="#"><img src="<%=request.getContextPath() %>/img/main/banner2.jpg" alt="이벤트배너"></a></li>  --%> 
 	                </ul>
 	            </div>
 	        </div> <%-- main_type1 end --%>
@@ -102,7 +111,7 @@
 	                <%-- slide --%>
 	                <div class="list_goods">
 	                    <ul class="itemSlide">
-	                        <li><a href=""><img src="<%=request.getContextPath() %>/img/main/product01.jpg" alt=""></a>
+	                        <li><div><a href=""><img src="<%=request.getContextPath() %>/img/main/product01.jpg" alt=""></a></div>
 	                        <div class="info_goods">
 	                            <span class="name"><a class="txt">[구스티] 유기농 아마씨오일</a></span>
 	                            <span class="price"><span class="dc">10%</span>11,277원 </span> 

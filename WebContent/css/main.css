@@ -147,10 +147,8 @@ body { font-family: 'Noto Sans KR', sans-serif; }
 .main_type3 .list_goods ul li img{
     width: 350px;
     height: 501px;
+    transition: all 0.5s;
 }
-
-
-
 
 /* 메인유형4  css*/
 .main_type3 .list_goods li {
@@ -163,6 +161,7 @@ body { font-family: 'Noto Sans KR', sans-serif; }
 .main_type4{    
     margin-top: 154px
     ;}
+    
 .main_type4 .recipeSlide li img:hover{
     transform: scale(1.03);
 }

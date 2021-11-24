@@ -123,8 +123,28 @@ body {
   right: 49px;
   top: 50%;
   width: 116px;
-  text-align: right;
   transform: translateY(-49%);
+}
+
+.price .selling {
+	display: block;
+	font-size: 16px;
+	text-align: right;
+	color: #333;
+	line-height: 24px;
+	font-weight: 700;
+	word-break: break-all;
+}
+
+.price .cost {
+	display: block;
+	padding-left: 6px;
+	line-height: 24px;
+	text-align: right;
+	font-size: 14px;
+	color: #999;
+	word-break: break-all;
+	text-decoration: line-through;
 }
 
 .btn {
@@ -296,11 +316,12 @@ body {
 .submit_btn {
   width: 100%;
   height: 56px;
-  font-size: 17px;
+  font-size: 15px;
   background-color: #5f0080;
   color: #fff;
   border: 1px solid #5f0080;
   border-radius: 5px;
+  font-weight: 700;
 }
 
 .submit_btn:hover {

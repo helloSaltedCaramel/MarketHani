@@ -142,7 +142,7 @@
                         <%-- 장바구니 --%>                                  
                         <div class="gnb_cart">
                             <div class="inner_cart">
-                                <a href="<%=request.getContextPath() %>/user/user_cart.jsp" class="cart_btn">
+                                <a href="<%=request.getContextPath() %>/user_cartList_view.do" class="cart_btn">
                                     <img src="<%=request.getContextPath() %>/img/header/icon_cart.png" class="cart_icon">
                                 </a>
                             </div>
