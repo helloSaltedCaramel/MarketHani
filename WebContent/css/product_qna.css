@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@charset "UTF-8";
+
+	body {
+		color: #4c4c4c;
+		font-family: 'Noto Sans KR', sans-serif; 
+		font-size: 12px;
+	    line-height: 1;
+    	letter-spacing: -.05em;
+	}
+	
+	.qna_content {
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+	
+	.qna_container ul {
+		list-style-type: none;
+		margin: 0px;
+		padding: 0px;
+	}
+	
+	.qna_container{
+		width: 1010px;
+		margin-bottom: 60px;
+	}
+	
+	.qna_header{
+		padding-bottom: 38px;
+    	font-family: Noto Sans;
+	}
+	
+	.qna_header strong {
+	    display: block;
+	    padding-bottom: 16px;
+	    font-size: 16px;
+	    font-weight: 700;
+	    line-height: 24px;
+	    color: #333;
+	}
+	
+	.qna_header ul {
+	    font-family: Noto Sans;
+	    font-size: 14px;
+	    line-height: 24px;
+	    font-weight: 400;
+	    color: #999;
+	    padding: 0;
+	}
+	
+	.qna_header ul li {
+    	padding-left: 12px;
+	}
+	
+	.qna_header ul li:before {
+	    display: inline-block;
+	    width: 2px;
+	    height: 2px;
+	    margin: 11px 6px 0 -10px;
+	    background: #999;
+	    vertical-align: top;
+	    content: "";
+	}
+	
+	.qna_header ul li a {
+	    font-weight: 700;
+	    color: #999;
+	    text-decoration: underline;
+	}
+	
+	.qna_content {
+	    position: relative;
+	    font-family: Noto Sans;
+	    border-top: 2px solid #333;
+	    width: 1010px;
+	}
+
+
+	.qna_content_title {
+	    display: table;
+	    table-layout: fixed;
+	    border-bottom: 1px solid #333;
+	}
+	
+	.qna_content_title div {
+	    display: table-cell;
+	    text-align: center;
+	    padding: 18px 0 20px;
+	    width: 100px;
+	    font-family: Noto Sans;
+	    font-size: 14px;
+	    line-height: 20px;
+	    font-weight: 700;
+	    letter-spacing: -.5px;
+	    color: #333;
+	}
+	
+	.qna_notice_list {
+		position: relative;
+	}
+	
+	.qna_content_list {
+		position: relative;
+	}
+	
+	.qna_button {
+		position: relative;
+	}
+	
+	.qna_notice_item {
+	    display: table;
+	    width: 100%;
+	    table-layout: fixed;
+	    padding: 16px 0;
+	    font-family: Noto Sans;
+	    font-size: 14px;
+	    line-height: 20px;
+	    text-align: center;
+	    border-bottom: 1px solid #f4f4f4;
+		padding: 0;
+    	height: 61px;
+	}
+	
+	.qna_content_item {
+	    display: table;
+	    width: 100%;
+	    table-layout: fixed;
+	    padding: 16px 0;
+	    font-family: Noto Sans;
+	    font-size: 14px;
+	    line-height: 20px;
+	    text-align: center;
+	    border-bottom: 1px solid #f4f4f4;
+		padding: 0;
+    	height: 61px;
+	}
+
+	
+	.item-cell {
+	    display: table-cell;
+	    vertical-align: middle;
+	    width: 100px;
+	    color: #999;
+	}
+	
+	
+	.notice-cell {
+		display: table-cell;
+	    vertical-align: middle;
+	    width: 710px;
+	    text-align: left;
+	    padding: 0 20px;
+	    min-height: 22px;
+	    box-sizing: border-box;
+	    cursor: pointer;
+	}
+	
+	.notice-cell span {
+	    display: inline-block;
+	    overflow: hidden;
+	    border-radius: 4px;
+	    margin-right: 12px;
+	    margin-top: 6px;
+	    padding: 0 8px;
+	    font-size: 12px;
+	    line-height: 22px;
+	    font-weight: 500;
+	    color: #666;
+	    background: hsla(0,0%,40%,.06);
+	    vertical-align: top;
+	}
+	
+	.notice-cell strong {
+	    display: inline-block;
+	    overflow: hidden;
+	    max-width: 613px;
+	    font-size: 14px;
+	    font-weight: 400;
+	    line-height: 40px;
+	    color: #333;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	    vertical-align: top;
+	}
+	
+	.content-cell {
+		display: table-cell;
+	    vertical-align: middle;
+	    width: 710px;
+	    text-align: left;
+	    padding: 0 20px;
+	    min-height: 22px;
+	    box-sizing: border-box;
+	    cursor: pointer;
+	}
+	
+	.content-cell strong {
+	    display: inline-block;
+	    overflow: hidden;
+	    max-width: 613px;
+	    font-size: 14px;
+	    font-weight: 400;
+	    line-height: 40px;
+	    color: #333;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	    vertical-align: top;
+	}
+	
+	.content-cell span {
+	    display: inline-block;
+	    overflow: hidden;
+	    border-radius: 4px;
+	    margin-right: 12px;
+	    margin-top: 6px;
+	    padding: 0 8px;
+	    font-size: 12px;
+	    line-height: 22px;
+	    font-weight: 500;
+	    color: #666;
+	    background: hsla(0,0%,40%,.06);
+	    vertical-align: top;
+	}
+
+	.qna_button_area {
+		position: relative;
+	}
+	
+	.qna_paging_nav {
+		padding-top: 20px;
+    	text-align: center;
+	}
+	
+	.qna_write_btn {
+	    position: absolute;
+	    bottom: 0;
+	    right: 0;
+	    width: 120px;
+	    height: 44px;
+	    font-family: Noto Sans;
+	    font-weight: 500;
+	    line-height: 1;
+	    
+	    border: 1px solid #5f0081;
+    	background-color: #5f0080;
+    	color: #fff;
+    	
+    	font-size: 16px;
+    	text-align: center;
+    	border-radius: 4px;
+    	outline: none;
+ 	
+ 		max-width: 100%;
+ 		margin: 0;
+ 		padding: 0;	
+    	cursor: pointer;
+    	text-transform: none;
+   }
+   
+   .qna_paging_nav button {
+   
+	    display: inline-block;
+	    width: 44px;
+	    height: 44px;
+	    padding: 0;
+	    margin: 0;
+	    background: 0;
+	    border: 1px solid #eee;
+	    border-radius: 3px;
+	    cursor: pointer;
+   }
+	
+	
+	button.prev {
+    	margin-right: 12px;
+    	background: url(../img/product/qna_page_prev.svg) 50% 0 no-repeat;
+	}
+	
+	button.next {
+	
+		background: url(../img/product/qna_page_next.svg) 50% 0 no-repeat;
+	}

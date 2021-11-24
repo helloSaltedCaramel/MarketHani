@@ -26,6 +26,17 @@
 	<div id="page3_main">
 		<div id="page3_event">
 			<div id="page3_view">
+			    <div class="menu_event">	
+			    	<div id="eventMenu">
+			    		<ul class="menu">
+			    		 	<li>전체보기</li>
+			    		 	<li>회원혜택</li>
+			    		 	<li>친구초대</li>
+			    		 	<li>결제혜택</li>
+			    		 	<li>카카오페이</li>
+			    		</ul>
+			    	</div>
+			    </div>	
 				<div id="view_body">
 					<div class="view_page">
 						<div class="view_cont">

@@ -55,14 +55,14 @@ for (node of $children) {
 
 // 일정 스크롤 넘어가면 position: fixed 처리하는 클래스되도록 변경
 const fixHeader = (e) => {
-  if (window.scrollY >= 200) {
+  if (window.scrollY >= 100) {
     document.getElementById("header3").className = "gnb_stop";
   } else {
     document.getElementById("header3").className = "";
   }
 };
 
-window.addEventListener("wheel", fixHeader);
+window.addEventListener("scroll", fixHeader);
 
 /*$totalCategory.addEventListener("mouseleave", categoryOut);*/
 $categoryBlock.addEventListener('mouseover', categoryIn);

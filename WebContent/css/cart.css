@@ -1,8 +1,8 @@
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-
+/* 
 * {
   font-family: "Noto Sans KR", sans-serif;
-}
+} */
 
 body {
   background-color: #ffffff;
@@ -78,12 +78,30 @@ body {
   margin-top: -5px;
 }
 
-.name {
+.item .name {
   display: table;
   width: 463px;
   min-height: 80px;
   padding: 19px 0 18px 150px;
   line-height: 80px;
+}
+
+.inner_name {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.inner_name .package {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	max-width: 300px;
+	max-height: 54px;
+	line-height: 22px;
+	word-break: break-all;
+	font-weight: 400;
+	text-overflow: ellipsis;
 }
 
 .thumb_img {
@@ -105,8 +123,28 @@ body {
   right: 49px;
   top: 50%;
   width: 116px;
-  text-align: right;
   transform: translateY(-49%);
+}
+
+.price .selling {
+	display: block;
+	font-size: 16px;
+	text-align: right;
+	color: #333;
+	line-height: 24px;
+	font-weight: 700;
+	word-break: break-all;
+}
+
+.price .cost {
+	display: block;
+	padding-left: 6px;
+	line-height: 24px;
+	text-align: right;
+	font-size: 14px;
+	color: #999;
+	word-break: break-all;
+	text-decoration: line-through;
 }
 
 .btn {
@@ -278,11 +316,12 @@ body {
 .submit_btn {
   width: 100%;
   height: 56px;
-  font-size: 17px;
+  font-size: 15px;
   background-color: #5f0080;
   color: #fff;
   border: 1px solid #5f0080;
   border-radius: 5px;
+  font-weight: 700;
 }
 
 .submit_btn:hover {

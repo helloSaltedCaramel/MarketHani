@@ -5,169 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-	
-	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
-	body {
-		color: #4c4c4c;
-		font-family: 'Noto Sans KR', sans-serif; 
-		font-size: 12px;
-	    line-height: 1;
-    	letter-spacing: -.05em;
-	}
-	
-	ul {
-		list-style-type: none;
-	}
-	
-	.qna_container{
-		width: 1010px;
-	}
-	
-	.qna_header{
-		padding-bottom: 38px;
-    	font-family: Noto Sans;
-	}
-	
-	.qna_header strong {
-	    display: block;
-	    padding-bottom: 16px;
-	    font-size: 16px;
-	    font-weight: 700;
-	    line-height: 24px;
-	    color: #333;
-	}
-	
-	.qna_header ul {
-	    font-family: Noto Sans;
-	    font-size: 14px;
-	    line-height: 24px;
-	    font-weight: 400;
-	    color: #999;
-	    padding: 0;
-	}
-	
-	.qna_header ul li {
-    	padding-left: 12px;
-	}
-	
-	.qna_header ul li:before {
-	    display: inline-block;
-	    width: 2px;
-	    height: 2px;
-	    margin: 11px 6px 0 -10px;
-	    background: #999;
-	    vertical-align: top;
-	    content: "";
-	}
-	
-	.qna_header ul li a {
-	    font-weight: 700;
-	    color: #999;
-	    text-decoration: underline;
-	}
-	
-	.qna_content {
-	    position: relative;
-	    font-family: Noto Sans;
-	    border-top: 2px solid #333;
-	    width: 1010px;
-	}
+<%-- include product_qna.css --%>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/product_qna.css" />
 
-
-	.qna_content_title {
-	    display: table;
-	    table-layout: fixed;
-	    border-bottom: 1px solid #333;
-	}
-	
-	.qna_content_title div {
-	    display: table-cell;
-	    text-align: center;
-	    padding: 18px 0 20px;
-	    width: 100px;
-	    font-family: Noto Sans;
-	    font-size: 14px;
-	    line-height: 20px;
-	    font-weight: 700;
-	    letter-spacing: -.5px;
-	    color: #333;
-	}
-	
-	.qna_notice_list {
-		position: relative;
-	}
-	.qna_content_list {
-		position: relative;
-	}
-	
-	.qna_button {
-		position: relative;
-	}
-	
-	.qna_notice_item {
-	    display: table;
-	    width: 100%;
-	    table-layout: fixed;
-	    padding: 16px 0;
-	    font-family: Noto Sans;
-	    font-size: 14px;
-	    line-height: 20px;
-	    text-align: center;
-	    border-bottom: 1px solid #f4f4f4;
-		padding: 0;
-    	height: 61px;
-	}
-
-	
-	.item-cell {
-	    display: table-cell;
-	    vertical-align: middle;
-	    width: 100px;
-	}
-	
-	
-	.notice-cell {
-		display: table-cell;
-	    vertical-align: middle;
-	    width: 710px;
-	    text-align: left;
-	    padding: 0 20px;
-	    min-height: 22px;
-	    box-sizing: border-box;
-	    cursor: pointer;
-	}
-	
-	.notice-cell span {
-	    display: inline-block;
-	    overflow: hidden;
-	    border-radius: 4px;
-	    margin-right: 12px;
-	    padding: 0 8px;
-	    font-size: 12px;
-	    line-height: 22px;
-	    font-weight: 500;
-	    color: #666;
-	    background: hsla(0,0%,40%,.06);
-	    vertical-align: top;
-	}
-	
-	.notice-cell strong {
-	    display: inline-block;
-	    overflow: hidden;
-	    max-width: 613px;
-	    font-size: 14px;
-	    font-weight: 700;
-	    line-height: 40px;
-	    color: #333;
-	    white-space: nowrap;
-	    text-overflow: ellipsis;
-	    vertical-align: top;
-	}
-
-	
-</style>
 </head>
 <body>
 	
@@ -175,8 +17,10 @@
 	
 		<h3>user_detail 페이지 아래에 붙일 내용들</h3>
 		<hr width="50%">
+		
 		<div class="contents">
 		
+			<%-- 여기부터 시작 --%>
 			<div class="qna_container">
 				<div class="qna_header" align="left">
 					<strong>PRODUCT Q&A</strong>
@@ -207,21 +51,46 @@
 						</li>
 					</ul>
 					
-					.item-cell notice-cell
-	.item-cell
-	
-					
 					<ul class="qna_content_list">
 						<li class="qna_content_item">
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
+							<div class="content-cell">
+								<strong>부스러기가 너무 많아요</strong>
+							</div>
+							<div class="item-cell"><p>김*현</p></div>
+							<div class="item-cell"><p>2021.11.19</p></div>
+							<div class="item-cell"><p>답변대기</p></div>
+						</li>
+						
+						<li class="qna_content_item">
+							<div class="content-cell">
+								<strong>언제 생산된 제품인 지 알 수 있나요?</strong>
+							</div>
+							<div class="item-cell"><p>이*욱</p></div>
+							<div class="item-cell"><p>2021.11.18</p></div>
+							<div class="item-cell"><p>답변대기</p></div>
+						</li>
+						
+						<li class="qna_content_item">
+							<div class="content-cell">
+								<strong>배송 일정 문의드립니다</strong>
+							</div>
+							<div class="item-cell"><p>박*신</p></div>
+							<div class="item-cell"><p>2021.11.18</p></div>
+							<div class="item-cell"><p>답변대기</p></div>
+						</li>
+						
+						<li class="qna_content_item">
+							<div class="content-cell">
+								<strong>재입고 문의</strong>
+							</div>
+							<div class="item-cell"><p>김*수</p></div>
+							<div class="item-cell"><p>2021.11.16</p></div>
+							<div class="item-cell"><p>답변대기</p></div>
 						</li>
 					</ul>
 					
 					<%-- Q&A 버튼의 활성화 유무 표시 필요함: 리뷰작성 가능 여부 판별 기능) --%>
-					<div class="qna_button">
+					<div class="qna_button_area">
 						<div class="qna_paging_nav">
 							<button type="button" class="prev"><span>이전</span></button>
 							<button type="button" class="next"><span>다음</span></button>
@@ -232,6 +101,7 @@
 					</div>
 				</div>
 			</div>
+			<%-- 여기까지 --%>
 		</div>
 	</div>
 

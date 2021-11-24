@@ -15,17 +15,7 @@ public class UserRegistAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
-// 		가져와야할 파라미터 출력테스트
-//		System.out.println(request.getParameter("reg_id"));
-//		System.out.println(request.getParameter("reg_pw"));
-//		System.out.println(request.getParameter("reg_name"));
-//		System.out.println(request.getParameter("reg_email"));
-//		System.out.println(request.getParameter("reg_phone"));
-//		System.out.println(request.getParameter("reg_address") + " " + request.getParameter("reg_address_detail"));
-//		System.out.println(request.getParameter("reg_gender"));
-//		System.out.println(request.getParameter("year") + "/" + request.getParameter("month") + "/" + request.getParameter("day"));
-		
+
 		// 생년월일은 선택사항이므로 값이 없을 경우 null 처리는 안되고 1899/01/01로 설정?
 		String date = null;
 		

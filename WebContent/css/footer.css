@@ -23,7 +23,7 @@ body { font-family: 'Noto Sans KR', sans-serif; }
 #footer .cc_kakao .tit
 , #footer .cc_qna .tit { height: 40px; margin-top: 3px; border: 1px solid #e3d3d3; border-radius: 3px; color: #333; line-height: 40px; text-align: center; font-weight: 700; font-size: 14px;} 
 
-.footer_left .tit_cc { padding: 28px 0 2px;font-weight: 700; font-size: 20px; color:#333; line-height: 24px;} 
+.footer_left .tit_cc { padding: 28px 0 2px;font-weight: 700; font-size: 20px; color:#333; line-height: 24px; border-top: 1px solid #eee;} 
 
 #footer .footer_left .list {
     font-size: 6px;
@@ -36,7 +36,7 @@ body { font-family: 'Noto Sans KR', sans-serif; }
     color: #999;
 }
 /*footer_right 영역*/
-#footer .footer_right { float: left; width: 50%; box-sizing: border-box; padding: 28px 0 2px; font-size: 12px; color: #999; line-height: 20px; } 
+#footer .footer_right { float: left; width: 50%; box-sizing: border-box; padding: 28px 0 2px; font-size: 12px; color: #999; line-height: 20px; border-top: 1px solid #eee; } 
 #footer .footer_right .list { overflow: hidden; width: 100%; padding-bottom: 29px; }
 #footer .footer_right .list li { float: left; padding-right: 16px; }
 #footer .footer_right .list .link { font-size: 14px; color: #333; line-height: 18px; }
@@ -50,7 +50,7 @@ body { font-family: 'Noto Sans KR', sans-serif; }
 
 /*bottom_footer 영역*/
 /*인증*/
-#footer .authentication {float: left; padding-top: 3px; width: 100%; border-top:1px solid #eee;} 
+#footer .authentication {float: left; padding-top: 19px; width: 100%; border-top:1px solid #eee;} 
 #footer .mark { float: left; width: 267px; }
 #footer .mark .logo { float: left; width: 34px; height: 34px; margin-right: 10 px; }
 #footer .mark .txt { float: left; padding-top: 1px; font-size: 10px; color: #999; line-height: 16px; letter-spacing: -.5px; white-space: nowrap; padding-left: 14px; width: 50%; }

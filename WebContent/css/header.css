@@ -364,9 +364,9 @@ body {
   position: absolute;
   z-index: 0;
   left: 200px;
-  top: 0;
+  top: 2px;
   width: 219px;
-  height: 100%;
+  height: 646px;
   padding: 0 0 0 20px;
   background: url(https://res.kurly.com/images/common/bg_1_1.gif) repeat 0 0;
   opacity: 0;
@@ -374,7 +374,7 @@ body {
 }
 
 .sub_menu li:first-child {
-  padding-top: 11px;
+  padding-top: 8px;
 }
 
 .sub_menu li {
@@ -398,17 +398,6 @@ body {
   height: 24px;
   text-align: center;
   padding-left: 70px;
-}
-
-.current .text {
-  font-weight: 700;
-  color: #5f0080;
-}
-
-.current .sub_menu {
-  z-index: 1;
-  opacity: 1;
-  transition: opacity 0.5s;
 }
 
 /* 주소등록 block */
@@ -494,4 +483,15 @@ body {
   left: 0;
   top: 0;
   width: 100%;
+}
+
+.current .text {
+  font-weight: 700;
+  color: #5f0080;
+}
+
+.current .sub_menu {
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.5s;
 }
