@@ -49,7 +49,7 @@
             			<a href="#">상품 문의</a>
             		</li>
             		<li>
-            			<a href="#">개인정보 수정</a>
+            			<a href="${pageContext.request.contextPath}/user/user_mypage_myInfo.jsp">개인정보 수정</a>
             		</li>
             	</ul>
             </li>
