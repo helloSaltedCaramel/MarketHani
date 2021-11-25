@@ -246,8 +246,9 @@ iframe {
 						<colgroup>
 							<col style="width: 70px;">
 							<col style="width: auto;">
-							<%-- <col style="width: 51px;"> 회원등급 --%> 
-							<col style="width: 128px;"> <%-- 77px인데 회원등급 제거해서 128로 변경 --%>
+							<%-- <col style="width: 51px;"> 회원등급 --%>
+							<col style="width: 128px;">
+							<%-- 77px인데 회원등급 제거해서 128로 변경 --%>
 							<col style="width: 100px;">
 							<%-- <col style="width: 40px;">  도움--%>
 							<col style="width: 80px;">
@@ -265,51 +266,101 @@ iframe {
 							</tr>
 						</tbody>
 					</table>
+					<%--공지글 임의로 작성 --%>
+					<table class="xans-board-listheaderd tbl_newtype1" width="100%"
+						cellpadding="0" cellspacing="0">
+						<caption style="display: none">구매후기 내용</caption>
+						<colgroup>
+							<col style="width: 70px;">
+							<col style="width: auto;">
+							<%-- <col style="width: 51px;"> 회원등급--%>
+							<col style="width: 128px;">
+							<%-- 77px인데 회원등급 제거해서 128로 변경 --%>
+							<col style="width: 100px;">
+							<%-- <col style="width: 40px;"> --%>
+							<col style="width: 80px;">
+						</colgroup>
+							
+							<%--공지글 임의로 작성 --%>
+						
+						<td align="center" width="70px">공지</td>
+						<td class="subject">
+							<div>금주의 Best 후기 안내</div>
+						</td>
+						<td class="user_grade">MarketHani</td>
+						<td class="time">2019-11-01</td>
+						<td><span class="review-hit-cnt">436025</span></td>
+					</table>
+					<table class="xans-board-listheaderd tbl_newtype1" width="100%"
+						cellpadding="0" cellspacing="0">
+						<caption style="display: none">구매후기 내용</caption>
+						<colgroup>
+							<col style="width: 70px;">
+							<col style="width: auto;">
+							<%-- <col style="width: 51px;"> 회원등급--%>
+							<col style="width: 128px;">
+							<%-- 77px인데 회원등급 제거해서 128로 변경 --%>
+							<col style="width: 100px;">
+							<%-- <col style="width: 40px;"> --%>
+							<col style="width: 80px;">
+						</colgroup>
+						
+						<td align="center" width="70px">공지</td>
+						<td class="subject">
+							<div>상품 후기 적립금 정책 안내</div>
+						</td>
+						<td class="user_grade">MarketHani</td>
+						<td class="time">2019-11-01</td>
+						<td><span class="review-hit-cnt">235169</span></td><%--공지글 임의로 작성 end --%>
+						</table>
 
-					<c:set var="list" value="${List }" />
-					<c:if test="${!empty list }">
-						<c:forEach items="${list }" var="dto">
-							<div>
-								<table class="xans-board-listheaderd tbl_newtype1" width="100%"
-									cellpadding="0" cellspacing="0">
-									<caption style="display: none">구매후기 내용</caption>
-									<colgroup>
-										<col style="width: 70px;">
-										<col style="width: auto;">
-										<%-- <col style="width: 51px;"> 회원등급--%>
-										<col style="width: 128px;">  <%-- 77px인데 회원등급 제거해서 128로 변경 --%>
-										<col style="width: 100px;">
-										<%-- <col style="width: 40px;"> --%>
-										<col style="width: 80px;">
-									</colgroup>
-									<tr>
-										<td align="center">${dto.getR_num() }</td>
-										<td class="subject"><a 
-											href="<%=request.getContextPath()
-						%>/user_review_content.do?num=${dto.getR_num()}">${dto.getR_title() }</a></td>
-										<td>${dto.getUser_id() }</td>
-										<td class="time">${dto.getR_date() }<%-- <fmt:formatDate value="${dto.getR_date() }" pattern="yyyy-MM-dd" /> --%></td>
-										<td>${dto.getR_hit() }</td>
+								
+						<c:set var="list" value="${List }" />
+						<c:if test="${!empty list }">
+							<c:forEach items="${list }" var="dto">
+								<div>
+									<table class="xans-board-listheaderd tbl_newtype1" width="100%"
+										cellpadding="0" cellspacing="0">
+										<caption style="display: none">구매후기 내용</caption>
+										<colgroup>
+											<col style="width: 70px;">
+											<col style="width: auto;">
+											<%-- <col style="width: 51px;"> 회원등급--%>
+											<col style="width: 128px;">
+											<%-- 77px인데 회원등급 제거해서 128로 변경 --%>
+											<col style="width: 100px;">
+											<%-- <col style="width: 40px;"> --%>
+											<col style="width: 80px;">
+										</colgroup>
 
-									</tr>
-								</table>
-							</div>
-						</c:forEach>
-					</c:if>
 
-					<c:if test="${empty list }">
-						<tr>
-							<td colspan="5" align="center">
-								<h3>검색된 게시물이 없습니다.....</h3>
-							</td>
-						</tr>
-					</c:if>
+										<tr>
+											<td align="center">${dto.getR_num() }</td>
+											<td class="subject"><a
+												href="<%=request.getContextPath()
+						%>/user_product_review_content.do?num=${dto.getR_num()}">${dto.getR_title() }</a></td>
+											<td>${dto.getUser_id() }</td>
+											<td class="time">${dto.getR_date() }<%-- <fmt:formatDate value="${dto.getR_date() }" pattern="yyyy-MM-dd" /> --%></td>
+											<td>${dto.getR_hit() }</td>
 
+										</tr>
+									</table>
+								</div>
+							</c:forEach>
+						</c:if>
+
+						<c:if test="${empty list }">
+							<tr>
+								<td colspan="5" align="center">
+									<h3>검색된 게시물이 없습니다.....</h3>
+								</td>
+							</tr>
+						</c:if>
 				</form>
-				
-					<p id="p_btnReview">
+
+				<p id="p_btnReview">
 						<span id="btnReview" style="line-height:30px; width:130px;" 
-						onclick="location.href='user_product_review_write.do'">후기쓰기
+						onclick="location.href='user_product_review_on_write.do'">후기쓰기
 						</span>
 						
 				
