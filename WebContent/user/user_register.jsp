@@ -10,8 +10,8 @@
 		<script defer src="<%=request.getContextPath() %>/js/header/header.js"></script>
 		<script defer src="<%=request.getContextPath() %>/js/header/location_postcode.js"></script>
 		
-		<%-- import footer.css --%>
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css"/>
+	<%-- import footer.css --%>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css"/>
 		
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

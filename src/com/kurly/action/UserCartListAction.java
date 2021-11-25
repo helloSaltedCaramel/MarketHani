@@ -41,7 +41,6 @@ public class UserCartListAction implements Action {
 		request.setAttribute("costSum", costSum);
 		request.setAttribute("saleSum", saleSum);
 
-		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("/user/user_cart.jsp");

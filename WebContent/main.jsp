@@ -28,13 +28,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css" rel="stylesheet" />
 
-<!--  --><style>
+<style>
     .bx-wrapper {border:0;background:#fbfbfb;box-shadow:none;}
     
     .bx-controls-direction .bx-prev {
-    background: url(./img/main/ico_prev1_x1.png) 0 -32px no-repeat;
+    background: url(./img/main/ico_prev1_x1.png) 0 0 no-repeat;
+    padding: 9px;
+} 
 
-}
+    .bx-controls-direction .bx-next {
+    background: url(./img/main/ico_next1_x1.png) 0 0 no-repeat;
+    padding: 9px;
+}  
+
+
+
     
     </style> 
 

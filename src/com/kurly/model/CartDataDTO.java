@@ -6,6 +6,7 @@ package com.kurly.model;
  * @author HOIT
  */
 public class CartDataDTO {
+	private String cart_num;
 	private String cart_pnum;
 	private String p_image;
 	private String p_name;
@@ -15,6 +16,12 @@ public class CartDataDTO {
 	private int cart_qty;
 	
 	
+	public String getCart_num() {
+		return cart_num;
+	}
+	public void setCart_num(String cart_num) {
+		this.cart_num = cart_num;
+	}
 	public String getCart_pnum() {
 		return cart_pnum;
 	}
