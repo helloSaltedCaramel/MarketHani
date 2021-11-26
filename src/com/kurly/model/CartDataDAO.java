@@ -50,7 +50,7 @@ public class CartDataDAO {
 		}
 	}
 	
-	public List<CartDataDTO> loadCartData(String id) {
+	public List<CartDataDTO> loadCartData(String user_id) {
 		List<CartDataDTO> list = new ArrayList<>();
 		
 		final String sql = 
@@ -59,11 +59,11 @@ public class CartDataDAO {
 				"join kurly_product p " + 
 				"on c.cart_pnum = p.p_num " + 
 				"where c.cart_userid = ? " +
-				"order by c.cart_pnum";
+				"order by c.cart_pnum desc";
 		
 		try {
 			pstmt = connect().prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, user_id);
 			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -140,5 +140,39 @@ public class CartDataDAO {
 		}
 		
 		return resText;
+	}
+	
+	public PriceSumDTO getSumPrice(String user_id) {
+		PriceSumDTO dto = new PriceSumDTO();
+		
+		final String sql = "select sum(p.p_price*c.cart_qty) costSum, sum(round(p.p_price*(1-p.p_discount*0.01))*cart_qty) saleSum, sum(p_point * cart_qty) pointSum " + 
+								"from kurly_cart c " + 
+								"join kurly_product p " + 
+								"on c.cart_pnum = p.p_num " + 
+								"where c.cart_userid = ?";
+		
+		try {
+			pstmt = connect().prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int costSum = rs.getInt("costsum");
+				int saleSum = rs.getInt("salesum");
+				
+				dto.setCostSum(costSum);
+				dto.setSaleSum(saleSum);
+				dto.setPointSum(rs.getInt("pointsum"));
+				dto.setDiscountSum(costSum, saleSum);
+			}
+		} catch (SQLException e) {
+			System.out.println("[PriceSumDTO: getSumPrice() 오류발생]");
+			e.printStackTrace();
+		} finally {
+			connectClose();
+		}
+		
+		return dto;
 	}
 }

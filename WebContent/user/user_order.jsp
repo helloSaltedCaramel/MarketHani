@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +28,9 @@
 		<jsp:include page="/include/header.jsp"/>
 
     <div class="container">
+    	<c:set var="cartProductDTO" value="${cartList}" />
+    	<c:set var="userData" value="${userDTO}" />
+    	<c:set var="priceData" value="${priceDTO}" />
         <div class="big_title">
             <h3 class="order_title">주문서</h3>
         </div>
@@ -41,87 +46,43 @@
 
                 <!-- items_btn 클릭 시 나타날 text -->
                 <div class="short_info">
-                    [푸글리제] 모짜렐라 <!-- Cart name -->
+                    ${cartProductDTO.get(0).getP_name()} <!-- Cart name -->
                     	외
-                    2개의 상품을 주문합니다. <!-- Cart count(pk) -->
+                    ${cartProductDTO.size()}개의 상품을 주문합니다. <!-- Cart count(pk) -->
                 </div>
                 
                 <ul class="item_list">
+                	<c:forEach items="${cartProductDTO}" var="dto">
                     <li> <!-- item start -->
                         <div class="thumb">
-                            <img src="../img/1487213431670y0.jpg" alt="상품이미지">
+                            <img src="${pageContext.request.contextPath}/img/product/${dto.getP_image()}" alt="상품이미지">
                         </div>
 
                         <div class="name">
-                            <div class="inner_name">[푸글리제] 모짜렐라</div>
+                            <div class="inner_name">${dto.getP_name()}</div>
                         </div>
 
                         <div class="ea">
-                            1
+                            ${dto.getCart_qty() }
                             	개
                         </div>
 
                         <div class="item_price">
                             <span class="num">
                                 <span class="price">
-                                    5,500
+                                    <fmt:formatNumber value="${dto.getSalePrice() * dto.getCart_qty()}" />
                                     	원
                                 </span>
+                              	<c:if test="${dto.getSalePrice() != dto.getP_price() }">
+                              	<span class="cost">
+                              			<fmt:formatNumber value="${dto.getP_price() * dto.getCart_qty()}" />
+                              			원
+                              	</span>
+                              	</c:if>
                             </span>
                         </div>
                     </li> <!-- item end -->
-
-                    <li> <!-- item start -->
-                        <div class="thumb">
-                            <img src="../img/1636681893622y0.jpg" alt="상품이미지">
-                        </div>
-
-                        <div class="name">
-                            <div class="inner_name">[블루보틀] 콜드브루 커피 236mL 3종</div>
-                        </div>
-
-                        <div class="ea">
-                            1
-                            	개
-                        </div>
-
-                        <div class="item_price">
-                            <span class="num">
-                                <span class="price">
-                                    6,300
-                                    	원
-                                </span>
-                                <span class="cost">
-                                    7,000
-                                    	원
-                                </span>
-                            </span>
-                        </div>
-                    </li> <!-- item end -->
-
-                    <li> <!-- item start -->
-                        <div class="thumb">
-                            <img src="../img/15094337717m0.jpg" alt="상품이미지">
-                        </div>
-
-                        <div class="name">
-                            <div class="inner_name">[비바니] 유기농 초콜릿 7종</div>
-                        </div>
-
-                        <div class="ea">
-                            1
-                            	개
-                        </div>
-
-                        <div class="item_price">
-                            <span class="num">
-                                <span class="price">
-                                    4,300
-                                    	원
-                                </span>
-                            </span>
-                        </div>
-                    </li> <!-- item end -->
+                  </c:forEach>
                 </ul>
             </div>
 
@@ -134,18 +95,18 @@
                     <tbody>
                         <tr class="fst">
                             <th>보내는 분</th>
-                            <td>허민회</td>
+                            <td>${userData.getUser_name()}</td>
                         </tr>
 
                         <tr>
                             <th>휴대폰</th>
-                            <td>01012345678</td>
+                            <td>${userData.getUser_phone()}</td>
                         </tr>
 
                         <tr>
                             <th>이메일</th>
                             <td>
-                                hmin4957@naver.com
+                                ${userData.getUser_email()}
                                 <p class="email_guide">
                                     	정보 변경은 마이컬리 > 개인정보 수정 메뉴에서 가능합니다.
                                 </p>
@@ -173,7 +134,7 @@
                 <div class="delivery_desc">
                     <span class="address_block">
                         <span class="default_loc">기본배송지</span>
-                        <span class="address">경기 고양시 덕양구 중앙로 558번 길 57 xxxx동 xxxx호</span>
+                        <span class="address">${userData.getUser_addr()}</span>
                         <span class="star">샛별배송</span>
                     </span>
                 </div>
@@ -181,7 +142,7 @@
             <div class="receive_section">
                 <h3 class="dds_title">상세 정보</h3>
                 <div class="delivery_desc">
-                    <div class="receiver_info">허민회, 010-1234-5678</div>
+                    <div class="receiver_info">${userData.getUser_name()}, ${userData.getUser_phone()}</div>
 
                     <div class="receive_way">
                         <span class="place">문 앞</span>
@@ -331,7 +292,9 @@
                     </table>
 
                     <button type="submit" class="payment_btn">
-                        <span id="totalPrice">37,920</span>
+                        <span id="totalPrice">
+                        	<fmt:formatNumber value="${priceData.getSaleSum() }" />
+                        </span>
                         	원 결제하기
                     </button>
                     
@@ -357,7 +320,9 @@
                             <dl class="order_price sub">
                                 <dt class="head_title">상품금액</dt>
                                 <dd class="prices">
-                                    <span id="productsPrice">43,400</span>
+                                    <span id="productsPrice">
+                                    	<fmt:formatNumber value="${priceData.getCostSum() }" />
+                                    </span>
                                     	원
                                 </dd>
                             </dl>
@@ -366,7 +331,9 @@
                                 <dt class="head_title">상품할인금액</dt>
                                 <dd class="prices saled_price">
                                     <span class="minus_symbol">-</span>
-                                    <span id="productsPrice">8,480</span>
+                                    <span id="productsPrice">
+                                    	<fmt:formatNumber value="${priceData.getDiscountSum() }" />
+                                    </span>
                                     	원
                                 </dd>
                             </dl>
@@ -390,7 +357,9 @@
                             <dl class="order_price last">
                                 <dt class="head_title">최종결제금액</dt>
                                 <dd class="prices">
-                                    <span id="productsPrice">37,920</span>
+                                    <span id="productsPrice">
+                                    	<fmt:formatNumber value="${priceData.getSaleSum() }" />
+                                    </span>
                                     	원
                                 </dd>
                             </dl>
@@ -399,10 +368,11 @@
                                 <span id="accum">적립</span>
                                 	구매 시
                                 <span class="emphasis">
-                                    <span class="reserve_point">1,747</span>
-                                    	원(
-                                    <span class="ratio">5%</span>
-                                    )
+                                    <span class="reserve_point">
+                                    	<fmt:formatNumber value="${priceData.getPointSum() }" />
+                                    </span>
+                                    	원
+                                    <span class="ratio">(5%)</span>
                                 </span>
                                 	적립
                             </p>

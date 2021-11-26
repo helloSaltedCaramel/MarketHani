@@ -77,6 +77,35 @@ public class UserDAO {
 		return result;
 	}
 	
+	public UserOrderDTO getUserData(String user_id) {
+		UserOrderDTO dto = new UserOrderDTO();
+		
+		final String sql = "select user_id, user_name, user_email, user_phone, user_addr, user_point from kurly_user where user_id = ?";
+		
+		try {
+			pstmt = connect().prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setUser_name(rs.getString("user_name"));
+				dto.setUser_email(rs.getString("user_email"));
+				dto.setUser_phone(rs.getString("user_phone"));
+				dto.setUser_addr(rs.getString("user_addr"));
+				dto.setUser_point(rs.getInt("user_point"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			connectClose();
+		}
+		
+		return dto;
+	}
+	
 	public String loginCheck(LoginDTO dto) {
 		String username = null;
 		
