@@ -23,6 +23,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/cart.css">
     <script defer src="${pageContext.request.contextPath}/js/cart/quantityBtn.js"></script>
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script defer src="${pageContext.request.contextPath}/js/cart/cart_postcode.js"></script>
     
 </head>
 <body>
@@ -46,11 +47,14 @@
                 </div>
 
                 <div class="item_box">
+                	<c:if test="${empty list}">
+                		<p class="txt">장바구니에 담긴 상품이 없습니다</p>
+                	</c:if>
                     <ul class="item_list">
+                     	<c:if test="${!empty list}">
                     	<c:forEach items="${list}" var="dto">
                         <li><!-- Item start -->
                             <div class="item">
-                                <input class="check" type="checkbox" value="item_id" checked>
                                 <div class="name">
                                     <div class="inner_name">
                                         <a href="${pageContext.request.contextPath}/user_product_view.do?p_num=${dto.getCart_pnum()}" class="package">${dto.getP_name()}</a>
@@ -94,6 +98,7 @@
                             </div>
                         </li> <!-- Item end -->
 											</c:forEach>
+											</c:if>
                     </ul>
                 </div>
 
@@ -117,7 +122,7 @@
                             	하고
                             <br>
                             	배송유형을 확인해 보세요!
-                            <button class="btn_default" type="button" onclick="getPostcode()">
+                            <button class="btn_default" type="button" onclick="cart_getPostcode()">
                                	 주소 검색
                             </button>
                         </div>
@@ -147,10 +152,10 @@
                         <dl class="price_index">
                             <dt class="index">배송비</dt>
                             <dd class="price_block">
-                            	<c:if test="${saleSum >= 30000}">
+                            	<c:if test="${saleSum < 30000}">
                                 <span class="num" id="delivery_cost">3,000</span>
                               </c:if>
-                              <c:if test="${saleSum < 30000 }">
+                              <c:if test="${saleSum >= 30000 }">
                               	<span class="num" id="delivery_cost">0</span>
                               </c:if>
                                 <span class="won">원</span>
@@ -161,10 +166,10 @@
                             <dt class="index">결제예정금액</dt>
                             <dd class="price_block">
                                 <span class="num" id="totalPrice">
-                                	<c:if test="${saleSum >= 30000}">
+                                	<c:if test="${saleSum < 30000}">
 		                                <fmt:formatNumber value="${saleSum + 3000}" />
 		                              </c:if>
-		                              <c:if test="${saleSum < 30000 }">
+		                              <c:if test="${saleSum >= 30000 }">
                               			<fmt:formatNumber value="${saleSum}" />
                               		</c:if>
                                 </span>
@@ -174,12 +179,13 @@
                     </div>
 
                     <div class="submit_block">
-                        <button class="submit_btn" onclick="location.href='<%=request.getContextPath() %>/user/user_order.jsp'">
+                        <button class="submit_btn" onclick="location.href='<%=request.getContextPath() %>/user_order.do'">
                             	주문하기
                         </button>
                     </div>
 
                     <div class="notice_block">
+                    		<span class="notice_text">· 배송비는 (상품금액 - 상품할인금액)이 3만원 미만 일 때 부과됩니다.</span>
                         <span class="notice_text">· '입금확인' 상태일 때는 주문 내역 상세에서 직접 주문취소가 가능합니다.</span>
                         <span class="notice_text">· '입금확인' 이후 상태에는 고객센터로 문의해주세요.</span>
                     </div>

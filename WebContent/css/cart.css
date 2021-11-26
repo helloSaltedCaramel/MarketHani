@@ -82,7 +82,7 @@ body {
   display: table;
   width: 463px;
   min-height: 80px;
-  padding: 19px 0 18px 150px;
+  padding: 19px 0 18px 123px;
   line-height: 80px;
 }
 
@@ -108,7 +108,7 @@ body {
   position: absolute;
   width: 60px;
   height: 78px;
-  left: 56px;
+  left: 30px;
   top: 50%;
   margin-top: -39px;
 }
@@ -339,4 +339,24 @@ body {
   font-size: 12px;
   color: #666;
   line-height: 18px;
+}
+
+#totalPrice {
+	font-size: 22px;
+}
+
+#discountedPrice {
+	color: #999;
+}
+
+
+.txt {
+	width: 100%;
+	margin-top: 0;
+	border-top: 1px solid #333;
+	padding: 115px 0 116px;
+	font-weight: 700;
+	font-size: 16px;
+	color: #333;
+	text-align: center;
 }

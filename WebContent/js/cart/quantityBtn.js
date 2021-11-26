@@ -6,11 +6,25 @@ const $totalPrice = document.querySelector('#totalPrice');
 const $discountedPrice = document.querySelector('#discountedPrice');
 const $delivery_cost = document.querySelector("#delivery_cost");
 
-let costPrice = parseInt($costPrice.innerText.replace(/,| /g, "")); 						// 원가
-let totalPrice = parseInt($totalPrice.innerText.replace(/,| /g, ""));						// 총 합계
+// 태그의 innerText에 작성된 화폐단위를 Number로 바꾸어주는 함수
+const toNumber = (element) => {
+	return parseInt(element.innerText.replace(/,| /g, ""));
+}
 
-// 수량 감소 함수
+// 화폐단위(3자리마다 콤마, String)로 바꾸어주는 함수
+const toMonetary = (price) => {
+	return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+
+// 상품금액, 상품할인금액, 결제예정금액
+let costPrice = toNumber($costPrice); 																	// 상품금액(원가)
+let totalPrice = toNumber($totalPrice);																	// 결제예정금액(종 합계)
+let discountedPrice = toNumber($discountedPrice);												// 상품할인금액
+let deliveryCost = toNumber($delivery_cost) === 3000 ? true : false; 		// 배송비: JSP에서 금액을 받아왔을 때 3만원이 넘어있으면 true, 아니면 false
+
 const decreaseQty = (e) => {
+	
 	// 수량이 1미만으로 내려가면 안되므로 조건맞는지 체크
 	let $quantity_num = e.target.nextElementSibling;	
 	if($quantity_num.value == 1) {
@@ -18,29 +32,30 @@ const decreaseQty = (e) => {
 		return;
 	}
 	
-	// cartNum value 가져오기	
+	// 제품번호 가져오기(input hidden)
 	const $cartNum = e.target.parentNode.firstChild.nextElementSibling.value;
 	
-	// 이벤트 발생한 제품의 원가, 세일가격 확인
+	// 제품의 원가, 할인가 가져오기
 	const childNodes = e.target.parentNode.childNodes;
 	const p_price = parseInt(childNodes[3].value);
 	const sale_price = parseInt(childNodes[5].value);
 	
-	// 이벤트 발생한 태그의 부모의 부모 태그를 가져오고, 이벤트 발생한 제품의 가격 표시되는 자식태그 찾기
+	// 개수를 감소시켰을 때 해당 제품의 가격표를 감소시키기 위해 해당 태그 querySelector 가져오기
+	// p_salePrice = 할인가 태그, p_costPrice = 원가 태그
 	const $grandParent = e.target.parentNode.parentNode;
 	const $p_salePrice = $grandParent.querySelector('#product_sale_price');
 	const $p_costPrice = $grandParent.querySelector('#product_cost_price');
 	
-	// 가격 숫자로 변환
-	// p_salePrice: 할인가, 만약 할인하지 않을 경우에는 원가로 취급된다.
-	let p_salePrice = parseInt($p_salePrice.innerText.replace(/,| /g, ""));
-	
-	// p_costPrice : 원가, 제품이 할인상태이면 취소선으로 나오게되는 가격텍스트
-	// 할인을 하지 않는 제품이 있을 경우에는 원가를 사용하지 않으므로 null이 아닐경우에만 작동하도록 한다.
-	let p_costPrice;
-	if($p_costPrice !== null) {
-		p_costPrice = parseInt($p_costPrice.innerText.replace(/,| /g, ""));
-	}
+	/*
+	 * 가격 > 숫자로 변환시키기
+	 * p_salePrice: 할인가, 만약 할인하지 않을 경우에는 원가가 입력된다.
+	 * p_costPrice: 제품이 할인상태이면 취소선으로 나오게되는 원가, 할인하지 않을 경우에는 null로 나오게된다.
+	 * 할인을 하지 않는 제품은 p_costPrice의 innerText가 null이므로 이 경우 p_salePrice와 값이 같도록 설정해준다.
+	 * p_discountedPrice: 할인가와 원가를 뺀 값. 상품할인금액(discountedPrice)을 감소시키기 위해서 사용한다. 
+	 */
+	let p_salePrice = toNumber($p_salePrice);
+	let p_costPrice = ($p_costPrice !== null) ? toNumber($p_costPrice) : p_salePrice;
+	const p_discountedPrice = (p_salePrice - p_costPrice) / parseInt($quantity_num.value);
 
 	$.ajax({
 		type: "post",
@@ -55,27 +70,25 @@ const decreaseQty = (e) => {
 			
 			if(isSuccess === "updated") {
 				
+				// 수량을 1 감소시키고 상품금액, 결제예정금액, 상품할인금액을 제품의 원가, 할인가 만큼 감소시킨다.
 				$quantity_num.stepDown();
 				costPrice -= p_price;
 				totalPrice -= sale_price;
+				discountedPrice -= p_discountedPrice;
 				
-				// $totalPrice가 3만원 이상일 때, 배송비 3000원 추가
-				if(totalPrice < 30000) {
-					$delivery_cost.innerHTML = '3,000';
-				}
+				// 각 항목의 innerHTML을 화폐단위로 변환후 수정한다.
+				$discountedPrice.innerHTML = toMonetary(discountedPrice);
+				$costPrice.innerHTML = toMonetary(costPrice);
+				deliveryCheck();
+				$totalPrice.innerHTML = toMonetary(totalPrice);
 				
-				$discountedPrice.innerHTML = (totalPrice - costPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-				$costPrice.innerHTML = costPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-				$totalPrice.innerHTML = delivery_check(totalPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
 				p_salePrice -= sale_price;
-				$p_salePrice.innerHTML = p_salePrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				$p_salePrice.innerHTML = toMonetary(p_salePrice);
 				
 				if($p_costPrice !== null) {
 					p_costPrice -= p_price;
-					$p_costPrice.innerHTML = p_costPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+					$p_costPrice.innerHTML = toMonetary(p_costPrice);
 				}
-				
 			} else if(isSuccess === "error"){
 				alert('알 수 없는 오류가 발생했습니다.');
 			}
@@ -86,7 +99,6 @@ const decreaseQty = (e) => {
 	});
 }
 
-// 수량 증가 함수
 const increaseQty = (e) => {
 	// 수량, 제품번호 가져오기
 	let $quantity_num = e.target.previousElementSibling;
@@ -102,15 +114,9 @@ const increaseQty = (e) => {
 	const $p_salePrice = $grandParent.querySelector('#product_sale_price');
 	const $p_costPrice = $grandParent.querySelector('#product_cost_price');
 	
-	// 가격 숫자로 변환
-	// p_salePrice: 할인가, 만약 할인하지 않을 경우에는 원가로 취급된다.
-	let p_salePrice = parseInt($p_salePrice.innerText.replace(/,| /g, ""));
-	
-	// p_costPrice : 원가, 제품이 할인상태이면 취소선으로 나오게되는 가격텍스트
-	let p_costPrice;
-	if($p_costPrice !== null) {
-		p_costPrice = parseInt($p_costPrice.innerText.replace(/,| /g, ""));
-	}
+	let p_salePrice = toNumber($p_salePrice);
+	let p_costPrice = ($p_costPrice !== null) ? toNumber($p_costPrice) : p_salePrice;
+	const p_discountedPrice = (p_salePrice - p_costPrice) / parseInt($quantity_num.value);
 
 	$.ajax({
 		type: "post",
@@ -125,23 +131,23 @@ const increaseQty = (e) => {
 			
 			if(isSuccess === "updated") {
 				
-				// 수량 1 증가, 상품금액, 결제예정금액에 해당 제품의 가격 추가
 				$quantity_num.stepUp();
 				costPrice += p_price;
 				totalPrice += sale_price;
+				discountedPrice += p_discountedPrice;
 								
-				$discountedPrice.innerHTML = (totalPrice - costPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-				$costPrice.innerHTML = costPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-				$totalPrice.innerHTML = delivery_check(totalPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				$discountedPrice.innerHTML = toMonetary(discountedPrice);
+				$costPrice.innerHTML = toMonetary(costPrice);
+				deliveryCheck();
+				$totalPrice.innerHTML = toMonetary(totalPrice);
 				
 				p_salePrice += sale_price;
-				$p_salePrice.innerHTML = p_salePrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				$p_salePrice.innerHTML = toMonetary(p_salePrice);
 				
 				if($p_costPrice !== null) {
 					p_costPrice += p_price;
-					$p_costPrice.innerHTML = p_costPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+					$p_costPrice.innerHTML = toMonetary(p_costPrice);
 				}
-
 			} else if(isSuccess === "error"){
 				alert('CartData 오류 발생, 확인필요');
 			}
@@ -172,14 +178,16 @@ const deleteProduct = (e) => {
 					let p_price = $quantity[3].value;
 					let sale_price = $quantity[5].value;
 					const quantity = $quantity[9].value;
-					
+
 					costPrice -= p_price * quantity;
 					totalPrice -= (p_price === sale_price) ? p_price * quantity : sale_price * quantity; 
+					discountedPrice -= (sale_price - p_price) * quantity;
 					
-					$discountedPrice.innerHTML = (totalPrice - costPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-					$costPrice.innerHTML = costPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-					$totalPrice.innerHTML = delivery_check(totalPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
+					$discountedPrice.innerHTML = toMonetary(discountedPrice);
+					$costPrice.innerHTML = toMonetary(costPrice);
+					deliveryCheck();
+					$totalPrice.innerHTML = toMonetary(totalPrice);
+					
 					e.target.parentNode.parentNode.remove();
 					return;
 				} 
@@ -199,14 +207,21 @@ const deleteProduct = (e) => {
 }
 
 // 배송비 확인 함수
-const delivery_check = (totalPrice) => {
-	// $totalPrice가 3만원 이상일 때, 배송비 0원으로 설정
-	if(totalPrice >= 30000) {
+const deliveryCheck = () => {
+	// $totalPrice가 3만원 이상일 때, 배송비 0원으로 설정	
+	if((costPrice + discountedPrice) >= 30000) {
 		$delivery_cost.innerHTML = '0';
+		if(deliveryCost) {
+			totalPrice -= 3000;
+			deliveryCost = false;
+		}
 	} else {
 		$delivery_cost.innerHTML = '3,000';
+		if(!deliveryCost) {
+			totalPrice += 3000;
+			deliveryCost = true;
+		}
 	}
-	return totalPrice + parseInt($delivery_cost.innerText.replace(/,| /g, ""));		// 배송비
 }
 
 // EventListener 추가하기
