@@ -20,13 +20,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마켓하니 :: 내일의 장보기 마켓하니</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/order.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/order_modal.css">
     <link rel="icon" href="${pageContext.request.contextPath}/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
     <script defer src="${pageContext.request.contextPath}/js/order/order_payment.js"></script>
+    <script defer src="${pageContext.request.contextPath}/js/order/order_modal.js"></script>
 </head>
 
 <body>
 		<jsp:include page="/include/header.jsp"/>
-
+		
+		<div class="modal_bg"></div> 
     <div class="container">
     	<c:set var="cartProductDTO" value="${cartList}" />
     	<c:set var="userData" value="${userDTO}" />
@@ -38,7 +41,7 @@
         <div class="title_section">
             <h2 class="item_title">주문상품</h2>
         </div>
-        <form method="post" action="order.do">
+        <form method="post" action="${pageContext.request.contextPath}/user_payment.do">
             <div class="item_section">
                 <div class="items_info">
                     <button class="items_btn" type="button"></button>
@@ -132,29 +135,43 @@
             <div class="delivery_section">
                 <h3 class="delivery_title">배송지</h3>
                 <div class="delivery_desc">
+                	<c:if test="${empty address}">
                     <span class="address_block">
                         <span class="default_loc">기본배송지</span>
                         <span class="address">${userData.getUser_addr()}</span>
-                        <span class="star">샛별배송</span>
                     </span>
+                  </c:if>
+                  <c:if test="${!empty address}">
+                  	<span class="address_block">
+                        <span class="address">${address}</span>
+                    </span>
+                  </c:if>
                 </div>
             </div>
             <div class="receive_section">
                 <h3 class="dds_title">상세 정보</h3>
                 <div class="delivery_desc">
-                    <div class="receiver_info">${userData.getUser_name()}, ${userData.getUser_phone()}</div>
+                    <div class="receiver_info">받으실 분 정보를 입력해주세요.</div>
 
-                    <div class="receive_way">
-                        <span class="place">문 앞</span>
-                        <span class="order_text">자유 출입 가능</span>
+                    <div class="receive_way" id="receiver" style="display: none;">
+                    		<input type="hidden" name="receiver" id="receiver_input" value="empty">
+                        <span class="place">받으실 분</span>
+                        <span class="order_text" id="receiver_text">empty</span>
+                    </div>
+                    
+                    <div class="delivery_msg" id="receiver_phone" style="display: none;">
+                    		<input type="hidden" name="receiver_phone" id="receiver_phone_input" value="empty">
+                        <span class="place">휴대폰 번호</span>
+                        <span class="order_text" id="phone_text">empty</span>
+                    </div>
+                    
+                    <div class="receive_way" id="receiver_message" style="display: none;">
+                    		<input type="hidden" name="receiver_message" id="receiver_msg_input" value="empty">
+                        <span class="place">배송메시지</span>
+                        <span class="order_text" id="message_text">empty</span>
                     </div>
 
-                    <div class="delivery_msg">
-                        <span class="place">배송완료 메시지</span>
-                        <span class="order_text">배송 직후</span>
-                    </div>
-
-                    <button type="button" class="modify_btn">수정</button>
+                    <button type="button" class="modify_btn">입력</button>
                 </div>
             </div>
 
@@ -188,8 +205,8 @@
                                 <ul class="payment_menu">
                                     <li class="card">
                                         <label class="card_label" onclick="">
-                                            <input id="card" type="radio" name="payment_way" value="card">
-                                            	신용카드
+                                            <input id="card" type="radio" name="payment_way" value="credit">
+                                             	신용카드
                                         </label>
                                     </li>
 
@@ -293,7 +310,12 @@
 
                     <button type="submit" class="payment_btn">
                         <span id="totalPrice">
-                        	<fmt:formatNumber value="${priceData.getSaleSum() }" />
+                        	<c:if test="${priceData.getSaleSum() >= 30000}">
+                            <fmt:formatNumber value="${priceData.getSaleSum()}" />
+                          </c:if>
+                          <c:if test="${priceData.getSaleSum() < 30000}">
+                            <fmt:formatNumber value="${priceData.getSaleSum() + 3000}" />
+                          </c:if>
                         </span>
                         	원 결제하기
                     </button>
@@ -312,7 +334,9 @@
                             <dl class="order_price first">
                                 <dt class="head_title">주문금액</dt>
                                 <dd class="prices">
-                                    <span id="itemTotalPrice">34,920</span>
+                                    <span id="itemTotalPrice">
+                                    	<fmt:formatNumber value="${priceData.getSaleSum() }" />
+                                    </span>
                                     	원
                                 </dd>
                             </dl>
@@ -330,7 +354,6 @@
                             <dl class="order_price sub">
                                 <dt class="head_title">상품할인금액</dt>
                                 <dd class="prices saled_price">
-                                    <span class="minus_symbol">-</span>
                                     <span id="productsPrice">
                                     	<fmt:formatNumber value="${priceData.getDiscountSum() }" />
                                     </span>
@@ -341,7 +364,13 @@
                             <dl class="order_price">
                                 <dt class="head_title">배송비</dt>
                                 <dd class="prices">
-                                    <span id="productsPrice">3,000</span>
+                                	<c:if test="${priceData.getSaleSum() >= 30000}">
+                                    <span id="productsPrice">0</span>
+                                  </c:if>
+                                  
+                                  <c:if test="${priceData.getSaleSum() < 30000 }">
+                                  	<span id="productsPrice">3,000</span>
+                                  </c:if>
                                     	원
                                 </dd>
                             </dl>
@@ -358,7 +387,12 @@
                                 <dt class="head_title">최종결제금액</dt>
                                 <dd class="prices">
                                     <span id="productsPrice">
-                                    	<fmt:formatNumber value="${priceData.getSaleSum() }" />
+                                    <c:if test="${priceData.getSaleSum() >= 30000}">
+                                    	<fmt:formatNumber value="${priceData.getSaleSum()}" />
+                                    </c:if>
+                                    <c:if test="${priceData.getSaleSum() < 30000}">
+                                    	<fmt:formatNumber value="${priceData.getSaleSum() + 3000}" />
+                                    </c:if>
                                     </span>
                                     	원
                                 </dd>
@@ -369,7 +403,7 @@
                                 	구매 시
                                 <span class="emphasis">
                                     <span class="reserve_point">
-                                    	<fmt:formatNumber value="${priceData.getPointSum() }" />
+                                    	<fmt:formatNumber value="${priceData.getSaleSum() * 0.05}" />
                                     </span>
                                     	원
                                     <span class="ratio">(5%)</span>
@@ -380,7 +414,42 @@
                     </div>
                 </div>
             </div>
-        </form> 
+        </form>
+        
+        <%-- 수령인 입력 modal 부분 --%>
+	      <div class="to_order_modal">
+		        <div class="modal_header">
+		            <h2 class="modal_tit_header">배송정보입력</h2>
+		        </div>
+		
+		        <div class="modal_input_block" id="first_block">
+		            <h3 class="modal_input_title">
+		                	받으실 분
+		                <span class="star">*</span>
+		            </h3>
+		            <input type="text" id="to_name" name="to_name" placeholder="수령인 이름 입력" />
+		        </div>
+		
+		        <div class="modal_input_block">
+		            <h3 class="modal_input_title">
+		                	휴대폰
+		                <span class="star">*</span>
+		            </h3>
+		            <input type="text" id="to_phone" name="to_name" placeholder="휴대폰 번호 입력" />
+		        </div>
+		
+		        <div class="modal_input_block">
+		            <h3 class="modal_input_title">
+		                	배송메시지
+		            </h3>
+		            <input type="text" id="to_message" name="to_name" placeholder="배송지 특이사항이 있을 경우 작성해주세요" />
+		        </div>
+		
+		        <div class="modal_button_block">
+		            <button type="button" class="btn_cancel">취소</button>
+		            <button type="button" class="btn_save">저장</button>
+		        </div>
+	    	</div>
     </div>
     
     <jsp:include page="/include/footer.jsp"/>

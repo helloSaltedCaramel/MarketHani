@@ -10,13 +10,14 @@ import javax.servlet.http.HttpSession;
 import com.kurly.controller.Action;
 import com.kurly.controller.ActionForward;
 import com.kurly.model.CartDataDAO;
-import com.kurly.model.UserDAO;
+import com.kurly.model.CartDataDTO;
 
-public class UserOrderAction implements Action {
+public class UserPaymentAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
+
 		HttpSession session = request.getSession();
 		
 		if(session.getAttribute("user_id") == null) {
@@ -26,21 +27,17 @@ public class UserOrderAction implements Action {
 			return forward;
 		}
 		
-		// 주소 변경되었는지 확인, 변경없을 시 user에 있는 기본 주소 사용, 변경 있을 경우 request에서 가져와서 사용
-		if(!request.getParameter("address").equals("none")) {
-			request.setAttribute("address", request.getParameter("address"));
-		}
-		
+		// cart에 있는 데이터 insert all로 order Detail에 컬럼 추가
 		String user_id = (String)session.getAttribute("user_id");
-		CartDataDAO cdi = CartDataDAO.getInstance();
 		
-		request.setAttribute("userDTO", UserDAO.getInstance().getUserData(user_id));
-		request.setAttribute("cartList", cdi.loadCartData(user_id));
-		request.setAttribute("priceDTO", cdi.getSumPrice(user_id));
+		List<CartDataDTO> cartList = CartDataDAO.getInstance().loadCartData(user_id);
 		
-		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("/user/user_order.jsp");
-		return forward;
+		
+		// order 테이블에 데이터 맞도록 해서 추가하기
+		
+		// 
+		
+		return null;
 	}
-}
+
+}	

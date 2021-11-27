@@ -132,14 +132,14 @@ public class UserDAO {
 		
 	}
 	
-	public String ajaxIdDistinct(String id) {
+	public String ajaxIdDistinct(String user_id) {
 		String isAvailable = "true";
 		
 		final String sql = "select user_id from kurly_user where user_id = ?";
 		
 		try {
 			pstmt = connect().prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, user_id);
 			
 			rs = pstmt.executeQuery();
 			
@@ -155,4 +155,27 @@ public class UserDAO {
 		return isAvailable;
 	}
 	
+	public String getUserAddress(String user_id) {
+		String addr = "not found";
+		
+		final String sql = "select user_addr from kurly_user where user_id = ?";
+		
+		try {
+			pstmt = connect().prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				addr = rs.getString("user_addr");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			connectClose();
+		}
+		
+		return addr;
+	}
 }
