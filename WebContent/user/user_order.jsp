@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,14 +20,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마켓하니 :: 내일의 장보기 마켓하니</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/order.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/order_modal.css">
     <link rel="icon" href="${pageContext.request.contextPath}/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
     <script defer src="${pageContext.request.contextPath}/js/order/order_payment.js"></script>
+    <script defer src="${pageContext.request.contextPath}/js/order/order_modal.js"></script>
 </head>
 
 <body>
 		<jsp:include page="/include/header.jsp"/>
-
+		
+		<div class="modal_bg"></div> 
     <div class="container">
+    	<c:set var="cartProductDTO" value="${cartList}" />
+    	<c:set var="userData" value="${userDTO}" />
+    	<c:set var="priceData" value="${priceDTO}" />
         <div class="big_title">
             <h3 class="order_title">주문서</h3>
         </div>
@@ -33,7 +41,7 @@
         <div class="title_section">
             <h2 class="item_title">주문상품</h2>
         </div>
-        <form method="post" action="order.do">
+        <form method="post" action="${pageContext.request.contextPath}/user_payment.do">
             <div class="item_section">
                 <div class="items_info">
                     <button class="items_btn" type="button"></button>
@@ -41,87 +49,43 @@
 
                 <!-- items_btn 클릭 시 나타날 text -->
                 <div class="short_info">
-                    [푸글리제] 모짜렐라 <!-- Cart name -->
+                    ${cartProductDTO.get(0).getP_name()} <!-- Cart name -->
                     	외
-                    2개의 상품을 주문합니다. <!-- Cart count(pk) -->
+                    ${cartProductDTO.size()}개의 상품을 주문합니다. <!-- Cart count(pk) -->
                 </div>
                 
                 <ul class="item_list">
+                	<c:forEach items="${cartProductDTO}" var="dto">
                     <li> <!-- item start -->
                         <div class="thumb">
-                            <img src="../img/1487213431670y0.jpg" alt="상품이미지">
+                            <img src="${pageContext.request.contextPath}/img/product/${dto.getP_image()}" alt="상품이미지">
                         </div>
 
                         <div class="name">
-                            <div class="inner_name">[푸글리제] 모짜렐라</div>
+                            <div class="inner_name">${dto.getP_name()}</div>
                         </div>
 
                         <div class="ea">
-                            1
+                            ${dto.getCart_qty() }
                             	개
                         </div>
 
                         <div class="item_price">
                             <span class="num">
                                 <span class="price">
-                                    5,500
+                                    <fmt:formatNumber value="${dto.getSalePrice() * dto.getCart_qty()}" />
                                     	원
                                 </span>
+                              	<c:if test="${dto.getSalePrice() != dto.getP_price() }">
+                              	<span class="cost">
+                              			<fmt:formatNumber value="${dto.getP_price() * dto.getCart_qty()}" />
+                              			원
+                              	</span>
+                              	</c:if>
                             </span>
                         </div>
                     </li> <!-- item end -->
-
-                    <li> <!-- item start -->
-                        <div class="thumb">
-                            <img src="../img/1636681893622y0.jpg" alt="상품이미지">
-                        </div>
-
-                        <div class="name">
-                            <div class="inner_name">[블루보틀] 콜드브루 커피 236mL 3종</div>
-                        </div>
-
-                        <div class="ea">
-                            1
-                            	개
-                        </div>
-
-                        <div class="item_price">
-                            <span class="num">
-                                <span class="price">
-                                    6,300
-                                    	원
-                                </span>
-                                <span class="cost">
-                                    7,000
-                                    	원
-                                </span>
-                            </span>
-                        </div>
-                    </li> <!-- item end -->
-
-                    <li> <!-- item start -->
-                        <div class="thumb">
-                            <img src="../img/15094337717m0.jpg" alt="상품이미지">
-                        </div>
-
-                        <div class="name">
-                            <div class="inner_name">[비바니] 유기농 초콜릿 7종</div>
-                        </div>
-
-                        <div class="ea">
-                            1
-                            	개
-                        </div>
-
-                        <div class="item_price">
-                            <span class="num">
-                                <span class="price">
-                                    4,300
-                                    	원
-                                </span>
-                            </span>
-                        </div>
-                    </li> <!-- item end -->
+                  </c:forEach>
                 </ul>
             </div>
 
@@ -134,18 +98,18 @@
                     <tbody>
                         <tr class="fst">
                             <th>보내는 분</th>
-                            <td>허민회</td>
+                            <td>${userData.getUser_name()}</td>
                         </tr>
 
                         <tr>
                             <th>휴대폰</th>
-                            <td>01012345678</td>
+                            <td>${userData.getUser_phone()}</td>
                         </tr>
 
                         <tr>
                             <th>이메일</th>
                             <td>
-                                hmin4957@naver.com
+                                ${userData.getUser_email()}
                                 <p class="email_guide">
                                     	정보 변경은 마이컬리 > 개인정보 수정 메뉴에서 가능합니다.
                                 </p>
@@ -171,29 +135,45 @@
             <div class="delivery_section">
                 <h3 class="delivery_title">배송지</h3>
                 <div class="delivery_desc">
+                	<c:if test="${empty address}">
                     <span class="address_block">
+                    		<input type="hidden" name="user_address" value="${userData.getUser_addr()}">
                         <span class="default_loc">기본배송지</span>
-                        <span class="address">경기 고양시 덕양구 중앙로 558번 길 57 xxxx동 xxxx호</span>
-                        <span class="star">샛별배송</span>
+                        <span class="address">${userData.getUser_addr()}</span>
                     </span>
+                  </c:if>
+                  <c:if test="${!empty address}">
+                  	<span class="address_block">
+                  			<input type="hidden" name="user_address" value="${address}">
+                        <span class="address">${address}</span>
+                    </span>
+                  </c:if>
                 </div>
             </div>
             <div class="receive_section">
                 <h3 class="dds_title">상세 정보</h3>
                 <div class="delivery_desc">
-                    <div class="receiver_info">허민회, 010-1234-5678</div>
+                    <div class="receiver_info">받으실 분 정보를 입력해주세요.</div>
 
-                    <div class="receive_way">
-                        <span class="place">문 앞</span>
-                        <span class="order_text">자유 출입 가능</span>
+                    <div class="receive_way" id="receiver" style="display: none;">
+                    		<input type="hidden" name="receiver" id="receiver_input" value="empty">
+                        <span class="place">받으실 분</span>
+                        <span class="order_text" id="receiver_text">empty</span>
+                    </div>
+                    
+                    <div class="delivery_msg" id="receiver_phone" style="display: none;">
+                    		<input type="hidden" name="receiver_phone" id="receiver_phone_input" value="empty">
+                        <span class="place">휴대폰 번호</span>
+                        <span class="order_text" id="phone_text">empty</span>
+                    </div>
+                    
+                    <div class="receive_way" id="receiver_message" style="display: none;">
+                    		<input type="hidden" name="receiver_message" id="receiver_msg_input" value="empty">
+                        <span class="place">배송메시지</span>
+                        <span class="order_text" id="message_text">empty</span>
                     </div>
 
-                    <div class="delivery_msg">
-                        <span class="place">배송완료 메시지</span>
-                        <span class="order_text">배송 직후</span>
-                    </div>
-
-                    <button type="button" class="modify_btn">수정</button>
+                    <button type="button" class="modify_btn">입력</button>
                 </div>
             </div>
 
@@ -226,21 +206,21 @@
 
                                 <ul class="payment_menu">
                                     <li class="card">
-                                        <label class="card_label" onclick="">
-                                            <input id="card" type="radio" name="payment_way" value="card">
-                                            	신용카드
+                                        <label class="card_label">
+                                            <input id="card" type="radio" name="payment_way" value="credit">
+                                             	신용카드
                                         </label>
                                     </li>
 
                                     <li class="simple">
-                                        <label class="simple_label" onclick="">
+                                        <label class="simple_label">
                                             <input id="simple" type="radio" name="payment_way" value="simple">
                                             	간편결제
                                         </label>
                                     </li>
 
                                     <li class="phone">
-                                        <label class="phone_label" onclick="">
+                                        <label class="phone_label">
                                             <input id="phone" type="radio" name="payment_way" value="phone">
                                             	휴대폰
                                         </label>
@@ -331,7 +311,14 @@
                     </table>
 
                     <button type="submit" class="payment_btn">
-                        <span id="totalPrice">37,920</span>
+                        <span id="totalPrice">
+                        	<c:if test="${priceData.getSaleSum() >= 30000}">
+                            <fmt:formatNumber value="${priceData.getSaleSum()}" />
+                          </c:if>
+                          <c:if test="${priceData.getSaleSum() < 30000}">
+                            <fmt:formatNumber value="${priceData.getSaleSum() + 3000}" />
+                          </c:if>
+                        </span>
                         	원 결제하기
                     </button>
                     
@@ -349,7 +336,9 @@
                             <dl class="order_price first">
                                 <dt class="head_title">주문금액</dt>
                                 <dd class="prices">
-                                    <span id="itemTotalPrice">34,920</span>
+                                    <span id="itemTotalPrice">
+                                    	<fmt:formatNumber value="${priceData.getSaleSum() }" />
+                                    </span>
                                     	원
                                 </dd>
                             </dl>
@@ -357,7 +346,9 @@
                             <dl class="order_price sub">
                                 <dt class="head_title">상품금액</dt>
                                 <dd class="prices">
-                                    <span id="productsPrice">43,400</span>
+                                    <span id="productsPrice">
+                                    	<fmt:formatNumber value="${priceData.getCostSum() }" />
+                                    </span>
                                     	원
                                 </dd>
                             </dl>
@@ -365,8 +356,9 @@
                             <dl class="order_price sub">
                                 <dt class="head_title">상품할인금액</dt>
                                 <dd class="prices saled_price">
-                                    <span class="minus_symbol">-</span>
-                                    <span id="productsPrice">8,480</span>
+                                    <span id="productsPrice">
+                                    	<fmt:formatNumber value="${priceData.getDiscountSum() }" />
+                                    </span>
                                     	원
                                 </dd>
                             </dl>
@@ -374,7 +366,13 @@
                             <dl class="order_price">
                                 <dt class="head_title">배송비</dt>
                                 <dd class="prices">
-                                    <span id="productsPrice">3,000</span>
+                                	<c:if test="${priceData.getSaleSum() >= 30000}">
+                                    <span id="productsPrice">0</span>
+                                  </c:if>
+                                  
+                                  <c:if test="${priceData.getSaleSum() < 30000 }">
+                                  	<span id="productsPrice">3,000</span>
+                                  </c:if>
                                     	원
                                 </dd>
                             </dl>
@@ -390,7 +388,14 @@
                             <dl class="order_price last">
                                 <dt class="head_title">최종결제금액</dt>
                                 <dd class="prices">
-                                    <span id="productsPrice">37,920</span>
+                                    <span id="productsPrice">
+                                    <c:if test="${priceData.getSaleSum() >= 30000}">
+                                    	<fmt:formatNumber value="${priceData.getSaleSum()}" />
+                                    </c:if>
+                                    <c:if test="${priceData.getSaleSum() < 30000}">
+                                    	<fmt:formatNumber value="${priceData.getSaleSum() + 3000}" />
+                                    </c:if>
+                                    </span>
                                     	원
                                 </dd>
                             </dl>
@@ -399,10 +404,11 @@
                                 <span id="accum">적립</span>
                                 	구매 시
                                 <span class="emphasis">
-                                    <span class="reserve_point">1,747</span>
-                                    	원(
-                                    <span class="ratio">5%</span>
-                                    )
+                                    <span class="reserve_point">
+                                    	<fmt:formatNumber value="${priceData.getSaleSum() * 0.05}" />
+                                    </span>
+                                    	원
+                                    <span class="ratio">(5%)</span>
                                 </span>
                                 	적립
                             </p>
@@ -410,7 +416,42 @@
                     </div>
                 </div>
             </div>
-        </form> 
+        </form>
+        
+        <%-- 수령인 입력 modal 부분 --%>
+	      <div class="to_order_modal">
+		        <div class="modal_header">
+		            <h2 class="modal_tit_header">배송정보입력</h2>
+		        </div>
+		
+		        <div class="modal_input_block" id="first_block">
+		            <h3 class="modal_input_title">
+		                	받으실 분
+		                <span class="star">*</span>
+		            </h3>
+		            <input type="text" id="to_name" name="to_name" placeholder="수령인 이름 입력" />
+		        </div>
+		
+		        <div class="modal_input_block">
+		            <h3 class="modal_input_title">
+		                	휴대폰
+		                <span class="star">*</span>
+		            </h3>
+		            <input type="text" id="to_phone" name="to_name" placeholder="휴대폰 번호 입력" />
+		        </div>
+		
+		        <div class="modal_input_block">
+		            <h3 class="modal_input_title">
+		                	배송메시지
+		            </h3>
+		            <input type="text" id="to_message" name="to_name" placeholder="배송지 특이사항이 있을 경우 작성해주세요" />
+		        </div>
+		
+		        <div class="modal_button_block">
+		            <button type="button" class="btn_cancel">취소</button>
+		            <button type="button" class="btn_save">저장</button>
+		        </div>
+	    	</div>
     </div>
     
     <jsp:include page="/include/footer.jsp"/>
