@@ -43,9 +43,6 @@
 			<div id="myPageTop" class="page_aticle mypage_top">
 				<div class="mypagetop_user">
 					<div class="inner_mypagetop">
-						<a href="">
-							<img src="" alt="">
-						</a>
 					</div>
 				</div>
 				<div class="page_aticle aticle_type2">
@@ -189,7 +186,8 @@
 							
 								<div id="formSubmit" class="form_footer">
 									<a href="/shop/member/hack.php?&amp;" class="btn default">탈퇴하기</a>
-									<button type="submit" class="btn active">회원정보수정</button>
+									<button type="submit" class="btn active" onclick="regist()">회원정보수정</button>
+								
 								</div>
 							</form>	
 						</div>
