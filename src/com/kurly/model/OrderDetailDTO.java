@@ -9,6 +9,10 @@ public class OrderDetailDTO {
 	private int o_final_price;
 	private int o_qty;
 	
+	private String p_image;
+	private String p_name;
+	private String p_seller;
+	
 	public int getOd_num() {
 		return od_num;
 	}
@@ -51,6 +55,25 @@ public class OrderDetailDTO {
 	public void setO_qty(int o_qty) {
 		this.o_qty = o_qty;
 	}
+	public String getP_image() {
+		return p_image;
+	}
+	public void setP_image(String p_image) {
+		this.p_image = p_image;
+	}
+	public String getP_name() {
+		return p_name;
+	}
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
+	}
+	public String getP_seller() {
+		return p_seller;
+	}
+	public void setP_seller(String p_seller) {
+		this.p_seller = p_seller;
+	}
+	
 	
 	
 	

@@ -10,17 +10,15 @@ import javax.servlet.http.HttpSession;
 import com.kurly.controller.Action;
 import com.kurly.controller.ActionForward;
 import com.kurly.model.CartDataDAO;
-import com.kurly.model.CartDataDTO;
 import com.kurly.model.UserDAO;
 
-public class UserCartListAction implements Action {
+public class UserOrderAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		HttpSession session = request.getSession();
 		
-		// 비회원일 시 login 페이지로 redirect
 		if(session.getAttribute("user_id") == null) {
 			ActionForward forward = new ActionForward();
 			forward.setRedirect(true);
@@ -28,29 +26,21 @@ public class UserCartListAction implements Action {
 			return forward;
 		}
 		
+		// 주소 변경되었는지 확인, 변경없을 시 user에 있는 기본 주소 사용, 변경 있을 경우 request에서 가져와서 사용
+		if(!request.getParameter("address").equals("none")) {
+			request.setAttribute("address", request.getParameter("address"));
+		}
+		
 		String user_id = (String)session.getAttribute("user_id");
+		CartDataDAO cdi = CartDataDAO.getInstance();
 		
-		List<CartDataDTO> list = CartDataDAO.getInstance().loadCartData(user_id);
+		request.setAttribute("userDTO", UserDAO.getInstance().getUserData(user_id));
+		request.setAttribute("cartList", cdi.loadCartData(user_id));
+		request.setAttribute("priceDTO", cdi.getSumPrice(user_id));
 		
-		int costSum = list.stream()
-							.mapToInt(dto -> dto.getP_price() * dto.getCart_qty())						
-							.sum();
-							
-		int saleSum = list.stream()
-							.mapToInt(dto -> dto.getSalePrice() * dto.getCart_qty())
-							.sum();
-		
-		String user_addr = UserDAO.getInstance().getUserAddress(user_id);
-		
-		request.setAttribute("cartList", list);
-		request.setAttribute("costSum", costSum);
-		request.setAttribute("saleSum", saleSum);
-		request.setAttribute("user_addr", user_addr);
-
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/user/user_cart.jsp");
+		forward.setPath("/user/user_order.jsp");
 		return forward;
 	}
-
 }

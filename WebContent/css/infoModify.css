@@ -9,6 +9,68 @@
     margin: 0 auto;
 }
 
+
+/*마이할리 상단바*/
+.mypage_top {
+    width: 100%;
+    padding: 50px 0;
+    margin-bottom: -20px;
+    background-color: #f7f7f7;
+}
+
+.mypage_top .mypagetop_user {
+    overflow: hidden;
+    width: 1050px;
+    margin: 0 auto;
+}
+
+.mypage_top .inner_mypagetop {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+}
+
+.mypage_top .grade_user {
+    width: 362px;
+    padding: 30px;
+    background-color: #fff;
+}
+
+.mypage_top .grade_wrap {
+    display: flex;
+    align-items: center;
+}
+
+.mypage_top .list_mypage {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    margin-left: 4px;
+}
+
+.mypage_top .list_mypage .link_wrap .link_title {
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    color: #333;
+    position: relative;
+}
+
+.mypage_top .list_mypage .link_wrap .spacer {
+    flex-grow: 2;
+}
+
+.mypage_top .list_mypage .link_wrap .info {
+    font-weight: 700;
+    font-size: 20px;
+    color: #5f0080;
+    line-height: 28px;
+    flex-grow: 3;
+    position: relative;
+}
+
 /*마이 할리 좌측 메뉴 css*/
 #snb {
     float: left;

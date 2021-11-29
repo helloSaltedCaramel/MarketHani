@@ -225,9 +225,9 @@ ul {
 		
 		
 		 <%--작성 작성 가능 후기가 없습니다 --%>
-		<c:set var="list" value="${List }" />
-						<c:if test="${!empty list }">
-							<c:forEach items="${list }" var="dto">
+		<c:set var="olist" value="${OList }" />
+						<c:if test="${!empty olist }">
+							<c:forEach items="${olist }" var="dto">
 								<div>
 									<table class="xans-board-listheaderd tbl_newtype1" width="100%"
 										cellpadding="0" cellspacing="0">
@@ -245,13 +245,11 @@ ul {
 
 
 										<tr>
-											<td align="center">${dto.getR_num() }</td>
-											<td class="subject"><a
-												href="<%=request.getContextPath()
-						%>/user_product_review_content.do?num=${dto.getR_num()}">${dto.getR_title() }</a></td>
-											<td>${dto.getUser_id() }</td>
-											<td class="time">${dto.getR_date() }<%-- <fmt:formatDate value="${dto.getR_date() }" pattern="yyyy-MM-dd" /> --%></td>
-											<td>${dto.getR_hit() }</td>
+											<td align="center">${dto.getO_id() }</td>
+											<td>${dto.getO_price()}</td>
+											<td>${dto.getO_discount_price() }</td>
+											<td class="time">${dto.getO_final_price() }</td>
+											<td>${dto.getO_qty() }</td>
 
 										</tr>
 									</table>
@@ -259,19 +257,14 @@ ul {
 							</c:forEach>
 						</c:if>
 
-						<c:if test="${empty list }">
-							<tr>
-								<td colspan="5" align="center">
-									<h3>검색된 게시물이 없습니다.....</h3>
+						<c:if test="${empty olist }">
+							<tr id="viewBeforeList" class="before_view">
+								<td class="list_before" colspan="5" align="center">
+									<h3 class="no_data">작성 가능한 게시물이 없습니다.</h3>
 								</td>
 							</tr>
 						</c:if>
-		<div id="viewBeforeList" class="before_view">	
-			<ul class="list_before">
-				<li class="no_data">작성가능 후기 내역이 없습니다.</li>
-			</ul>
 		
-		</div> <%--작성 작성 가능 후기가 없습니다 end --%>
 		
 		
 	</div> <%-- 후기 전체 틀 마이컬리 포함 end --%>

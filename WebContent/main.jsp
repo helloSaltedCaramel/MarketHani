@@ -31,18 +31,31 @@
 <style>
     .bx-wrapper {border:0;background:#fbfbfb;box-shadow:none;}
     
-    .bx-controls-direction .bx-prev {
+
+.main_type1 .bx-controls-direction .bx-prev {
     background: url(./img/main/ico_prev1_x1.png) 0 0 no-repeat;
     padding: 9px;
 } 
 
-    .bx-controls-direction .bx-next {
+.main_type1 .bx-controls-direction .bx-next {
     background: url(./img/main/ico_next1_x1.png) 0 0 no-repeat;
     padding: 9px;
 }  
 
 
+.main_type2 .bx-controls-direction .bx-prev,
+.main_type4 .bx-controls-direction .bx-prev
+ {
+    background: url() 0 0 no-repeat;
+    padding: 9px;
+} 
 
+.main_type2 .bx-controls-direction .bx-next,
+.main_type4 .bx-controls-direction .bx-next
+ {
+    background: url(./img/main/btn_next_default.png) 0 0 no-repeat;
+    padding: 9px;
+} */
     
     </style> 
 

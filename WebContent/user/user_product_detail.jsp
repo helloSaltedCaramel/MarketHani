@@ -33,74 +33,19 @@
 
 
 
-<title>${dto.p_name }상품상세페이지</title>
+
 <%-- import eventMain.css --%>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/product_detail.css">
 
 <script type="text/javascript">
 
-	$(document).ready(function() {
-		$('#tab_01').click(function() {
-			var offset = $('#tab_01 scroll').offset(); //선택한 태그의 위치를 반환
-
-			//animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
-
-			$('html').animate({
-				scrollTop : offset.top
-			}, 1000);
-
-		});
-
-	});
-
-	$(document).ready(function() {
-		$('#tab_02').click(function() {
-			var offset = $('#tab_02 scroll').offset(); //선택한 태그의 위치를 반환
-
-			//animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
-
-			$('html').animate({
-				scrollTop : offset.top
-			}, 1000);
-
-		});
-
-	});
-
-	$(document).ready(function() {
-		$('#tab_03').click(function() {
-			var offset = $('#tab_03 scroll').offset(); //선택한 태그의 위치를 반환
-
-			//animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
-
-			$('html').animate({
-				scrollTop : offset.top
-			}, 1000);
-
-		});
-
-	});
-
-	$(document).ready(function() {
-		$('#tab_04').click(function() {
-			var offset = $('#tab_04 scroll').offset(); //선택한 태그의 위치를 반환
-
-			//animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
-
-			$('html').animate({
-				scrollTop : offset.top
-			}, 1000);
-
-		});
-
-	});
 
 	function onDisplay() {
 
 		$('#shareLayer').toggle();
 
-	} // 공유하기 버튼 클릭시 보이고 안보이고
+	}; // 공유하기 버튼 클릭시 보이고 안보이고
 	
 	 //링크 클릭시 헤당 섹션으로 부드럽게 이동시키기
 	  $(document).on('click','#ul_product a',function(event){
@@ -108,7 +53,7 @@
 	  event.preventDefault();
 	  	$("html,body").animate({
 	    	scrollTop : $(this.hash).offset().top - headerHeight
-	    },300)
+	    },800)
 	 
 	});
 	
@@ -124,14 +69,13 @@
 	
 	<br>
 		<c:set var="dto" value="${productCont }" />
-		
 		<c:if test="${!empty dto }">
-	
+		<title>[${dto.p_seller }]${dto.p_name }상품상세페이지</title>
 		<div id="main">
 			<div id="content" style="opacity: 1;">
 				<div class="section_view">
 
-					<div id="shareLayer">
+					<div id="shareLayer" >
 						<div class="layer_share">
 							<div class="inner_layersns">
 								<h3 class="screen_out">SNS 공유하기</h3>

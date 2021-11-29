@@ -38,13 +38,19 @@ maxvalue 1000
 nocycle
 nocache;
 
-select cart_num from kurly_cart where cart_userId = 1;
+select * from kurly_cart;
 
 drop table kurly_cart;
+
+
+commit;
+
 
 select * from kurly_product;
 
 insert into kurly_product values(1, '치아바타.jpg', 3600, '[바켄]치아바타', '쫄깃하고 담백한 이탈리아 빵', '1개', '상온/종이포장', '택배배송은 에코포장이 스티로폼으로 대체됩니다.', '샛별배송/택배배송', 100, 180, '커피/빵', '빵', '바켄', 5, '쫄깃하고 담백한 이탈리아 빵', sysdate, '해당상품은');
+
+
 
 update kurly_product set p_name = 5 where p_num = 1;
 
@@ -65,26 +71,39 @@ Insert into KURLY_PRODUCT (P_NUM,P_IMAGE,P_PRICE,P_NAME,P_UNIT,P_WRAP,P_WRAP_CON
 Insert into KURLY_PRODUCT (P_NUM,P_IMAGE,P_PRICE,P_NAME,P_UNIT,P_WRAP,P_WRAP_CONT,P_DELIVERY,P_QTY,P_POINT,P_CATEGORY,P_SUB_CATEGORY,P_SELLER,P_DISCOUNT,P_CONTENTS,P_DATE,P_NAME_CONT,P_CONTENTS_SPEC) values (12,'산양유.jpg',5000,'[조공]PET 나 산양유 좋아해 스틱','1팩','상온/종이포장','택배배송은 에코포장이 스티로폼으로 대체됩니다.','샛별배송/택배배송',100,500,'반려동물','고양이간식','조공',0,null,to_date('21/11/15','RR/MM/DD'),null,null);
 Insert into KURLY_PRODUCT (P_NUM,P_IMAGE,P_PRICE,P_NAME,P_UNIT,P_WRAP,P_WRAP_CONT,P_DELIVERY,P_QTY,P_POINT,P_CATEGORY,P_SUB_CATEGORY,P_SELLER,P_DISCOUNT,P_CONTENTS,P_DATE,P_NAME_CONT,P_CONTENTS_SPEC) values (13,'게살.jpg',2900,'[조공]PET 나 게살 좋아해 스틱','1팩','상온/종이포장','택배배송은 에코포장이 스티로폼으로 대체됩니다.','샛별배송/택배배송',100,290,'반려동물','고양이간식','조공',0,'2-1.gif',to_date('21/11/15','RR/MM/DD'),'특별한 기회로 만나보는 홍게 간식',null);
 
+
+commit;
+
 select c.cart_pnum, p.p_image, p.p_name, p.p_price, ROUND(p.p_price*(1-p.p_discount*0.01)) salePrice, p.p_point, c.cart_qty
 from kurly_cart c
 join kurly_product p
 on c.cart_pnum = p.p_num
 where c.cart_userid = 'alsghl9607'
-order by c.cart_pnum;
+order by c.cart_num desc;
 
--- CHO
--- admin_shop 테이블 생성
+select sum(p.p_price*c.cart_qty) costSum, sum(round(p.p_price*(1-p.p_discount*0.01))*cart_qty) saleSum, sum(p_point * cart_qty) pointSum
+from kurly_cart c
+join kurly_product p
+on c.cart_pnum = p.p_num
+where c.cart_userid = 'alsghl9607';
 
-create table admin_shop( 
-	admin_id varchar2(30) primary key,		-- 관리자 아이디
-	admin_pwd varchar2(30) not null,     	-- 관리자 비밀번호
-	admin_name varchar2(30) not null,		-- 관리자 이름
-	admin_email varchar2(100),				-- 관리자 이메일
-	admin_date date							-- 관리자 등록일
+select user_id, user_name, user_email, user_phone, user_addr, user_point from kurly_user where user_id = 'alsghl9607';
 
-);
+select sum(p_price) costSum, sum(round(p_price*(1-p_discount*0.01))) saleSum, 
+from kurly_product
+where p_num = (select p_num from kurly_cart where cart_userid = 'alsghl9607');
 
--- 관리자 등록하기
-insert into admin_shop
-	values('admin', 'admin', '관리자', 'admin@naver.com',sysdate);
 
+select * from kurly_cart order by cart_userid, cart_pnum;
+
+delete from kurly_cart where cart_num = 28;
+select * from kurly_product;
+
+commit;
+
+commit;
+
+
+truncate table kurly_cart;
+
+select * from kurly_cart order by cart_num desc;
