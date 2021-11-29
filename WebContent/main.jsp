@@ -28,7 +28,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css" rel="stylesheet" />
 
-<!--  --><style>
+<style>
     .bx-wrapper {border:0;background:#fbfbfb;box-shadow:none;}
     
     .bx-controls-direction .bx-prev {
@@ -36,7 +36,7 @@
 
 }
     
-    </style> 
+</style> 
 
 <script>
      $(document).ready(function(){
