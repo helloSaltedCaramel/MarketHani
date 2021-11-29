@@ -83,13 +83,14 @@ public class OrderDetailDAO {
 	
 	//kurly_order_detail 테이블에서 전체 리스트를 조회하는 메서드
 	public List<OrderDetailDTO> getReviewOnList() {
+		
 		List<OrderDetailDTO> olist = new ArrayList<OrderDetailDTO>();
 		
 		try {
 
 			openConn();
 			
-			sql = "select * from kurly_order_detail order by op_num desc";
+			sql = "select * from kurly_order_detail order by od_num desc";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -98,13 +99,13 @@ public class OrderDetailDAO {
 			while(rs.next()) {
 				OrderDetailDTO dto = new OrderDetailDTO();
 				
-				dto.setOd_num(rs.getInt("od_num"));
 				dto.setO_id(rs.getInt("o_id"));
+				dto.setP_image(rs.getString("p_image"));
 				dto.setP_num(rs.getInt("p_num"));
-				dto.setO_price(rs.getInt("o_price"));
-				dto.setO_discount_price(rs.getInt("o_discount"));
-				dto.setO_final_price(rs.getInt("o_final_price"));
 				dto.setO_qty(rs.getInt("o_qty"));
+				dto.setP_seller(rs.getString("p_seller"));
+				dto.setP_name(rs.getString("p_name"));
+				
 				
 				
 				olist.add(dto);

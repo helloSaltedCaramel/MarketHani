@@ -11,6 +11,7 @@ public class ReviewDTO {
 	private String r_date;
 	private int r_hit;
 	
+	
 	public int getR_num() {
 		return r_num;
 	}

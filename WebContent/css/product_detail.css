@@ -169,7 +169,7 @@ content {
 	height: 90px;
 	border: 0;
 	background:
-		url(https://res.kurly.com/mobile/service/goodsview/1910/ico_view_sns.png)
+		url(../img/product/ico_view_sns.jpg)
 		no-repeat 50% 50%;
 	font-size: 0;
 	text-indent: -9999px;
@@ -323,8 +323,7 @@ div, th, td, li, dt, dd, p {
 	#cartPut .cart_type2 .list_nopackage .btn_position {
 	display: none;
 }
-
-#cartPut .cart_option .list .btn_del {
+/* #cartPut .cart_option .list .btn_del {
 	overflow: hidden;
 	position: absolute;
 	right: 0;
@@ -340,7 +339,7 @@ div, th, td, li, dt, dd, p {
 	line-height: 0;
 	text-indent: -9999px;
 }
-
+ */
 #cartPut .cart_type2 .list_nopackage .price, #cartPut .cart_type2 .list_nopackage .name,
 	#cartPut .cart_type2 .list_nopackage .btn_position {
 	display: none;
@@ -365,11 +364,11 @@ div, th, td, li, dt, dd, p {
 
 #cartPut .cart_option .list .down.on {
 	background-image:
-		url(https://res.kurly.com/pc/ico/2010/ico_minus_on.svg);
+		url(../img/product/ico_minus_on.jpg);
 }
 
 #cartPut .cart_option .list .down {
-	background: #fff url(https://res.kurly.com/pc/ico/2010/ico_minus.svg)
+	background: #fff url(../img/product/ico_minus_on.jpg)
 		no-repeat 50% 50%;
 	background-size: 30px 30px;
 }
@@ -398,13 +397,13 @@ div, th, td, li, dt, dd, p {
 	text-align: center;
 } /*+버튼 바탕*/
 #cartPut .cart_option .list .up.on {
-	background-image: url(https://res.kurly.com/pc/ico/2010/ico_plus_on.svg);
+	background-image: url(../img/product/ico_plus_on.jpg);
 }
 
 #cartPut .cart_option .list .up {
 	float: right;
 	margin-left: -1px;
-	background: #fff url(https://res.kurly.com/pc/ico/2010/ico_plus.svg)
+	background: #fff url(../img/product/ico_plus_on.jpg)
 		no-repeat 50% 50%;
 	background-size: 30px 30px;
 } /*투명 바탕의 +버튼 구현*/
@@ -581,7 +580,7 @@ div, th, td, li, dt, dd, p {
 	text-align: center;
 }
 
-#cartPut .cart_type1 .btn_close .ico {
+/* #cartPut .cart_type1 .btn_close .ico {
 	padding: 0 30px 0 7px;
 	background:
 		url(https://res.kurly.com/pc/service/goods/1910/ico_up_fff_24x24.png)
@@ -589,7 +588,7 @@ div, th, td, li, dt, dd, p {
 	font-size: 14px;
 	color: #fff;
 	line-height: 20px;
-} /*하단 상품 선택 탭 구현*/
+} 하단 상품 선택 탭 구현 */
 #cartPut .cart_type1 .group_btn.off {
 	display: none;
 }
@@ -766,7 +765,7 @@ tbody {
 	height: 58px;
 	border: 0;
 	background:
-		url(https://res.kurly.com/pc/service/common/1903/btn_pagetop_v2.png)
+		url(../img/product/btn_pagetop_v2.jpg)
 		no-repeat 50% 50%;
 	font-size: 0;
 	line-height: 0;

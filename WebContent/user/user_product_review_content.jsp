@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>    
-    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -229,7 +230,7 @@ iframe {
 
 							<div class="sort" style="bottom: -9px">
 								<select
-									onchange="this.form.sort.value=this.value;this.form.submit()">
+									onchange="this.form.sort.value=this.value;this.form.submit()"">
 									<option value="1">최근등록순</option>
 									<option value="2">좋아요많은순</option>
 									<option value="3">조회많은순</option>
@@ -314,47 +315,26 @@ iframe {
 						</table>
 
 								
-						<c:set var="list" value="${List }" />
-						<c:if test="${!empty list }">
-							<c:forEach items="${list }" var="dto">
-								<div>
+						<c:set var="dto" value="${Cont }" />
+							<div>
 									<table class="xans-board-listheaderd tbl_newtype1" width="100%"
 										cellpadding="0" cellspacing="0">
 										<caption style="display: none">구매후기 내용</caption>
-										<colgroup>
-											<col style="width: 70px;">
-											<col style="width: auto;">
-											<%-- <col style="width: 51px;"> 회원등급--%>
-											<col style="width: 128px;">
-											<%-- 77px인데 회원등급 제거해서 128로 변경 --%>
-											<col style="width: 100px;">
-											<%-- <col style="width: 40px;"> --%>
-											<col style="width: 80px;">
-										</colgroup>
-
 
 										<tr>
-											<input type="hidden" name="index" value="1">
-											<input type="hidden" name="image" value="true">
+											<td><img
+									src="<%=request.getContextPath() %>/upload/fileDBName/${dto.getR_image() }">${dto.getR_image() }</td>
+											<td>${dto.getR_title() }</td>
+											<td>${dto.getR_content() }</td>
 											
-											<td align="center">${dto.getR_num() }</td>
-											<td class="subject"><a
-												href="<%=request.getContextPath()
-						%>/user_product_review_content.do?no=${dto.getR_num()}&page=${page }">${dto.getR_title() }</a></td>
-											<td>${dto.getUser_id() }</td>
-											<td class="time">${dto.getR_date() }<%-- <fmt:formatDate value="${dto.getR_date() }" pattern="yyyy-MM-dd" /> --%></td>
-											<td>${dto.getR_hit() }</td>
-
 										</tr>
 									</table>
 								</div>
-							</c:forEach>
-						</c:if>
-
-						<c:if test="${empty list }">
+							
+						<c:if test="${empty dto }">
 							<tr>
 								<td colspan="5" align="center">
-									<h3>검색된 게시물이 없습니다.....</h3>
+									<h3>내용이 없습니다</h3>
 								</td>
 							</tr>
 						</c:if>
@@ -362,7 +342,7 @@ iframe {
 
 				<p id="p_btnReview">
 						<span id="btnReview" style="line-height:30px; width:130px;" 
-						onclick="location.href='user_product_review_write.do'">후기쓰기
+						onclick="location.href='user_product_review_on_write.do?no=${dto.getUser_id() }'">후기쓰기
 						</span>
 						
 				
@@ -371,33 +351,6 @@ iframe {
 		</div>
 
 	</div>
-	
-	<%--페이징 처리 시작 --%>
-	<br>
-	<c:if test="${page > block }">
-		<a
-			href="<%=request.getContextPath()%>/user_product_review_list.do?page=1">◀◀</a>
-		<a
-			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${startBlock-1}">◀</a>
-	</c:if>
-
-	<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
-		<c:if test="${i == page }">
-			<b><a
-				href="<%=request.getContextPath() %>/user_product_review_list.do?page=${i}">[${i }]</a></b>
-		</c:if>
-
-		<c:if test="${i != page }">
-			<a href="user_product_review_list.do?page=${i}">[${i }]</a>
-		</c:if>
-	</c:forEach>
-
-	<c:if test="${endBlock < allPage }">
-		<a
-			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${endBlock+1}">▶</a>
-		<a href="<%=request.getContextPath() %>/user_product_review_list.do?page=${allPage}">▶▶</a>
-	</c:if>
-
 
 
 
