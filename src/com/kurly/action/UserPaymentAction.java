@@ -11,6 +11,8 @@ import com.kurly.controller.Action;
 import com.kurly.controller.ActionForward;
 import com.kurly.model.CartDataDAO;
 import com.kurly.model.CartDataDTO;
+import com.kurly.model.OrderDAO;
+import com.kurly.model.PriceSumDTO;
 
 public class UserPaymentAction implements Action{
 
@@ -32,12 +34,25 @@ public class UserPaymentAction implements Action{
 		
 		List<CartDataDTO> cartList = CartDataDAO.getInstance().loadCartData(user_id);
 		
+		PriceSumDTO priceData = CartDataDAO.getInstance().getSumPrice(user_id);
 		
-		// order 테이블에 데이터 맞도록 해서 추가하기
+		int deliveryFee = priceData.getSaleSum() < 30000 ? 3000 : 0;
 		
-		// 
+		int order_id = OrderDAO.getInstance().insertOrder(user_id,
+																request.getParameter("receiver"),
+																request.getParameter("user_address"),
+																request.getParameter("receiver_message"),
+																request.getParameter("receiver_phone"),
+																0,
+																priceData.getPointSum(),
+																request.getParameter("payment_way"),
+																priceData.getSaleSum(),
+																deliveryFee);
 		
-		return null;
+		ActionForward forward = new ActionForward();
+		forward.setRedirect(false);
+		forward.setPath("user/user_ordered.jsp");
+		return forward;
 	}
 
 }	

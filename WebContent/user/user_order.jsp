@@ -137,12 +137,14 @@
                 <div class="delivery_desc">
                 	<c:if test="${empty address}">
                     <span class="address_block">
+                    		<input type="hidden" name="user_address" value="${userData.getUser_addr()}">
                         <span class="default_loc">기본배송지</span>
                         <span class="address">${userData.getUser_addr()}</span>
                     </span>
                   </c:if>
                   <c:if test="${!empty address}">
                   	<span class="address_block">
+                  			<input type="hidden" name="user_address" value="${address}">
                         <span class="address">${address}</span>
                     </span>
                   </c:if>
@@ -204,21 +206,21 @@
 
                                 <ul class="payment_menu">
                                     <li class="card">
-                                        <label class="card_label" onclick="">
+                                        <label class="card_label">
                                             <input id="card" type="radio" name="payment_way" value="credit">
                                              	신용카드
                                         </label>
                                     </li>
 
                                     <li class="simple">
-                                        <label class="simple_label" onclick="">
+                                        <label class="simple_label">
                                             <input id="simple" type="radio" name="payment_way" value="simple">
                                             	간편결제
                                         </label>
                                     </li>
 
                                     <li class="phone">
-                                        <label class="phone_label" onclick="">
+                                        <label class="phone_label">
                                             <input id="phone" type="radio" name="payment_way" value="phone">
                                             	휴대폰
                                         </label>
