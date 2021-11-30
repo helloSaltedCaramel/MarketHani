@@ -187,13 +187,24 @@ public class ProductDAO {
 		
 	} //getNewProductList() end
 
-	public List<ProductDTO> getCategoryList(String category) {
+	public List<ProductDTO> getCategoryList(String category, String sortby) {
 		
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
 		
+		String order = null;
+		
 		try {
 			openConn();
-			sql = "select * from kurly_product where p_category like '" + category + "%' order by p_num";
+			
+			//전달된 정렬방식에 따라 쿼리문 작성
+			if(sortby.equals("new"))
+				order = "p_date desc";
+			else if(sortby.equals("low"))
+				order = "p_price";
+			else if(sortby.equals("high"))
+				order = "p_price desc";
+			
+			sql = "select * from kurly_product where p_category like '" + category + "%' order by " + order;
 			pstmt = con.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();

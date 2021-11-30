@@ -153,7 +153,7 @@
                     <div class="inner_sub">
                         <ul class="gnb_menu">
                             <li>
-                                <a href="user_category.do?category=A" class="menu">
+                                <a href="<%=request.getContextPath() %>/user_category.do?cat=A&sort=new" class="menu">
                                     <span class="ico">
                                         <img src="${pageContext.request.contextPath}/img/header/category_icon/icon_veggies_inactive_pc@2x.1586324570.png">
                                     </span>
@@ -163,12 +163,12 @@
                                 </a>
                                 <ul class="sub_menu">
                                     <li>
-                                        <a class="sub" href="user_category.do?category=A1">
+                                        <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=A1&sort=new">
                                             <span class="name">친환경</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sub" href="user_category.do?category=A2">
+                                        <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=A2&sort=new">
                                             <span class="name">고구마, 감자, 당근</span>
                                         </a>
                                     </li>
