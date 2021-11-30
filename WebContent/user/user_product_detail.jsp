@@ -31,7 +31,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/footer.css" />
 
-<!-- jQuery library (served from Google) -->
+<%-- jQuery library (served from Google) --%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 <%-- import eventMain.css --%>
@@ -247,14 +247,14 @@ function hideReviseConfirm() {
 							<p class="goods_name">
 								<span class="btn_share">
 									<button id="btnShare" onclick="onDisplay();">공유하기</button>
-								</span> <strong class="name">[${dto.p_seller}]${dto.p_name }</strong> <span
+								</span> <strong class="name">[${dto.getP_seller()}]${dto.getP_name() }</strong> <span
 									class="short_desc">특별한 기회로 만나보는 홍게 간식</span>
 							</p>
 
 							<p class="goods_price">
 								<span class="position"> <span class="dc"> <span
 										class="dc_price"><fmt:formatNumber type="number"
-												value="${dto.p_price }" /><span class="won">원</span> </span> <%-- 숫자 3자리 수마다 콤마 금액--%>
+												value="${dto.getP_price() }" /><span class="won">원</span> </span> <%-- 숫자 3자리 수마다 콤마 금액--%>
 								</span> <%-- --%>
 
 								</span>
@@ -325,7 +325,8 @@ function hideReviseConfirm() {
 										<div class="price">
 											<!---->
 											<strong class="tit">총 상품금액 :</strong> <span class="sum">
-												<span class="num">2,900</span> <span class="won">원</span>
+												<span class="num"><fmt:formatNumber type="number"
+												value="${dto.getP_price() }" /></span> <span class="won">원</span>
 											</span>
 										</div>
 										<p class="txt_point">
@@ -447,16 +448,16 @@ function hideReviseConfirm() {
 		
 			<ul id="ul_product" class="goods-view-infomation-tab-group">
 
-				<li id="tab_01"><a href="#content1"
+				<li><a href="#content1"
 					class="goods-view-infomation-tab-anchor __active">상품설명</a></li>
 
-				<li id="tab_02"><a href="#content2"
+				<li><a href="#content2"
 					class="goods-view-infomation-tab-anchor __active">상세정보</a></li>
 
-				<li id="tab_03"><a href="#content3"
+				<li><a href="#content3"
 					class="goods-view-infomation-tab-anchor __active">후기</a></li>
 
-				<li id="tab_05"><a href="#content4"
+				<li><a href="#content4"
 					class="goods-view-infomation-tab-anchor __active">문의</a></li>
 			</ul>
 	
@@ -468,7 +469,7 @@ function hideReviseConfirm() {
 					<img
 						src="<%=request.getContextPath() %>/img/product/${dto.getP_contents()}"
 						align="center" width="1010px" height="100%"> 
-			</div> <%-- tab_01 scroll end --%>		
+			</div> <%-- #content1 scroll end --%>		
 		
 			<%-- 상세정보 이미지  --%>
 			<div id="content2">		
@@ -477,21 +478,21 @@ function hideReviseConfirm() {
 						align="center" width="1010px" height="100%"> <br> <br>
 					<br> <br> <br> <br> <br>
 		
-			</div> <%-- tab_02 scroll end --%>
+			</div> <%-- #content2 scroll end --%>
 		
 			<%-- 상품 후기 게시판  --%>
 			<div id="content3">	
 				<div class="review_container">
 				
 					<iframe id="inreview"
-						src="<%=request.getContextPath()%>/user_product_review_list.do"
+						src="<%=request.getContextPath()%>/user_product_review_list.do?p_num=${dto.getP_num()}"
 						frameborder="0" class="goods-view-infomation-board">
 						
 						<%-- 여기있던 내용 전부 삭제함 --%>
 						
 					</iframe>
 				</div>
-			</div> <%-- tab_03 scroll end --%>
+			</div> <%-- #content3 scroll end --%>
 	
 		<%-- 상품 문의 게시판  --%>
 		<div id="content4">	
