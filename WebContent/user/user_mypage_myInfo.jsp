@@ -38,7 +38,9 @@
 
 	<jsp:include page="../include/header.jsp"/>
 	
+
 	<div id="infoModify_main">
+	<c:set var="dto" value="${userData}"/>
 		<div id="infoModify_content"> 
 
 				<div class="page_aticle aticle_type2">
@@ -107,7 +109,7 @@
 										<tr>
 											<th>이메일</th>
 											<td>
-												<input type="text" name="email" label="이메일" placeholder="예: markethani@hani.com">
+												<input type="text" name="email" value="${dto.getUser_email()}" size="80" label="이메일" placeholder="예: marketkurly@kurly.com">
 												<button id="btn_cert" class="btn default" type="button">중복확인</button>
 											</td>
 										</tr>
@@ -115,8 +117,8 @@
 											<th>휴대폰</th>
 											<td>
 											<div class="phone_num">
-												<input type="text" value="${user_phone }"  name="mobileInp" placeholder="숫자만 입력해주세요" class="inp">											
-												
+												<input type="text" value="${dto.getUser_phone()}"  name="mobileInp" placeholder="숫자만 입력해주세요" class="inp">											
+												<button id="btn_cert" class="btn default" type="button">다른번호 인증</button>
 											</div>
 											</td>
 										</tr>
