@@ -16,10 +16,17 @@ public class UserNewAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		List<ProductDTO> list = ProductDAO.getInstance().getNewProductList();
+		//전달된 정렬방식(sortby)을 적용하여 제품 리스트 받아오기 
+		String sortby = request.getParameter("sort");
 		
+		List<ProductDTO> list = ProductDAO.getInstance().getNewProductList(sortby);
+		
+		//제품 리스트 및 수량 전달
 		request.setAttribute("productList", list);
 		request.setAttribute("listCount", list.size());
+	
+		//제품 정렬방식 전달
+		request.setAttribute("sortBy", sortby);
 		
 		ActionForward forward = new ActionForward();
 		

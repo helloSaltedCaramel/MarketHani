@@ -92,6 +92,10 @@ ul#right li:hover{
 	color: black;
 }
 
+ul#right li#on {
+	color: black;
+}
+
 span#title{
 	font-size:28px;
 	font-weight: 700;

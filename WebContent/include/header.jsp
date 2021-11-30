@@ -96,7 +96,7 @@
                                 </a>
                             </li>
                             <li class="menu2">
-                                <a href="<%=request.getContextPath() %>/user_new.do" class="link new "><span class="txt">신상품</span></a>
+                                <a href="<%=request.getContextPath() %>/user_new.do?sort=new" class="link new "><span class="txt">신상품</span></a>
                             </li>
                             <li class="menu3">
                                 <a href="<%=request.getContextPath() %>/user_best.do" class="link best "><span class="txt">베스트</span></a>
