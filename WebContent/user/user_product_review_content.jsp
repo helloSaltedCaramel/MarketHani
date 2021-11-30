@@ -196,6 +196,13 @@ iframe {
 	border-color: initial;
 	border-image: initial;
 }
+
+.review_photo img {
+    display: block;
+    max-width: 600px;
+    margin: 0 auto;
+} /*리뷰 포토 이미지*/
+
 </style>
 
 </head>
@@ -230,7 +237,7 @@ iframe {
 
 							<div class="sort" style="bottom: -9px">
 								<select
-									onchange="this.form.sort.value=this.value;this.form.submit()"">
+									onchange="this.form.sort.value=this.value;this.form.submit()">
 									<option value="1">최근등록순</option>
 									<option value="2">좋아요많은순</option>
 									<option value="3">조회많은순</option>
@@ -320,16 +327,65 @@ iframe {
 									<table class="xans-board-listheaderd tbl_newtype1" width="100%"
 										cellpadding="0" cellspacing="0">
 										<caption style="display: none">구매후기 내용</caption>
-
+										<colgroup>
+											<col style="width: 70px;">
+											<col style="width: auto;">
+											<%-- <col style="width: 51px;"> 회원등급--%>
+											<col style="width: 128px;">
+											<%-- 77px인데 회원등급 제거해서 128로 변경 --%>
+											<col style="width: 100px;">
+											<%-- <col style="width: 40px;"> --%>
+											<col style="width: 80px;">
+										</colgroup>
 										<tr>
-											<td><img
-									src="<%=request.getContextPath() %>/upload/fileDBName/${dto.getR_image() }">${dto.getR_image() }</td>
-											<td>${dto.getR_title() }</td>
-											<td>${dto.getR_content() }</td>
+											<input type="hidden" name="index" value="1">
+											<input type="hidden" name="image" value="true">
 											
+											<td align="center">${dto.getR_num() }</td>
+											<td class="subject">
+											<a
+												href="<%=request.getContextPath()
+						%>/user_product_review_list.do">${dto.getR_title() }</a></td>
+											<td>${dto.getUser_id() }</td>
+											<td class="time">${dto.getR_date() }<%-- <fmt:formatDate value="${dto.getR_date() }" pattern="yyyy-MM-dd" /> --%></td>
+											<td>${dto.getR_hit() }</td>
+
 										</tr>
 									</table>
+									</div>
+									
+							<div>  <%--후기 내용 전체틀 --%>
+								<table class="xans-board-listheaderd tbl_newtype1" width="100%"
+									cellpadding="0" cellspacing="0">
+									<caption style="display: none">구매후기 내용</caption>
+									<div class="inner_review">
+										<div class="name_purchase">
+										
+										<strong class="name">[${dto.getP_seller() }]${dto.getP_name() }</strong>
+										<p></p>
+										
+										</div>
+									
+										<div class="review_photo">
+											<img src="<%=request.getContextPath() %>/upload/${dto.getR_image() }"/>
+										<br><br>
+										${dto.getR_content() }	
+										</div>
+																	
+									</div>
+								</table>
+								<div align="right">
+								<input type="button" value="글수정"
+									onclick="location.href='user_product_review_update.do?no=${dto.getR_num()}&page=${page }'">
+								<input type="button" value="글삭제"
+									onclick="if(confirm('정말로 삭제하시겠습니까?')) {
+									location.href='user_product_review_delete.do?no=${dto.getP_num() }&page=${page }'
+									}else {return; }">
+								<input type="button" value="목록으로"
+									onclick="location.href='user_product_review_list.do?page=${page }'">
 								</div>
+								
+							</div> <%--후기 내용 전체틀 end --%>
 							
 						<c:if test="${empty dto }">
 							<tr>
