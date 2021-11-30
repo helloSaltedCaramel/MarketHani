@@ -11,6 +11,24 @@ public class ReviewDTO {
 	private String r_date;
 	private int r_hit;
 	
+	// 게시글에서 보일 회사명+ 상품명
+	private String p_seller;
+	private String p_name;
+	
+	
+	public String getP_seller() {
+		return p_seller;
+	}
+	public void setP_seller(String p_seller) {
+		this.p_seller = p_seller;
+	}
+	public String getP_name() {
+		return p_name;
+	}
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
+	}
+	// 게시글에서 보일 회사명+ 상품명
 	
 	public int getR_num() {
 		return r_num;

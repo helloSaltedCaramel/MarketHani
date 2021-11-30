@@ -138,7 +138,7 @@ public class ReviewDAO {
 	
 	
 	// kurly_review 테이블에서 현재 페이지에 해당하는 게시물을 조회하는 메서드.
-	public List<ReviewDTO> getReviewList(int page, int rowsize) {
+	public List<ReviewDTO> getReviewList(int page, int rowsize, int p_num) {
 		
 		List<ReviewDTO> list = new ArrayList<ReviewDTO>(); 
 		
@@ -153,13 +153,17 @@ public class ReviewDAO {
 			openConn();
 			
 			//서브쿼리
-			sql = "select * from (select row_number() over(order by r_num desc) bnum, b.* from kurly_review b) where bnum >=? and bnum <= ?";
+			sql = "select * from (select row_number() over(order by r_num desc) bnum, b.* from kurly_review b where p_num = ?) where bnum >=? and bnum <= ?";
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, startNo);
+			pstmt.setInt(1, p_num);
 			
-			pstmt.setInt(2, endNo);
+			pstmt.setInt(2, startNo);
+			
+			pstmt.setInt(3, endNo);
+			
+			
 			
 			rs = pstmt.executeQuery();
 			
@@ -193,7 +197,7 @@ public class ReviewDAO {
 	
 
 	// kurly_review 테이블의 게시물 번호에 해당하는 조회수를 증가시키는 메서드.
-	public void r_hit(int no) {
+	public void r_hit(int no) { //반환형이 필요없음(void)
 
 		try {
 			openConn();
@@ -233,13 +237,13 @@ public class ReviewDAO {
 
 			if (rs.next()) {
 				dto.setR_num(rs.getInt("r_num"));
-				dto.setR_content(rs.getString("r_content"));
-				dto.setR_date(rs.getString("r_date"));
-				dto.setR_hit(rs.getInt("r_hit"));
-				dto.setR_image(rs.getString("r_image"));
+				dto.setUser_id(rs.getString("user_id"));
 				dto.setP_num(rs.getInt("p_num"));
 				dto.setR_title(rs.getString("r_title"));
-				dto.setUser_id(rs.getString("user_id"));
+				dto.setR_content(rs.getString("r_content"));
+				dto.setR_image(rs.getString("r_image"));
+				dto.setR_date(rs.getString("r_date").substring(0,10));
+				dto.setR_hit(rs.getInt("r_hit"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -297,4 +301,49 @@ public class ReviewDAO {
 		return result;
 	} // insertReviewUpload() 메서드 end
 
+	
+	// kurly_review 테이블의 게시물 번호에 해당하는 게시물을 수정하는 메서드
+	public int reviewUpdate(ReviewDTO dto) {
+		
+		int result = 0;
+		
+		
+		try {
+			openConn();
+			
+			sql = "select * from kurly_review where r_num = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			 
+			pstmt.setInt(1, dto.getR_num());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				if(dto.getUser_id().equals(rs.getString("user_id"))) {
+					
+					sql = "update board set r_title = ?, r_content = ? where r_num = ?";
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setString(1, dto.getR_title());
+					pstmt.setString(2, dto.getR_content());
+					pstmt.setInt(3, dto.getR_num());
+					
+					result = pstmt.executeUpdate();
+				}else {  //아이디가 다른 경우
+					result = -1;
+				}
+				
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return result;
+	}// reviewUpdate()메서드 end
+	
 }
