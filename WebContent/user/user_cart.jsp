@@ -21,7 +21,9 @@
 		<title>마켓하니 :: 내일의 장보기 마켓하니</title>
 		<link rel="icon" href="${pageContext.request.contextPath}/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/cart.css">
-    <script defer src="${pageContext.request.contextPath}/js/cart/priceBlock.js"></script>
+    <script defer src="${pageContext.request.contextPath}/js/cart/quantityBtn.js"></script>
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
 </head>
 <body>
 		<jsp:include page="/include/header.jsp"/>
@@ -51,32 +53,39 @@
                                 <input class="check" type="checkbox" value="item_id" checked>
                                 <div class="name">
                                     <div class="inner_name">
-                                        <a href="#" class="package">${dto.getP_name()}</a>
+                                        <a href="${pageContext.request.contextPath}/user_product_view.do?p_num=${dto.getCart_pnum()}" class="package">${dto.getP_name()}</a>
                                     </div>
                                 </div>
 
                                 <div class="goods">
-                                    <a href="#" class="thumb_img">
-                                        <img src="${pageContext.request.contextPath}/img/product/${dto.getP_image() }">
+                                    <a href="${pageContext.request.contextPath}/user_product_view.do?p_num=${dto.getCart_pnum()}" class="thumb_img">
+                                        <img src="${pageContext.request.contextPath}/img/product/${dto.getP_image()}">
                                     </a>
 
                                     <div class="price_qty">
                                         <div class="price">
                                             <span class="selling">
-                                            	<fmt:formatNumber value="${dto.getSalePrice() * dto.getCart_qty()}"/>
+                                            	<span id="product_sale_price">
+                                            		<fmt:formatNumber value="${dto.getSalePrice() * dto.getCart_qty()}"/>
+                                            	</span>
                                               <span>원</span>
                                             </span>
                                           <c:if test="${dto.getP_price() != dto.getSalePrice()}">
                                            	<span class="cost">
-                                           		<fmt:formatNumber value="${dto.getP_price() * dto.getCart_qty()}"/>
+                                           		<span id="product_cost_price">
+                                           		  <fmt:formatNumber value="${dto.getP_price() * dto.getCart_qty()}"/>
+                                           		</span>
                                            		<span>원</span>
                                            	</span>
                                           </c:if>
                                         </div>
 
                                         <div class="quantity">
+                                            <input type="hidden" name="cart_num" value="${dto.getCart_num()}">
+                                            <input type="hidden" name="pPrice" value="${dto.getP_price()}">
+                                            <input type="hidden" name="salePrice" value="${dto.getSalePrice()}">
                                             <button type="button" class="btn minus"></button>
-                                            <input type="number" class="quantity_num" value="${dto.getCart_qty() }" readonly>
+                                            <input type="number" class="quantity_num" step="1" value="${dto.getCart_qty() }" readonly>
                                             <button type="button" class="btn plus"></button>
                                         </div>
                                     </div>
@@ -118,7 +127,7 @@
                         <dl class="price_index">
                             <dt class="index">상품금액</dt>
                             <dd class="price_block">
-                                <span class="num">
+                                <span class="num" id="costPrice">
                                 	<fmt:formatNumber value="${costSum}" />
                                 </span>
                                 <span class="won">원</span>
@@ -128,7 +137,7 @@
                         <dl class="price_index">
                             <dt class="index">상품할인금액</dt>
                             <dd class="price_block">
-                                <span class="num">
+                                <span class="num" id="discountedPrice">
                                 	<fmt:formatNumber value="${saleSum - costSum}"/>
                                 </span>
                                 <span class="won">원</span>
@@ -139,10 +148,10 @@
                             <dt class="index">배송비</dt>
                             <dd class="price_block">
                             	<c:if test="${saleSum >= 30000}">
-                                <span class="num">3,000</span>
+                                <span class="num" id="delivery_cost">3,000</span>
                               </c:if>
                               <c:if test="${saleSum < 30000 }">
-                              	<span class="num">0</span>
+                              	<span class="num" id="delivery_cost">0</span>
                               </c:if>
                                 <span class="won">원</span>
                             </dd>
@@ -151,8 +160,13 @@
                         <dl class="price_last">
                             <dt class="index">결제예정금액</dt>
                             <dd class="price_block">
-                                <span class="num">
-                                	<fmt:formatNumber value="${saleSum}" />
+                                <span class="num" id="totalPrice">
+                                	<c:if test="${saleSum >= 30000}">
+		                                <fmt:formatNumber value="${saleSum + 3000}" />
+		                              </c:if>
+		                              <c:if test="${saleSum < 30000 }">
+                              			<fmt:formatNumber value="${saleSum}" />
+                              		</c:if>
                                 </span>
                                 <span class="won">원</span>
                             </dd>
