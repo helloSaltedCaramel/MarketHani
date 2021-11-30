@@ -8,7 +8,7 @@
 <head>
 
     <%-- import infoModify.css --%>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/infoModify.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/my_infoModify.css"/>
 
     <%-- import header.css --%>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css"/>
@@ -38,14 +38,11 @@
 
 	<jsp:include page="../include/header.jsp"/>
 	
+
+	<div id="infoModify_main">
 	<c:set var="dto" value="${userData}"/>
-	<div id=infoModify_main>
 		<div id="infoModify_content"> 
-			<div id="myPageTop" class="page_aticle mypage_top">
-				<div class="mypagetop_user">
-					<div class="inner_mypagetop">
-					</div>
-				</div>
+
 				<div class="page_aticle aticle_type2">
 				
 				    <%-- 마이 할리 좌측 메뉴 --%> 
@@ -57,7 +54,7 @@
 									<a href="${pageContext.request.contextPath}/user/user_mypage_orderlist.jsp">주문 내역</a>
 								</li>
 								<li>
-									<a href="">배송지 관리</a>
+									<a href="">적립금</a>
 								</li>
 								<li>
 									<a href="">상품 후기</a>
@@ -78,41 +75,49 @@
 							<h2 class="tit">개인 정보 수정</h2>
 						</div>
 						<div class="type_form member_join member_mod">
-							<form id="registForm" action="${pageContext.request.contextPath}/user_.do" method="post">
+							<form id="registForm" action="${pageContext.request.contextPath}/user_modify.do" method="post">
 								
 								<table class="tbl_comm">
 									<tbody>
 										<tr class="fst">
 											<th>아이디</th>
 											<td>
-											<input type="text" value="${user_id }" class="inp_read" readonly="readonly">
+											<input type="text" value="${user_id }" class="inp_read" readonly>
 											</td>
 										</tr>
 										<tr>
 											<th>현재 비밀번호</th>
 											<td>
 											<input type="password" name="originalPassword" id="originalPassword" ">
-											<input type="hidden" name="originalPasswordCheck" value="1">
+											<input type="hidden" name="originalPasswordCheck" >
 											</td>
 										</tr>
 										<tr class="member_pwd">
 											<th>새 비밀번호</th>
 											<td>
-												<input type="password" name="newPassword" id="newPassword" label="새 비밀번호" option="regPass" maxlength="16" class="reg_pw">
-												<input type="hidden" name="newPasswordCheck" value="0">				
+												<input type="password" name="newPassword" id="newPassword" label="새 비밀번호" maxlength="16" class="reg_pw">
+												<input type="hidden" name="newPasswordCheck" >				
+											</td>
+										</tr>
+										<tr class="member_pwd">
+											<th>새 비밀번호 확인</th>
+											<td>
+												<input type="password" name="confirmPassword" id="confirmPassword" label="새 비밀번호 확인" maxlength="16" class="confirm_pw">
+												<input type="hidden" name="newPasswordCheck" >				
 											</td>
 										</tr>
 										<tr>
 											<th>이메일</th>
 											<td>
 												<input type="text" name="email" value="${dto.getUser_email()}" size="80" label="이메일" placeholder="예: marketkurly@kurly.com">
+												<button id="btn_cert" class="btn default" type="button">중복확인</button>
 											</td>
 										</tr>
 										<tr class="field_phone">
 											<th>휴대폰</th>
 											<td>
 											<div class="phone_num">
-												<input type="text" value="${dto.getUser_phone()}"  name="mobileInp" placeholder="숫자만 입력해주세요" class="inp" readonly="readonly">											
+												<input type="text" value="${dto.getUser_phone()}"  name="mobileInp" placeholder="숫자만 입력해주세요" class="inp">											
 												<button id="btn_cert" class="btn default" type="button">다른번호 인증</button>
 											</div>
 											</td>
@@ -138,11 +143,11 @@
 											<th>생년월일</th>
 											<td>
 											<div class="birth_day">
-												<input type="text" name="birth_year" id="birth_year" pattern="[0-9]*" value="" label="생년월일" size="4" maxlength="4" placeholder="YYYY">
+												<input class="birth_input"  type="text" name="year" id="birth_year" maxlength="4" placeholder="YYYY">
 												<span class="bar"></span>
-													<input type="text" name="birth[]" id="birth_month" pattern="[0-9]*" value="" label="생년월일" size="2" maxlength="2" placeholder="MM">
+												<input class="birth_input"  type="text" name="month" id="birth_month"  maxlength="2" placeholder="MM">
 												<span class="bar"></span>
-													<input type="text" name="birth[]" id="birth_day" pattern="[0-9]*" value="" label="생년월일" size="2" maxlength="2" placeholder="DD">
+												<input class="birth_input"  type="text" name="day" id="birth_day"  maxlength="2" placeholder="DD">
 											</div>
 											</td>
 										</tr>
@@ -186,17 +191,16 @@
 								</table>
 							
 								<div id="formSubmit" class="form_footer">
-									<a href="/shop/member/hack.php?&amp;" class="btn default">탈퇴하기</a>
-									<button type="submit" class="btn active" onclick="regist()">회원정보수정</button>
-								
+									<button type="button" class="btn default"onclick="">탈퇴하기</button>
+									<button type="button" class="btn active" onclick="">회원정보수정</button>								
 								</div>
 							</form>	
 						</div>
 					</div> <%-- page_section section_myinfo end --%>
 				</div> <%-- page_aticle aticle_type2 end --%>			
-			</div><%-- myPageTop end --%>	
+
 		</div> <%-- infoModify_content end --%>	
-	</div> <%-- div id=infoModify_main end --%>
+	</div> <%-- infoModify_main end --%>
 	
 	
 	

@@ -1,0 +1,179 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.page_aticle {
+    width: 1050px;
+    margin: 0 auto;
+    padding-top: 65px;
+}
+
+.page_aticle button, .page_aticle input, .page_aticle select, .page_aticle * {
+    font-family: noto sans;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+
+/*마이 할리 좌측 메뉴 css*/
+#snb {
+    float: left;
+    width: 200px;
+}
+
+#snb .inner_snb {
+    border: 1px solid #f2f2f2;
+    border-bottom: 0;
+}
+
+#snb .tit_snb {
+    padding: 5px 0 35px 1px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 35px;
+    color: #333;
+    letter-spacing: -1px;
+}
+
+#snb .inner_snb {
+    border: 1px solid #f2f2f2;
+    border-bottom: 0;
+}
+
+#snb .list_menu li {
+    border-bottom: 1px solid #f2f2f2;
+}
+
+#snb .list_menu li a {
+    display: block;
+    overflow: hidden;
+    padding: 14px 0 16px 20px;
+    background: #fff url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    letter-spacing: -.3px;
+}
+
+#snb .list_menu li.on a, #snb .list_menu li a:hover {
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-weight: 700;
+    color: #5f0080;
+}
+
+
+
+/* 주문 내역 제목관련 css */
+.page_aticle.aticle_type2 .page_section {
+    float: right;
+    width: 820px;
+}
+
+.page_aticle .head_aticle {
+    padding: 5px 0 34px;
+}
+
+.page_aticle .head_aticle .tit {
+    height: 36px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #333;
+    letter-spacing: -.5px;
+}
+
+.page_aticle .head_aticle .tit_sub {
+    padding-left: 11px;
+    font-size: 14px;
+    color: #999;
+    line-height: 20px;
+    letter-spacing: -.3px;
+    vertical-align: 3px;
+}
+
+/*주문 내역관련 css*/
+.section_orderlist .list_order {
+    padding-top: 10px;
+    border-top: 2px solid #333;
+}
+
+.section_orderlist .list_order .date {
+    padding-top: 20px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    color: #666;
+}
+
+.section_orderlist .list_order .order_goods {
+    position: relative;
+    margin-top: 10px;
+    padding: 0 20px;
+    border: 1px solid #dddfe1;
+}
+
+.section_orderlist .list_order .name {
+    padding: 20px 0 13px;
+    border-bottom: 1px solid #dddfe1;
+}
+
+.section_orderlist .list_order .name a {
+    display: block;
+    overflow: hidden;
+    background: url(https://res.kurly.com/pc/ico/1806/ico_arrow_10x15.png) no-repeat 100% 1px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    color: #000;
+    cursor: pointer;
+}
+
+.section_orderlist .list_order .order_info {
+    overflow: hidden;
+    padding: 14px 0 20px;
+}
+
+.section_orderlist .list_order .thumb {
+    float: left;
+    width: 60px;
+    margin-right: 20px;
+}
+
+.section_orderlist .list_order .thumb img {
+    width: 60px;
+    height: auto;
+}
+
+.section_orderlist .list_order .desc {
+    overflow: hidden;
+    padding-top: 1px;
+}
+
+.section_orderlist .list_order .order_info dl:first-child {
+    padding-top: 3px;
+}
+
+.section_orderlist .list_order .order_info dl {
+    overflow: hidden;
+    padding-top: 6px;
+}
+
+.section_orderlist .list_order .order_info dt {
+    float: left;
+    padding-right: 15px;
+    font-size: 12px;
+    color: #000;
+    line-height: 20px;
+}
+
+.section_orderlist .list_order .order_info dd {
+    float: left;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    color: #000;
+}

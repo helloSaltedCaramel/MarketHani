@@ -7,8 +7,8 @@
 <html>
 <head>
 
-    <%-- import my_orderlist.css --%>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/my_orderlist.css"/>
+    <%-- import my_emoney.css --%>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/my_emoney.css"/>
 
     <%-- import header.css --%>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css"/>
@@ -37,8 +37,8 @@
 
 	<jsp:include page="../include/header.jsp"/>
 	
-	<div id="orderlist_main">
-		<div id="orderlist_content"> 
+	<div id="emoney_main">
+		<div id="emoney_content"> 
 
 				<div class="page_aticle aticle_type2">
 				
@@ -66,49 +66,93 @@
 						</div>
 					</div>
 					
-					<%-- 마이 할리 중 주문 내역 파트 부분 --%>
-					<div id="viewOrderList" class="page_section section_orderlist">
+					<%-- 마이할리 중 적립금 파트 부분 --%>
+					<div class="page_section section_point">
 						<div class="head_aticle">
-							<h2 class="tit">주문내역<span class="tit_sub">지난 3년간의 주문 내역 조회가 가능합니다.</span></h2>
+							<h2 class="tit">
+								적립금
+								<span class="tit_sub">보유하고 계신 적립금의 내역을 한 눈에 확인 하실 수 있습니다.</span>
+							</h2>
 						</div>
-						<ul class="list_order">
-							<li>
-								<div class="date">2021.11.16 (21시 02분)</div>
-								<div class="order_goods">
-									<div class="name">
-										<a>[조공]PET 나 게살 좋아해 스틱 외 1건 </a>
-									</div>
-									<div class="order_info">
-										<div class="thumb">
-											<img src="${pageContext.request.contextPath}/img/product/게살.jpg" alt="주문 대표 사진">
-										</div>
-										<div class="desc">
-											<dl>
-												<dt>주문번호</dt>
-												<dd>12313245</dd>
-											</dl>
-											<dl>
-												<dt>결제금액</dt>
-												<dd>1,000원</dd>
-											</dl>
-											<dl>
-												<dt>주문상태</dt>
-												<dd class="status end">배송완료</dd>
-											</dl>
-										</div>
-									</div><%--order_info end --%>
-																		
-								</div> 
-							</li> <%-- 첫번째 주문내역건 end --%>
-							
-						</ul><%-- list_order end --%>
-						<div class="layout-pagination"></div>					
+						<div id="viewPointList">
+							<div class="point_header">
+								<div class="point_view">
+									<h3 class="tit">현재 적립금</h3> 
+									<strong class="point">
+										1,074 
+										<span class="won">원</span>
+									</strong>
+								</div>
+								<span class="disappear">
+									<span class="subject no_day">소멸예정 적립금</span> 
+									<span class="num">0 원</span>
+								</span>
+							</div>
+							<table class="tbl tbl_type1">
+								<caption style="display: none;">적립 사용 내역 상세보기</caption>
+								<colgroup>
+									<col style="width: 120px;"> 
+									<col style="width: auto;"> 
+									<col style="width: 122px;"> 
+									<col style="width: 140px;">
+								</colgroup>
+								<thead>
+									<tr class="bdLine">
+										<th>날짜</th> 
+										<th class="info">내용</th> 
+										<th>유효기간</th> 
+										<th>금액</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>21.11.27</td> 
+										<td class="info">
+											<span class="link">[사용] 주문(12163546) 결제 시 사용</span>
+										</td> 
+										<td></td> 
+										<td class="point minus">-3,000 원 </td>
+									</tr>
+									<tr>
+										<td>21.11.26</td> 
+										<td class="info">
+											<span class="link">[구매적립] 주문(12163546) 0.5% 적립</span>
+										</td> 
+										<td>
+											<span>21.11.26</span>
+										</td> 
+										<td class="point">
+											<span>+</span>
+											135 원        
+										</td>
+									</tr>
+									<tr>
+										<td>21.11.24</td> 
+										<td class="info">
+											<span class="link">[후기적립금] [쌜모네키친] 오로라 생연어 (냉장)</span>
+										</td> 
+										<td>
+											<span>22.11.30</span>
+										</td> 
+										<td class="point">
+											<span>+</span>
+											50 원        
+										</td>
+									</tr>
+									<tr></tr>
+									<tr></tr>
+									<tr></tr>
+								</tbody>							
+							</table>
+							<div></div>
+						</div>
+					
 					</div>
 					
 				</div> <%-- page_aticle aticle_type2 end --%>			
 
-		</div> <%-- orderlist_content end --%>	
-	</div> <%-- orderlist_main end --%>
+		</div> <%-- emoney_content end --%>	
+	</div> <%-- emoney_main end --%>
 	
 	
 	

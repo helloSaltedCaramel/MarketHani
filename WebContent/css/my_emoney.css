@@ -1,0 +1,229 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.page_aticle {
+    width: 1050px;
+    margin: 0 auto;
+    padding-top: 65px;
+}
+
+
+/*마이 할리 좌측 메뉴 css*/
+#snb {
+    float: left;
+    width: 200px;
+}
+
+#snb .inner_snb {
+    border: 1px solid #f2f2f2;
+    border-bottom: 0;
+}
+
+#snb .tit_snb {
+    padding: 5px 0 35px 1px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 35px;
+    color: #333;
+    letter-spacing: -1px;
+}
+
+#snb .inner_snb {
+    border: 1px solid #f2f2f2;
+    border-bottom: 0;
+}
+
+#snb .list_menu li {
+    border-bottom: 1px solid #f2f2f2;
+}
+
+#snb .list_menu li a {
+    display: block;
+    overflow: hidden;
+    padding: 14px 0 16px 20px;
+    background: #fff url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    letter-spacing: -.3px;
+}
+
+#snb .list_menu li.on a, #snb .list_menu li a:hover {
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-weight: 700;
+    color: #5f0080;
+}
+
+/**/
+.page_aticle.aticle_type2 .page_section {
+    float: right;
+    width: 820px;
+}
+
+/**/
+.page_aticle .head_aticle {
+    padding: 5px 0 34px;
+}
+
+.page_aticle .head_aticle .tit {
+    height: 36px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+    color: #333;
+    letter-spacing: -.5px;
+}
+
+.page_aticle .head_aticle .tit_sub {
+    padding-left: 11px;
+    font-size: 14px;
+    color: #999;
+    line-height: 20px;
+    letter-spacing: -.3px;
+    vertical-align: 3px;
+    font-weight: 400;
+}
+
+
+/*point_header*/
+.section_point .point_header {
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+/*point_view*/
+.section_point .point_header .point_view {
+    float: left;
+    width: 409px;
+    border-right: 1px solid #ddd;
+}
+
+.section_point .point_header .tit {
+    float: left;
+    padding: 38px 0 0 60px;
+    font-size: 14px;
+    color: #000;
+    line-height: 54px;
+    font-weight: 400;
+}
+
+.section_point .point_header .point {
+    float: right;
+    padding: 34px 59px 36px 0;
+    font-size: 20px;
+    line-height: 63px;
+    font-weight: 400;
+    color: #5f0080;
+    text-align: right;
+}
+
+/*disappear*/
+.section_point .point_header .disappear {
+    float: left;
+    width: 408px;
+}
+.section_point .point_header .subject.no_day {
+    padding-top: 38px;
+}
+.section_point .point_header .subject {
+    float: left;
+    padding: 29px 0 0 60px;
+    font-size: 14px;
+    color: #000;
+    line-height: 54px;
+    font-weight: 400;
+}
+.section_point .point_header .num {
+    float: right;
+    padding: 34px 59px 36px 0;
+    font-size: 20px;
+    line-height: 63px;
+    font-weight: 400;
+    color: #5f0080;
+    text-align: right;
+}
+
+
+
+/*테이블 tbl tbl_type1*/
+.section_point .tbl_type1 {
+    margin-top: 40px;
+}
+.page_aticle .tbl {
+    width: 100%;
+}
+
+.page_aticle caption, .page_aticle legend {
+    display: none;
+}
+
+/*thead*/
+.page_aticle .tbl_type1 th {
+    padding: 20px 0;
+    border-top: 2px solid #333;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+    letter-spacing: -.5px;
+}
+
+.page_aticle .tbl_type1 th.info {
+    padding-left: 20px;
+    text-align: left;
+}
+
+.tbl tbl_type1 .bdLine {
+	border-top: 1px solid #333;
+}
+
+
+/*tbody*/
+.page_aticle .tbl_type1 tr:first-child td {
+    border-top: 1px solid #333;
+}
+.page_aticle .tbl_type1 td {
+    border-top: 1px solid #f4f4f4;
+}
+
+.section_point .info a {
+    cursor: pointer;
+}
+
+
+.section_point .point.minus {
+    color: #9b9b9b;
+}
+
+.section_point .point {
+    font-weight: 400;
+    color: #5f0080;
+}
+
+.section_point td {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-size: 14px;
+    color: #000;
+    line-height: 20px;
+    text-align: center;
+    font-weight: 400;
+}
+.section_point .info {
+    padding-left: 20px;
+    text-align: left;
+}
+
+.section_point tr:last-child td {
+    border-bottom: 1px solid #ddd;
+}
+
+.page_aticle .tbl_type1 td {
+    border-top: 1px solid #f4f4f4;
+}
+
