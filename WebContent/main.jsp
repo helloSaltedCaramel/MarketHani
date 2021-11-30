@@ -46,7 +46,7 @@
 .main_type2 .bx-controls-direction .bx-prev,
 .main_type4 .bx-controls-direction .bx-prev
  {
-    background: url() 0 0 no-repeat;
+    background: url(./img/main/btn_prev_default.png) 0 0 no-repeat;
     padding: 9px;
 } 
 
@@ -56,6 +56,7 @@
     background: url(./img/main/btn_next_default.png) 0 0 no-repeat;
     padding: 9px;
 } */
+    
     
     </style> 
 
@@ -132,22 +133,22 @@
 	                <%-- slide --%>
 	                <div class="list_goods">
 	                    <ul class="itemSlide">
-	                        <li><div><a href=""><img src="<%=request.getContextPath() %>/img/main/product01.jpg" alt=""></a></div>
+	                        <li><div><a href=""><img src="<%=request.getContextPath() %>/img/product/산양유.jpg" alt="산양유 상품사진"></a></div>
 	                        <div class="info_goods">
-	                            <span class="name"><a class="txt">[구스티] 유기농 아마씨오일</a></span>
-	                            <span class="price"><span class="dc">10%</span>11,277원 </span> 
-	                            <span class="cost">12,530원</span>
+	                            <span class="name"><a class="txt">[조공] PET 나 산양유 좋아해 스틱</a></span>
+	                            <span class="price"></span>5,000원 </span> 
+	                            <%-- <span class="cost">5,000원</span> --%>
 	                        </div>
 	                        </li>
-	                        <li><a href=""><img src="<%=request.getContextPath() %>/img/main/product02.jpg" alt=""></a>
+	                        <li><a href=""><img src="<%=request.getContextPath() %>/img/product/게살.jpg" alt=""></a>
 	                        <div class="info_goods">
-	                            <span class="name"><a class="txt">[구스티] 유기농 아마씨오일</a></span>
-	                            <span class="price"><span class="dc">10%</span>11,277원 </span> 
-	                            <span class="cost">12,530원</span>
+	                            <span class="name"><a class="txt">[조공] PET 나 게살 좋아해 스틱</a></span>
+	                            <span class="price">2,900원 </span> 
+	                            <%--<span class="cost">12,530원</span>--%>
 	                        </div>
 	                        </li>
 	                        <li>
-	                            <a href=""><img src="<%=request.getContextPath() %>/img/main/product01.jpg" alt=""></a>
+	                            <a href=""><img src="<%=request.getContextPath() %>/img/product/산양유.jpg" alt=""></a>
 	                            <div class="info_goods">
 	                                <span class="name"><a class="txt">[구스티] 유기농 아마씨오일</a></span>
 	                                <span class="price"><span class="dc">10%</span>11,277원 </span> 
@@ -155,7 +156,7 @@
 	                            </div>
 	                        </li>                    
 	                        <li>
-	                            <a href=""><img src="<%=request.getContextPath() %>/img/main/product02.jpg" alt=""></a>
+	                            <a href=""><img src="<%=request.getContextPath() %>/img/product/게살.jpg" alt=""></a>
 	                            <div class="info_goods">
 	                                <span class="name"><a class="txt">[구스티] 유기농 아마씨오일</a></span>
 	                                <span class="price"><span class="dc">10%</span>11,277원 </span> 
@@ -163,7 +164,7 @@
 	                            </div>
 	                        </li>                    
 	                        <li>
-	                            <a href=""><img src="<%=request.getContextPath() %>/img/main/product01.jpg" alt=""></a>
+	                            <a href=""><img src="<%=request.getContextPath() %>/img/product/산양유.jpg" alt=""></a>
 	                            <div class="info_goods">
 	                                <span class="name"><a class="txt">[구스티] 유기농 아마씨오일</a></span>
 	                                <span class="price"><span class="dc">10%</span>11,277원 </span> 
@@ -171,7 +172,7 @@
 	                            </div>
 	                        </li>
 	                        <li>
-	                            <a href=""><img src="<%=request.getContextPath() %>/img/main/product02.jpg" alt=""></a>
+	                            <a href=""><img src="<%=request.getContextPath() %>/img/product/게살.jpg" alt=""></a>
 	                            <div class="info_goods">
 	                                <span class="name"><a class="txt">[구스티] 유기농 아마씨오일</a></span>
 	                                <span class="price"><span class="dc">10%</span>11,277원 </span> 
@@ -184,33 +185,29 @@
 	        </div> <%-- main_type2 end --%>
 	    </div> <%-- --%>
 	
-	    <%-- 메인타입 3 - 특가/혜택 ( 이미지 호버했을 때 확대, 슬라이더 미사용 )  --%>
+	    <%-- 메인타입 3 - 지금 가장 핫한 상품( 이미지 호버했을 때 확대, 슬라이더 미사용 )  --%>
 	    <div>
 	        <div class="main_type3">
 	            <div class="main_event">
 	                <div class="tit_goods">
 	                    <h3 class="tit">
 	                        <a href="#" class="name">
-	                            <span class="link_x1">특가/혜택</span>
+	                            <span class="link_x1">지금 가장 핫한 상품</span>
 	                        </a>
 	                    </h3>
 	                </div>
 	                <div class="list_goods">
 	                    <ul data-title="특가/혜택" data-section="event" class="list">
-	                        <li data-index="1"><a href="#" class="thumb_goods"><img src="<%=request.getContextPath() %>/img/main/pc_img_1637144079.jpg"></a>
-	                            <div class="info_goods">
-	                                <div class="inner_info"><span class="name"><a class="txt">수산 최대 35%
-	                                            할인</a></span> <span class="desc"><a class="txt">가을 제철
-	                                            수산물</a></span></div>
-	                            </div>
+	                        <li data-index="1"><a href="#" class="thumb_goods"><img src="<%=request.getContextPath() %>/img/product/게살.jpg"></a>
+	                            <div class="info_goods"><span class="name"><a class="txt">춘천 감자빵 오리지널</a></span> <span class="price">16,000원</span></div>
 	                        </li>
-	                        <li data-index="2"><a href="#" class="thumb_goods"><img src="<%=request.getContextPath() %>/img/main/pc_img_1637144079.jpg"></a>                           
+	                        <li data-index="2"><a href="#" class="thumb_goods"><img src="<%=request.getContextPath() %>/img/product/산양유.jpg"></a>                           
 	                            <div class="info_goods">
 	                                <div class="inner_info"><span class="name"><a class="txt">디저트 최대 60% 할인</a></span> <span class="desc"><a
 	                                            class="txt">커피부터 빵까지</a></span></div>
 	                            </div>
 	                        </li>
-	                        <li data-index="3"><a href="#" class="thumb_goods"><img src="<%=request.getContextPath() %>/img/main/pc_img_1637144079.jpg"></a>
+	                        <li data-index="3"><a href="#" class="thumb_goods"><img src="<%=request.getContextPath() %>/img/product/게살.jpg"></a>
 	                                
 	                            <div class="info_goods">
 	                                <div class="inner_info"><span class="name"><a class="txt">신선 식품 20%
@@ -218,6 +215,13 @@
 	                                            걱정 없이</a></span></div>
 	                            </div>
 	                        </li>
+	                        <li data-index="4"><a href="#" class="thumb_goods"><img src="<%=request.getContextPath() %>/img/main/pc_img_1637144079.jpg"></a>
+	                                
+	                            <div class="info_goods">
+	                                <div class="inner_info"><span class="name"><a class="txt">신선 식품 20%
+	                                            할인</a></span> <span class="desc"><a class="txt">밥상 물가
+	                                            걱정 없이</a></span></div>
+	                            </div>
 	                    </ul>
 	                </div>
 	

@@ -55,6 +55,10 @@
     min-height: 100vh;
 }
 
+.bx-wrapper .bx-next:focus, .bx-wrapper .bx-next:hover {
+    background-position: 0; 
+}
+
 
 /**********************************************************************/
 /*user_event_ban2.jsp관련 css*/

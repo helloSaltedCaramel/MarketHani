@@ -35,12 +35,6 @@
     background: url(../img/main/btn_next.png) 0 0 no-repeat;
     }
     
-    .bx-wrapper .bx-prev:hover {
-    display:block;
-    }
-    .bx-wrapper .bx-next:hover {
-    display:block;
-    }
     
     .bx-wrapper .bx-controls-direction a {
     position: absolute;
@@ -53,6 +47,9 @@
     z-index: 9999;
     background-size: 100%;
 }
+    
+
+    
     
     </style>
     
