@@ -11,8 +11,15 @@ public class QnADTO {
 	private String qna_answer_date;
 	private int qna_status;
 	private int qna_secret;
+	private int p_num;
 	
 	
+	public int getP_num() {
+		return p_num;
+	}
+	public void setP_num(int p_num) {
+		this.p_num = p_num;
+	}
 	public int getQna_num() {
 		return qna_num;
 	}
