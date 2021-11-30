@@ -24,6 +24,7 @@
     <link rel="icon" href="${pageContext.request.contextPath}/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
     <script defer src="${pageContext.request.contextPath}/js/order/order_payment.js"></script>
     <script defer src="${pageContext.request.contextPath}/js/order/order_modal.js"></script>
+    <script defer src="${pageContext.request.contextPath}/js/order/order_point.js"></script>
 </head>
 
 <body>
@@ -41,7 +42,7 @@
         <div class="title_section">
             <h2 class="item_title">주문상품</h2>
         </div>
-        <form method="post" action="${pageContext.request.contextPath}/user_payment.do">
+        <form id="order_form" method="post" action="${pageContext.request.contextPath}/user_payment.do">
             <div class="item_section">
                 <div class="items_info">
                     <button class="items_btn" type="button"></button>
@@ -188,7 +189,27 @@
                         <tbody>
                             <tr class="fst">
                                 <th>적립금 사용</th>
-                                <td>사용 가능한 적립금이 없습니다.</td>
+                                <c:if test="${userData.getUser_point() == 0}">
+                                	<td>사용 가능한 적립금이 없습니다.</td>
+                                </c:if>
+                                <c:if test="${userData.getUser_point() != 0}">
+	                                <td>
+	                                	<div class="point_block">
+	                                	  <input type="hidden" id="avail_point" value="${userData.getUser_point()}">
+		                                	<input type="text" id="input_point" name="used_point" value="0">
+		                                	<button id="point_btn" type="button">사용하기</button>
+		                                	<span class="point">
+		                                		보유 적립금: 
+		                                		<span class="emphasis" id="available_point">
+		                                			<fmt:formatNumber value="${userData.getUser_point() }"/>
+		                                		</span>
+		                                		원
+		                                	</span>
+		                                	<p class="sub_benefit">· 보유 적립금 1천원 이상부터 사용가능 </p>
+		                                	<p class="sub_benefit">· 적립금 내역: 마이컬리 > 적립금</p>
+	                                	</div>
+	                                </td>
+	                              </c:if>
                             </tr>
                         </tbody>
                     </table>
@@ -286,7 +307,7 @@
                             <td>
                                 <div class="terms">
                                     <label class="agree_check">
-                                        <input type="checkbox" name="orderAgree"  required>
+                                        <input id="order_agree" type="checkbox" name="orderAgree"  required>
                                         	결제 진행 필수 동의
                                     </label>
 
@@ -310,8 +331,8 @@
                         </tr>
                     </table>
 
-                    <button type="submit" class="payment_btn">
-                        <span id="totalPrice">
+                    <button type="button" class="payment_btn" onclick="payment()">
+                        <span id="totalPrice_btn">
                         	<c:if test="${priceData.getSaleSum() >= 30000}">
                             <fmt:formatNumber value="${priceData.getSaleSum()}" />
                           </c:if>
@@ -380,7 +401,7 @@
                             <dl class="order_price">
                                 <dt class="head_title">적립금사용</dt>
                                 <dd class="prices">
-                                    <span id="productsPrice">0</span>
+                                    <span id="using_point">0</span>
                                     	원
                                 </dd>
                             </dl>
@@ -390,13 +411,17 @@
                                 <dd class="prices">
                                     <span id="productsPrice">
                                     <c:if test="${priceData.getSaleSum() >= 30000}">
-                                    	<fmt:formatNumber value="${priceData.getSaleSum()}" />
+                                    	<span id="totalPrice">
+                                    		<fmt:formatNumber value="${priceData.getSaleSum()}" />
+                                    	</span>
                                     </c:if>
                                     <c:if test="${priceData.getSaleSum() < 30000}">
-                                    	<fmt:formatNumber value="${priceData.getSaleSum() + 3000}" />
+                                    	<span id="totalPrice">
+                                    		<fmt:formatNumber value="${priceData.getSaleSum() + 3000}" />
+                                    	</span>
                                     </c:if>
-                                    </span>
                                     	원
+                                    </span>
                                 </dd>
                             </dl>
 
@@ -405,7 +430,7 @@
                                 	구매 시
                                 <span class="emphasis">
                                     <span class="reserve_point">
-                                    	<fmt:formatNumber value="${priceData.getSaleSum() * 0.05}" />
+                                    	<fmt:formatNumber value="${priceData.getPointSum()}" />
                                     </span>
                                     	원
                                     <span class="ratio">(5%)</span>
