@@ -21,6 +21,8 @@ public class UserProductReviewWriteOkAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		//자료실 폼 페이지에서 넘어온 데이터들을 DB에 저장하는 비지니스 로직
 		
+		
+		
 		ReviewDTO dto = new ReviewDTO();
 		
 		//첨부파일이 저장될 경로
@@ -72,6 +74,11 @@ public class UserProductReviewWriteOkAction implements Action {
 				path1.mkdir();   //실제 폴더 만드는 메서드
 				
 			}
+			
+			/*
+			 * System.out.println("homedir >> " + homedir); System.out.println("path1 >> " +
+			 * path1); System.out.println("user_id >> " + user_id);
+			 */
 			
 			String reFileName = user_id + "_"+ fileName;
 			

@@ -374,6 +374,7 @@ iframe {
 	
 	<%--페이징 처리 시작 --%>
 	<br>
+	<div align="center"> <%-- 페이징 처리 div --%>
 	<c:if test="${page > block }">
 		<a
 			href="<%=request.getContextPath()%>/user_product_review_list.do?page=1">◀◀</a>
@@ -397,7 +398,7 @@ iframe {
 			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${endBlock+1}">▶</a>
 		<a href="<%=request.getContextPath() %>/user_product_review_list.do?page=${allPage}">▶▶</a>
 	</c:if>
-
+	</div>  <%-- 페이징 처리 div end--%>
 
 
 
