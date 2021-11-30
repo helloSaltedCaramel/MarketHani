@@ -24,6 +24,7 @@ public class QnADAO {
 		// 2단계 : QnADAO 객체를 정적 멤버로 선언해야 함. - static으로 선언해야 함.
 		private static QnADAO instance = null;
 		
+		
 		private QnADAO() {   }  // 기본생성자.
 			
 		// 3단계 : 기본 생성자 대신에 싱글턴 객체를 return 해 주는 getInstance() 라는
@@ -81,17 +82,16 @@ public class QnADAO {
 		}  // closeConn() 메서드 end
 		
 		//kurly_qna 테이블에서 전체 리스트를 조회하는 메서드
-		public List<QnADTO> getQnAList(int p_num) {
+		public List<QnADTO> getQnAList() {
 			List<QnADTO> QnAlist = new ArrayList<QnADTO>();
 			
 			try {
 
 				openConn();
 				
-				sql = "select * from kurly_qna where p_num = ? order by qna_num desc";
+				sql = "select * from kurly_qna order by qna_num desc";
 				
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, p_num);
 				
 				rs = pstmt.executeQuery();
 				
@@ -102,12 +102,12 @@ public class QnADAO {
 					dto.setUser_id(rs.getString("user_id"));
 					dto.setQna_title(rs.getString("qna_title"));
 					dto.setQna_content(rs.getString("qna_content"));
-					dto.setQna_date(rs.getString("qna_date").substring(0, 10));
+					dto.setQna_date(rs.getString("qna_date"));
 					dto.setQna_answer(rs.getString("qna_answer"));
 					dto.setQna_answer_date(rs.getString("qna_answer_date"));
 					dto.setQna_status(rs.getInt("qna_status"));
 					dto.setQna_secret(rs.getInt("qna_secret"));
-					dto.setP_num(rs.getInt("p_num"));
+					
 					
 					QnAlist.add(dto);
 				}
@@ -123,97 +123,6 @@ public class QnADAO {
 			return QnAlist;
 			
 		} //getQnAList() 메서드 end
-
-		public int writeQnA(QnADTO dto) {
-			
-			int res = 0, count = 0;
-			
-			try {
-				openConn();
-				
-				//QnA 글 번호 최대값 받아오기
-				sql = "select max(qna_num) from kurly_qna";	
-				pstmt = con.prepareStatement(sql);
-				rs = pstmt.executeQuery();
-				
-				if(rs.next()) {
-					
-					count = rs.getInt(1) + 1;
-				}
-				
-				//QnA 글쓰기
-				sql = "insert into kurly_qna values(?, ?, ?, ?, sysdate, NULL, NULL, NULL, ?, ?)";
-				pstmt = con.prepareStatement(sql);
-				
-				pstmt.setInt(1, count);
-				pstmt.setString(2, dto.getUser_id());
-				pstmt.setString(3, dto.getQna_title());
-				pstmt.setString(4, dto.getQna_content());
-				pstmt.setInt(5, dto.getQna_secret());
-				pstmt.setInt(6, dto.getP_num());
-				
-				res = pstmt.executeUpdate();
-				
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-				closeConn(rs, pstmt, con);
-			}
-			
-			return res;
-		}//writeQnA() end
-
-		public int deleteQnA(int qna_num) {
-			
-			int res = 0;
-			
-			try {
-				//글 삭제
-				openConn();
-				sql = "delete from kurly_qna where qna_num = " + qna_num;
-				pstmt = con.prepareStatement(sql);
-				res = pstmt.executeUpdate();
-				
-				//글 번호 업데이트
-				sql= "update kurly_qna set qna_num = qna_num - 1 where qna_num > " + qna_num;
-				
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-				closeConn(rs, pstmt, con);
-			}
-			
-			return res;
-		}//deleteQnA() end
-
-		public int reviseQnA(QnADTO dto) {
-
-			int res = 0;
-			
-			try {
-				openConn();
-				
-				sql = "update kurly_qna set qna_title = ?, qna_content = ?, qna_date = sysdate where qna_num = ?";
-				
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, dto.getQna_title());
-				pstmt.setString(2, dto.getQna_content());
-				pstmt.setInt(3, dto.getQna_num());
-				
-				res = pstmt.executeUpdate();
-				
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-				closeConn(rs, pstmt, con);
-			}
-			
-			return res;
-		}//reviseQnA() end
-
 	
 }
 

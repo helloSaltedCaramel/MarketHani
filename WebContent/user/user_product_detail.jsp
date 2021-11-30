@@ -31,81 +31,21 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/footer.css" />
 
-<!-- jQuery library (served from Google) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-<title>${dto.p_name }상품상세페이지</title>
+
+
 <%-- import eventMain.css --%>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/product_detail.css">
 
 <script type="text/javascript">
 
-	$(document).ready(function() {
-		$('#tab_01').click(function() {
-			var offset = $('#tab_01 scroll').offset(); //선택한 태그의 위치를 반환
-
-			//animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
-
-			$('html').animate({
-				scrollTop : offset.top
-			}, 1000);
-
-		});
-
-	});
-
-	$(document).ready(function() {
-		$('#tab_02').click(function() {
-			var offset = $('#tab_02 scroll').offset(); //선택한 태그의 위치를 반환
-
-			//animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
-
-			$('html').animate({
-				scrollTop : offset.top
-			}, 1000);
-
-		});
-
-	});
-
-	$(document).ready(function() {
-		$('#tab_03').click(function() {
-			var offset = $('#tab_03 scroll').offset(); //선택한 태그의 위치를 반환
-
-			//animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
-
-			$('html').animate({
-				scrollTop : offset.top
-			}, 1000);
-
-		});
-
-	});
-
-	$(document).ready(function() {
-		$('#tab_04').click(function() {
-			var offset = $('#tab_04 scroll').offset(); //선택한 태그의 위치를 반환
-
-			//animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
-
-			$('html').animate({
-				scrollTop : offset.top
-			}, 1000);
-
-		});
-
-	});
 
 	function onDisplay() {
 
 		$('#shareLayer').toggle();
 
-		//animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
-
-        $('html').animate({scrollTop : offset.top}, 1000);
-
-	} // 공유하기 버튼 클릭시 보이고 안보이고
+	}; // 공유하기 버튼 클릭시 보이고 안보이고
 	
 	 //링크 클릭시 헤당 섹션으로 부드럽게 이동시키기
 	  $(document).on('click','#ul_product a',function(event){
@@ -113,144 +53,10 @@
 	  event.preventDefault();
 	  	$("html,body").animate({
 	    	scrollTop : $(this.hash).offset().top - headerHeight
-	    },300)
+	    },800)
 	 
 	});
-
-
-function expandQna(num){
 	
-	$('.expand_div#' + num).toggle();
-	
-} // QnA 게시판 제목 클릭시 질문과 답변 토글
-
-function showSecret(){
-	
-	$('.modal_overlay').show();
-	$('.modal_dialog.warning').show();
-	$('body').addClass('modal_body');
-}/* "비밀글입니다" 메시지 보여주기 */
-
-function hideSecret() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog.warning').hide();
-	$('body').removeClass('modal_body');
-}/* "비밀글입니다" 메시지 감추기 */
-
-function showWrite() {
-	
-	$('.modal_overlay').show();
-	$('.modal_dialog_qna.write').show();
-	$('body').addClass('modal_body');
-}/* 질문작성창 보여주기 */
-
-function hideWrite() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog_qna.write').hide();
-	$('body').removeClass('modal_body');
-}/* 질문작성창 감추기 */
-
-function hideWriteConfirm() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog.confirm').hide();
-	$('body').removeClass('modal_body');
-}/* 작성완료 창 감추기 */
-
-function showWriteFailure() {
-	
-	$('.modal_overlay').show();
-	$('.modal_dialog.failure').show();
-	$('body').addClass('modal_body');
-}/* 작성실패창 보여주기 */
-
-function hideWriteFailure() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog.failure').hide();
-	$('body').removeClass('modal_body');
-}/* 작성실패 창 감추기 */
-
-function showWriteConfirm() {
-	
-	$('.modal_overlay').show();
-	$('.modal_dialog.confirm').show();
-	$('body').addClass('modal_body');
-	
-}/* 작성완료 창 보여주기 */
-
-function reloadQnA() {
-	
-	window.location.reload();
-	
-}/* QnA 테이블 새로고침 */
-
-function showDelete() {
-	
-	$('.modal_overlay').show();
-	$('.modal_dialog.delete').show();
-	$('body').addClass('modal_body');
-		
-}/* 질문삭제 창 보여주기  */
-
-function hideDelete() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog.delete').hide();
-	$('body').removeClass('modal_body');
-		
-}/* 질문삭제 창 감추기  */
-
-function showDeleteConfirm(){
-	$('.modal_overlay').show();
-	$('.modal_dialog.delete_confirm').show();
-	$('body').addClass('modal_body');
-}/* 삭제확인 창 보여주기 */
-
-function hideDeleteConfirm(){
-	$('.modal_overlay').hide();
-	$('.modal_dialog.delete_confirm').hide();
-	$('body').removeClass('modal_body');
-}/* 삭제확인 창 감추기 */
-
-function showRevise(qna_num, qna_title, qna_content) {
-	
-	//받아온 각 데이터를 수정 폼에 전달
-	$('.qna_revise_title').attr('value', qna_title);
-	$('.qna_revise_content').append(qna_content);
-	$('.modal_dialog_qna.revise').children('form').append('<input type="hidden" name="qna_num" value="' + qna_num + '">')
-	
-	//모달 보여주기
-	$('.modal_overlay').show();
-	$('.modal_dialog_qna.revise').show();
-	$('body').addClass('modal_body');
-		
-}/* 질문수정 창 보여주기  */
-
-function hideRevise() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog_qna.revise').hide();
-	$('body').removeClass('modal_body');
-		
-}/* 질문수정 창 감추기  */
-
-function showReviseConfirm() {
-	
-	$('.modal_overlay').show();
-	$('.modal_dialog.revise_confirm').show();
-	$('body').addClass('modal_body');
-}/* 질문수정완료 창 보여주기  */
-
-function hideReviseConfirm() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog.revise_confirm').hide();
-	$('body').removeClass('modal_body');
-}/* 질문수정완료 창 감추기  */
-
 </script>
 
 </head>
@@ -263,14 +69,13 @@ function hideReviseConfirm() {
 	
 	<br>
 		<c:set var="dto" value="${productCont }" />
-		
 		<c:if test="${!empty dto }">
-	
+		<title>[${dto.p_seller }]${dto.p_name }상품상세페이지</title>
 		<div id="main">
 			<div id="content" style="opacity: 1;">
 				<div class="section_view">
 
-					<div id="shareLayer">
+					<div id="shareLayer" >
 						<div class="layer_share">
 							<div class="inner_layersns">
 								<h3 class="screen_out">SNS 공유하기</h3>
@@ -497,8 +302,7 @@ function hideReviseConfirm() {
 				</div>
 			</div>
 		</div> <%-- div.main end --%>
-		</c:if>
-		
+	
 		<%-- 페이지 위로 올리는 버튼  --%>
 		<a href="#top" id="pageTop" class="on"
 			style="opacity: 1; bottom: 25px;">맨 위로가기</a>
@@ -572,262 +376,76 @@ function hideReviseConfirm() {
 							<div>답변상태</div>
 						</div>
 						
-						
-						<%-- QnA 공지부분 --%>
+						<%-- 비밀글 여부 표시 필요 : isSecret() 기능 필요 --%>
 						<ul class="qna_notice_list">
 							<li class="qna_notice_item">
 								<div class="notice-cell">
 									<span>공지</span>
-									<strong>판매 (일시)중단 제품 안내 (21-11-12 업데이트)</strong>
+									<strong>판매 (일시)중단 제품 안내 (21.11.12 업데이트)</strong>
 								</div>
 								<div class="item-cell"><p>Marketkurly</p></div>
-								<div class="item-cell"><p>2021-11-18</p></div>
+								<div class="item-cell"><p>2021.11.18</p></div>
 								<div class="item-cell"><p>-</p></div>
 							</li>
 						</ul>
 						
-						<%-- QnA 내용부분 --%>
-						<c:set var="list" value="${List }"/>
-						
 						<ul class="qna_content_list">
-						
-						<c:if test="${empty list }">
-							<li><strong>등록된 문의가 없습니다</strong></li>
-						</c:if>
-						
-						<c:if test="${!empty list }">
-						
-							<c:forEach items="${list }" var="q_dto" varStatus="status">
-								<li class="qna_content_item">
-								
-									<c:if test="${q_dto.getQna_secret() == 1}"> <%-- 비밀 글 : 제목 클릭 시 모달 함수 호출("비밀글입니다") --%>
-										<div class="content-cell secret" onclick="showSecret();">	
-											<strong id="secret_title"><font color="#b5b5b5">
-												비밀글입니다.&nbsp;&nbsp;<img src="<%=request.getContextPath() %>/img/product/qna_secret.svg">
-											</font></strong>
-										</div>
-									</c:if>
-									
-									<c:if test="${q_dto.getQna_secret() != 1}"> <%-- 일반 글 : 제목 클릭 시 토글 함수 호출--%>
-										<div class="content-cell" onclick="expandQna(${status.count });">	
-											<strong id="question_title">${q_dto.getQna_title() }</strong>
-										</div>
-									</c:if>											
-								
-									
-									<div class="item-cell"><p>${q_dto.getUser_id() }</p></div>
-									<div class="item-cell"><p>${q_dto.getQna_date() }</p></div>
-									<div class="item-cell">
-										<p>
-										<c:if test="${q_dto.getQna_status() == 1}">
-											<font color="#5f0081">답변완료</font>	
-										</c:if>
-										<c:if test="${q_dto.getQna_status() != 1}">
-											답변대기
-										</c:if>
-										</p>
-									</div>
-								</li>
-								
-								<div class="expand_div" id="${status.count }">	<%-- 토글 함수에 들어가는 id값 설정하기 위한 div --%>
-									
-									<c:if test="${q_dto.getQna_secret() != 1}">	<%-- 비밀글이 아닐 때에만 로딩 --%>
-									
-										<%-- 클릭 시 확장될 질문영역 --%>
-										<c:if test="${!empty q_dto.getQna_content()}">
-											<li class="qna_content_item expand">		
-												<div class="content-cell expand">
-													<span><img class="qna_mark" src="<%=request.getContextPath() %>/img/product/qna_question_mark.svg"></span>
-													<span><strong>${q_dto.getQna_content() }</strong></span>
-													<div class="item-cell update">
-														<p>
-															<a onclick="showRevise(${q_dto.getQna_num() }, '${q_dto.getQna_title() }', 
-																				   '${q_dto.getQna_content() }');">수정</a>&nbsp;&nbsp;&nbsp;
-															<a onclick="if(confirm('작성한 문의를 삭제하시겠습니까?')){
-																			location.href='user_qna_delete.do?qna_num=${q_dto.getQna_num() }';
-																			showDeleteConfirm();
-																	   }else{return; };">삭제</a>
-														</p>
-													</div>
-												</div>									
-											</li>
-										</c:if>
-										
-										<%-- 클릭 시 확장될 답변영역 --%>
-										<c:if test="${!empty q_dto.getQna_answer()}">
-											<li class="qna_content_item expand">
-												<div class="content-cell expand">
-													<span><img class="qna_mark" src="<%=request.getContextPath() %>/img/product/qna_answer_mark.svg"></span>
-													<span><strong>${q_dto.getQna_answer() }</strong></span>
-												</div>
-											</li>
-										</c:if>
-										
-									</c:if>
+							<li class="qna_content_item">
+								<div class="content-cell">
+									<strong>부스러기가 너무 많아요</strong>
 								</div>
-							</c:forEach>	
-						</c:if>
-						
+								<div class="item-cell"><p>김*현</p></div>
+								<div class="item-cell"><p>2021.11.19</p></div>
+								<div class="item-cell"><p>답변대기</p></div>
+							</li>
+							
+							<li class="qna_content_item">
+								<div class="content-cell">
+									<strong>언제 생산된 제품인 지 알 수 있나요?</strong>
+								</div>
+								<div class="item-cell"><p>이*욱</p></div>
+								<div class="item-cell"><p>2021.11.18</p></div>
+								<div class="item-cell"><p>답변대기</p></div>
+							</li>
+							
+							<li class="qna_content_item">
+								<div class="content-cell">
+									<strong>배송 일정 문의드립니다</strong>
+								</div>
+								<div class="item-cell"><p>박*신</p></div>
+								<div class="item-cell"><p>2021.11.18</p></div>
+								<div class="item-cell"><p>답변대기</p></div>
+							</li>
+							
+							<li class="qna_content_item">
+								<div class="content-cell">
+									<strong>재입고 문의</strong>
+								</div>
+								<div class="item-cell"><p>김*수</p></div>
+								<div class="item-cell"><p>2021.11.16</p></div>
+								<div class="item-cell"><p>답변대기</p></div>
+							</li>
 						</ul>
 						
-						<%-- 문의하기, 페이지 이동 버튼 --%>
+						<%-- Q&A 버튼의 활성화 유무 표시 필요함: 리뷰작성 가능 여부 판별 기능) --%>
 						<div class="qna_button_area">
 							<div class="qna_paging_nav">
 								<button type="button" class="prev"><span></span></button>
 								<button type="button" class="next"><span></span></button>
 							</div>
-							<button class="qna_write_btn" onclick="showWrite();">
+							<button class="qna_write_btn">
 								<span>문의하기</span>
 							</button>
 						</div>
-					</div> <%-- .qna_content end --%>
-				</div>	<%-- .qna_container end --%>	
-			</div> <%-- #tab_04 scroll --%>
-		</div> <%-- .contents_top --%>
-	</div> <%-- #body_product end --%>
-	
+					</div>
+				</div>		
+			</div>
+		</div>
+	</div>
 		
-	<%-- 모달 오버레이(공용) --%>
-	<div class="modal_overlay">
+	</c:if>
 	</div>
-	
-	<%-- 모달: "비밀글입니다" 경고창 --%>
-	<div class="modal_dialog warning">
-		<p>비밀글입니다</p>
-		<button class="modal_button" onclick="hideSecret();"><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
-	</div>
-	
-	<%-- 모달: 작성 완료 메시지 --%>
-	<div class="modal_dialog confirm">
-		<p>문의가 정상적으로 등록되었습니다.</p>
-		<button class="modal_button" onclick="hideWriteConfirm(); location.reload();"><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
-	</div>
-	
-	<%-- 모달: 작성 실패 메시지 --%>
-	<div class="modal_dialog failure">
-		<p>문의 등록에 실패하였습니다</p>
-		<button class="modal_button" onclick="hideWriteFailure();"><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
-	</div>
-	
-	<%-- 모달: "작성한 문의를 삭제하시겠습니까?"  --%>
-	<div class="modal_dialog delete">
-		<p>작성한 문의를 삭제하시겠습니까?</p>
-		<button class="modal_button delete1" onclick="hideDelete();"><strong>취소</strong></button>
-		<button class="modal_button delete2" onclick=""><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
-	</div>
-	
-	<%-- 모달: 삭제 완료 메시지 --%>
-	<div class="modal_dialog delete_confirm">
-		<p>삭제되었습니다</p>
-		<button class="modal_button" onclick="hideDeleteConfirm(); location.reload();"><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
-	</div>
-	
-	<%-- 모달: 수정 완료 메시지 --%>
-	<div class="modal_dialog revise_confirm">
-		<p>수정이 완료되었습니다</p>
-		<button class="modal_button" onclick="hideReviseConfirm(); location.reload();"><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
-	</div>
-	
-	<%-- 문의하기 버튼 클릭 시 모달로 띄워줄 질문 작성창 --%>
-	<div class="modal_dialog_qna write">
-		<form action="user_qna_write.do" method="post">	<%-- 작성시 write_qna.do로 맵핑 --%>
-			
-			<input type="hidden" value="${dto.getP_num() }" name="p_num">	<%-- 제품번호 : p_num --%>
-			<input type="hidden" value="test_user" name="user_id"> <%-- 세션에서 user_id 갖고와야함 --%>
-			
-			<table class="modal_qna_write">
-				<tr class="modal_qna_title" height="53px">
-					<td colspan="2">
-						<strong>상품 문의하기</strong>
-						<img src="<%=request.getContextPath() %>/img/product/qna_close.svg" onclick="hideWrite();"> <%-- 상단 우측 'X' 버튼 --%>
-					</td>
-				</tr>
-				<tr class="modal_qna_header" height="90px">
-					<td width="100px">
-						<div class="modal_qna_image">
-							<img width="72px" height="72px" src="<%=request.getContextPath() %>/img/product/${dto.getP_image()}">
-						</div>
-					</td>
-					<td><strong>[${dto.p_seller}]${dto.p_name }</strong></td>
-				</tr>
-				<tr class="modal_write_title" height="50px">
-					<td width="100px">제목</td>
-					<td><input name="qna_title"></td>	<%-- 제목 : qna_title --%>
-				</tr>
-				<tr class="modal_write_content" height="260px">
-					<td width="100px" rowspan="2">내용</td>					<%-- 내용 : qna_content --%>
-					<td><textarea maxlength="5000" name="qna_content"></textarea></td>
-				</tr>
-				<tr class="modal_write_secret" height="25px">
-					<td>
-						<label onclick="alert('test');">
-							<input class="secret_check" type="checkbox" name="is_secret"> <%-- 비밀글여부 : is_secret --%>
-							<span class="secret_check_ico"> </span>
-							<span>비밀글로 문의하기</span>
-						</label>
-					</td>
-				</tr>
-				<tr class="modal_write_button" height="77px" align="center">
-					<td colspan="2">
-						<button onclick="hideWrite();">취소</button>
-						<button onclick="hideWrite(); showWriteConfirm();" type="submit">등록</button>
-					</td>
-				</tr>
-			</table>
-		</form>				
-	</div><%-- .modal_dialog qna_write end --%>	
-	
-	<%-- 수정하기 버튼 클릭 시 모달로 띄워줄 작성창 --%>
-	<div class="modal_dialog_qna revise">
-		
-		<form action="user_qna_revise.do" method="post">	<%-- 작성시 revise_qna.do로 맵핑 --%>
-			
-			<input type="hidden" value="${dto.getP_num() }" name="p_num">	<%-- 제품번호 : p_num --%>
-			<input type="hidden" value="test_user" name="user_id"> <%-- 세션에서 user_id 갖고와야함 --%>
-			
-			<table class="modal_qna_write">
-				<tr class="modal_qna_title" height="53px">
-					<td colspan="2">
-						<strong>문의내용 수정</strong>
-						<img src="<%=request.getContextPath() %>/img/product/qna_close.svg" onclick="hideRevise();"> <%-- 상단 우측 'X' 버튼 --%>
-					</td>
-				</tr>
-				<tr class="modal_qna_header" height="90px">
-					<td width="100px">
-						<div class="modal_qna_image">
-							<img width="72px" height="72px" src="<%=request.getContextPath() %>/img/product/${dto.getP_image()}">
-						</div>
-					</td>
-					<td><strong>[${dto.p_seller}]${dto.p_name }</strong></td>
-				</tr>
-				<tr class="modal_write_title" height="50px">
-					<td width="100px">제목</td>
-					<td><input class="qna_revise_title" name="qna_title" value=""></td>	<%-- 제목 : qna_title --%>
-				</tr>
-				<tr class="modal_write_content" height="260px">
-					<td width="100px" rowspan="2">내용</td>					<%-- 내용 : qna_content --%>
-					<td><textarea class="qna_revise_content" maxlength="5000" name="qna_content"></textarea></td>
-				</tr>
-				<tr class="modal_write_secret" height="25px">
-					<td>
-						<label onclick="alert('test');">
-							<input class="secret_check" type="checkbox" name="is_secret"> <%-- 비밀글여부 : is_secret --%>
-							<span class="secret_check_ico"> </span>
-							<span>비밀글로 문의하기</span>
-						</label>
-					</td>
-				</tr>
-				<tr class="modal_write_button" height="77px" align="center">
-					<td colspan="2">
-						<button onclick="hideRevise();">취소</button>
-						<button onclick="hideRevise(); showReviseConfirm();" type="submit">등록</button>
-					</td>
-				</tr>
-			</table>
-		</form>				
-	</div><%-- modal_dialog_qna revise end --%>
-		
-	
+
 	<jsp:include page="../include/footer.jsp" />
 
 <%-- </body>

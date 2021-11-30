@@ -58,31 +58,32 @@
 				<c:forEach items="${list}" var="dto">
 					<c:set var="count" value="${count + 1}"/>
 					<td class="item" valign="top">
-
-						<a href="<%=request.getContextPath() %>/user_product_view.do?p_num=${dto.getP_num()}">
-							<div class="image">
+						<div class="image">
+							<a href="<%=request.getContextPath() %>/user_product_view.do?p_num=${dto.getP_num()}">
 								<img class="product" src="<%=request.getContextPath() %>/img/product/${dto.getP_image()}" width="auto" height="435">
-								<input type="hidden" name="p_num" value="${dto.getP_num()}" /> <%-- 2021123: input hidden 추가 (허민회) --%>
-								<button type="button" class="btn_cart"><img src="<%=request.getContextPath() %>/img/product/btn_cart.svg"></button>
-							</div>
-							
-							<br>
-							<div class="title">[${dto.getP_seller()}] ${dto.getP_name()}</div><br>
-							
-						 	<c:if test="${dto.getP_discount() != 0}">
-						 		<div class="discount">
-						 			<span id="percentage"> ${dto.getP_discount() }% </span>  
-						 			<span id="p_discount"><fmt:formatNumber value="${dto.getP_price() * (100-dto.getP_discount()) / 100}"/>원 </span> <br><br>
-						 			<span id="p_original"><fmt:formatNumber value="${dto.getP_price()}"/>원</span> <br><br>
-						 		</div>
-						 	</c:if>
-							
-							<c:if test="${dto.getP_discount() == 0}"> 	
-								<div class="nodiscount"><fmt:formatNumber value="${dto.getP_price()}"/>원</div><br>
-							</c:if>	
-							
-							<div class="contents">${dto.getP_name_cont()}</div><br>
-						</a>
+							</a>
+							<input type="hidden" name="p_num" value="${dto.getP_num()}" /> <%-- 2021123: input hidden 추가 (허민회) --%>
+							<button type="button" class="btn_cart">
+								<img src="<%=request.getContextPath() %>/img/product/btn_cart.svg">
+							</button>
+						</div>
+						
+						<br>
+						<div class="title">[${dto.getP_seller()}] ${dto.getP_name()}</div><br>
+						
+					 	<c:if test="${dto.getP_discount() != 0}">
+					 		<div class="discount">
+					 			<span id="percentage"> ${dto.getP_discount() }% </span>  
+					 			<span id="p_discount"><fmt:formatNumber value="${dto.getP_price() * (100-dto.getP_discount()) / 100}"/>원 </span> <br><br>
+					 			<span id="p_original"><fmt:formatNumber value="${dto.getP_price()}"/>원</span> <br><br>
+					 		</div>
+					 	</c:if>
+						
+						<c:if test="${dto.getP_discount() == 0}"> 	
+							<div class="nodiscount"><fmt:formatNumber value="${dto.getP_price()}"/>원</div><br>
+						</c:if>	
+						
+						<div class="contents">${dto.getP_name_cont()}</div><br>
 					</td>
 					
 					<c:if test="${count % 3 == 0}">
