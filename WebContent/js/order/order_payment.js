@@ -2,7 +2,10 @@ const $payment = document.querySelector(".td_payment");
 const $infoBtn = document.getElementById("info_btn");
 const $addressLayer = document.querySelector(".info_layer");
 const $items_btn = document.querySelector(".items_btn");
+const $payment_btn = document.querySelector('.payment_btn');
 
+
+// 결제수단 선택 시 color, backgroundcolor 바꾸기
 const select = () => {
   const $kakaopay = document.getElementById("kakaopay");
   const $card = document.getElementById("card");
@@ -54,6 +57,7 @@ const select = () => {
   }
 };
 
+// 배송지 변경 안내 투명도 설정
 const easeIn = () => {
   $addressLayer.style.opacity = 1;
 };
@@ -65,6 +69,7 @@ const easeOut = () => {
 let isShort = false; // 토글변수 : true면 간략히, false면 자세히
 $items_btn.style.transform = "rotate(180deg)";
 
+// 아이템 토글 부분
 const itemsToggle = () => {
   const $short_info = document.querySelector(".short_info"); // 간략하게 보여주는 태그
   const $item_list = document.querySelector(".item_list"); // 물품정보 전부 보여주는 태그
@@ -83,6 +88,32 @@ const itemsToggle = () => {
     isShort = true;
   }
 };
+
+// payment_btn 함수
+const payment = () => {
+	const $receiver_input = document.getElementById('receiver_input');
+	const $receiver_phone_input = document.getElementById('receiver_phone_input');
+	const $receiver_info = document.querySelector('.receiver_info');
+	
+	if($receiver_input.value === 'empty') {
+		alert('상세정보의 수령인의 성함을 입력해주세요.');
+		$receiver_info.scrollIntoView({behavior: "smooth", block: "center"});
+		return;
+	}
+	
+	if($receiver_phone_input.value === 'empty') {
+		alert('상세정보의 수령인의 휴대폰 번호를 입력해주세요.');
+		$receiver_info.scrollIntoView({behavior: "smooth", block: "center"});
+		return;
+	}
+	
+	if(!document.getElementById('order_agree').checked) {
+		alert('결제 진행을 위한 약관에 동의해주세요.');
+		return;
+	}
+	
+	document.getElementById('order_form').submit();
+}
 
 $payment.addEventListener("click", select);
 $infoBtn.addEventListener("mouseenter", easeIn);

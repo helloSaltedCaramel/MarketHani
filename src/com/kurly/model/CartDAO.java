@@ -89,4 +89,24 @@ public class CartDAO {
 		
 		return result;		
 	}
+	
+	public int deleteCartList(String user_id) {
+		int result = -1;
+		
+		final String sql = "delete from kurly_cart where cart_userid = ?";
+		
+		try {
+			pstmt = connect().prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			connectClose();
+		}
+		
+		return result;
+	}
 }

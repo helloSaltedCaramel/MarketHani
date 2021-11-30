@@ -124,4 +124,40 @@ public class OrderDetailDAO {
 	} //getReviewList() 메서드 end
 
 	
+	public void insertOrderDetail(int order_id, List<CartDataDTO> cartList) {
+		final String sql = "insert into kurly_order_detail values(kurly_order_detail_seq.nextval, ?, ?, ?, ?, ?, ?)";
+		
+		openConn();
+		
+		try {
+			
+			for(CartDataDTO dto : cartList) {
+				int salePrice = (dto.getP_price() - dto.getSalePrice());
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setInt(1, order_id);
+				pstmt.setString(2, dto.getCart_pnum());
+				pstmt.setInt(3, dto.getP_price());
+				pstmt.setInt(4, salePrice);
+				pstmt.setInt(5, dto.getSalePrice());
+				pstmt.setInt(6, dto.getCart_qty());
+				
+				int result = pstmt.executeUpdate();
+				
+				if(result <= 0) {
+					System.out.println("order detail 데이터 추가 중 에러발생");
+					pstmt.close();
+					break;
+				}
+				
+				pstmt.close();
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+	}
 }

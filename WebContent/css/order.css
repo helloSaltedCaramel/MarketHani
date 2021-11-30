@@ -369,6 +369,7 @@ ul {
 }
 
 .receiver_info {
+	display: block;
   font-size: 14px;
   color: #333;
   line-height: 24px;
@@ -505,6 +506,10 @@ ul {
   padding: 9px 0 0;
   background-color: #fff;
   text-align: center;
+}
+
+.simple_benefit {
+	display: none;
 }
 
 .simple,
@@ -741,4 +746,27 @@ ul {
   line-height: 18px;
   letter-spacing: -0.3px;
   margin: 0;
+}
+
+.point_block input {
+	width: 133px;
+	height: 44px;
+	padding: 0 14px 1px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	line-height: 1.5;
+	color: #333;
+}
+
+.point_block button {
+	width: 90px;
+	height: 46px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.point_block .point{
+	display: block;
 }
