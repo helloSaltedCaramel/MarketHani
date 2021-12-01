@@ -96,6 +96,15 @@ ul {
    background: #ebebeb;
   }
 
+
+textarea::placeholder {
+ color : #b8b8b8;
+}
+
+
+
+
+
 </style>
 </head>
 <body>
@@ -145,13 +154,18 @@ ul {
 		<table border="0" cellspacing="0" width="700">
 			
 			<tr>
+			<th><img width="72px" height="72px" src="<%=request.getContextPath() %>/img/product/${dto.getP_image()}"></th>
+			</tr>
+			
+			
+			<tr>
 				<th id="th_review">아이디</th>
 				<td><input name="user_id" placeholder="아이디를 입력하세요"></td>
 			</tr>
 			
 			<tr>
 				<th id="th_review">제목</th>
-				<td><input name="r_title" placeholder="제목을 입력해주세요"></td>
+				<td><input  name="r_title" placeholder="제목을 입력해주세요"></td>
 			</tr>
 			
 			<tr>
