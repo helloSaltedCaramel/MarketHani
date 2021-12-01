@@ -21,8 +21,9 @@ public class UserProductReviewWriteOkAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		//자료실 폼 페이지에서 넘어온 데이터들을 DB에 저장하는 비지니스 로직
 		
-		
-		
+		/*
+		 * int p_num = Integer.parseInt(request.getParameter("p_num")); //추가
+		 */		
 		ReviewDTO dto = new ReviewDTO();
 		
 		//첨부파일이 저장될 경로
@@ -95,6 +96,8 @@ public class UserProductReviewWriteOkAction implements Action {
 			ReviewDAO dao = ReviewDAO.getInstance();
 			
 			int res = dao.insertReviewUpload(dto);
+			
+		
 		
 			ActionForward forward = new ActionForward(); 
 			

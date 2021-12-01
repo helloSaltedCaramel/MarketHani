@@ -34,9 +34,12 @@ public class UserProductReviewListAction implements Action {
 				
 				return forward;
 				 */
-				int p_num = Integer.parseInt(request.getParameter("p_num"));
-		
-				System.out.println("p_num >>> " + p_num);
+				
+				/*
+				 * int p_num = Integer.parseInt(request.getParameter("p_num"));
+				 * 
+				 * System.out.println("p_num >>> " + p_num);
+				 */
 				// 페이징 작업
 		
 				int rowsize = 5;       // 한페이지당 보여질 게시물의 수
@@ -82,7 +85,8 @@ public class UserProductReviewListAction implements Action {
 				}
 				
 				// 현재 페이지에 해당하는 게시물을 가져오는 메서드 호출
-				List<ReviewDTO> pageList = dao.getReviewList(page, rowsize, p_num);
+				List<ReviewDTO> pageList = dao.getReviewList(page, rowsize);  
+				//List<ReviewDTO> pageList = dao.getReviewList(page, rowsize, p_num);  // p_num 받아오기
 				
 				// 지금까지 페이징 처리 시 작업했더 모든 값들을 키로 저장하자.
 				request.setAttribute("page", page);

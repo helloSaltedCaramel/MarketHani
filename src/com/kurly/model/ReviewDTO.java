@@ -14,8 +14,15 @@ public class ReviewDTO {
 	// 게시글에서 보일 회사명+ 상품명
 	private String p_seller;
 	private String p_name;
+	private String p_image;
 	
 	
+	public String getP_image() {
+		return p_image;
+	}
+	public void setP_image(String p_image) {
+		this.p_image = p_image;
+	}
 	public String getP_seller() {
 		return p_seller;
 	}

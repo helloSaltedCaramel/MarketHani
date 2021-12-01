@@ -345,7 +345,7 @@ iframe {
 											<td class="subject">
 											<a
 												href="<%=request.getContextPath()
-						%>/user_product_review_list.do">${dto.getR_title() }</a></td>
+						%>/user_product_review_list.do?no=${dto.getR_num()}">${dto.getR_title() }</a></td>
 											<td>${dto.getUser_id() }</td>
 											<td class="time">${dto.getR_date() }<%-- <fmt:formatDate value="${dto.getR_date() }" pattern="yyyy-MM-dd" /> --%></td>
 											<td>${dto.getR_hit() }</td>

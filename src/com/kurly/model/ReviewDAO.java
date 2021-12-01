@@ -138,7 +138,8 @@ public class ReviewDAO {
 	
 	
 	// kurly_review 테이블에서 현재 페이지에 해당하는 게시물을 조회하는 메서드.
-	public List<ReviewDTO> getReviewList(int page, int rowsize, int p_num) {
+	public List<ReviewDTO> getReviewList(int page, int rowsize ) { 
+		//public List<ReviewDTO> getReviewList(int page, int rowsize , int p_num) {
 		
 		List<ReviewDTO> list = new ArrayList<ReviewDTO>(); 
 		
@@ -153,15 +154,16 @@ public class ReviewDAO {
 			openConn();
 			
 			//서브쿼리
-			sql = "select * from (select row_number() over(order by r_num desc) bnum, b.* from kurly_review b where p_num = ?) where bnum >=? and bnum <= ?";
+			sql = "select * from (select row_number() over(order by r_num desc) bnum, b.* from kurly_review b) where bnum >=? and bnum <= ?";
+			//"select * from (select row_number() over(order by r_num desc) bnum, b.* from kurly_review b where p_num = ?) where bnum >=? and bnum <= ?
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, p_num);
+			/* pstmt.setInt(1, p_num); */
 			
-			pstmt.setInt(2, startNo);
+			pstmt.setInt(1, startNo);
 			
-			pstmt.setInt(3, endNo);
+			pstmt.setInt(2, endNo);
 			
 			
 			
@@ -263,9 +265,11 @@ public class ReviewDAO {
 		try {
 			openConn();
 
-			sql = "select max(r_num) from kurly_review";
+			sql = "select max(r_num) from kurly_review ";
 
 			pstmt = con.prepareStatement(sql);
+			
+			/* pstmt.setInt(1, p_num); */
 
 			rs = pstmt.executeQuery();
 
@@ -321,15 +325,25 @@ public class ReviewDAO {
 			
 			if(rs.next()) {
 				if(dto.getUser_id().equals(rs.getString("user_id"))) {
+					if(dto.getR_image() == null) {
+						sql = "update board set r_title = ?, r_content = ? where r_num = ?";
+						pstmt = con.prepareStatement(sql);
 					
-					sql = "update board set r_title = ?, r_content = ? where r_num = ?";
-					pstmt = con.prepareStatement(sql);
-					
-					pstmt.setString(1, dto.getR_title());
-					pstmt.setString(2, dto.getR_content());
-					pstmt.setInt(3, dto.getR_num());
-					
-					result = pstmt.executeUpdate();
+						pstmt.setString(1, dto.getR_title());
+						pstmt.setString(2, dto.getR_content());
+						pstmt.setInt(3, dto.getR_num());
+					}else {
+						sql = "update kurly_review set r_title = ?, "
+								+ " r_content = ?, r_image = ?, "
+								+ " where r_num = ?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, dto.getR_title());
+						pstmt.setString(2, dto.getR_content());
+						pstmt.setString(3, dto.getR_image());
+						pstmt.setInt(4, dto.getR_num());
+					}	
+								
+						result = pstmt.executeUpdate();
 				}else {  //아이디가 다른 경우
 					result = -1;
 				}
@@ -345,5 +359,9 @@ public class ReviewDAO {
 		
 		return result;
 	}// reviewUpdate()메서드 end
+	
+	
+	// kurly_review 테이블의 게시글 번호에 해당하는 게시글을 삭제하는 메서드.
+	
 	
 }
