@@ -200,7 +200,7 @@ body {
   float: left;
   width: 16px;
   height: 14px;
-  margin: 4px 0 0 4px;
+  margin: 4px 0 0 0;
   background: url(../img/header/icon_category.png) no-repeat;
 }
 
@@ -208,7 +208,8 @@ body {
 	float: left;
   width: 16px;
   height: 14px;
-  margin: 4px 0 0 4px;
+  left: -1px;
+  margin: 4px 0 0 0px;
 	background: url(../img/header/ico_gnb_all.webp) no-repeat;
 }
 
@@ -295,14 +296,13 @@ body {
   width: 219px;
   position: absolute;
   z-index: 301;
-  left: 3px;
   top: 55px;
   padding-top: 1px;
   background-color: #fff;
 }
 
 .inner_sub {
-  width: 100%;
+  width: 217px;
   height: 100%;
   border: 1px solid #ddd;
 }
@@ -365,7 +365,7 @@ body {
   z-index: 0;
   left: 200px;
   top: 2px;
-  width: 219px;
+  width: 217px;
   height: 646px;
   padding: 0 0 0 20px;
   background: url(https://res.kurly.com/images/common/bg_1_1.gif) repeat 0 0;

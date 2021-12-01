@@ -34,7 +34,7 @@
             	<a href="${pageContext.request.contextPath}/user/user_register.jsp" class="link_menu">${user_name }님</a>
             	<ul class="us_sub">
             		<li>
-            			<a href="#">주문내역</a>
+            			<a href="${pageContext.request.contextPath}/user_mypage_orderHistory.do">주문내역</a>
             		</li>
             		<li>
             			<a href="#">배송지 관리</a>

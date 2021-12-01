@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -101,5 +103,47 @@ public class OrderDAO {
 		
 		return o_id;
 	}
-
+	
+	// 주문내역 데이터 가져오기
+	public List<OrderHistoryDTO> loadOrderHistory(String user_id) {
+		List<OrderHistoryDTO> list = new ArrayList<OrderHistoryDTO>();
+		
+		final String sql = "select o.o_id, o.o_date, o.o_total, o.o_point_use, o.o_del_fee, od.p_num, od.p_count, p.p_name, p.p_image " + 
+							"from kurly_order o " + 
+							"join (select o_id, max(p_num) p_num, count(p_num) p_count from kurly_order_detail group by o_id) od " + 
+							"on o.o_id = od.o_id " + 
+							"join kurly_product p " + 
+							"on od.p_num = p.p_num " + 
+							"where o.user_id = ? " + 
+							"order by o_date desc";
+		
+		try {
+			pstmt = connect().prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				OrderHistoryDTO dto = new OrderHistoryDTO();
+				
+				dto.setO_id(rs.getInt("o_id"));
+				dto.setO_date(rs.getString("o_date"));
+				dto.setO_total(rs.getInt("o_total"), rs.getInt("o_point_use"), rs.getInt("o_del_fee"));
+				dto.setP_num(rs.getInt("p_num"));
+				dto.setP_count(rs.getInt("p_count"));
+				dto.setP_name(rs.getString("p_name"));
+				dto.setP_image(rs.getString("p_image"));
+				
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("OrderDAO: loadOrderHistory 오류 발생");
+			e.printStackTrace();
+		} finally {
+			connectClose();
+		}
+		
+		return list;
+	}
 }
