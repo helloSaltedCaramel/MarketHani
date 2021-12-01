@@ -1,5 +1,6 @@
 const $totalCategory = document.getElementById("total_category"); //span
 const $gnb_sub = document.querySelector(".gnb_sub"); // 카테고리나오는 부분
+const $inner_sub = document.querySelector(".inner_sub") // 테두리 부분
 const $categoryBlock = document.querySelector(".menu1"); // span태그 감싸는 영역(div)
 const $categoryIco = document.getElementById("icon");
 const $totalText = document.querySelector(".total_txt");
@@ -26,10 +27,12 @@ const categoryOut = () => {
 
 const subCategoryIn = () => {
   $gnb_sub.style.width = "438px";
+	$inner_sub.style.width = "436px";
 };
 
 const subCategoryOut = () => {
   $gnb_sub.style.width = "219px";
+	$inner_sub.style.width = "217px";
 };
 
 const setCurrent = (e) => {
