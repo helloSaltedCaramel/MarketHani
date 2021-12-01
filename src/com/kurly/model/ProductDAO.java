@@ -131,9 +131,13 @@ public class ProductDAO {
 		return null;
 	} //getProductList() end
 
-	public List<ProductDTO> getNewProductList(String sortby) {
+	public List<ProductDTO> getNewProductList(int page, int rowsize, String sortby) {
 
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
+		
+		int startNo = (page * rowsize) - (rowsize - 1);
+		
+		int endNo = (page * rowsize);
 		
 		String order = null;
 		
@@ -148,8 +152,13 @@ public class ProductDAO {
 			else if(sortby.equals("high"))
 				order = "p_price desc";
 			
-			sql = "select * from kurly_product order by " + order;
+			//페이지네이션 적용 쿼리문
+			sql = "select * from (select row_number() over(order by " + order 
+					+ ") rnum, p.* from kurly_product p) where rnum >= ? and rnum <= ?";
+			
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startNo);
+			pstmt.setInt(2, endNo);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -335,4 +344,31 @@ public class ProductDAO {
 		return dto;
 	
 	} // productCont() end
+
+	public int getBoardCount() {
+		
+		int count = 0;
+		
+		try {
+			openConn();
+			
+			sql = "select count(*) from kurly_product";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+			rs.close(); pstmt.close(); con.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return count;
+	} // getBoardCount() end
 }
