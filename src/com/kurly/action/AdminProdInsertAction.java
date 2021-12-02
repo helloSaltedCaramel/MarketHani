@@ -97,7 +97,7 @@ public class AdminProdInsertAction implements Action{
 		
 		file.renameTo(new File(directory + "/" + file.getName()));
 		
-		String dbName = "/" + year + "-" + month + "-" + day + "/" + file.getName();
+		String dbName = year + "-" + month + "-" + day + "/" + file.getName();
 		
 		return dbName;
 	}
