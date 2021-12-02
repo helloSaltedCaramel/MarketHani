@@ -69,7 +69,7 @@ function sort(how) {
 			</ul>
 		
 			<c:set var="list" value="${productList}"/>
-			<c:set var="itemCount" value="${listCount }"/>
+			<c:set var="itemCount" value="${totalRecord }"/>
 			
 			<%-- 상품 목록 정렬  --%>	 
 			<div class="top_line">
@@ -134,6 +134,29 @@ function sort(how) {
 			</table>
 		</div>
 		<%-- 여기까지 --%>
+		
+		<%-- 페이지네이션--%>
+		<c:if test="${page > block}">
+		<a href="user_category.do?cat=${category}&sort=${sortBy}&page=1">◀◀</a>
+		<a href="user_category.do?cat=${category}&sort=${sortBy}&page=${startBlock - 1 }">◀</a>
+		</c:if>
+	
+	
+		<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
+			<c:if test="${i == page }">
+				<b><a href="<%=request.getContextPath() %>/user_category.do?cat=${category}&sort=${sortBy}&page=${i }">[${i }]</a></b>
+			</c:if>
+			
+			<c:if test="${i != page }">
+				<a href="<%=request.getContextPath() %>/user_category.do?cat=${category}&sort=${sortBy}&page=${i }">[${i }]</a>
+			</c:if>
+		</c:forEach>
+		
+		<c:if test="${endBlock < allPage}">
+			<a href="user_category.do?cat=${category}&sort=${sortBy}&page=${endBlock + 1 }">▶</a>
+			<a href="user_category.do?cat=${category}&sort=${sortBy}&page=${allPage }">▶▶</a>
+		</c:if>
+		<%-- 페이지네이션 끝 --%>
 	</div>
 	
 	<jsp:include page="../include/footer.jsp"/>

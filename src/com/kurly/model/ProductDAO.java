@@ -136,7 +136,6 @@ public class ProductDAO {
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
 		
 		int startNo = (page * rowsize) - (rowsize - 1);
-		
 		int endNo = (page * rowsize);
 		
 		String order = null;
@@ -196,9 +195,12 @@ public class ProductDAO {
 		
 	} //getNewProductList() end
 
-	public List<ProductDTO> getCategoryList(String category, String sortby) {
+	public List<ProductDTO> getCategoryList(int page, int rowsize, String category, String sortby) {
 		
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
+		
+		int startNo = (page * rowsize) - (rowsize - 1);
+		int endNo = (page * rowsize);
 		
 		String order = null;
 		
@@ -213,9 +215,12 @@ public class ProductDAO {
 			else if(sortby.equals("high"))
 				order = "p_price desc";
 			
-			sql = "select * from kurly_product where p_category like '" + category + "%' order by " + order;
-			pstmt = con.prepareStatement(sql);
+			sql = "select * from (select row_number() over(order by " + order 
+					+ ") rnum, p.* from kurly_product p where p_category like '" + category + "%') where rnum >= ? and rnum <= ?";
 			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startNo);
+			pstmt.setInt(2, endNo);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -371,4 +376,31 @@ public class ProductDAO {
 		
 		return count;
 	} // getBoardCount() end
+
+	public int getCategoryCount(String category) {
+	
+		int count = 0;
+		
+		try {
+			openConn();
+			
+			sql = "select count(*) from kurly_product where p_category like '" + category + "%'";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+			rs.close(); pstmt.close(); con.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return count;
+	} // getCategoryCount()
 }
