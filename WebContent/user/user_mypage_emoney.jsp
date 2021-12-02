@@ -48,7 +48,7 @@
 						<div class="inner_snb">
 							<ul class="list_menu">
 								<li>
-									<a href="${pageContext.request.contextPath}/user/user_mypage_orderlist.jsp">주문 내역</a>
+									<a href="${pageContext.request.contextPath}/user_mypage_orderHistory.do">주문 내역</a>
 								</li>
 								<li>
 									<a href="${pageContext.request.contextPath}/user/user_mypage_emoney.jsp">적립금</a>
@@ -60,7 +60,7 @@
 									<a href="${pageContext.request.contextPath}/user/#.jsp">상품 문의</a>
 								</li>
 								<li>
-									<a href="${pageContext.request.contextPath}/user/user_mypage_myInfo.jsp">개인 정보 수정</a>
+									<a href="${pageContext.request.contextPath}/user_userInfo.do">개인 정보 수정</a>
 								</li>
 							</ul>
 						</div>

@@ -180,6 +180,8 @@ public class UserDAO {
 	}
 	
 	public int updateUserPoint(int user_point, String user_id) {
+		int result = -1;
+		
 		final String sql = "update kurly_user set user_point = user_point + ? where user_id = ?";
 		
 		try {
@@ -187,14 +189,12 @@ public class UserDAO {
 			pstmt.setInt(1, user_point);
 			pstmt.setString(2, user_id);
 			
-			int result = pstmt.executeUpdate();
+			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return -1;
-		
-		
+		return result;
 	}
 }
