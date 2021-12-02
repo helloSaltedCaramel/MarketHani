@@ -21,13 +21,19 @@ public class UserProductReviewWriteOkAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		//자료실 폼 페이지에서 넘어온 데이터들을 DB에 저장하는 비지니스 로직
 		
-		/*
-		 * int p_num = Integer.parseInt(request.getParameter("p_num")); //추가
-		 */		
+		
+		int p_num = Integer.parseInt(request.getParameter("p_num")); //추가
+			
 		ReviewDTO dto = new ReviewDTO();
 		
 		//첨부파일이 저장될 경로
-		String saveFolder = "C:\\Users\\amorf\\git\\MarketHani\\WebContent\\upload";
+		
+		String saveFolder = "C:\\Users\\amorf\\git\\MarketHani\\WebContent\\upload\\review";
+		/*
+		 * String saveFolder =
+		 * request.getSession().getServletContext().getContext("/upload").getRealPath(
+		 * "") ; System.out.println("saveFolder >>>" + saveFolder);
+		 */
 		
 		// 첨부파일 최대 크기 지정
 		int fileSize = 10 * 1024 * 1024; //10MB
@@ -92,6 +98,8 @@ public class UserProductReviewWriteOkAction implements Action {
 			dto.setUser_id(user_id);
 			dto.setR_title(r_title);
 			dto.setR_content(r_content);
+			dto.setP_num(p_num);
+			
 			
 			ReviewDAO dao = ReviewDAO.getInstance();
 			
@@ -105,7 +113,7 @@ public class UserProductReviewWriteOkAction implements Action {
 			
 			if(res>0) {
 				forward.setRedirect(true);
-				forward.setPath("user_product_review_list.do");
+				forward.setPath("user_product_review_list.do?p_num=" + p_num);
 			} else {
 				out.println("<script>");
 				out.println("alert('게시글 업로드 실패')");

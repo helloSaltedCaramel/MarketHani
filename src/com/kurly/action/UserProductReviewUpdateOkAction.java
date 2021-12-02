@@ -25,7 +25,7 @@ public class UserProductReviewUpdateOkAction implements Action {
 		ReviewDTO dto = new ReviewDTO();
 
 		// 첨부파일이 저장될 경로(위치)
-		String saveFolder = "C:\\Users\\amorf\\git\\MarketHani\\WebContent\\upload";
+		String saveFolder = "C:\\Users\\amorf\\git\\MarketHani\\WebContent\\upload\\review";
 
 		// 첨부파일 최대 크기
 		int fileSize = 10 * 1024 * 1024; // 10MB
@@ -93,8 +93,13 @@ public class UserProductReviewUpdateOkAction implements Action {
 		dto.setR_content(r_content);
 	
 		ReviewDAO dao = ReviewDAO.getInstance();
+		ReviewDTO rdto = dao.getReviewCont(r_num);    // 위에 선언해준 dto 를 이용해서 작성해야하는데 위에 선언한 dto는 깡통으로 아무것도 들어있지 않음 그래서 
+													  // 반환형이 ReviewDTO type에 원하는 객체를 반환해옴 
 		
+		int p_num = rdto.getP_num();
 		int res = dao.reviewUpdate(dto);
+		
+		
 		
 		ActionForward forward = new ActionForward();
 		
@@ -102,15 +107,10 @@ public class UserProductReviewUpdateOkAction implements Action {
 		
 		if(res > 0 ) {
 			forward.setRedirect(true);
-			forward.setPath("r_content.do?no="+r_num);
-	
-		} else if(res == -1) {
-			out.println("<script>");
-			out.println("alert('아이디가 다름니다. 확인해 주세요)')");
-			out.println("history.back()");
-			out.println("</script>");
+			forward.setPath("user_product_review_content.do?no=" + r_num + "&p_num=" + p_num);   //자바 변수 이어서주는 방법  ex)no=2 & p_num=82
+
 		} else  {
-			out.println("<script>");
+			out.println("<script>");  
 			out.println("alert('게시물 수정 실패 :(')");
 			out.println("history.back()");
 			out.println("</script>");

@@ -63,6 +63,12 @@ ul {
 
 }
 
+#snb .list_menu li.on a, #snb .list_menu li a:hover {
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-weight: 700;
+    color: #5f0080;
+}
 
 
 .page_aticle.aticle_type2 {
@@ -99,6 +105,25 @@ ul {
   #th_review {
    background: #ebebeb;
   }
+  
+  #review_product_title{
+	float: left;
+	margin-top: 25px;
+	margin-bottom: 25px;
+} /*후기 작성 상품 이름 타이틀 위치 조정*/
+
+#review_btn, #review_rebtn{
+line-height:30px; 
+width:130px;
+text-align: center;
+background-color: #795b8f;
+border: 1px solid #5f0080;
+color: #fff;
+font-size: 13px;
+margin-top: 70px;
+}
+
+  
 
 </style>
 </head>
@@ -140,18 +165,23 @@ ul {
 
 <div class="page_review"> <%--후기작성 오른쪽 틀  --%>
 		<c:set var="dto" value="${modify }"/>
-			<h2 align="left">[${dto.getP_seller() }]${dto.getP_name() } 후기수정</h2>
+			<h2 align="left">후기수정</h2>
 		<hr width="95%" color="#5f0080">
 		<br><br>	
 		
 		<form method="post" enctype="multipart/form-data" 
-		action="<%=request.getContextPath()%>/user_product_review_update_ok.do">
+		action="<%=request.getContextPath()%>/user_product_review_update_ok.do?p_num=${product.getP_num()}">
 		
 		<input type="hidden" name="r_num" value="${dto.getR_num() }">
 		<input type="hidden" name="page" value="${page }">
 		
 		
 		<table border="0" cellspacing="0" width="700" >
+			
+			<tr>
+			<th><img width="72px" height="72px" src="<%=request.getContextPath() %>/img/product/${product.getP_image()}"></th>
+			<th id="review_product_title">[${product.getP_seller()}] ${product.getP_name() }</th>
+			</tr>
 			
 			<tr>
 				<th id="th_review">작성자</th>
@@ -186,8 +216,8 @@ ul {
 		
 			<tr>
 				<td colspan="2" align="center">
-					<input type="submit" value="등록하기"> &nbsp;&nbsp;&nbsp;
-					<input type="reset" value="다시작성">
+					<input id="review_btn" type="submit" value="등록하기"> &nbsp;&nbsp;&nbsp;
+					<input id="review_rebtn" type="reset" value="다시작성">
 				</td>
 			</tr>
 			
