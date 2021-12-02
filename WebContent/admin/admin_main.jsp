@@ -23,7 +23,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마켓하니 :: 내일의 장보기 마켓하니</title>
+    <title>마켓하니 :: 관리자페이지</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/register.css">
     <link rel="icon" href="${pageContext.request.contextPath}/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
     <script defer src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -75,6 +75,7 @@
 							<h2 class="tit">상품등록</h2>
 						</div>
 						<div class="admin_pManage">
+					<form method="post" action="${pageContext.request.contextPath}/admin_prod_insert.do" enctype="multipart/form-data">
 							<table class="pManage_table">
                 
             	<tr class="fsd">
@@ -221,7 +222,7 @@
  
                  <tr>
                     <th>
-                       	 상품설명
+                       	 상품설명 이미지
                     </th>
 
                     <td>
@@ -231,7 +232,7 @@
                    
                  <tr>
                     <th>
-                       	 상세정보
+                       	 상세정보 이미지
                     </th>
 
                     <td>
@@ -242,7 +243,7 @@
             </table>
             
             <div class="form_footer">
-            	<button type="button" class="btn_act" id="submit" >상품등록</button>
+            	<button class="btn_act" id="submit" >상품등록</button>
             </div>
         </form>
 						</div>
