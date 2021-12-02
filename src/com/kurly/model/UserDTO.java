@@ -3,6 +3,7 @@ package com.kurly.model;
 public class UserDTO {
 	private String user_id;
 	private String user_pwd;
+	private String user_salt;
 	private String user_name;
 	private String user_email;
 	private String user_phone;
@@ -22,6 +23,12 @@ public class UserDTO {
 	}
 	public void setUser_pwd(String user_pwd) {
 		this.user_pwd = user_pwd;
+	}
+	public String getUser_salt() {
+		return user_salt;
+	}
+	public void setUser_salt(String user_salt) {
+		this.user_salt = user_salt;
 	}
 	public String getUser_name() {
 		return user_name;

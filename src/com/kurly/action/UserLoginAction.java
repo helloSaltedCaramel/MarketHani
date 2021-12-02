@@ -1,7 +1,7 @@
 package com.kurly.action;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +11,7 @@ import com.kurly.controller.Action;
 import com.kurly.controller.ActionForward;
 import com.kurly.model.LoginDTO;
 import com.kurly.model.UserDAO;
+import com.kurly.utils.KurlySecure;
 
 public class UserLoginAction implements Action {
 
@@ -22,6 +23,15 @@ public class UserLoginAction implements Action {
 		String username = UserDAO.getInstance().loginCheck(dto);
 		
 		ActionForward forward = new ActionForward();
+		
+		byte[] password = request.getParameter("pw").getBytes();
+		
+		try {
+			String passwordHash = KurlySecure.hashing(password);
+			System.out.println(passwordHash);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
 		
 		if(username != null) {
 			HttpSession session = request.getSession();
@@ -39,5 +49,6 @@ public class UserLoginAction implements Action {
 		
 		return forward;
 	}
+	
 
 }

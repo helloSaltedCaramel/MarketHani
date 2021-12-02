@@ -342,7 +342,7 @@ public class ProductDAO {
 		
 		// 0: 서브카테고리, 사용안하므로 0으로 설정
 		// p_date : 상품 등록일, sysdate
-		final String sql = "insert into kurly_product values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, SYSDATE, ?)";
+		final String sql = "insert into kurly_product values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '', ?, ?, ?, SYSDATE, ?, ?)";
 		
 		openConn();
 		
@@ -352,17 +352,17 @@ public class ProductDAO {
 			pstmt.setString(2, dto.getP_image());
 			pstmt.setInt(3, dto.getP_price());
 			pstmt.setString(4, dto.getP_name());
-			pstmt.setString(5, dto.getP_name_cont());
-			pstmt.setString(6, dto.getP_unit());
-			pstmt.setString(7, dto.getP_wrap());
-			pstmt.setString(8, dto.getP_wrap_cont());
-			pstmt.setString(9, dto.getP_delivery());
-			pstmt.setInt(10, dto.getP_qty());
-			pstmt.setInt(11,  dto.getP_point());
-			pstmt.setString(12, dto.getP_category());
-			pstmt.setString(13, dto.getP_seller());
-			pstmt.setInt(14, dto.getP_discount());
-			pstmt.setString(15, dto.getP_contents());
+			pstmt.setString(5, dto.getP_unit());
+			pstmt.setString(6, dto.getP_wrap());
+			pstmt.setString(7, dto.getP_wrap_cont());
+			pstmt.setString(8, dto.getP_delivery());
+			pstmt.setInt(9, dto.getP_qty());
+			pstmt.setInt(10,  dto.getP_point());
+			pstmt.setString(11, dto.getP_category());
+			pstmt.setString(12, dto.getP_seller());
+			pstmt.setInt(13, dto.getP_discount());
+			pstmt.setString(14, dto.getP_contents());
+			pstmt.setString(15, dto.getP_name_cont());
 			pstmt.setString(16, dto.getP_contents_spec());
 			
 			result = pstmt.executeUpdate();
