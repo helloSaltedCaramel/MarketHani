@@ -52,19 +52,20 @@ public class UserDAO {
 		int result = 0;
 		
 		final String sql = 
-				"insert into kurly_user values(?, ?, ?, ?, ?, ?, ?, ?, TO_DATE(?, 'YYYY-MM-DD'))";
+				"insert into kurly_user values(?, ?, ?, ?, ?, ?, ?, ?, ?, TO_DATE(?, 'YYYY-MM-DD'))";
 		
 		try {
 			pstmt = connect().prepareStatement(sql);
 			pstmt.setString(1, dto.getUser_id());
 			pstmt.setString(2, dto.getUser_pwd());
-			pstmt.setString(3, dto.getUser_name());
-			pstmt.setString(4, dto.getUser_email());
-			pstmt.setString(5, dto.getUser_phone());
-			pstmt.setString(6, dto.getUser_addr());
-			pstmt.setString(7, dto.getUser_gender());
-			pstmt.setInt(8, dto.getUser_point());
-			pstmt.setString(9, dto.getUser_birthday());
+			pstmt.setString(3, dto.getUser_salt());
+			pstmt.setString(4, dto.getUser_name());
+			pstmt.setString(5, dto.getUser_email());
+			pstmt.setString(6, dto.getUser_phone());
+			pstmt.setString(7, dto.getUser_addr());
+			pstmt.setString(8, dto.getUser_gender());
+			pstmt.setInt(9, dto.getUser_point());
+			pstmt.setString(10, dto.getUser_birthday());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -129,7 +130,6 @@ public class UserDAO {
 		}
 		
 		return username;
-		
 	}
 	
 	public String ajaxIdDistinct(String user_id) {
@@ -196,5 +196,29 @@ public class UserDAO {
 		}
 		
 		return result;
+	}
+	
+	public String getUserSalt(String id) {
+		String salt = null;
+		
+		final String sql = "select user_salt from kurly_user where user_id = ?";
+		
+		try {
+			pstmt = connect().prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				salt = rs.getString("user_salt");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			connectClose();
+		}
+		
+		return salt;	
 	}
 }

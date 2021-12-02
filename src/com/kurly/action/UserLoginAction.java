@@ -18,21 +18,36 @@ public class UserLoginAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		LoginDTO dto = new LoginDTO(request.getParameter("id"), request.getParameter("pw"));
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
 		
-		String username = UserDAO.getInstance().loginCheck(dto);
+		String salt = saltCheck(id);
 		
-		ActionForward forward = new ActionForward();
+		// salt가 null일 경우에는 아이디가 일치하지 않으므로 redirect
+		if(salt == null) {
+			ActionForward forward = new ActionForward();
+			forward.setRedirect(true);
+			forward.setPath(request.getContextPath() + "/user/user_login.jsp?notFound=true");
+			return forward;
+		}
 		
-		byte[] password = request.getParameter("pw").getBytes();
-		
+		// 입력받은 비밀번호를 hashing하기
+		String hashedPw = "";
 		try {
-			String passwordHash = KurlySecure.hashing(password);
-			System.out.println(passwordHash);
+			hashedPw = KurlySecure.hashing(pw.getBytes(), salt);
+			System.out.println("입력받은 ID = " + request.getParameter("id"));
+			System.out.println("가져온 salt = " + salt);
+			System.out.println("hashedPw = " + hashedPw);
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
 		
+		LoginDTO dto = new LoginDTO(id, hashedPw);
+		
+		// 아이디, salt를 받아오는 DTO 객체
+		String username = UserDAO.getInstance().loginCheck(dto);		
+
+		ActionForward forward = new ActionForward();
 		if(username != null) {
 			HttpSession session = request.getSession();
 			
@@ -50,5 +65,7 @@ public class UserLoginAction implements Action {
 		return forward;
 	}
 	
-
+	private String saltCheck(String id) {
+		return UserDAO.getInstance().getUserSalt(id);
+	}
 }
