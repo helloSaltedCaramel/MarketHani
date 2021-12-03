@@ -28,8 +28,7 @@
     <link rel="icon" href="${pageContext.request.contextPath}/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
     <script defer src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script defer src="${pageContext.request.contextPath}/js/register/register_postcode.js"></script>
-    <script defer src="${pageContext.request.contextPath}/js/register/register_regex.js"></script>
+    <script defer src="${pageContext.request.contextPath}/js/admin/pointGenerator.js"></script>
 
 
 </head>
@@ -155,17 +154,7 @@
                     <td>
                         <input type="text" class="form_input" id="p_unit" name="p_unit" placeholder="단위명 필수 입력" required>
                     </td>
-                </tr> 
- 
-                 <tr>
-                    <th>
-                       	 배송구분
-                    </th>
-
-                    <td>
-                        <input type="text" class="form_input" id="p_delivery" name="p_delivery" placeholder="샛별배송,일반택배,직접수령" required>
-                    </td>
-                </tr>    
+                </tr>  
                                
                 <tr>
                     <th>
@@ -205,7 +194,7 @@
                     </th>
 
                     <td>
-                        <input type="file" class="form_input" id="p_img" name="p_img" required>
+                        <input type="file" class="form_input" id="p_img" name="p_img">
                     </td>
                 </tr>  
  
