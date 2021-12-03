@@ -248,7 +248,7 @@ function hideReviseConfirm() {
 								<span class="btn_share">
 									<button id="btnShare" onclick="onDisplay();">공유하기</button>
 								</span> <strong class="name">[${dto.getP_seller()}]${dto.getP_name() }</strong> <span
-									class="short_desc">특별한 기회로 만나보는 홍게 간식</span>
+									class="short_desc">${dto.getP_name_cont() }</span>
 							</p>
 
 							<p class="goods_price">

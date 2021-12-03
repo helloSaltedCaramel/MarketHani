@@ -82,7 +82,7 @@ public class OrderDetailDAO {
 		}  // closeConn() 메서드 end
 	
 	//kurly_order_detail 테이블에서 전체 리스트를 조회하는 메서드
-	public List<OrderDetailDTO> getReviewOnList() {
+	public List<OrderDetailDTO> getReviewOnList(int num) {
 		
 		List<OrderDetailDTO> olist = new ArrayList<OrderDetailDTO>();
 		

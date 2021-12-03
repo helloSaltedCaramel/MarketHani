@@ -1,0 +1,167 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.page_aticle {
+    width: 1050px;
+    margin: 0 auto;
+    padding-top: 65px;
+}
+
+.page_aticle button, .page_aticle input, .page_aticle select, .page_aticle * {
+    font-family: noto sans;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+
+#pManage_content{
+    min-width: 1050px;
+    padding-bottom: 60px;
+}
+
+
+
+/*마이 할리 좌측 메뉴 css*/
+#snb {
+    float: left;
+    width: 200px;
+}
+
+#snb .inner_snb {
+    border: 1px solid #f2f2f2;
+    border-bottom: 0;
+}
+
+#snb .tit_snb {
+    padding: 5px 0 35px 1px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 35px;
+    color: #333;
+    letter-spacing: -1px;
+}
+
+#snb .inner_snb {
+    border: 1px solid #f2f2f2;
+    border-bottom: 0;
+}
+
+#snb .list_menu li {
+    border-bottom: 1px solid #f2f2f2;
+}
+
+#snb .list_menu li a {
+    display: block;
+    overflow: hidden;
+    padding: 14px 0 16px 20px;
+    background: #fff url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    letter-spacing: -.3px;
+}
+
+#snb .list_menu li.on a, #snb .list_menu li a:hover {
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-weight: 700;
+    color: #5f0080;
+}
+
+
+/* 개인 정보 수정 전체 css*/
+.page_aticle.aticle_type2 .page_section {
+    float: right;
+    width: 820px;
+}
+
+
+ /* 개인 정보 수정 제목 css */ 
+.page_aticle .head_aticle {
+    padding: 5px 0 34px;
+}
+
+.page_aticle .head_aticle .tit {
+    height: 36px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #333;
+    letter-spacing: -.5px;
+}
+
+.member_mod {
+    width: 820px;
+}
+
+/* 테이블 전체*/
+.pManage_table {
+    width: 100%;
+    border-top: 2px solid #333;
+}
+
+/*공통 th td*/
+.pManage_table th {
+    width: 157px;
+    padding: 29px 0 0 92px;
+    font-weight: 700;
+    color: #333;
+    line-height: 20px;
+    text-align: left;
+}
+
+.pManage_table input {
+	height: 44px;
+    padding: 0 14px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    border-radius: 3px;
+    background: #fff;
+    outline: none;
+    vertical-align: top;
+}
+
+.pManage_table input{
+    width: 319px;
+}
+
+/*특정 th,td*/
+.pManage_table .fsd td {
+    padding-top: 26px;
+}
+
+
+.pManage_table input[type=number]{
+    width: 200px;
+}
+
+
+
+/*파일첨부 input*/
+
+
+
+/*form footer 부분*/
+.admin_pManage .form_footer {
+    padding: 40px 0 100px 0;
+    text-align: center;
+}
+.btn_act {
+    margin: 0 auto;
+    border: 1px solid #5f0081;
+    background-color: #5f0080;
+    color: #fff;
+    width: 140px;
+    height: 41px;
+}
+
+
+
+
+

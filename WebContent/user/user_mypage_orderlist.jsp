@@ -28,8 +28,6 @@
     <link rel="icon" href="${pageContext.request.contextPath}/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
     <script defer src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script defer src="${pageContext.request.contextPath}/js/register/register_postcode.js"></script>
-    <script defer src="${pageContext.request.contextPath}/js/register/register_regex.js"></script>
 
 
 </head>
@@ -37,6 +35,7 @@
 
 	<jsp:include page="../include/header.jsp"/>
 	
+	<c:set var="orderData" value="${orderHistory}"/>
 	<div id="orderlist_main">
 		<div id="orderlist_content"> 
 
@@ -48,7 +47,7 @@
 						<div class="inner_snb">
 							<ul class="list_menu">
 								<li>
-									<a href="${pageContext.request.contextPath}/user/user_mypage_orderlist.jsp">주문 내역</a>
+									<a href="${pageContext.request.contextPath}/user_mypage_orderHistory.do">주문 내역</a>
 								</li>
 								<li>
 									<a href="${pageContext.request.contextPath}/user/user_mypage_emoney.jsp">적립금</a>
@@ -60,7 +59,7 @@
 									<a href="${pageContext.request.contextPath}/user/#.jsp">상품 문의</a>
 								</li>
 								<li>
-									<a href="${pageContext.request.contextPath}/user/user_mypage_myInfo.jsp">개인 정보 수정</a>
+									<a href="${pageContext.request.contextPath}/user_userInfo.do">개인 정보 수정</a>
 								</li>
 							</ul>
 						</div>
@@ -69,38 +68,49 @@
 					<%-- 마이 할리 중 주문 내역 파트 부분 --%>
 					<div id="viewOrderList" class="page_section section_orderlist">
 						<div class="head_aticle">
-							<h2 class="tit">주문내역<span class="tit_sub">지난 3년간의 주문 내역 조회가 가능합니다.</span></h2>
+							<h2 class="tit">주문내역</h2>
 						</div>
 						<ul class="list_order">
+						<c:forEach items="${orderData}" var="dto" varStatus="status">
 							<li>
-								<div class="date">2021.11.16 (21시 02분)</div>
+								<c:if test="${status.first}">
+									<c:set var="date" value="${dto.getO_date().substring(0, 10)}"/>
+									<div class="date">${dto.getO_date().substring(0, 10)}</div>
+								</c:if>
+								<c:if test="${!dto.getO_date().substring(0, 10).equals(date)}">
+									<c:set var="date" value="${dto.getO_date().substring(0, 10)}"/>
+									<div class="date">${dto.getO_date().substring(0, 10)}</div>
+								</c:if>
 								<div class="order_goods">
 									<div class="name">
-										<a>[조공]PET 나 게살 좋아해 스틱 외 1건 </a>
+										<a>${dto.getP_name()} 외 ${dto.getP_count()}건 </a>
 									</div>
 									<div class="order_info">
 										<div class="thumb">
-											<img src="${pageContext.request.contextPath}/img/product/게살.jpg" alt="주문 대표 사진">
+											<img src="${pageContext.request.contextPath}/img/product/${dto.getP_image()}" alt="주문 대표 사진">
 										</div>
 										<div class="desc">
 											<dl>
 												<dt>주문번호</dt>
-												<dd>12313245</dd>
+												<dd>${dto.getO_id()}</dd>
 											</dl>
 											<dl>
 												<dt>결제금액</dt>
-												<dd>1,000원</dd>
+												<dd>
+													<fmt:formatNumber value="${dto.getO_total()}"/>
+													원
+												</dd>
 											</dl>
 											<dl>
 												<dt>주문상태</dt>
-												<dd class="status end">배송완료</dd>
+												<dd class="status end">결제완료</dd>
 											</dl>
 										</div>
 									</div><%--order_info end --%>
 																		
 								</div> 
 							</li> <%-- 첫번째 주문내역건 end --%>
-							
+						</c:forEach>
 						</ul><%-- list_order end --%>
 						<div class="layout-pagination"></div>					
 					</div>

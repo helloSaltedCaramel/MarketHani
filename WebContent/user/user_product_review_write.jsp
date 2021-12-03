@@ -57,6 +57,12 @@ ul {
 
 }
 
+#snb .list_menu li.on a, #snb .list_menu li a:hover {
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-weight: 700;
+    color: #5f0080;
+}
 
 
 /*왼쪽 탭 end*/
@@ -99,11 +105,29 @@ ul {
 
 textarea::placeholder {
  color : #b8b8b8;
-}
+} /*게시글 리스트 마우스 가져다댔을대 호버*/
 
+#review_product_title{
+float: left;
+margin-top: 25px;
+margin-bottom: 25px;
+} /*후기 작성 상품 이름 타이틀 위치 조정*/
 
+#review_btn{
+line-height:30px; 
+width:130px;
+text-align: center;
+background-color: #795b8f;
+border: 1px solid #5f0080;
+color: #fff;
+font-size: 13px;
+margin: 70px;
+} /*후기 작성 버튼 */
 
-
+#review_btn:hover {
+    background: #fff; 
+    color: #5f0080;
+}/*후기작성 버튼 색 반전 호버*/
 
 </style>
 </head>
@@ -149,12 +173,13 @@ textarea::placeholder {
 		<br><br>	
 		
 		<form method="post" enctype="multipart/form-data" 
-		action="<%=request.getContextPath()%>/user_product_review_write_ok.do">
+		action="<%=request.getContextPath()%>/user_product_review_write_ok.do?p_num=${product.getP_num()}">
 		
-		<table border="0" cellspacing="0" width="700">
+		<table border="1" cellspacing="0" width="700">
 			
 			<tr>
-			<th><img width="72px" height="72px" src="<%=request.getContextPath() %>/img/product/${dto.getP_image()}"></th>
+			<th><img width="72px" height="72px" src="<%=request.getContextPath() %>/img/product/${product.getP_image()}"></th>
+			<th id="review_product_title">[${product.getP_seller()}] ${product.getP_name() }</th>
 			</tr>
 			
 			
@@ -184,8 +209,8 @@ textarea::placeholder {
 			
 			
 			<tr>
-				<td colspan="2" align="center">
-					<input type="submit" value="등록하기"> &nbsp;&nbsp;&nbsp;
+				<td colspan="2" align="center" style="line-height:30px; width:130px;">
+					<input id="review_btn" type="submit" value="등록하기"> &nbsp;&nbsp;&nbsp;
 					
 				</td>
 			</tr>
