@@ -1,20 +1,31 @@
 /*제품 상세 페이지 스크립트*/
 
 
-
-function qnaList(paging, num) {
+$(document).ready(function(){
 	
-	let page = paging; 
+	let p_num = 9;
+	let page = 1;
+
+	qnaList(p_num, page);
+	
+});
+
+function qnaList(num, paging) {
+	
 	let p_num = num;
+	let page = paging;
 	
 	$.ajax({
 		url : "/Market_Hani/user_qna_select.do?p_num="+ p_num + "&page=" + page,
-		datatype : 'xml',
-		success : function(data){
+		datatype : "xml",
+		success : function(data).each(){
+			
+			$(data).find("qna").each(function(){
+				
+				console.log($(this).find("qna_title").text());
+			});
 			
 			console.log('여기까지 오긴 하는걸까?');
-			
-			console.log($(data));
 			
 		},
 		
@@ -24,19 +35,11 @@ function qnaList(paging, num) {
 	});
 }
 
-
-$(document).ready(function(){
-	
-	qnaList();
-	
-});
-
-
 function onDisplay() {
 
 		$('#shareLayer').toggle();
 
-	}; // 공유하기 버튼 클릭시 보이고 안보이고
+} // 공유하기 버튼 클릭시 보이고 안보이고
 
 $(document).on('click','#ul_product a',function(event){
 	var headerHeight = $('header').outerHeight();

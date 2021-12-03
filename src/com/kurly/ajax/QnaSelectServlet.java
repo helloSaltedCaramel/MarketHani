@@ -95,6 +95,8 @@ public class QnaSelectServlet extends HttpServlet {
 		
 		str += "</qnalist>";
 		
+		System.out.println(str);
+		
 		out.println(str);
 	}
 

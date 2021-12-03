@@ -10,7 +10,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<<<<<<< HEAD
 	<%-- import header.css --%>
 	<link rel="stylesheet" type="text/css"
 		href="<%=request.getContextPath()%>/css/header.css" />
@@ -22,46 +21,7 @@
 	<script defer src="<%=request.getContextPath()%>/js/header/header.js"></script>
 	<script defer
 		src="<%=request.getContextPath()%>/js/header/location_postcode.js"></script>
-=======
-<%-- import header.css --%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/header.css" />
-<link rel="icon"
-	href="<%=request.getContextPath()%>/img/favicon/favicon-32x32.ico"
-	type="image/x-icon" sizes="16x16">
-<script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script defer src="<%=request.getContextPath()%>/js/header/header.js"></script>
-<script defer
-	src="<%=request.getContextPath()%>/js/header/location_postcode.js"></script>
 
-<%-- include product_qna.css --%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/product_qna.css" />
-
-<%-- import footer.css --%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/footer.css" />
-
-<%-- jQuery library (served from Google) --%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-<%-- import eventMain.css --%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/product_detail.css">
-
-<script defer src="${pageContext.request.contextPath}/js/product/productqty.js"></script>
-<script type="text/javascript">
-
-
-	function onDisplay() {
-
-		$('#shareLayer').toggle();
-
-	}; // 공유하기 버튼 클릭시 보이고 안보이고
->>>>>>> branch 'master' of https://github.com/Achasan/MarketHani.git
-	
-<<<<<<< HEAD
 	<%-- include product_qna.css --%>
 	<link rel="stylesheet" type="text/css"
 		href="<%=request.getContextPath()%>/css/product_qna.css" />
@@ -69,42 +29,6 @@
 	<%-- import footer.css --%>
 	<link rel="stylesheet" type="text/css"
 		href="<%=request.getContextPath()%>/css/footer.css" />
-=======
-	  //링크 클릭시 헤당 섹션으로 부드럽게 이동시키기
-	  $(document).on('click','#ul_product a',function(event){
-	  var headerHeight = $('header').outerHeight();
-	  event.preventDefault();
-	  	$("html,body").animate({
-	    	scrollTop : $(this.hash).offset().top - headerHeight
-	    },800)
-	 
-	}); 
-	
-	
-	// 장바구니 버튼 구현
-	function count(type)  {
-  // 결과를 표시할 element
-  const resultElement = document.getElementById('result');
-  
-  // 현재 화면에 표시된 값
-  let number = resultElement.innerText;
-  
-  // 더하기/빼기
-  if(type === 'plus') {
-    number = parseInt(number) + 1;
-  }else if(type === 'minus')  {
-    number = parseInt(number) - 1;
-  }
-  
-  // 결과 출력
-  resultElement.innerText = number;
-}
-	
-	  
-	  //product end
-	  
-	  
->>>>>>> branch 'master' of https://github.com/Achasan/MarketHani.git
 
 	<%-- import eventMain.css --%>
 	<link rel="stylesheet" type="text/css"
