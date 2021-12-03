@@ -38,7 +38,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/product_detail.css">
 
-<script src="${pageContext.request.contextPath}/js/product/productqty.js"></script>
+<script defer src="${pageContext.request.contextPath}/js/product/productqty.js"></script>
 <script type="text/javascript">
 
 
@@ -338,8 +338,8 @@ function hideReviseConfirm() {
 											<span class="tit_item">구매수량</span>
 												<div class="option">
 													<span class="count">
-													    <input id="plusbtn" type='button' onclick='count("plus")' value='+'/>
-														<input id="minusbtn" type='button' onclick='count("minus")' value='-'/>
+													    <input id="plusbtn" type='button' value='+'/>
+														<input id="minusbtn" type='button' value='-'/>
 														<span id='result'>1</span> 
 													</span> <!-- <span class="price"> <span class="dc_price">2,900원</span></span> -->
 												</div>
