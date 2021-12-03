@@ -452,10 +452,6 @@ public class ReviewDAO {
 		
 	}  // sequenceUpdate() 메서드 end
 
-
-	public List<ReviewDTO> 
-	
-
 }
 	
 	
