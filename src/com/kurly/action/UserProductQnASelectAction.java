@@ -12,7 +12,7 @@ import com.kurly.controller.ActionForward;
 import com.kurly.model.QnADAO;
 import com.kurly.model.QnADTO;
 
-public class UserProductQnAPageAction implements Action {
+public class UserProductQnASelectAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
