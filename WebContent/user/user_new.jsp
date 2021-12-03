@@ -86,7 +86,7 @@ function sort(how) {
 					<td class="item" valign="top"> 
 						<div class="image">
 							<a href="<%=request.getContextPath() %>/user_product_view.do?p_num=${dto.getP_num()}">
-								<img class="product" src="<%=request.getContextPath() %>/img/product/${dto.getP_image()}" width="auto" height="435">
+								<img class="product" src="<%=request.getContextPath() %>/upload/product/${dto.getP_image()}" width="auto" height="435">
 							</a>
 							<input type="hidden" name="p_num" value="${dto.getP_num()}" /> <%-- 2021123: input hidden 추가 (허민회) --%>
 							<button type="button" class="btn_cart">

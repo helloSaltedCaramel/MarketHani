@@ -266,7 +266,7 @@ function hideReviseConfirm() {
 						
 							<div class="thumb">
 								<img
-									src="<%=request.getContextPath() %>/img/product/${dto.getP_image()}"
+									src="<%=request.getContextPath() %>/upload/product/${dto.getP_image()}"
 									class="bg">
 							</div>
 
