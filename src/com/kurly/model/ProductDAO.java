@@ -397,8 +397,11 @@ public class ProductDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-      
-      return count;
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+        return count;
 	} // getCategoryCount()
 	
 	
