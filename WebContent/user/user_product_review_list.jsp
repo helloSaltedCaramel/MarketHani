@@ -241,6 +241,11 @@ iframe {
    
 }/*페이징 호버*/
 
+#btnReview:hover {
+    background: #fff; 
+    color: #5f0080;
+}/*등록하기 버튼 색 반전 호버*/
+
 /*페이징 처리 css end*/
 
 </style>

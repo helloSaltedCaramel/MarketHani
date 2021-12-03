@@ -123,7 +123,17 @@ font-size: 13px;
 margin-top: 70px;
 }
 
-  
+#review_rebtn:hover {
+    background: #fff; 
+    color: #5f0080;
+}/*등록하기 버튼 색 반전 호버*/
+
+#review_btn:hover {
+    background: #fff; 
+    color: #5f0080;
+}/*등록하기 버튼 색 반전 호버*/
+
+
 
 </style>
 </head>

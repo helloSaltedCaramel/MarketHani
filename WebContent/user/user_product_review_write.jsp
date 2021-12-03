@@ -124,6 +124,10 @@ font-size: 13px;
 margin: 70px;
 } /*후기 작성 버튼 */
 
+#review_btn:hover {
+    background: #fff; 
+    color: #5f0080;
+}/*후기작성 버튼 색 반전 호버*/
 
 </style>
 </head>
@@ -171,7 +175,7 @@ margin: 70px;
 		<form method="post" enctype="multipart/form-data" 
 		action="<%=request.getContextPath()%>/user_product_review_write_ok.do?p_num=${product.getP_num()}">
 		
-		<table border="0" cellspacing="0" width="700">
+		<table border="1" cellspacing="0" width="700">
 			
 			<tr>
 			<th><img width="72px" height="72px" src="<%=request.getContextPath() %>/img/product/${product.getP_image()}"></th>

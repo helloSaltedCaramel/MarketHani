@@ -212,6 +212,12 @@ iframe {
     padding: 5px 15px;
 }
 
+#review_content_button:hover {
+    background: #5f0080; 
+    color: #fff;
+   
+}/*페이징 호버*/
+
 </style>
 
 </head>
