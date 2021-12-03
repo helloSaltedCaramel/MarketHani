@@ -35,11 +35,11 @@ public class UserProductReviewListAction implements Action {
 				return forward;
 				 */
 				
-				/*
-				 * int p_num = Integer.parseInt(request.getParameter("p_num"));
-				 * 
-				 * System.out.println("p_num >>> " + p_num);
-				 */
+				
+				int p_num = Integer.parseInt(request.getParameter("p_num"));
+				 
+				//System.out.println("p_num >>> " + p_num);
+				 
 				// 페이징 작업
 		
 				int rowsize = 5;       // 한페이지당 보여질 게시물의 수
@@ -70,7 +70,7 @@ public class UserProductReviewListAction implements Action {
 				ReviewDAO dao = ReviewDAO.getInstance();
 				
 				// DB 상의 전체 게시물의 수를 확인하는 메서드 호출
-				totalRecord = dao.getReviewCount();
+				totalRecord = dao.getReviewCount(p_num);
 				
 				// 전체 게시물의 수를 한페이지당 보여질 게시물의 수로 나누어주어야 함.
 				// 이 과정을 거치면 전체 페이지 수가 나오게 됨.
@@ -85,7 +85,7 @@ public class UserProductReviewListAction implements Action {
 				}
 				
 				// 현재 페이지에 해당하는 게시물을 가져오는 메서드 호출
-				List<ReviewDTO> pageList = dao.getReviewList(page, rowsize);  
+				List<ReviewDTO> pageList = dao.getReviewList(page, rowsize , p_num);  
 				//List<ReviewDTO> pageList = dao.getReviewList(page, rowsize, p_num);  // p_num 받아오기
 				
 				// 지금까지 페이징 처리 시 작업했더 모든 값들을 키로 저장하자.
@@ -100,7 +100,8 @@ public class UserProductReviewListAction implements Action {
 				request.setAttribute("endBlock", endBlock);
 				request.setAttribute("List", pageList);
 				
-				
+				// 
+				request.setAttribute("productNo", p_num);
 				
 				//아래 추가 되야지 화면에 보임 return null아니고
 				 ActionForward forward = new ActionForward();

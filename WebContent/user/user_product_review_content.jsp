@@ -203,6 +203,21 @@ iframe {
     margin: 0 auto;
 } /*리뷰 포토 이미지*/
 
+#review_content_button {
+    border: 1px solid #5f0080;
+    background-color: #fff;
+    color: #5f0080;
+    text-align: center;
+    width: auto;
+    padding: 5px 15px;
+}
+
+#review_content_button:hover {
+    background: #5f0080; 
+    color: #fff;
+   
+}/*페이징 호버*/
+
 </style>
 
 </head>
@@ -345,7 +360,7 @@ iframe {
 											<td class="subject">
 											<a
 												href="<%=request.getContextPath()
-						%>/user_product_review_list.do?no=${dto.getR_num()}">${dto.getR_title() }</a></td>
+						%>/user_product_review_list.do?p_num=${dto.getP_num()}">${dto.getR_title() }</a></td>
 											<td>${dto.getUser_id() }</td>
 											<td class="time">${dto.getR_date() }<%-- <fmt:formatDate value="${dto.getR_date() }" pattern="yyyy-MM-dd" /> --%></td>
 											<td>${dto.getR_hit() }</td>
@@ -361,30 +376,30 @@ iframe {
 									<div class="inner_review">
 										<div class="name_purchase">
 										
-										<strong class="name">[${dto.getP_seller() }]${dto.getP_name() }</strong>
+										<strong class="name">[${product.getP_seller() }]${product.getP_name() }</strong>
 										<p></p>
 										
 										</div>
 									
 										<div class="review_photo">
-											<img src="<%=request.getContextPath() %>/upload/${dto.getR_image() }"/>
+											<img src="<%=request.getContextPath() %>/upload/review/${dto.getR_image() }" alt=""/>
 										<br><br>
 										${dto.getR_content() }	
 										</div>
 																	
 									</div>
 								</table>
-								<div align="right">
-								<input type="button" value="글수정"
-									onclick="location.href='user_product_review_update.do?no=${dto.getR_num()}&page=${page }'">
-								<input type="button" value="글삭제"
+								<div class="review_content_btn" align="right">
+								<input id="review_content_button" type="button" value="글수정"
+									onclick="location.href='user_product_review_update.do?p_num=${dto.getP_num()}&no=${dto.getR_num()}&page=${page }'">
+								<input id="review_content_button" type="button" value="글삭제"
 									onclick="if(confirm('정말로 삭제하시겠습니까?')) {
-									location.href='user_product_review_delete.do?no=${dto.getP_num() }&page=${page }'
+									location.href='user_product_review_delete.do?r_num=${dto.getR_num() }'
 									}else {return; }">
-								<input type="button" value="목록으로"
-									onclick="location.href='user_product_review_list.do?page=${page }'">
+								<input id="review_content_button" type="button" value="목록으로"
+									onclick="location.href='user_product_review_list.do?p_num=${dto.getP_num()}'">
 								</div>
-								
+								<br>
 							</div> <%--후기 내용 전체틀 end --%>
 							
 						<c:if test="${empty dto }">

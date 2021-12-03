@@ -194,7 +194,60 @@ iframe {
 	border-style: inset;
 	border-color: initial;
 	border-image: initial;
+	
 }
+
+/*리뷰 리스트 호버*/
+.reviewlist:hover {
+ background: #f3f3f3;
+}
+
+/*페이징 처리 css*/
+.page_wrap {
+	text-align:center;
+	font-size:0;
+ }
+.page_nation {
+	display:inline-block;
+}
+.page_nation .none {
+	display:none;
+}
+.page_nation a {
+	display:block;
+	margin:0 3px;
+	float:left;
+	border:1px solid #e6e6e6;
+	width:28px;
+	height:28px;
+	line-height:28px;
+	text-align:center;
+	background-color:#fff;
+	font-size:13px;
+	text-decoration:none;
+}
+.page_nation .arrow {
+	border:1px solid #ccc;
+}
+
+.page_nation a.active {
+	background-color:#42454c;
+	color:#fff;
+	border:1px solid #42454c;
+}
+
+.page_nation a:hover {
+    background: #f3f3f3 ;
+   
+}/*페이징 호버*/
+
+#btnReview:hover {
+    background: #fff; 
+    color: #5f0080;
+}/*등록하기 버튼 색 반전 호버*/
+
+/*페이징 처리 css end*/
+
 </style>
 
 </head>
@@ -238,7 +291,7 @@ iframe {
 						</div>
 					</div>
 
-
+				
 					<table class="xans-board-listheader" width="100%" border="0"
 						cellpadding="0" cellspacing="0">
 						<caption style="display: none">구매후기 제목</caption>
@@ -265,7 +318,10 @@ iframe {
 							</tr>
 						</tbody>
 					</table>
+					
+					
 					<%--공지글 임의로 작성 --%>
+					<div class="reviewlist">
 					<table class="xans-board-listheaderd tbl_newtype1" width="100%"
 						cellpadding="0" cellspacing="0">
 						<caption style="display: none">구매후기 내용</caption>
@@ -290,6 +346,9 @@ iframe {
 						<td class="time">2019-11-01</td>
 						<td><span class="review-hit-cnt">436025</span></td>
 					</table>
+					</div>
+					
+					<div class="reviewlist">
 					<table class="xans-board-listheaderd tbl_newtype1" width="100%"
 						cellpadding="0" cellspacing="0">
 						<caption style="display: none">구매후기 내용</caption>
@@ -312,12 +371,12 @@ iframe {
 						<td class="time">2019-11-01</td>
 						<td><span class="review-hit-cnt">235169</span></td><%--공지글 임의로 작성 end --%>
 						</table>
-
+					</div>
 								
 						<c:set var="list" value="${List }" />
 						<c:if test="${!empty list }">
 							<c:forEach items="${list }" var="dto">
-								<div>
+								<div class="reviewlist">
 									<table class="xans-board-listheaderd tbl_newtype1" width="100%"
 										cellpadding="0" cellspacing="0">
 										<caption style="display: none">구매후기 내용</caption>
@@ -340,7 +399,7 @@ iframe {
 											<td align="center">${dto.getR_num() }</td>
 											<td class="subject"><a
 												href="<%=request.getContextPath()
-						%>/user_product_review_content.do?no=${dto.getR_num()}&page=${page }">${dto.getR_title() }</a></td>
+						%>/user_product_review_content.do?p_num=${dto.getP_num() }&no=${dto.getR_num()}&page=${page }">${dto.getR_title() }</a></td>
 											<td>${dto.getUser_id() }</td>
 											<td class="time">${dto.getR_date() }<%-- <fmt:formatDate value="${dto.getR_date() }" pattern="yyyy-MM-dd" /> --%></td>
 											<td>${dto.getR_hit() }</td>
@@ -362,7 +421,7 @@ iframe {
 
 				<p id="p_btnReview">
 						<span id="btnReview" style="line-height:30px; width:130px;" 
-						onclick="location.href='user_product_review_write.do'">후기쓰기
+						onclick="location.href='user_product_review_write.do?p_num=${productNo }'">후기쓰기
 						</span>
 						
 				
@@ -374,32 +433,33 @@ iframe {
 	
 	<%--페이징 처리 시작 --%>
 	<br>
-	<div align="center"> <%-- 페이징 처리 div --%>
+	<div class="page_wrap">
+	<div class="page_nation" align="center"> <%-- 페이징 처리 div --%>
 	<c:if test="${page > block }">
 		<a
-			href="<%=request.getContextPath()%>/user_product_review_list.do?page=1">◀◀</a>
+			href="<%=request.getContextPath()%>/user_product_review_list.do?page=1&p_num=${productNo }">◀◀</a>
 		<a
-			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${startBlock-1}">◀</a>
+			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${startBlock-1}&p_num=${productNo }">◀</a>
 	</c:if>
 
 	<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
 		<c:if test="${i == page }">
 			<b><a
-				href="<%=request.getContextPath() %>/user_product_review_list.do?page=${i}">[${i }]</a></b>
+				href="<%=request.getContextPath() %>/user_product_review_list.do?page=${i}&p_num=${productNo }">${i }</a></b>
 		</c:if>
 
 		<c:if test="${i != page }">
-			<a href="user_product_review_list.do?page=${i}">[${i }]</a>
+			<a href="user_product_review_list.do?page=${i}&p_num=${productNo }">${i }</a>
 		</c:if>
 	</c:forEach>
 
 	<c:if test="${endBlock < allPage }">
 		<a
-			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${endBlock+1}">▶</a>
-		<a href="<%=request.getContextPath() %>/user_product_review_list.do?page=${allPage}">▶▶</a>
+			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${endBlock+1}&p_num=${productNo }">▶</a>
+		<a href="<%=request.getContextPath() %>/user_product_review_list.do?page=${allPage}&p_num=${productNo }">▶▶</a>
 	</c:if>
 	</div>  <%-- 페이징 처리 div end--%>
-
+	</div>
 
 
 
