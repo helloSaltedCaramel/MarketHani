@@ -28,8 +28,11 @@ public class AdminProdInsertAction implements Action{
 													  size, 
 													  "UTF-8", 
 													  new DefaultFileRenamePolicy());
-
-		File p_img = multi.getFile("p_img");
+	
+		String p_img_name = "";
+		if(multi.getFile("p_img") != null) {
+			p_img_name = settingFile(uploadPath, multi.getFile("p_img"));
+		}
 		
 		String p_contents_name = "";
 		if(multi.getFile("p_contents") != null) {
@@ -40,8 +43,6 @@ public class AdminProdInsertAction implements Action{
 		if(multi.getFile("p_contents_spec") != null) {
 			p_contents_spec_name = settingFile(uploadPath, multi.getFile("p_contents_spec"));
 		}
-		
-		String p_img_name = settingFile(uploadPath, p_img);
 		
 		ProductDTO dto = new ProductDTO();
 		
