@@ -3,222 +3,43 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-
 <!DOCTYPE html>
 <html>
 <head>
- <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<%-- import header.css --%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/header.css" />
-<link rel="icon"
-	href="<%=request.getContextPath()%>/img/favicon/favicon-32x32.ico"
-	type="image/x-icon" sizes="16x16">
-<script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script defer src="<%=request.getContextPath()%>/js/header/header.js"></script>
-<script defer
-	src="<%=request.getContextPath()%>/js/header/location_postcode.js"></script>
+	<%-- import header.css --%>
+	<link rel="stylesheet" type="text/css"
+		href="<%=request.getContextPath()%>/css/header.css" />
+	<link rel="icon"
+		href="<%=request.getContextPath()%>/img/favicon/favicon-32x32.ico"
+		type="image/x-icon" sizes="16x16">
+	<script
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script defer src="<%=request.getContextPath()%>/js/header/header.js"></script>
+	<script defer
+		src="<%=request.getContextPath()%>/js/header/location_postcode.js"></script>
 
-<%-- include product_qna.css --%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/product_qna.css" />
-
-<%-- import footer.css --%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/footer.css" />
-
-<%-- jQuery library (served from Google) --%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-<%-- import eventMain.css --%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/product_detail.css">
-
-<script defer src="${pageContext.request.contextPath}/js/product/productqty.js"></script>
-<script type="text/javascript">
-
-
-	function onDisplay() {
-
-		$('#shareLayer').toggle();
-
-	}; // 공유하기 버튼 클릭시 보이고 안보이고
+	<%-- include product_qna.css --%>
+	<link rel="stylesheet" type="text/css"
+		href="<%=request.getContextPath()%>/css/product_qna.css" />
 	
-	  //링크 클릭시 헤당 섹션으로 부드럽게 이동시키기
-	  $(document).on('click','#ul_product a',function(event){
-	  var headerHeight = $('header').outerHeight();
-	  event.preventDefault();
-	  	$("html,body").animate({
-	    	scrollTop : $(this.hash).offset().top - headerHeight
-	    },800)
-	 
-	}); 
-	
-	
-	// 장바구니 버튼 구현
-	function count(type)  {
-  // 결과를 표시할 element
-  const resultElement = document.getElementById('result');
-  
-  // 현재 화면에 표시된 값
-  let number = resultElement.innerText;
-  
-  // 더하기/빼기
-  if(type === 'plus') {
-    number = parseInt(number) + 1;
-  }else if(type === 'minus')  {
-    number = parseInt(number) - 1;
-  }
-  
-  // 결과 출력
-  resultElement.innerText = number;
-}
-	
-	  
-	  //product end
-	  
-	  
+	<%-- import footer.css --%>
+	<link rel="stylesheet" type="text/css"
+		href="<%=request.getContextPath()%>/css/footer.css" />
 
+	<%-- import eventMain.css --%>
+	<link rel="stylesheet" type="text/css"
+		href="<%=request.getContextPath()%>/css/product_detail.css">
 
-function expandQna(num){
-	
-	$('.expand_div#' + num).toggle();
-	
-} // QnA 게시판 제목 클릭시 질문과 답변 토글
-
-function showSecret(){
-	
-	$('.modal_overlay').show();
-	$('.modal_dialog.warning').show();
-	$('body').addClass('modal_body');
-}/* "비밀글입니다" 메시지 보여주기 */
-
-function hideSecret() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog.warning').hide();
-	$('body').removeClass('modal_body');
-}/* "비밀글입니다" 메시지 감추기 */
-
-function showWrite() {
-	
-	$('.modal_overlay').show();
-	$('.modal_dialog_qna.write').show();
-	$('body').addClass('modal_body');
-}/* 질문작성창 보여주기 */
-
-function hideWrite() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog_qna.write').hide();
-	$('body').removeClass('modal_body');
-}/* 질문작성창 감추기 */
-
-function hideWriteConfirm() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog.confirm').hide();
-	$('body').removeClass('modal_body');
-}/* 작성완료 창 감추기 */
-
-function showWriteFailure() {
-	
-	$('.modal_overlay').show();
-	$('.modal_dialog.failure').show();
-	$('body').addClass('modal_body');
-}/* 작성실패창 보여주기 */
-
-function hideWriteFailure() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog.failure').hide();
-	$('body').removeClass('modal_body');
-}/* 작성실패 창 감추기 */
-
-function showWriteConfirm() {
-	
-	$('.modal_overlay').show();
-	$('.modal_dialog.confirm').show();
-	$('body').addClass('modal_body');
-	
-}/* 작성완료 창 보여주기 */
-
-function reloadQnA() {
-	
-	window.location.reload();
-	
-}/* QnA 테이블 새로고침 */
-
-function showDelete() {
-	
-	$('.modal_overlay').show();
-	$('.modal_dialog.delete').show();
-	$('body').addClass('modal_body');
+	<%-- jQuery library (served from Google) --%>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		
-}/* 질문삭제 창 보여주기  */
-
-function hideDelete() {
+	<%-- import product_detail.js --%>
+	<script defer src="${pageContext.request.contextPath}/js/product/product_detail.js"></script>
 	
-	$('.modal_overlay').hide();
-	$('.modal_dialog.delete').hide();
-	$('body').removeClass('modal_body');
-		
-}/* 질문삭제 창 감추기  */
-
-function showDeleteConfirm(){
-	$('.modal_overlay').show();
-	$('.modal_dialog.delete_confirm').show();
-	$('body').addClass('modal_body');
-}/* 삭제확인 창 보여주기 */
-
-function hideDeleteConfirm(){
-	$('.modal_overlay').hide();
-	$('.modal_dialog.delete_confirm').hide();
-	$('body').removeClass('modal_body');
-}/* 삭제확인 창 감추기 */
-
-function showRevise(qna_num, qna_title, qna_content) {
-	
-	//받아온 각 데이터를 수정 폼에 전달
-	$('.qna_revise_title').attr('value', qna_title);
-	$('.qna_revise_content').append(qna_content);
-	$('.modal_dialog_qna.revise').children('form').append('<input type="hidden" name="qna_num" value="' + qna_num + '">')
-	
-	//모달 보여주기
-	$('.modal_overlay').show();
-	$('.modal_dialog_qna.revise').show();
-	$('body').addClass('modal_body');
-		
-}/* 질문수정 창 보여주기  */
-
-function hideRevise() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog_qna.revise').hide();
-	$('body').removeClass('modal_body');
-		
-}/* 질문수정 창 감추기  */
-
-function showReviseConfirm() {
-	
-	$('.modal_overlay').show();
-	$('.modal_dialog.revise_confirm').show();
-	$('body').addClass('modal_body');
-}/* 질문수정완료 창 보여주기  */
-
-function hideReviseConfirm() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog.revise_confirm').hide();
-	$('body').removeClass('modal_body');
-}/* 질문수정완료 창 감추기  */
-
-</script>
-
 </head>
 
 <body>
@@ -824,7 +645,6 @@ function hideReviseConfirm() {
 		</form>				
 	</div><%-- modal_dialog_qna revise end --%>
 		
-	
 	<jsp:include page="../include/footer.jsp" />
 
 <%-- </body>

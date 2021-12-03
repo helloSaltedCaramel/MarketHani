@@ -154,7 +154,7 @@ public class ReviewDAO {
 			openConn();
 			
 			//서브쿼리
-			sql = "select * from (select row_number() over(order by r_num desc) bnum, b.* from kurly_review b where p_num = ?) where bnum >=? and bnum <= ?";
+			sql = "select * from (select row_number() over(order by r_num desc) bnum, b.* from kurly_review b where p_num = ?) where bnum >= ? and bnum <= ?";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -453,11 +453,3 @@ public class ReviewDAO {
 	}  // sequenceUpdate() 메서드 end
 
 }
-	
-	
-
-	
-	
-	
-	
-
