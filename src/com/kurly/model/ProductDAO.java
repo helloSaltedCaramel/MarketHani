@@ -445,4 +445,26 @@ public class ProductDAO {
 		}
 		return result;
 	}
+	
+	public int getInsertPnum() {
+		int p_num = -1;
+		
+		final String sql = "select max(p_num) p_num from kurly_product";
+		
+		openConn();
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				p_num = rs.getInt("p_num") + 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return p_num;
+	}
 }

@@ -84,7 +84,7 @@
                     </th>
 
                     <td >
-                        <input type="number" class="form_input" id="p_num" name="p_num" >
+                        <input type="number" class="form_input" id="p_num" name="p_num" value="${p_num}" disabled>
                     </td>
                 </tr> 
 
@@ -94,7 +94,7 @@
                     </th>
 
                     <td>
-                        <input type="text" class="form_input" id="p_category" name="p_category" placeholder="A1,B1,C1">
+                        <input type="text" class="form_input" id="p_category" name="p_category" placeholder="A1,B1,C1" required>
                     </td>
                 </tr>               
 
@@ -104,7 +104,7 @@
                     </th>
 
                     <td>
-                        <input type="text" class="form_input" id="p_seller" name="p_seller">
+                        <input type="text" class="form_input" id="p_seller" name="p_seller" required>
                     </td>
                 </tr>
 
@@ -114,7 +114,7 @@
                     </th>
 
                     <td>
-                        <input type="text" class="form_input" id="p_name" name="p_name">
+                        <input type="text" class="form_input" id="p_name" name="p_name" required>
                     </td>
                 </tr> 
 
@@ -124,7 +124,7 @@
                     </th>
 
                     <td>
-                        <input type="text" class="form_input" id="p_name_cont" name="p_name_cont" placeholder="예)특별한 기회로 만나보는 홍게 간식">
+                        <input type="text" class="form_input" id="p_name_cont" name="p_name_cont" placeholder="예)특별한 기회로 만나보는 홍게 간식" required>
                     </td>
                 </tr>                 
 
@@ -134,7 +134,7 @@
                     </th>
 
                     <td>
-                        <input type="number" class="form_input" id="p_price" name="p_price" placeholder="숫자만 입력">
+                        <input type="number" class="form_input" id="p_price" name="p_price" placeholder="숫자만 입력" required>
                     </td>
                 </tr> 
  
@@ -144,7 +144,7 @@
                     </th>
 
                     <td>
-                        <input type="number" class="form_input" id="p_discount" name="p_discount" placeholder="%를 제외한 숫자만 입력">
+                        <input type="number" class="form_input" id="p_discount" name="p_discount" placeholder="%를 제외한 숫자만 입력" required>
                     </td>
                 </tr>
 
@@ -154,7 +154,7 @@
                     </th>
 
                     <td>
-                        <input type="number" class="form_input" id="p_point" name="p_point" placeholder="숫자만 입력">
+                        <input type="number" class="form_input" id="p_point" name="p_point" placeholder="숫자만 입력" required>
                     </td>
                 </tr> 
                                                
@@ -164,7 +164,7 @@
                     </th>
 
                     <td>
-                        <input type="text" class="form_input" id="p_unit" name="p_unit" placeholder="단위명 필수 입력">
+                        <input type="text" class="form_input" id="p_unit" name="p_unit" placeholder="단위명 필수 입력" required>
                     </td>
                 </tr> 
  
@@ -174,7 +174,7 @@
                     </th>
 
                     <td>
-                        <input type="text" class="form_input" id="p_delivery" name="p_delivery" placeholder="샛별배송,일반택배,직접수령">
+                        <input type="text" class="form_input" id="p_delivery" name="p_delivery" placeholder="샛별배송,일반택배,직접수령" required>
                     </td>
                 </tr>    
                                
@@ -184,7 +184,7 @@
                     </th>
 
                     <td>
-                        <input type="text" class="form_input" id="p_wrap" name="p_wrap">
+                        <input type="text" class="form_input" id="p_wrap" name="p_wrap" required>
                     </td>
                 </tr>
                 
@@ -194,7 +194,7 @@
                     </th>
 
                     <td>
-                        <input type="text" class="form_input" id="p_wrap_cont" name="p_wrap_cont" placeholder="택배배송은 에코포장이 스티로폼으로 대체됩니다.">
+                        <input type="text" class="form_input" id="p_wrap_cont" name="p_wrap_cont" placeholder="택배배송은 에코포장이 스티로폼으로 대체됩니다." required>
                     </td>
                 </tr>                
                                
@@ -206,7 +206,7 @@
                     </th>
 
                     <td>
-                        <input type="number" class="form_input" id="p_qty" name="p_qty" placeholder="숫자만 입력">
+                        <input type="number" class="form_input" id="p_qty" name="p_qty" placeholder="숫자만 입력" required>
                     </td>
                 </tr> 
 
@@ -216,7 +216,7 @@
                     </th>
 
                     <td>
-                        <input type="file" class="form_input" id="p_img" name="p_img" >
+                        <input type="file" class="form_input" id="p_img" name="p_img" required>
                     </td>
                 </tr>  
  
@@ -226,7 +226,7 @@
                     </th>
 
                     <td>
-                        <input type="file"  class="form_input" id="p_contents" name="p_contents">
+                        <input type="file"  class="form_input" id="p_contents" name="p_contents" required>
                     </td>
                 </tr>
                    
@@ -236,7 +236,7 @@
                     </th>
 
                     <td>
-                        <input type="file" class="form_input" id="p_contents_spec" name="p_contents_spec" >
+                        <input type="file" class="form_input" id="p_contents_spec" name="p_contents_spec" required>
                     </td>
                 </tr> 
               

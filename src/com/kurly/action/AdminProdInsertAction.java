@@ -59,6 +59,13 @@ public class AdminProdInsertAction implements Action{
 		
 		int result = ProductDAO.getInstance().insertProduct(dto);
 		
+		// DB에서 오류 발생했을 경우 업로드한 사진 삭제
+		if(result == -1) {
+			deleteFile(uploadPath, p_img_name);
+			deleteFile(uploadPath, p_contents_name);
+			deleteFile(uploadPath, p_contents_spec_name);
+		}
+		
 		ActionForward forward = new ActionForward();
 		forward.setPath("admin/admin_main.jsp");
 		forward.setRedirect(true);
@@ -67,14 +74,20 @@ public class AdminProdInsertAction implements Action{
 		return forward;
 	}
 	
-	private String settingFile(String uploadPath, File file) {
+	private String getDate()  {
 		Calendar cal = Calendar.getInstance();
 		
 		int year = cal.get(Calendar.YEAR);
 		int month = cal.get(Calendar.MONTH) + 1;
 		int day = cal.get(Calendar.DAY_OF_MONTH);
 		
-		String directory = uploadPath+"/"+year+"-"+month+"-"+day;
+		String date = year+"-"+month+"-"+day;
+		
+		return date;
+	}
+	
+	private String settingFile(String uploadPath, File file) {
+		String directory = uploadPath + "/" + getDate();
 
 		File folder = new File(directory);
 		
@@ -84,8 +97,18 @@ public class AdminProdInsertAction implements Action{
 		
 		file.renameTo(new File(directory + "/" + file.getName()));
 		
-		String dbName = year + "-" + month + "-" + day + "/" + file.getName();
+		String dbName = getDate() + "/" + file.getName();
 		
 		return dbName;
+	}
+	
+	private void deleteFile(String uploadPath, String fileName) {
+		String directory = uploadPath + "/" + getDate();
+		
+		File file = new File(directory + "/" + fileName);
+		
+		if(file.exists()) {
+			file.delete();
+		}
 	}
 }
