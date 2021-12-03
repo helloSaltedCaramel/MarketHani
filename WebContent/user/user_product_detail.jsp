@@ -271,10 +271,12 @@ function hideReviseConfirm() {
 							</div>
 
 							<p class="goods_name">
+								<input id="p_num" type="hidden" name="p_num" value="${param.p_num}"/>
 								<span class="btn_share">
 									<button id="btnShare" onclick="onDisplay();">공유하기</button>
-								</span> <strong class="name">[${dto.getP_seller()}]${dto.getP_name() }</strong> <span
-									class="short_desc">${dto.getP_name_cont() }</span>
+								</span> 
+								<strong class="name">[${dto.getP_seller()}]${dto.getP_name() }</strong> 
+								<span class="short_desc">${dto.getP_name_cont() }</span>
 							</p>
 
 							<p class="goods_price">
@@ -338,7 +340,7 @@ function hideReviseConfirm() {
 											<span class="tit_item">구매수량</span>
 												<div class="option">
 													<span class="count">
-													    <input id="plusbtn" type='button' value='+'/>
+													  <input id="plusbtn" type='button' value='+'/>
 														<input id="minusbtn" type='button' value='-'/>
 														<span id='result'>1</span> 
 													</span> <!-- <span class="price"> <span class="dc_price">2,900원</span></span> -->
@@ -374,8 +376,7 @@ function hideReviseConfirm() {
 											class="btn btn_alarm">재입고 알림</button>
 									</div>
 									<span class="btn_type1">
-										<button id="button_product" type="button" class="txt_type"
-											onclick="alert('장바구니에 담겼습니다')">장바구니 담기</button> <!---->
+										<button id="addCart_btn" type="button" class="txt_type">장바구니 담기</button> <!---->
 									</span>
 									<!---->
 									<!---->
