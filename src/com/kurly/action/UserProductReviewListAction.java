@@ -37,7 +37,9 @@ public class UserProductReviewListAction implements Action {
 				
 				
 				int p_num = Integer.parseInt(request.getParameter("p_num"));
-				 
+				String reviewsortby = request.getParameter("reviewsort");
+				
+				
 				//System.out.println("p_num >>> " + p_num);
 				 
 				// 페이징 작업
