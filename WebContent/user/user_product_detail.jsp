@@ -499,14 +499,14 @@ function hideReviseConfirm() {
 			<%-- 상품설명 이미지  --%>
 			<div id="content1">
 					<img
-						src="<%=request.getContextPath() %>/img/product/${dto.getP_contents()}"
+						src="<%=request.getContextPath() %>/upload/product/${dto.getP_contents()}"
 						align="center" width="1010px" height="100%"> 
 			</div> <%-- #content1 scroll end --%>		
 		
 			<%-- 상세정보 이미지  --%>
 			<div id="content2">		
 					<img
-						src="<%=request.getContextPath() %>/img/product/${dto.getP_contents_spec()}"
+						src="<%=request.getContextPath() %>/upload/product/${dto.getP_contents_spec()}"
 						align="center" width="1010px" height="100%"> <br> <br>
 					<br> <br> <br> <br> <br>
 		
