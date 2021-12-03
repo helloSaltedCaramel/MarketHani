@@ -370,6 +370,8 @@ public class ProductDAO {
 		} catch (SQLException e) {
 			System.out.println("[ProductDAO] insertProduct 오류 발생");
 			e.printStackTrace();
+			result = -1;
+			return result;
 		} finally {
 			closeConn(rs, pstmt, con);
 		}

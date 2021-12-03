@@ -59,19 +59,6 @@ public class AdminProdInsertAction implements Action{
 		
 		int result = ProductDAO.getInstance().insertProduct(dto);
 		
-		PrintWriter writer = response.getWriter();
-		if(result > 0) {
-			writer.println("<script>");
-			writer.println("alert('상품 추가에 실패하였습니다. 로그를 확인해주세요.')");
-			writer.println("history.back()");
-			writer.println("</script>");
-		} else {
-			writer.println("<script>");
-			writer.println("alert('상품이 추가되었습니다. 신상품에서 확인해주세요.')");
-			writer.println("location.href('main.jsp')");
-			writer.println("</script>");
-		}
-		
 		ActionForward forward = new ActionForward();
 		forward.setPath("admin/admin_main.jsp");
 		forward.setRedirect(true);

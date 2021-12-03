@@ -7,18 +7,18 @@ import java.security.SecureRandom;
 public class KurlySecure {
 	private static final int SALT_SIZE = 16;
 	
-	public static String hashing(byte[] password) throws NoSuchAlgorithmException {
+	public static String hashing(byte[] password, String salt) throws NoSuchAlgorithmException {
 		
 		MessageDigest md = MessageDigest.getInstance("SHA-256");
 		
 		// key-stretching: 10000번 실행
 		for(int i=0; i<10000; i++) {
-			String temp = byteToString(password);
+			String temp = byteToString(password) + salt;
 			md.update(temp.getBytes());
 			password = md.digest();
 		}
 		
-		return byteToString(password);		
+		return byteToString(password);
 	}
 	
 	private static String byteToString(byte[] temp) {
@@ -39,8 +39,7 @@ public class KurlySecure {
 		
 		// nextBytes(): SecureRandom에서 난수를 생성하는 메서드, 
 		// 파라미터에는 생성된 난수를 담을 byte 배열을 입력한다.
-		sr.nextBytes(salt);
-		
+		sr.nextBytes(salt);		
 		return byteToString(salt);
 	}
 }
