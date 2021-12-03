@@ -40,7 +40,7 @@ public class AdminProdInsertAction implements Action{
 		ProductDTO dto = new ProductDTO();
 		
 		// 서브카테고리, p_date는 DAO에서 기본값으로 추가
-		dto.setP_num(Integer.parseInt(multi.getParameter("p_num")));
+		dto.setP_num(ProductDAO.getInstance().getInsertPnum());
 		dto.setP_category(multi.getParameter("p_category"));
 		dto.setP_seller(multi.getParameter("p_seller"));
 		dto.setP_name(multi.getParameter("p_name"));

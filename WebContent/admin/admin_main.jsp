@@ -77,18 +77,7 @@
 						<div class="admin_pManage">
 					<form method="post" action="${pageContext.request.contextPath}/admin_prod_insert.do" enctype="multipart/form-data">
 							<table class="pManage_table">
-                
-            	<tr class="fsd">
-                	<th>
-                                           상품번호
-                    </th>
-
-                    <td >
-                        <input type="number" class="form_input" id="p_num" name="p_num" value="${p_num}" disabled>
-                    </td>
-                </tr> 
-
-                <tr>
+                <tr class="fsd">
                     <th>
                        	 카테고리
                     </th>
