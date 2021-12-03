@@ -6,7 +6,7 @@ const addCart = (e) => {
 
 	$.ajax({
 		type: "post",
-		url: getContextPath() + "/addcart_list",
+		url: getContextPath() + "/addcart",
 		async: true,
 		timeout: 3000,
 		data: { "p_num" : p_num.value },
@@ -14,7 +14,7 @@ const addCart = (e) => {
 		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 		success: function(isAdded) {
 			if(isAdded === "true") {
-				alert('장바구니에 상품이 추가되었습니다.');
+				alert('장바구니에 상품이 추가되었습니다. 장바구니에 이미 상품이 추가되어있을 경우 수량만큼 추가됩니다.');
 				// 추가되었다는 메시지 출력, 모달?
 				
 			} else if(isAdded === "request login"){

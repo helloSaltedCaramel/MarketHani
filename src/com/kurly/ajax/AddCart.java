@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 import com.kurly.model.CartDAO;
 import com.kurly.model.CartDTO;
 
-@WebServlet("/addcart_list")
-public class ListAddCart extends HttpServlet {
+@WebServlet("/addcart")
+public class AddCart extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -27,11 +27,18 @@ public class ListAddCart extends HttpServlet {
 			writer.write("request login");
 			return;
 		}
-
+		
+		int quantity = quantityCheck(request.getParameter("quantity"));
+		
 		CartDTO dto = new CartDTO();
 		dto.setUser_id((String)session.getAttribute("user_id"));
 		dto.setCart_pnum(request.getParameter("p_num"));
-		writer.write(CartDAO.getInstance().addCartByList(dto));
+		dto.setCart_qty(quantity);
+		writer.write(CartDAO.getInstance().addCart(dto));
+	}
+	
+	private int quantityCheck(String quantity) {
+		return (quantity != null) ? Integer.parseInt(quantity) : 1;
 	}
 
 }

@@ -807,5 +807,43 @@ iframe#inreview {
 }
 
 
+/* 수량 버튼 구현 */
+#minusbtn {
+	overflow: hidden;
+    float: left;
+    width: 28px;
+    height: 28px;
+    border: 0;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+    background-image : url(../img/product/ico_minus_on.jpg);
+}
 
+#plusbtn {
+	overflow: hidden;
+    width: 28px;
+    height: 28px;
+    border: 0;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+    background-image : url(../img/product/ico_plus_on.jpg);
+}
 
+#result {
+	float: left;
+    width: 30px;
+    height: 30px;
+    margin-right: -1px;
+    padding: 0 0 4px;
+    border: 0;
+    background-color: #fff;
+    font-size: 14px;
+    color: #000;
+    line-height: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+	
+}

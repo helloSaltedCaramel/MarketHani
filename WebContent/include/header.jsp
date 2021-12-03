@@ -563,7 +563,7 @@
 
                                 <ul class="sub_menu">
                                     <li>
-                                        <a class="sub">
+                                        <a class="sub" href="${pageContext.request.contextPath}/admin/admin_main.jsp">
                                             <span class="name">
                                                 <img src="http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/2fd666dddb91de1.png">
                                             </span>

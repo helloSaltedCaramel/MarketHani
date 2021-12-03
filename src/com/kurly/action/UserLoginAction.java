@@ -35,9 +35,6 @@ public class UserLoginAction implements Action {
 		String hashedPw = "";
 		try {
 			hashedPw = KurlySecure.hashing(pw.getBytes(), salt);
-			System.out.println("입력받은 ID = " + request.getParameter("id"));
-			System.out.println("가져온 salt = " + salt);
-			System.out.println("hashedPw = " + hashedPw);
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}

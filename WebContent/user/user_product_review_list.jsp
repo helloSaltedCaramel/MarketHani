@@ -283,9 +283,9 @@ iframe {
 							<div class="sort" style="bottom: -9px">
 								<select
 									onchange="this.form.sort.value=this.value;this.form.submit()">
-									<option value="1">최근등록순</option>
-									<option value="2">좋아요많은순</option>
-									<option value="3">조회많은순</option>
+									<option value="1" onclick="sort('reviewNew')">최근등록순</option>
+									<option value="2" >좋아요많은순</option>
+									<option value="3" onclick="sort('reviewHit')">조회많은순</option>
 								</select>
 							</div>
 						</div>

@@ -40,9 +40,6 @@ public class UserRegistAction implements Action {
 		
 		try {
 			hashedPw = KurlySecure.hashing(password, salt);
-			
-			System.out.println("salt = " + salt);
-			System.out.println("hashedPw = " + hashedPw);
 		} catch (NoSuchAlgorithmException e) {
 			System.out.println("[UserRegistAction Error] : KurlySecure.hashing Exception");
 			e.printStackTrace();

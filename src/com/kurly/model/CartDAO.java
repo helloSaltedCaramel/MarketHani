@@ -48,13 +48,13 @@ public class CartDAO {
 		}
 	}
 	
-	public String addCartByList(CartDTO dto) {
+	public String addCart(CartDTO dto) {
 		String result = "false";
 		boolean exist = false;
 		
 		final String checkSql = "select cart_qty from kurly_cart where cart_pnum = ? and cart_userId = ?";
-		final String insertSql = "insert into kurly_cart values(cart_seq.nextval, ?, 1, ?)";
-		final String updateSql = "update kurly_cart set cart_qty = cart_qty + 1 where cart_pnum = ? and cart_userId = ?";
+		final String insertSql = "insert into kurly_cart values(cart_seq.nextval, ?, ?, ?)";
+		final String updateSql = "update kurly_cart set cart_qty = cart_qty + ? where cart_pnum = ? and cart_userId = ?";
 		
 		try {
 			con = connect();
@@ -69,12 +69,14 @@ public class CartDAO {
 			
 			if(exist) {
 				pstmt = con.prepareStatement(updateSql); 
-				pstmt.setString(1, dto.getCart_pnum());
-				pstmt.setString(2, dto.getUser_id());
+				pstmt.setInt(1, dto.getCart_qty());
+				pstmt.setString(2, dto.getCart_pnum());
+				pstmt.setString(3, dto.getUser_id());
 			} else {
 				pstmt = con.prepareStatement(insertSql);
 				pstmt.setString(1, dto.getCart_pnum());
-				pstmt.setString(2, dto.getUser_id());
+				pstmt.setInt(2, dto.getCart_qty());
+				pstmt.setString(3, dto.getUser_id());
 			}
 			
 			int updateResult = pstmt.executeUpdate();		
