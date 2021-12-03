@@ -1,6 +1,7 @@
 package com.kurly.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,19 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kurly.controller.Action;
 import com.kurly.controller.ActionForward;
-import com.kurly.model.ProductDAO;
-import com.kurly.model.ProductDTO;
 import com.kurly.model.QnADAO;
 import com.kurly.model.QnADTO;
 
-public class UserProductViewAction implements Action {
+public class UserProductQnAPageAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		//상품번호에 해당하는 상세정보 및 QnA DTO를 각각 받아 넘겨주는 비지니스 로직 
-		//상품번호 받아오기
-		int p_num = Integer.parseInt(request.getParameter("p_num").trim());
+		//해당 페이지의 QnA 게시글을 찾아 넘겨주는 비지니스 로직 
 		
 		//페이징 작업
 		int rowsize = 3;	//한 페이지에 보여질 게시물 수
@@ -47,7 +44,10 @@ public class UserProductViewAction implements Action {
 		
 		//해당 페이지의 끝 블럭
 		int endBlock = ((page - 1) / block) * block + block;
-			
+		
+		//p_num 받아오기
+		int p_num = Integer.parseInt(request.getParameter("p_num").trim());
+		
 		//DB상의 전체 게시물 수를 확인하는 메서드 호출
 		QnADAO q_dao = QnADAO.getInstance();
 		totalRecord = q_dao.getQnaCount(p_num);
@@ -55,17 +55,11 @@ public class UserProductViewAction implements Action {
 		// 전체 게시물 수를 한 페이지당 보여질 게시물의 수로 나누어주어야 함
 		// 전체 페이지 수를 산출한 후 나머지가 있을 경우 무조건 페이지수 + 1
 		allPage = (int)Math.ceil(totalRecord / (double)rowsize);
-		
-		
-		//번호에 해당하는 ProductDTO 받아오기
-		ProductDAO p_dao = ProductDAO.getInstance();
-		ProductDTO dto = p_dao.productCont(p_num);
 
 		//번호에 해당하는 List<QnADTO> 받아오기
 		List<QnADTO> QnAlist = q_dao.getQnAList(page, rowsize, p_num);
 		
 		//attribute 설정
-		request.setAttribute("productCont", dto);
 		request.setAttribute("List", QnAlist);
 		
 		//페이징 처리값 전달
@@ -79,11 +73,15 @@ public class UserProductViewAction implements Action {
 		request.setAttribute("startBlock", startBlock);
 		request.setAttribute("endBlock", endBlock);
 
-		//forward
+		//포워드
 		ActionForward forward = new ActionForward();
 		
-		forward.setRedirect(false);
-		forward.setPath("user/user_product_detail.jsp");
+		//페이지 넘어감 방지
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		out.println("history.back()");
+		out.println("</script>");	
 		
 		return forward;
 	}

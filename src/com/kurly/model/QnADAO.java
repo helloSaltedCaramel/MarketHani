@@ -81,18 +81,27 @@ public class QnADAO {
 		}  // closeConn() 메서드 end
 		
 		//kurly_qna 테이블에서 전체 리스트를 조회하는 메서드
-		public List<QnADTO> getQnAList(int p_num) {
+		public List<QnADTO> getQnAList(int page, int rowsize, int p_num) {
+			
 			List<QnADTO> QnAlist = new ArrayList<QnADTO>();
+			
+			int startNo = (page * rowsize) - (rowsize - 1);
+			int endNo = (page * rowsize);				
 			
 			try {
 
 				openConn();
 				
-				sql = "select * from kurly_qna where p_num = ? order by qna_num desc";
+				sql = "select * from "
+						+ "(select row_number() over(order by qna_num desc) rnum, q.* from kurly_qna q where p_num = ?)"
+						+ "where rnum >= ? and rnum <= ?";
+				
+				//sql = "select * from kurly_qna where p_num = ? order by qna_num desc";
 				
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, p_num);
-				
+				pstmt.setInt(2, startNo);
+				pstmt.setInt(3, endNo);				
 				rs = pstmt.executeQuery();
 				
 				while(rs.next()) {
@@ -213,6 +222,30 @@ public class QnADAO {
 			
 			return res;
 		}//reviseQnA() end
+
+		public int getQnaCount(int p_num) {
+			
+			int count = 0;
+			
+			try {
+				openConn();
+				sql = "select count(*) from kurly_qna where p_num = " + p_num;
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			
+			return count;
+		}
 
 	
 }

@@ -614,12 +614,36 @@ function hideReviseConfirm() {
 						<%-- 문의하기, 페이지 이동 버튼 --%>
 						<div class="qna_button_area">
 							<div class="qna_paging_nav">
-								<button type="button" class="prev"><span></span></button>
+								<button type="button" class="prev" onclick="location.href='user_product'"><span></span></button>
 								<button type="button" class="next"><span></span></button>
 							</div>
 							<button class="qna_write_btn" onclick="showWrite();">
 								<span>문의하기</span>
 							</button>
+							
+							<%-- 페이지네이션--%>
+							<c:if test="${page > block}">
+							<a href="user_qna_page.do?p_num=${dto.getP_num()}&page=1">◀◀</a>
+							<a href="user_qna_page.do?p_num=${dto.getP_num()}&page=${startBlock - 1 }">◀</a>
+							</c:if>
+						
+						
+							<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
+								<c:if test="${i == page }">
+									<b><a href="<%=request.getContextPath() %>/user_qna_page.do?p_num=${dto.getP_num()}&page=${i }">[${i }]</a></b>
+								</c:if>
+								
+								<c:if test="${i != page }">
+									<a href="<%=request.getContextPath() %>/user_qna_page.do?p_num=${dto.getP_num()}&page=${i }">[${i }]</a>
+								</c:if>
+							</c:forEach>
+							
+							<c:if test="${endBlock < allPage}">
+								<a href="user_qna_page.do?p_num=${dto.getP_num()}&page=${endBlock + 1 }">▶</a>
+								<a href="user_qna_page.do?p_num=${dto.getP_num()}&page=${allPage }">▶▶</a>
+							</c:if>
+							
+							<%-- 페이지네이션 끝 --%>
 						</div>
 					</div> <%-- .qna_content end --%>
 				</div>	<%-- .qna_container end --%>	
