@@ -38,6 +38,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/product_detail.css">
 
+<script defer src="${pageContext.request.contextPath}/js/product/productqty.js"></script>
 <script type="text/javascript">
 
 
@@ -56,6 +57,31 @@
 	    },800)
 	 
 	}); 
+	
+	
+	// 장바구니 버튼 구현
+	function count(type)  {
+  // 결과를 표시할 element
+  const resultElement = document.getElementById('result');
+  
+  // 현재 화면에 표시된 값
+  let number = resultElement.innerText;
+  
+  // 더하기/빼기
+  if(type === 'plus') {
+    number = parseInt(number) + 1;
+  }else if(type === 'minus')  {
+    number = parseInt(number) - 1;
+  }
+  
+  // 결과 출력
+  resultElement.innerText = number;
+}
+	
+	  
+	  //product end
+	  
+	  
 
 
 function expandQna(num){
@@ -232,7 +258,7 @@ function hideReviseConfirm() {
 								</ul>
 							</div>
 						</div>
-
+										
 					</div>
 					
 					<div id="sectionView">
@@ -245,10 +271,12 @@ function hideReviseConfirm() {
 							</div>
 
 							<p class="goods_name">
+								<input id="p_num" type="hidden" name="p_num" value="${param.p_num}"/>
 								<span class="btn_share">
 									<button id="btnShare" onclick="onDisplay();">공유하기</button>
-								</span> <strong class="name">[${dto.getP_seller()}]${dto.getP_name() }</strong> <span
-									class="short_desc">${dto.getP_name_cont() }</span>
+								</span> 
+								<strong class="name">[${dto.getP_seller()}]${dto.getP_name() }</strong> 
+								<span class="short_desc">${dto.getP_name_cont() }</span>
 							</p>
 
 							<p class="goods_price">
@@ -307,28 +335,33 @@ function hideReviseConfirm() {
 														<span class="txt">삭제하기</span>
 													</button>
 											</span> <span class="name"> <!----> [조공] 나 게살 좋아해 스틱 <!---->
-											</span> <span class="tit_item">구매수량</span>
+											</span> 
+											
+											<span class="tit_item">구매수량</span>
 												<div class="option">
 													<span class="count">
-														<button id="button_product" type="button"
-															class="btn down on">수량내리기</button> <input
-														id="input_product" type="number" readonly="readonly"
-														onfocus="this.blur()" value="1" class="inp">
-														<button id="button_product" type="button"
-															class="btn up on">수량올리기</button>
-													</span> <span class="price"> <!----> <span class="dc_price">2,900원</span>
-													</span>
-												</div></li>
+													  <input id="plusbtn" type='button' value='+'/>
+														<input id="minusbtn" type='button' value='-'/>
+														<span id='result'>1</span> 
+													</span> <!-- <span class="price"> <span class="dc_price">2,900원</span></span> -->
+												</div>
+											</li>
 										</ul>
 									</div>
 									<div class="total">
 										<div class="price">
 											<!---->
-											<strong class="tit">총 상품금액 :</strong> <span class="sum">
-												<span class="num"><fmt:formatNumber type="number"
-												value="${dto.getP_price() }" /></span> <span class="won">원</span>
+											<strong class="tit">총 상품금액 :</strong> 
+											<span class="sum">
+												<span class="num" id="totalPrice">
+													<fmt:formatNumber type="number" value="${dto.getP_price() }" />
+												</span> 
+												<span class="won">원</span>
 											</span>
 										</div>
+										
+										
+										
 										<p class="txt_point">
 											<span class="ico">적립</span> <span class="no_login"> <!---->
 												<span>로그인 후, 적립혜택 제공</span>
@@ -343,8 +376,7 @@ function hideReviseConfirm() {
 											class="btn btn_alarm">재입고 알림</button>
 									</div>
 									<span class="btn_type1">
-										<button id="button_product" type="button" class="txt_type"
-											onclick="alert('장바구니에 담겼습니다')">장바구니 담기</button> <!---->
+										<button id="addCart_btn" type="button" class="txt_type">장바구니 담기</button> <!---->
 									</span>
 									<!---->
 									<!---->
