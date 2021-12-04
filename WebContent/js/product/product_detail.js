@@ -1,15 +1,8 @@
 /*제품 상세 페이지 스크립트*/
 
 
-$(document).ready(function(){
-	
-	let p_num = 9;
-	let page = 1;
 
-	qnaList(p_num, page);
-	
-});
-
+//페이지 로딩 시 비동기식 처리를 통해 QnA 전체 리스트를 보여주는 함수  
 function qnaList(num, paging) {
 	
 	let p_num = num;
@@ -18,21 +11,160 @@ function qnaList(num, paging) {
 	$.ajax({
 		url : "/Market_Hani/user_qna_select.do?p_num="+ p_num + "&page=" + page,
 		datatype : "xml",
-		success : function(data).each(){
-			
-			$(data).find("qna").each(function(){
+		success : function(data) {
+	
+		
+			// 테이블 비우기 	
+			$('.qna_content_list').empty();
+		
+			let str = "";
+		
+			// QnA 리스트 출력 
+			$(data).find("qna").each(function(i){
 				
-				console.log($(this).find("qna_title").text());
+				let title = $(this).find("qna_title").text();
+				let content = $(this).find("qna_content").text();
+				let num = $(this).find("qna_num").text();
+				let secret = $(this).find("qna_secret").text();
+				let date = $(this).find("qna_date").text();
+				let user_id = $(this).find("user_id").text();
+				let status = $(this).find("qna_status").text();
+				let answer = $(this).find("qna_answer").text();
+				
+				str += '<li class="qna_content_item">';
+				
+				// 비밀 글 : 제목 클릭 시 모달 함수 호출("비밀글입니다")				
+				if(secret == 1){
+					
+					str += "<div class='content-cell secret' onclick='showSecret();'>\
+									<strong id='secret_title'>\
+										비밀글입니다.&nbsp;&nbsp;<img src='./img/product/qna_secret.svg'>\
+									</strong>\
+								</div>";
+				}else{
+				
+					str += "<div class='content-cell' onclick='expandQna(" + i + ");'>\
+									<strong id='question_title'>"
+										+ title + 
+									"</strong>\
+								</div>";
+				}
+				
+				str += '<div class="item-cell"><p>' + user_id + '</p></div>\
+						    <div class="item-cell"><p>' + date + '</p></div>';
+		
+				str += '<div class="item-cell"><p>';
+				
+				if(status == 1){
+
+					str += '<font color="#5f0081">답변완료</font>';
+				}else{
+					
+					str += '답변대기';
+				}
+				
+				str += '</p></div></li>';
+				
+				// 토글 함수에 들어가는 id값 설정하기 위한 div 
+				str += '<div class="expand_div" id="' + i + '">';
+				
+				// 비밀 글이 아닐 때에만 질문/답변 확장 영역 로딩 
+				if(secret != 1){
+					
+					// 질문 영역 
+					if(content != 'null'){
+						
+						str += '<li class="qna_content_item expand">\
+										<div class="content-cell expand">\
+											<span><img class="qna_mark" src="./img/product/qna_question_mark.svg"></span>\
+											<span><strong>' + content + '</strong></span>\
+											<div class="item-cell update">\
+												<p>\
+													<a onclick="showRevise(' + 
+														num + ", '" + title + "', '" + content + "'" + ');">\
+														수정\
+													</a>&nbsp;&nbsp;&nbsp;\
+													<a onclick="if(confirm(' + "'작성한 문의를 삭제하시겠습니까?'" + ')){'
+														+ 'location.href=' +"'user_qna_delete.do?qna_num=" + num + "'" + ';'
+														+ 'showDeleteConfirm();\
+													}else{return; };">\
+														삭제\
+													</a>\
+												</p>\
+											</div>\
+										</div>\
+								</li>';
+								
+					}else if(content == 'null'){
+						
+						str += '<li class="qna_content_item expand">\
+										<div class="content-cell expand">\
+											<span><img class="qna_mark" src="./img/product/qna_question_mark.svg"></span>\
+											<span><strong><font color="#5f0081">작성하신 내용이 없습니다</font></strong></span>\
+								</li>';
+					}
+					
+					// 답변 영역  - 답변이 있을 경우에만
+					if(answer != 'null'){
+						
+						str += '<li class="qna_content_item expand">\
+									<div class="content-cell expand">\
+										<span><img class="qna_mark" src="./img/product/qna_answer_mark.svg"></span>\
+										<span><strong>'+ answer +'</strong></span>\
+									</div>\
+							   </li>' 
+					}
+				}
+				
+				str += '</div>';
+		
 			});
 			
-			console.log('여기까지 오긴 하는걸까?');
+			$('.qna_content_list').append(str);
+					
+			let allPage = $(data).find("pagination").find("allPage").text();
+			
+			if(page == 1){
+				$('.prev').attr('disabled', true);
+				$('.prev').css('background', 'url(./img/product/qna_page_prev_disabled.svg) 50% 0 no-repeat');
+			}else{
+				$('.prev').attr('disabled', false);
+				$('.prev').attr('onclick', 'qnaList(' + p_num + ', ' + (page - 1) + ')');	
+				$('.prev').css('background', 'url(./img/product/qna_page_prev.svg) 50% 0 no-repeat');
+			}
+			
+			if(page == allPage){
+				$('.next').attr('disabled', true);
+				$('.next').css('background', 'url(./img/product/qna_page_next_disabled.svg) 50% 0 no-repeat');
+			}else{
+				$('.next').attr('disabled', false);
+				$('.next').attr('onclick', 'qnaList(' + p_num + ', ' + (page + 1) + ')');
+				$('.next').css('background', 'url(./img/product/qna_page_next.svg) 50% 0 no-repeat');
+			}
+				
 			
 		},
 		
 		error : function(){
-			alert('데이터가 전달되지 않습니다');
+			
+			$('.qna_content_list').append('<li><strong>등록된 문의가 없습니다.</strong></li>');
 		}
 	});
+}
+
+function isSecret() {
+
+	if($('.secret_check').prop('checked') == false){
+		
+		$('.secret_check').prop('checked', true);
+		$('.secret_check_ico').css('background-image', 'url(./img/product/qna_write_checked.svg)');
+	}else{
+		
+		$('.secret_check').prop('checked', false);
+		$('.secret_check_ico').css('background-image', 'url(./img/product/qna_write_unchecked.svg)');
+	}
+	
+	console.log($('.secret_check').prop('checked')); 
 }
 
 function onDisplay() {

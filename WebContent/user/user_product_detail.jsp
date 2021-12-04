@@ -40,6 +40,12 @@
 	<%-- import product_detail.js --%>
 	<script defer src="${pageContext.request.contextPath}/js/product/product_detail.js"></script>
 	
+	<%-- QnA 게시판 그리기 --%>
+	<script>	
+		$(document).ready(function() {
+			qnaList(${productCont.getP_num()}, 1);
+		});
+	</script>
 </head>
 
 <body>
@@ -380,123 +386,21 @@
 							</li>
 						</ul>
 						
-						<%-- QnA 내용부분 --%>
-						<c:set var="list" value="${List }"/>
-						
-						<ul class="qna_content_list">
-						
-						<c:if test="${empty list }">
-							<li><strong>등록된 문의가 없습니다</strong></li>
-						</c:if>
-						
-						<c:if test="${!empty list }">
-						
-							<c:forEach items="${list }" var="q_dto" varStatus="status">
-								<li class="qna_content_item">
-								
-									<c:if test="${q_dto.getQna_secret() == 1}"> <%-- 비밀 글 : 제목 클릭 시 모달 함수 호출("비밀글입니다") --%>
-										<div class="content-cell secret" onclick="showSecret();">	
-											<strong id="secret_title"><font color="#b5b5b5">
-												비밀글입니다.&nbsp;&nbsp;<img src="<%=request.getContextPath() %>/img/product/qna_secret.svg">
-											</font></strong>
-										</div>
-									</c:if>
-									
-									<c:if test="${q_dto.getQna_secret() != 1}"> <%-- 일반 글 : 제목 클릭 시 토글 함수 호출--%>
-										<div class="content-cell" onclick="expandQna(${status.count });">	
-											<strong id="question_title">${q_dto.getQna_title() }</strong>
-										</div>
-									</c:if>											
-								
-									
-									<div class="item-cell"><p>${q_dto.getUser_id() }</p></div>
-									<div class="item-cell"><p>${q_dto.getQna_date() }</p></div>
-									<div class="item-cell">
-										<p>
-										<c:if test="${q_dto.getQna_status() == 1}">
-											<font color="#5f0081">답변완료</font>	
-										</c:if>
-										<c:if test="${q_dto.getQna_status() != 1}">
-											답변대기
-										</c:if>
-										</p>
-									</div>
-								</li>
-								
-								<div class="expand_div" id="${status.count }">	<%-- 토글 함수에 들어가는 id값 설정하기 위한 div --%>
-									
-									<c:if test="${q_dto.getQna_secret() != 1}">	<%-- 비밀글이 아닐 때에만 로딩 --%>
-									
-										<%-- 클릭 시 확장될 질문영역 --%>
-										<c:if test="${!empty q_dto.getQna_content()}">
-											<li class="qna_content_item expand">		
-												<div class="content-cell expand">
-													<span><img class="qna_mark" src="<%=request.getContextPath() %>/img/product/qna_question_mark.svg"></span>
-													<span><strong>${q_dto.getQna_content() }</strong></span>
-													<div class="item-cell update">
-														<p>
-															<a onclick="showRevise(${q_dto.getQna_num() }, '${q_dto.getQna_title() }', 
-																				   '${q_dto.getQna_content() }');">수정</a>&nbsp;&nbsp;&nbsp;
-															<a onclick="if(confirm('작성한 문의를 삭제하시겠습니까?')){
-																			location.href='user_qna_delete.do?qna_num=${q_dto.getQna_num() }';
-																			showDeleteConfirm();
-																	   }else{return; };">삭제</a>
-														</p>
-													</div>
-												</div>									
-											</li>
-										</c:if>
-										
-										<%-- 클릭 시 확장될 답변영역 --%>
-										<c:if test="${!empty q_dto.getQna_answer()}">
-											<li class="qna_content_item expand">
-												<div class="content-cell expand">
-													<span><img class="qna_mark" src="<%=request.getContextPath() %>/img/product/qna_answer_mark.svg"></span>
-													<span><strong>${q_dto.getQna_answer() }</strong></span>
-												</div>
-											</li>
-										</c:if>
-										
-									</c:if>
-								</div>
-							</c:forEach>	
-						</c:if>
-						
-						</ul>
+					
+						<%-- QnA 리스트 받아오는 영역 --%>
+						<ul class="qna_content_list"></ul>						
 						
 						<%-- 문의하기, 페이지 이동 버튼 --%>
 						<div class="qna_button_area">
 							<div class="qna_paging_nav">
-								<button type="button" class="prev" onclick="location.href='user_product'"><span></span></button>
+								<button type="button" class="prev"><span></span></button>
 								<button type="button" class="next"><span></span></button>
 							</div>
+							
 							<button class="qna_write_btn" onclick="showWrite();">
 								<span>문의하기</span>
 							</button>
-							
-							<%-- 페이지네이션--%>
-							<c:if test="${page > block}">
-							<a href="user_qna_page.do?p_num=${dto.getP_num()}&page=1">◀◀</a>
-							<a href="user_qna_page.do?p_num=${dto.getP_num()}&page=${startBlock - 1 }">◀</a>
-							</c:if>
-						
-						
-							<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
-								<c:if test="${i == page }">
-									<b><a href="<%=request.getContextPath() %>/user_qna_page.do?p_num=${dto.getP_num()}&page=${i }">[${i }]</a></b>
-								</c:if>
-								
-								<c:if test="${i != page }">
-									<a href="<%=request.getContextPath() %>/user_qna_page.do?p_num=${dto.getP_num()}&page=${i }">[${i }]</a>
-								</c:if>
-							</c:forEach>
-							
-							<c:if test="${endBlock < allPage}">
-								<a href="user_qna_page.do?p_num=${dto.getP_num()}&page=${endBlock + 1 }">▶</a>
-								<a href="user_qna_page.do?p_num=${dto.getP_num()}&page=${allPage }">▶▶</a>
-							</c:if>
-							
-							<%-- 페이지네이션 끝 --%>
+					
 						</div>
 					</div> <%-- .qna_content end --%>
 				</div>	<%-- .qna_container end --%>	
@@ -563,7 +467,7 @@
 				<tr class="modal_qna_header" height="90px">
 					<td width="100px">
 						<div class="modal_qna_image">
-							<img width="72px" height="72px" src="<%=request.getContextPath() %>/img/product/${dto.getP_image()}">
+							<img width="72px" height="72px" src="<%=request.getContextPath() %>/upload/product/${dto.getP_image()}">
 						</div>
 					</td>
 					<td><strong>[${dto.p_seller}]${dto.p_name }</strong></td>
@@ -578,7 +482,7 @@
 				</tr>
 				<tr class="modal_write_secret" height="25px">
 					<td>
-						<label onclick="alert('test');">
+						<label onclick="isSecret();">
 							<input class="secret_check" type="checkbox" name="is_secret"> <%-- 비밀글여부 : is_secret --%>
 							<span class="secret_check_ico"> </span>
 							<span>비밀글로 문의하기</span>
@@ -613,7 +517,7 @@
 				<tr class="modal_qna_header" height="90px">
 					<td width="100px">
 						<div class="modal_qna_image">
-							<img width="72px" height="72px" src="<%=request.getContextPath() %>/img/product/${dto.getP_image()}">
+							<img width="72px" height="72px" src="<%=request.getContextPath() %>/upload/product/${dto.getP_image()}">
 						</div>
 					</td>
 					<td><strong>[${dto.p_seller}]${dto.p_name }</strong></td>

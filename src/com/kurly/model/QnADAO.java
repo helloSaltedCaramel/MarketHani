@@ -102,11 +102,9 @@ public class QnADAO {
 				pstmt.setInt(3, endNo);				
 				rs = pstmt.executeQuery();
 				
-				result += "<qna>";
-				
 				while(rs.next()) {
-					
-					result += "<qna_num>" + rs.getInt("qna_num") + "<qna_num>";
+					result += "<qna>";
+					result += "<qna_num>" + rs.getInt("qna_num") + "</qna_num>";
 					result += "<user_id>" + rs.getString("user_id") + "</user_id>";
 					result += "<qna_title>" + rs.getString("qna_title") + "</qna_title>";
 					result += "<qna_content>" + rs.getString("qna_content") + "</qna_content>";
@@ -116,18 +114,15 @@ public class QnADAO {
 					result += "<qna_status>" + rs.getInt("qna_status") + "</qna_status>";
 					result += "<qna_secret>" + rs.getInt("qna_secret") + "</qna_secret>";
 					result += "<p_num>" + rs.getInt("p_num") + "</p_num>";
-					
+					result += "</qna>";
 				}
-				
-				result += "</qna>";
-				
+			
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}finally {
 				closeConn(rs, pstmt, con);
 			}
-			
 			
 			return result;
 			

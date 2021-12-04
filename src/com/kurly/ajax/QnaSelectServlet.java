@@ -41,6 +41,7 @@ public class QnaSelectServlet extends HttpServlet {
 		}else {	//page값 없이 호출되었을 때 1에서 시작 
 			page = 1;
 		}
+	
 		
 		//해당 페이지에서 시작 번호
 		int startNo = (page * rowsize) - (rowsize - 1);
@@ -94,8 +95,6 @@ public class QnaSelectServlet extends HttpServlet {
 		str += qna;
 		
 		str += "</qnalist>";
-		
-		System.out.println(str);
 		
 		out.println(str);
 	}
