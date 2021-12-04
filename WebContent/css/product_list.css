@@ -166,3 +166,74 @@ ul#sub_category li a:hover {
 	font-weight: 700;
     color: #5f0080;
 }
+
+.pagination {
+	margin-top: 60px;
+	margin-bottom: 60px;
+	margin-left: 350px;
+	padding-bottom: 30px;
+	align-content: center;
+	width: 1050px;
+	height: 34px;	
+}
+
+.pagination a {
+	background-color: transparent;
+    text-decoration: none;
+    display: inline-block;
+    width: 33px;
+    height: 32px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+	float: left;
+	cursor: pointer;
+	
+	vertical-align: top;
+    font-weight: 700;
+    font-size: 12px;
+    font-weight: 700;
+    font-size: 12px;
+    color: #333;
+    line-height: 34px;
+    border-left: 0;
+}
+
+a.last::after {
+	clear: both;
+}
+
+.pagination a#on {
+	background-color: #f7f7f7;
+	color: #5f0080;
+}
+
+.pagination a:hover {
+	background-color: #f7f7f7;
+	color: #5f0080;
+}
+
+a.first{
+	background-image: url(../img/product/pagination-first.webp);
+	background-repeat: no-repeat;
+    background-position: 50% 50%;
+    border-left: 1px solid #ddd;
+}
+
+.prev{
+	background-image: url(../img/product/pagination-prev.webp);
+	background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.next{
+	background-image: url(../img/product/pagination-next.webp);
+	background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.last{
+	background-image: url(../img/product/pagination-last.webp);
+	background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+

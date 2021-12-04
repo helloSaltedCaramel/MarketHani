@@ -150,6 +150,8 @@ public class ProductDAO {
 				order = "p_price";
 			else if(sortby.equals("high"))
 				order = "p_price desc";
+			else if(sortby.equals("recommend"))
+				order = "p_date desc, p_discount desc, p_price desc";
 			
 			//페이지네이션 적용 쿼리문
 			sql = "select * from (select row_number() over(order by " + order 
@@ -257,15 +259,35 @@ public class ProductDAO {
 		return list;
 	} //getCategoryList() end
 
-	public List<ProductDTO> getOnsaleProductList() {
+	public List<ProductDTO> getOnsaleProductList(int page, int rowsize, String sortby) {
 
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
 		
+		int startNo = (page * rowsize) - (rowsize - 1);
+		int endNo = (page * rowsize);
+		
+		String order = null;
+		
 		try {
 			openConn();
-			sql = "select * from kurly_product where p_discount > 0 order by p_discount desc";
-			pstmt = con.prepareStatement(sql);
 			
+			//전달된 정렬방식에 따라 쿼리문 작성
+			if(sortby.equals("new"))
+				order = "p_date desc";
+			else if(sortby.equals("low"))
+				order = "p_price";
+			else if(sortby.equals("high"))
+				order = "p_price desc";
+			else if(sortby.equals("recommend"))
+				order = "p_date desc, p_discount desc, p_price desc";
+			
+			//페이지네이션 적용 쿼리문
+			sql = "select * from (select row_number() over(order by " + order 
+					+ ") rnum, p.* from kurly_product p where p_discount > 0) where rnum >= ? and rnum <= ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startNo);
+			pstmt.setInt(2, endNo);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -300,6 +322,7 @@ public class ProductDAO {
 		}
 	
 		return list;
+		
 	}//getOnsaleProductList() end
 	
 
@@ -444,7 +467,7 @@ public class ProductDAO {
 			closeConn(rs, pstmt, con);
 		}
 		return result;
-	}
+	}//insertProduct() end
 	
 	public int getInsertPnum() {
 		int p_num = -1;
@@ -466,5 +489,32 @@ public class ProductDAO {
 		}
 		
 		return p_num;
-	}
+	}//getInsertPnum() end
+
+	public int getOnsaleCount() {
+		
+		int count = 0;
+		
+		try {
+			openConn();
+			
+			sql = "select count(*) from kurly_product where p_discount > 0";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+			rs.close(); pstmt.close(); con.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return count;
+	}//getOnsaleCount() end
 }
