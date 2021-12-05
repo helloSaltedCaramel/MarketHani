@@ -3,6 +3,47 @@
 
 /*제품 상세페이지 CSS*/
 
+/*로그인 시 변화되는 css*/
+#sectionView .goods_price .txt_benefit {
+    display: block;
+    overflow: hidden;
+    padding-top: 10px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+
+#sectionView .goods_price .grade0 {
+    color: #5f0080;
+}
+#sectionView .goods_price .ico_grade {
+    float: left;
+    height: 22px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0;
+}/*일반 0.5%*/
+
+#sectionView .goods_price .ico_grade:after {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    margin: 0 6px 0 7px;
+    background-color: #d8d8d8;
+    vertical-align: -1px;
+} /*| 표시*/
+
+#sectionView .goods_price .point {
+    float: left;
+    font-size: 14px;
+    line-height: 34px;
+}/*포인트 표시*/
+
+
+/*로그인 시 변화되는 css end*/
 
 
 /*공유하기 버튼 액션*/

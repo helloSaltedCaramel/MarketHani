@@ -287,9 +287,20 @@ function hideReviseConfirm() {
 
 								</span>
 								<%--  --%>
-								<span class="not_login"> <%-- --%> <span>로그인 후,
-										적립혜택이 제공됩니다.</span>
+								<c:if test="${empty user_id }">
+								<span class="not_login"> <%-- --%> 
+								<span>로그인 후,적립혜택이 제공됩니다.</span>
 								</span>
+								</c:if>
+								
+								<c:if test="${!empty user_id }">
+								<span class="txt_benefit">
+								<span class="not_login"> <%-- --%> 
+								<span class="ico_grade grade0">일반 0.5%</span>
+								</span>
+								<span class="point">개당 ${dto.getP_point() }원 적립</span>
+								</span>
+								</c:if>
 							</p>
 							<%-- --%>
 							<div class="goods_info">
@@ -360,14 +371,24 @@ function hideReviseConfirm() {
 											</span>
 										</div>
 										
-										
-										
+										<c:if test="${empty user_id }">
 										<p class="txt_point">
 											<span class="ico">적립</span> <span class="no_login"> <!---->
 												<span>로그인 후, 적립혜택 제공</span>
 											</span>
 											<!---->
 										</p>
+										</c:if>
+										
+										<c:if test="${!empty user_id }">
+										<p class="txt_point">
+											<span class="ico">적립</span> <span class="no_login"> <!---->
+												<span>구매 시 ${dto.getP_point() }원 적립</span>
+											</span>
+											<!---->
+										</p>
+										</c:if>
+										
 									</div>
 								</div>
 								<div class="group_btn off">
