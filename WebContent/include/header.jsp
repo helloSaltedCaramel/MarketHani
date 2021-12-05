@@ -152,8 +152,38 @@
                     <div class="gnb_sub">
                     <div class="inner_sub">
                         <ul class="gnb_menu">
-                            <li>
+                        
+                        		<li>
                                 <a href="<%=request.getContextPath() %>/user_category.do?cat=A&sort=new" class="menu">
+                                    <span class="ico">
+                                        <img src="${pageContext.request.contextPath}/img/header/category_icon/37bc7d57-67ee-483e-aa45-f1b7e7a9e065.webp">
+                                    </span>
+                                    <span class="tit">
+                                        		<span class="text">하니스마스</span>
+                                    </span>
+                                </a>
+                                <ul class="sub_menu">
+                                    <li>
+                                        <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=A1&sort=new">
+                                            <span class="name">디저트 & 간식</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=A2&sort=new">
+                                            <span class="name">크리스마스 용품</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=A3&sort=new">
+                                            <span class="name">크리스마스 선물</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            
+                            <li>
+                                <a href="<%=request.getContextPath() %>/user_category.do?cat=B&sort=new" class="menu">
                                     <span class="ico">
                                         <img src="${pageContext.request.contextPath}/img/header/category_icon/icon_veggies_inactive_pc@2x.1586324570.png">
                                     </span>
@@ -161,33 +191,91 @@
                                         <span class="text">채소</span>
                                     </span>
                                 </a>
+                                
+                                <!-- 37bc7d57-67ee-483e-aa45-f1b7e7a9e065.webp -->
                                 <ul class="sub_menu">
                                     <li>
-                                        <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=A1&sort=new">
-                                            <span class="name">친환경</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=A2&sort=new">
+                                        <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=B1&sort=new">
                                             <span class="name">고구마, 감자, 당근</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sub">
-                                            <span class="name">시금치, 쌈채소, 나물</span>
+                                        <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=B2&sort=new">
+                                            <span class="name">브로콜리, 파프리카, 배추</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sub">
+                                        <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=B3&sort=new">
+                                            <span class="name">양파, 대파, 마늘</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=B4&sort=new">
                                             <span class="name">오이, 호박, 고추</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sub">
-                                            <span class="name">콩나물, 버섯</span>
+                                        <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=B5&sort=new">
+                                            <span class="name">기타 채소</span>
                                         </a>
                                     </li>
                                 </ul>
+                            </li>
+
+														<li>
+                                <a href="<%=request.getContextPath() %>/user_category.do?cat=C&sort=new" class="menu">
+                                    <span class="ico">
+                                        <img src="${pageContext.request.contextPath}/img/header/category_icon/icon_deli_inactive_pc@2x.1568687352.png">
+                                    </span>
+                                    <span class="tit">
+                                        <span class="text">베이커리, 커피</span>
+                                    </span>
+                                </a>
+                                <ul class="sub_menu">
+                                    <li>
+                                        <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=C1&sort=new">
+                                            <span class="name">식빵, 빵류</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=C2&sort=new">
+                                            <span class="name">케이크</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=C3&sort=new">
+                                            <span class="name">커피</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            <li>
+                                <a href="<%=request.getContextPath() %>/user_category.do?cat=D&sort=new" class="menu">
+                                    <span class="ico">
+                                        <img src="${pageContext.request.contextPath}/img/header/category_icon/icon_pet_inactive_pc@2x.1587442293.png">
+                                    </span>
+                                    <span class="tit">
+                                        <span class="text">반려동물</span>
+                                    </span>
+                                </a>
+                                <ul class="sub_menu">
+                                    <li>
+                                        <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=D1&sort=new">
+                                            <span class="name">반려동물 간식</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=D2&sort=new">
+                                            <span class="name">반려동물 주식</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=D3&sort=new">
+                                            <span class="name">반려동물 용품</span>
+                                        </a>
+                                    </li>
+                                </ul>                            
                             </li>
 
                             <li>
@@ -234,7 +322,7 @@
                                         <img src="${pageContext.request.contextPath}/img/header/category_icon/icon_snacks_inactive_pc@2x.1572243615.png">
                                     </span>
                                     <span class="tit">
-                                        <span class="text">생수, 음료, 우유, 커피</span>
+                                        <span class="text">생수, 음료, 우유</span>
                                     </span>
                                 </a>
                                 <ul class="sub_menu">
@@ -251,11 +339,6 @@
                                     <li>
                                         <a class="sub">
                                             <span class="name">우유, 두유, 요거트</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="sub">
-                                            <span class="name">커피</span>
                                         </a>
                                     </li>
                                     <li>
@@ -317,49 +400,6 @@
                                         </a>
                                     </li>
                                 </ul>                            
-                            </li>
-
-                            <li>
-                                <a href="#" class="menu">
-                                    <span class="ico">
-                                        <img src="${pageContext.request.contextPath}/img/header/category_icon/icon_deli_inactive_pc@2x.1568687352.png">
-                                    </span>
-                                    <span class="tit">
-                                        <span class="text">베이커리, 치즈, 델리</span>
-                                    </span>
-                                </a>
-                                <ul class="sub_menu">
-                                    <li>
-                                        <a class="sub">
-                                            <span class="name">식빵, 빵류</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="sub">
-                                            <span class="name">잼, 버터, 스프레드</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="sub">
-                                            <span class="name">케이크, 파이, 디저트</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="sub">
-                                            <span class="name">치즈</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="sub">
-                                            <span class="name">델리</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="sub">
-                                            <span class="name">올리브, 피클</span>
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
 
                             <li>
@@ -470,27 +510,6 @@
                             <li>
                                 <a href="#" class="menu">
                                     <span class="ico">
-                                        <img src="${pageContext.request.contextPath}/img/header/category_icon/icon_health_inactive_pc@2x.1574645922.png">
-                                    </span>
-                                    <span class="tit">
-                                        <span class="text">건강식품</span>
-                                    </span>
-                                </a>
-
-                                <ul class="sub_menu">
-                                    <li>
-                                        <a class="sub">
-                                            <span class="name">
-                                                <img src="http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/2fd666dddb91de1.png">
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="#" class="menu">
-                                    <span class="ico">
                                         <img src="${pageContext.request.contextPath}/img/header/category_icon/icon_seafood_inactive_pc@2x.1568684352.png">
                                     </span>
                                     <span class="tit">
@@ -533,27 +552,6 @@
                             <li>
                                 <a href="#" class="menu">
                                     <span class="ico">
-                                        <img src="${pageContext.request.contextPath}/img/header/category_icon/icon_kitchen_inactive_pc@2x.1574646457.png">
-                                    </span>
-                                    <span class="tit">
-                                        <span class="text">주방용품</span>
-                                    </span>
-                                </a>
-
-                                <ul class="sub_menu">
-                                    <li>
-                                        <a class="sub">
-                                            <span class="name">
-                                                <img src="http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/2fd666dddb91de1.png">
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="#" class="menu">
-                                    <span class="ico">
                                         <img src="${pageContext.request.contextPath}/img/header/category_icon/icon_kids_inactive_pc@2x.1568687537.png">
                                     </span>
                                     <span class="tit">
@@ -563,11 +561,20 @@
 
                                 <ul class="sub_menu">
                                     <li>
+                                    	<c:if test="${user_id eq 'haniadmin'}">
                                         <a class="sub" href="${pageContext.request.contextPath}/admin/admin_main.jsp">
+                                            <span class="name">
+                                                <img src="https://i.pinimg.com/originals/8a/d7/2b/8ad72b544b53900c41f0997f577012e0.jpg">
+                                            </span>
+                                        </a>
+                                      </c:if>
+                                      <c:if test="${!(user_id eq 'haniadmin') || user_id == null}">
+                                      	<a class="sub" href="#">
                                             <span class="name">
                                                 <img src="http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/2fd666dddb91de1.png">
                                             </span>
                                         </a>
+                                      </c:if>
                                     </li>
                                 </ul>
                             </li>
