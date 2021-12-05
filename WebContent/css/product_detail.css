@@ -62,7 +62,7 @@
 
 #shareLayer .list_share .inp {
     float: left;
-    width: 114px;
+    width: 104px;
     height: 30px;
     padding: 7px 0 6px 3px;
     border: 1px solid #f3f2f3;
@@ -80,6 +80,27 @@
     color: #5f0080;
     line-height: 28px;
     text-align: center;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+} /*링크복사 버튼 구현*/
+
+#shareLayer .list_share .btn_copy off {
+    float: left;
+    width: 84px;
+    height: 30px;
+    border: 1px solid #5f0080;
+    font-size: 12px;
+    color: #5f0080;
+    line-height: 28px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 } /*링크복사 버튼 구현*/
 
 #shareLayer .list_share .btn_copy.off img {
@@ -139,13 +160,13 @@
 	list-style-type: none;
 	width: 262.5px;
 } /*ul 태그 내용*/
-*, *:after, *:before {
+/* *, *:after, *:before {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-}
+} */
 
 #sectionView .goods_price .position:after {
 	content: "";
@@ -791,8 +812,13 @@ tbody {
 	font-size: 12px;
 }
 
-* {
+.goods_price, .btn_url{
 	font-family: "Noto Sans KR", sans-serif;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 } /*폰트 지정*/
 
 .review_container {

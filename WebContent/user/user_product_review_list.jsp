@@ -249,7 +249,16 @@ iframe {
 /*페이징 처리 css end*/
 
 </style>
+<script type="text/javascript">
 
+function sort(how) {
+	
+	$('.top_line form').attr('action', 'user_product_review_list.do?sort=' + how); 
+	$('.sort').submit();
+}//제품 리스트 정렬방식을 전달하여 액션을 호출하는 메서드
+
+
+</script>
 </head>
 <body>
 
@@ -283,9 +292,9 @@ iframe {
 							<div class="sort" style="bottom: -9px">
 								<select
 									onchange="this.form.sort.value=this.value;this.form.submit()">
-									<option value="1" onclick="sort('reviewNew')">최근등록순</option>
+									<option value="1" onclick="sort('new');">최근등록순</option>
 									<option value="2" >좋아요많은순</option>
-									<option value="3" onclick="sort('reviewHit')">조회많은순</option>
+									<option value="3" onclick="sort('hit')">조회많은순</option>
 								</select>
 							</div>
 						</div>

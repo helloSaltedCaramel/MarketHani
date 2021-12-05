@@ -134,10 +134,11 @@ margin: 70px;
 <body>
 
 	<div class="page_aticle aticle_type2"> <%-- 후기 전체 틀 마이컬리 포함 start --%>
-		<%-- 왼쪽 마이컬리 탭 부분 --%>
+		<%-- 
+		왼쪽 마이컬리 탭 부분
 		<div id="snb" class="snb_my">
 			<h2 class="tit_snb">마이하니</h2>
-		<%-- 왼쪽 마이컬리 탭 내부 주문 내역, 선물 내역, 배송지 관리, 상품 후기 --%>
+		왼쪽 마이컬리 탭 내부 주문 내역, 선물 내역, 배송지 관리, 상품 후기
 		<div class="inner_sub">
 			<ul class="list_menu">
 				<li>
@@ -163,9 +164,9 @@ margin: 70px;
 				</li>
 			</ul>
 		
-		</div><%-- 왼쪽 마이컬리 탭 내부 주문 내역, 선물 내역, 배송지 관리, 상품 후기  end--%>
-		</div><%-- 왼쪽 마이컬리 탭 부분 end--%>
-
+		</div>왼쪽 마이컬리 탭 내부 주문 내역, 선물 내역, 배송지 관리, 상품 후기  end
+		</div>왼쪽 마이컬리 탭 부분 end
+ --%>
 	<div class="page_review"> <%--후기작성 오른쪽 틀  --%>
 		
 			<h2 align="left">후기작성</h2>
@@ -175,7 +176,7 @@ margin: 70px;
 		<form method="post" enctype="multipart/form-data" 
 		action="<%=request.getContextPath()%>/user_product_review_write_ok.do?p_num=${product.getP_num()}">
 		
-		<table border="1" cellspacing="0" width="700">
+		<table border="0" cellspacing="0" width="700">
 			
 			<tr>
 			<th><img width="72px" height="72px" src="<%=request.getContextPath() %>/img/product/${product.getP_image()}"></th>

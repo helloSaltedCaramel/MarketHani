@@ -20,7 +20,7 @@ public class AdminProdInsertAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		String uploadPath = "C:\\Users\\HOIT\\git\\MarketHani\\WebContent\\upload\\product";
+		String uploadPath = "C:\\Users\\amorf\\git\\MarketHani\\WebContent\\upload\\product";
 		int size = 10 * 1024 * 1024;
 		
 		MultipartRequest multi = new MultipartRequest(request, 

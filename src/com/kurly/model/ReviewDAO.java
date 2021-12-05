@@ -136,9 +136,138 @@ public class ReviewDAO {
 		
 	} //getReviewCount() 메서드 end
 	
+	// kurly_review 테이블에서 현재 페이지에 해당하는 게시물을 조회하는 메서드.
+			public List<ReviewDTO> getReviewList(int page, int rowsize , int p_num) { 
+				//public List<ReviewDTO> getReviewList(int page, int rowsize , int p_num) {
+				
+				List<ReviewDTO> list = new ArrayList<ReviewDTO>(); 
+				
+				// 해당 페이지에서 시작 번호
+				int startNo = (page * rowsize) - (rowsize - 1);
+				
+				// 해당 페이지에서 끝 번호 
+				int endNo = (page * rowsize);
+				
+				String order = null;
+				
+				try {
+					openConn();
+				
+					
+					//서브쿼리
+					sql = "select * from (select row_number() over(order by r_num desc) bnum, b.* from kurly_review b where p_num = ?) where bnum >=? and bnum <= ?";
+					
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setInt(1, p_num); 
+					
+					pstmt.setInt(2, startNo);
+					
+					pstmt.setInt(3, endNo);
+					
+					
+					
+					rs = pstmt.executeQuery();
+					
+					while(rs.next()) {
+						ReviewDTO dto = new ReviewDTO();
+						
+						dto.setR_num(rs.getInt("r_num"));
+						dto.setUser_id(rs.getString("user_id"));
+						dto.setP_num(rs.getInt("p_num"));
+						dto.setR_title(rs.getString("r_title"));
+						dto.setR_content(rs.getString("r_content"));
+						dto.setR_image(rs.getString("r_image"));
+						dto.setR_date(rs.getString("r_date").substring(0,10));
+						dto.setR_hit(rs.getInt("r_hit"));
+						
+						list.add(dto);
+						
+					}
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} finally {
+					closeConn(rs, pstmt, con);
+				}
+				
+				return list;
+			
+				
+			}//getReviewList() 메서드 end
+			
 	
 	// kurly_review 테이블에서 현재 페이지에 해당하는 게시물을 조회하는 메서드.
-	public List<ReviewDTO> getReviewList(int page, int rowsize , int p_num) { 
+		public List<ReviewDTO> getReviewList(int page, int rowsize , int p_num, String reviewsort) { 
+			//public List<ReviewDTO> getReviewList(int page, int rowsize , int p_num) {
+			
+			List<ReviewDTO> list = new ArrayList<ReviewDTO>(); 
+			
+			// 해당 페이지에서 시작 번호
+			int startNo = (page * rowsize) - (rowsize - 1);
+			
+			// 해당 페이지에서 끝 번호 
+			int endNo = (page * rowsize);
+			
+			String order = null;
+			
+			try {
+				openConn();
+				
+				// 전달되는 정렬방식에 따라 쿼리문 작성
+				if(reviewsort.equals("new"))
+						order="r_date desc";
+				else if(reviewsort.equals("hit"))
+						order = "r_hit desc";
+				
+				//서브쿼리
+				sql = "select * from (select row_number() over(order by "+ order + " ) bnum, b.* from kurly_review b where p_num = ?) where bnum >=? and bnum <= ?";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setInt(1, p_num); 
+				
+				pstmt.setInt(2, startNo);
+				
+				pstmt.setInt(3, endNo);
+				
+				
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					ReviewDTO dto = new ReviewDTO();
+					
+					dto.setR_num(rs.getInt("r_num"));
+					dto.setUser_id(rs.getString("user_id"));
+					dto.setP_num(rs.getInt("p_num"));
+					dto.setR_title(rs.getString("r_title"));
+					dto.setR_content(rs.getString("r_content"));
+					dto.setR_image(rs.getString("r_image"));
+					dto.setR_date(rs.getString("r_date").substring(0,10));
+					dto.setR_hit(rs.getInt("r_hit"));
+					
+					list.add(dto);
+					
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			
+			return list;
+		
+			
+		}//getReviewList() 메서드 end
+		
+
+	
+	// kurly_review 테이블에서 현재 페이지에 해당하는 게시물을 조회하는 메서드.
+	public List<ReviewDTO> getNewReviewList(int page, int rowsize , int p_num, String reviewsort) { 
 		//public List<ReviewDTO> getReviewList(int page, int rowsize , int p_num) {
 		
 		List<ReviewDTO> list = new ArrayList<ReviewDTO>(); 
@@ -149,12 +278,19 @@ public class ReviewDAO {
 		// 해당 페이지에서 끝 번호 
 		int endNo = (page * rowsize);
 		
+		String order = null;
 		
 		try {
 			openConn();
 			
+			// 전달되는 정렬방식에 따라 쿼리문 작성
+			if(reviewsort.equals("new"))
+					order="r_date desc";
+			else if(reviewsort.equals("hit"))
+					order = "r_hit desc";
+			
 			//서브쿼리
-			sql = "select * from (select row_number() over(order by r_num desc) bnum, b.* from kurly_review b where p_num = ?) where bnum >=? and bnum <= ?";
+			sql = "select * from (select row_number() over(order by "+ order + " ) bnum, b.* from kurly_review b where p_num = ?) where bnum >=? and bnum <= ?";
 			
 			pstmt = con.prepareStatement(sql);
 			

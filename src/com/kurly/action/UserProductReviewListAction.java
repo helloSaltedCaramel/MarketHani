@@ -37,7 +37,11 @@ public class UserProductReviewListAction implements Action {
 				
 				
 				int p_num = Integer.parseInt(request.getParameter("p_num"));
-				String reviewsortby = request.getParameter("reviewsort");
+				String reviewsort = request.getParameter("reviewsort");
+				
+				if(reviewsort == null) {	//첫 호출인 경우 정렬방식 new로 변경
+					reviewsort = "new";
+				}
 				
 				
 				//System.out.println("p_num >>> " + p_num);
@@ -87,7 +91,7 @@ public class UserProductReviewListAction implements Action {
 				}
 				
 				// 현재 페이지에 해당하는 게시물을 가져오는 메서드 호출
-				List<ReviewDTO> pageList = dao.getReviewList(page, rowsize , p_num);  
+				List<ReviewDTO> pageList = dao.getReviewList(page, rowsize , p_num, reviewsort);  
 				//List<ReviewDTO> pageList = dao.getReviewList(page, rowsize, p_num);  // p_num 받아오기
 				
 				// 지금까지 페이징 처리 시 작업했더 모든 값들을 키로 저장하자.
@@ -102,8 +106,12 @@ public class UserProductReviewListAction implements Action {
 				request.setAttribute("endBlock", endBlock);
 				request.setAttribute("List", pageList);
 				
+			
 				// 
 				request.setAttribute("productNo", p_num);
+				
+				// 게시글 정렬
+				request.setAttribute("reviewSort", reviewsort);
 				
 				//아래 추가 되야지 화면에 보임 return null아니고
 				 ActionForward forward = new ActionForward();
