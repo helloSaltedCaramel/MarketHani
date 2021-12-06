@@ -17,6 +17,9 @@ const toMonetary = (price) => {
 	return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+const p_qty = parseInt(document.getElementById('p_qty').value);
+console.log(p_qty);
+
 // 총 상품금액, 수량 변수 저장
 const totalPrice = toNumber($totalPrice); // 2900
 let quantity = toNumber($result); // 1
@@ -24,6 +27,13 @@ let quantity = toNumber($result); // 1
 // 수량 증가 함수
 const increaseQty = () => {
 	quantity += 1;
+	
+	if(quantity > p_qty) {
+		alert('주문가능한 최대 수량은 ' + p_qty + '개입니다.');
+		quantity = p_qty;
+		return;
+	}
+	
 	const price = totalPrice * quantity;
 	
 	$result.innerHTML = quantity;

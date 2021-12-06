@@ -97,7 +97,7 @@ function sort(search, how) {
 					 	<c:if test="${dto.getP_discount() != 0}">
 					 		<div class="discount">
 					 			<span id="percentage"> ${dto.getP_discount() }% </span>  
-					 			<span id="p_discount"><fmt:formatNumber value="${dto.getP_price() * (100-dto.getP_discount()) / 100}"/>원 </span> <br><br>
+					 			<span id="p_discount"><fmt:formatNumber value="${dto.getP_price() * (100-dto.getP_discount()) / 100}" pattern="0,000"/>원 </span> <br><br>
 					 			<span id="p_original"><fmt:formatNumber value="${dto.getP_price()}"/>원</span> <br><br>
 					 		</div>
 					 	</c:if>

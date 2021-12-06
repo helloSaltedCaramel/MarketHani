@@ -14,6 +14,7 @@ public class CartDataDTO {
 	private int salePrice;
 	private int p_point;
 	private int cart_qty;
+	private int p_qty;
 	
 	
 	public String getCart_num() {
@@ -64,6 +65,13 @@ public class CartDataDTO {
 	public void setCart_qty(int cart_qty) {
 		this.cart_qty = cart_qty;
 	}
+	public int getP_qty() {
+		return p_qty;
+	}
+	public void setP_qty(int p_qty) {
+		this.p_qty = p_qty;
+	}
+	
 	
 	
 }

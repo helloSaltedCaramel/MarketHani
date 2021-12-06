@@ -7,6 +7,7 @@
     <%-- import header.css --%>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css"/>
 	<link rel="icon" href="<%=request.getContextPath() %>/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script defer src="<%=request.getContextPath() %>/js/header/header.js"></script>
 	<script defer src="<%=request.getContextPath() %>/js/header/location_postcode.js"></script>

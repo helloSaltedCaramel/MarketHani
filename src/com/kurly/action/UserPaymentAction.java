@@ -16,6 +16,7 @@ import com.kurly.model.CartDataDTO;
 import com.kurly.model.OrderDAO;
 import com.kurly.model.OrderDetailDAO;
 import com.kurly.model.PriceSumDTO;
+import com.kurly.model.ProductDAO;
 import com.kurly.model.UserDAO;
 
 /**
@@ -46,7 +47,6 @@ public class UserPaymentAction implements Action{
 			forward.setPath(request.getContextPath() + "/user/user_login.jsp");
 			return forward;
 		}
-		
 
 		String user_id = (String)session.getAttribute("user_id");
 		
@@ -69,11 +69,17 @@ public class UserPaymentAction implements Action{
 															priceData.getSaleSum(),
 															deliveryFee);
 		
+		// kurly_order_detail에 제품 데이터 추가
 		OrderDetailDAO.getInstance().insertOrderDetail(order_id, cartList);
 		
+		// kurly_user point 값 변경
 		UserDAO.getInstance().updateUserPoint(priceData.getPointSum() - user_point, user_id);
 		
+		// 주문한 유저의 장바구니 내역 지우기
 		CartDAO.getInstance().deleteCartList(user_id);
+		
+		// kurly_product에 있는 qty, sold 컬럼값 수정하기
+		ProductDAO.getInstance().updateQtySold(cartList);
 		
 		int paymentBalance = priceData.getSaleSum() + deliveryFee - user_point;
 		

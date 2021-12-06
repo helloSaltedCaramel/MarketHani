@@ -84,14 +84,15 @@
 	                                           	</span>
 	                                          </c:if>
 	                                        </div>
-	
+
 	                                        <div class="quantity">
 	                                            <input type="hidden" name="cart_num" value="${dto.getCart_num()}">
 	                                            <input type="hidden" name="pPrice" value="${dto.getP_price()}">
 	                                            <input type="hidden" name="salePrice" value="${dto.getSalePrice()}">
 	                                            <button type="button" class="btn minus"></button>
-	                                            <input type="number" class="quantity_num" step="1" value="${dto.getCart_qty() }" readonly>
+	                                            <input type="text" class="quantity_num" step="1" value="${dto.getCart_qty() }" readonly>
 	                                            <button type="button" class="btn plus"></button>
+	                                            <input type="hidden" name="p_qty" value="${dto.getP_qty()}">
 	                                        </div>
 	                                    </div>
 	                                </div>
