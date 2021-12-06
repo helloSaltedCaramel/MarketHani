@@ -123,9 +123,9 @@
 								<c:if test="${!empty user_id }">
 								<span class="txt_benefit">
 								<span class="not_login"> <%-- --%> 
-								<span class="ico_grade grade0">일반 0.5%</span>
+								<span class="ico_grade grade0">5% 적립</span>
 								</span>
-								<span class="point">개당 ${dto.getP_point() }원 적립</span>
+								<span class="point">개당 ${dto.getP_point() }원</span>
 								</span>
 								</c:if>
 							</p>

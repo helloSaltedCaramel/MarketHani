@@ -81,7 +81,7 @@
                 auto: true, // 자동 실행 여부
                 autoHover: true, // 마우스 호버시 정지 여부
                 controls: true // 이전 다음 버튼 노출 여부
-            });0
+            });
 
             $('.recipeSlide').bxSlider({
                 mode: 'horizontal',// 가로 방향 수평 슬라이드

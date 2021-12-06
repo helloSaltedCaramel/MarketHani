@@ -215,7 +215,7 @@ iframe {
 }
 .page_nation a {
 	display:block;
-	margin:0 3px;
+	margin:0 3px; 
 	float:left;
 	border:1px solid #e6e6e6;
 	width:28px;
@@ -241,6 +241,29 @@ iframe {
    
 }/*페이징 호버*/
 
+.next {
+    background-image: url(./img/product/pagination-next.webp);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.last {
+    background-image: url(./img/product/pagination-last.webp);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.first {
+    background-image: url(./img/product/pagination-first.webp);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.prev {
+    background-image: url(./img/product/pagination-prev.webp);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
 #btnReview:hover {
     background: #fff; 
     color: #5f0080;
@@ -445,10 +468,17 @@ function sort(how) {
 	<div class="page_wrap">
 	<div class="page_nation" align="center"> <%-- 페이징 처리 div --%>
 	<c:if test="${page > block }">
-		<a
-			href="<%=request.getContextPath()%>/user_product_review_list.do?page=1&p_num=${productNo }">◀◀</a>
-		<a
-			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${startBlock-1}&p_num=${productNo }">◀</a>
+		<a class="first" 
+			href="<%=request.getContextPath()%>/user_product_review_list.do?page=1&p_num=${productNo }"></a>
+		<a class="prev" 
+			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${startBlock-1}&p_num=${productNo }"></a>
+	</c:if>
+	
+	<c:if test="${page != allPage }">
+		<a class="first" 
+			href="<%=request.getContextPath()%>/user_product_review_list.do?page=1&p_num=${productNo }"></a>
+		<a class="prev" 
+			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${startBlock-1}&p_num=${productNo }"></a>
 	</c:if>
 
 	<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
@@ -463,10 +493,19 @@ function sort(how) {
 	</c:forEach>
 
 	<c:if test="${endBlock < allPage }">
-		<a
-			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${endBlock+1}&p_num=${productNo }">▶</a>
-		<a href="<%=request.getContextPath() %>/user_product_review_list.do?page=${allPage}&p_num=${productNo }">▶▶</a>
+		<a class="next" 
+			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${endBlock+1}&p_num=${productNo }"></a>
+		<a class="last" 
+			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${allPage}&p_num=${productNo }"></a>
 	</c:if>
+	
+	<c:if test="${page != allPage }">
+		<a class="next"
+			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${endBlock+1}&p_num=${productNo }"></a>
+		<a class="last"
+		    href="<%=request.getContextPath() %>/user_product_review_list.do?page=${allPage}&p_num=${productNo }"></a>
+	</c:if>
+	
 	</div>  <%-- 페이징 처리 div end--%>
 	</div>
 
