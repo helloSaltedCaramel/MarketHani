@@ -45,7 +45,7 @@
 				<div class="page_aticle aticle_type2">
 				
 				    <%-- 마이 하니 좌측 메뉴 --%> 
-					<div id="snb" class="snb_my">
+					<!-- <div id="snb" class="snb_my">
 						<h2 class="tit_snb">관리자</h2>
 						<div class="inner_snb">
 							<ul class="list_menu">
@@ -66,7 +66,7 @@
 								</li>
 							</ul>
 						</div>
-					</div>
+					</div> -->
 					
 					<%-- 관리자메뉴 중 상품등록 파트 부분 --%>
 					<div class="page_section section_pmanage">

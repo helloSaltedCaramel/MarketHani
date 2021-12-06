@@ -30,30 +30,46 @@
           </c:if>
             	
           <c:if test="${!empty user_id}">
-          	<li class="menu user">
-            	<a href="${pageContext.request.contextPath}/user/user_register.jsp" class="link_menu">${user_name }님</a>
-            	<ul class="us_sub">
-            		<li>
-            			<a href="${pageContext.request.contextPath}/user_mypage_orderHistory.do">주문내역</a>
-            		</li>
-            		<li>
-            			<a href="#">배송지 관리</a>
-            		</li>
-            		<li>
-            			<a href="#">적립금</a>
-            		</li>
-            		<li>
-            			<a href ="${pageContext.request.contextPath}/user_mypage_orderHistory.do">상품 후기</a>
-            		</li>
-            		<li>
-            			<a href="#">상품 문의</a>
-            		</li>
-            		<li>
-            			<a href="${pageContext.request.contextPath}/user_userInfo.do">개인정보 수정</a>
-            		</li>
-            	</ul>
-            </li>
+          	<c:if test="${!(user_id eq 'haniadmin')}">
+	          	<li class="menu user">
+	            	<a href="${pageContext.request.contextPath}/user/user_register.jsp" class="link_menu">${user_name }님</a>
+	            	<ul class="us_sub">
+	            		<li>
+	            			<a href="${pageContext.request.contextPath}/user_mypage_orderHistory.do">주문내역</a>
+	            		</li>
+	            		<li>
+	            			<a href="#">배송지 관리</a>
+	            		</li>
+	            		<li>
+	            			<a href="#">적립금</a>
+	            		</li>
+	            		<li>
+	            			<a href ="${pageContext.request.contextPath}/user_mypage_orderHistory.do">상품 후기</a>
+	            		</li>
+	            		<li>
+	            			<a href="#">상품 문의</a>
+	            		</li>
+	            		<li>
+	            			<a href="${pageContext.request.contextPath}/user_userInfo.do">개인정보 수정</a>
+	            		</li>
+	            	</ul>
+	            </li>
+            </c:if>
+            <c:if test="${user_id eq 'haniadmin'}">
+	          	<li class="menu user">
+	            	<a href="${pageContext.request.contextPath}/admin/admin_main.jsp" class="link_menu">${user_name}님</a>
+	            	<ul class="us_sub">
+	            		<li>
+	            			<a href="${pageContext.request.contextPath}/admin/admin_main.jsp">후기관리</a>
+	            		</li>
+	            		<li>
+	            			<a href="${pageContext.request.contextPath}/admin/admin_main.jsp">문의관리</a>
+	            		</li>
+	            	</ul>
+	            </li>
+          	</c:if>
           </c:if>
+                    
             <li class="menu login">
             	<c:if test="${empty user_id }">
             		<a href="${pageContext.request.contextPath}/user/user_login.jsp" class="link_menu">로그인</a>
