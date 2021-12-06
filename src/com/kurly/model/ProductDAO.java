@@ -110,7 +110,7 @@ public class ProductDAO {
 				dto.setP_qty(rs.getInt("p_qty"));
 				dto.setP_point(rs.getInt("p_point"));
 				dto.setP_category(rs.getString("p_category"));
-				dto.setP_sub_category(rs.getString("p_sub_category"));
+				dto.setP_sold(rs.getInt("p_sold"));
 				dto.setP_seller(rs.getString("p_seller"));
 				dto.setP_discount(rs.getInt("p_discount"));
 				dto.setP_contents(rs.getString("p_contents"));
@@ -178,7 +178,7 @@ public class ProductDAO {
 				dto.setP_qty(rs.getInt("p_qty"));
 				dto.setP_point(rs.getInt("p_point"));
 				dto.setP_category(rs.getString("p_category"));
-				dto.setP_sub_category(rs.getString("p_sub_category"));
+				dto.setP_sold(rs.getInt("p_sold"));
 				dto.setP_seller(rs.getString("p_seller"));
 				dto.setP_discount(rs.getInt("p_discount"));
 				dto.setP_contents(rs.getString("p_contents"));
@@ -241,7 +241,7 @@ public class ProductDAO {
 				dto.setP_qty(rs.getInt("p_qty"));
 				dto.setP_point(rs.getInt("p_point"));
 				dto.setP_category(rs.getString("p_category"));
-				dto.setP_sub_category(rs.getString("p_sub_category"));
+				dto.setP_sold(rs.getInt("p_sold"));
 				dto.setP_seller(rs.getString("p_seller"));
 				dto.setP_discount(rs.getInt("p_discount"));
 				dto.setP_contents(rs.getString("p_contents"));
@@ -306,7 +306,7 @@ public class ProductDAO {
 				dto.setP_qty(rs.getInt("p_qty"));
 				dto.setP_point(rs.getInt("p_point"));
 				dto.setP_category(rs.getString("p_category"));
-				dto.setP_sub_category(rs.getString("p_sub_category"));
+				dto.setP_sold(rs.getInt("p_sold"));
 				dto.setP_seller(rs.getString("p_seller"));
 				dto.setP_discount(rs.getInt("p_discount"));
 				dto.setP_contents(rs.getString("p_contents"));
@@ -353,6 +353,7 @@ public class ProductDAO {
 				dto.setP_qty(rs.getInt("p_qty"));
 				dto.setP_point(rs.getInt("p_point"));
 				dto.setP_category(rs.getString("p_category"));
+				dto.setP_sold(rs.getInt("p_sold"));
 				dto.setP_seller(rs.getString("p_seller"));
 				dto.setP_discount(rs.getInt("p_discount"));
 				dto.setP_contents(rs.getString("p_contents"));
@@ -433,7 +434,7 @@ public class ProductDAO {
 		
 		// 0: 서브카테고리, 사용안하므로 0으로 설정
 		// p_date : 상품 등록일, sysdate
-		final String sql = "insert into kurly_product values(?, ?, ?, ?, ?, ?, ?, '', ?, ?, ?, '', ?, ?, ?, SYSDATE, ?, ?)";
+		final String sql = "insert into kurly_product values(?, ?, ?, ?, ?, ?, ?, '', ?, ?, ?, 0, ?, ?, ?, SYSDATE, ?, ?)";
 		
 		openConn();
 		

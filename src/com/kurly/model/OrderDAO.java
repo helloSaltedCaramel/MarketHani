@@ -85,10 +85,11 @@ public class OrderDAO {
 	private int loadO_id(String user_id) {
 		int o_id = -1;
 		
-		final String sql = "select o_id from kurly_order where user_id = 'alsghl9607' order by o_date desc";
+		final String sql = "select o_id from kurly_order where user_id = ? order by o_date desc";
 		
 		try {
 			pstmt = connect().prepareStatement(sql);
+			pstmt.setString(1, user_id);
 			
 			rs = pstmt.executeQuery();
 			
