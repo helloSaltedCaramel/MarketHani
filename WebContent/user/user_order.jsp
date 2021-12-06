@@ -59,7 +59,7 @@
                 	<c:forEach items="${cartProductDTO}" var="dto">
                     <li> <!-- item start -->
                         <div class="thumb">
-                            <img src="${pageContext.request.contextPath}/img/product/${dto.getP_image()}" alt="상품이미지">
+                            <img src="${pageContext.request.contextPath}/upload/product/${dto.getP_image()}" alt="상품이미지">
                         </div>
 
                         <div class="name">

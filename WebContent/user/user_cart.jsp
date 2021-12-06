@@ -43,11 +43,8 @@
 	            <div class="cart_item">
 	                <div class="select_items">
 	                    <label for="check_all">
-	                        <input id="check_all" type="checkbox" checked>
-	                        	전체선택(1/${count})
+	                        	장바구니 내역
 	                    </label>
-	                    <span class="bar">|</span>
-	                    <a id="delete_item" href="#">선택 삭제</a>
 	                </div>
 	
 	                <div class="item_box">
@@ -67,7 +64,7 @@
 	
 	                                <div class="goods">
 	                                    <a href="${pageContext.request.contextPath}/user_product_view.do?p_num=${dto.getCart_pnum()}" class="thumb_img">
-	                                        <img src="${pageContext.request.contextPath}/img/product/${dto.getP_image()}">
+	                                        <img src="${pageContext.request.contextPath}/upload/product/${dto.getP_image()}">
 	                                    </a>
 	
 	                                    <div class="price_qty">
@@ -104,15 +101,6 @@
 												</c:forEach>
 												</c:if>
 	                    </ul>
-	                </div>
-	
-	                <div class="select_items">
-	                    <label for="check_all">
-	                        <input id="check_all" type="checkbox" checked>
-	                        	장바구니 내역
-	                    </label>
-	                    <span class="bar">|</span>
-	                    <a id="delete_item" href="#">선택 삭제</a>
 	                </div>
 	            </div>
 	

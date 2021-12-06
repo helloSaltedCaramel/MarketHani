@@ -165,17 +165,17 @@
                                 <ul class="sub_menu">
                                     <li>
                                         <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=A1&sort=new">
-                                            <span class="name">디저트 & 간식</span>
+                                            <span class="name">크리스마스 에디션</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=A2&sort=new">
-                                            <span class="name">크리스마스 용품</span>
+                                            <span class="name">파티 메인요리</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a class="sub" href="<%=request.getContextPath() %>/user_category.do?cat=A3&sort=new">
-                                            <span class="name">크리스마스 선물</span>
+                                            <span class="name">시즌 디저트</span>
                                         </a>
                                     </li>
                                 </ul>
