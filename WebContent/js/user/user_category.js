@@ -4,16 +4,16 @@ function display_category(cname){
 	let category = cname.charAt(0);
 	let str = "";
 	let title = "";
-	
-	console.log(category);
-	
+	let banner = "";
+		
 	if(category == 'A'){
 		
 		str += '<li id="A"><a href="user_category.do?cat=A&sort=new">전체보기</a></li> \
-				<li id="A1"><a href="user_category.do?cat=A1&sort=new">파티메인요리</a></li> \
-				<li id="A2"><a href="user_category.do?cat=A2&sort=new">크리스마스에디션</a></li> \
-				<li id="A3"><a href="user_category.do?cat=A3&sort=new">시즌디저트</a></li>';	
+				<li id="A1"><a href="user_category.do?cat=A1&sort=new">파티 메인요리</a></li> \
+				<li id="A2"><a href="user_category.do?cat=A2&sort=new">크리스마스 에디션</a></li> \
+				<li id="A3"><a href="user_category.do?cat=A3&sort=new">시즌 디저트</a></li>';	
 		title += '하니스마스';
+		banner += '<img src="./img/main/newbanner.jpg" width="1050px" width="100%">';
 		
 	}else if(category == 'B'){
 		
@@ -24,6 +24,7 @@ function display_category(cname){
 				<li id="B4"><a href="user_category.do?cat=B4&sort=new">오이·호박·고추</a></li> \
 				<li id="B5"><a href="user_category.do?cat=B5&sort=new">기타 채소</a></li>';
 		title += '채소';
+		banner += '<img src="./img/main/newbanner.jpg" width="1050px" width="100%">';
 		
 	}else if(category == 'C'){
 		
@@ -32,6 +33,8 @@ function display_category(cname){
 				<li id="C2"><a href="user_category.do?cat=C2&sort=new">케이크</a></li> \
 				<li id="C3"><a href="user_category.do?cat=C3&sort=new">커피</a></li>';
 		title += '베이커리, 커피';
+		banner += '<img src="./img/main/newbanner.jpg" width="1050px" width="100%">';
+		
 	}else if(category == 'D'){
 		
 		str += '<li id="D"><a href="user_category.do?cat=D&sort=new">전체보기</a></li> \
@@ -39,10 +42,12 @@ function display_category(cname){
 				<li id="D2"><a href="user_category.do?cat=D2&sort=new">반려동물 주식</a></li> \
 				<li id="D3"><a href="user_category.do?cat=D3&sort=new">반려동물 용품</a></li>';
 		title += '반려동물';
+		banner += '<img src="./img/main/newbanner.jpg" width="1050px" width="100%">';
 	}
 	
 	$('#sub_category').append(str);
 	$('.category span').append(title);
+	$('.category_banner').append(banner);
 }
 
 

@@ -39,6 +39,7 @@
 		
 	<%-- import product_detail.js --%>
 	<script defer src="${pageContext.request.contextPath}/js/product/product_detail.js"></script>
+	<script defer src="${pageContext.request.contextPath}/js/product/productqty.js"></script>
 	
 	<%-- QnA 게시판 그리기 --%>
 	<script>	

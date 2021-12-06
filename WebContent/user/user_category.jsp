@@ -61,7 +61,16 @@ $().ready(function(){
 	<div align="center">
 			
 		<div class="article" align="center">
-			<div class="category"><span></span></div>
+			
+			<%-- 배너 표시 영역 --%>
+			<div class="category_banner" align="center" width="1050px" height="100%">
+			
+			</div>
+			
+			<%-- 제목 표시 영역 --%>
+			<div class="category">
+				<span></span>
+			</div>
 			
 			<%-- 서브카테고리 표시 영역 --%>
 			<ul id="sub_category">
