@@ -640,4 +640,47 @@ public class ProductDAO {
 		
 		return result;
 	}
+	
+	public int updateProduct(ProductDTO dto) {
+		int result = 0;
+		
+		final String sql = "update kurly_product set " + 
+				"p_price = ?, p_name = ?, p_unit = ?," + 
+				"p_wrap = ?, p_wrap_cont = ?, p_delivery = ?," + 
+				"p_qty = ?, p_category = ?, p_sold = ?," + 
+				"p_seller = ?, p_discount = ?, p_name_cont = ?," + 
+				"p_image = ?, p_contents = ?, p_contents_spec = ? " + 
+				"where p_num = ?";
+		
+		openConn();
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dto.getP_price());
+			pstmt.setString(2, dto.getP_name());
+			pstmt.setString(3, dto.getP_unit());
+			pstmt.setString(4, dto.getP_wrap());
+			pstmt.setString(5, dto.getP_wrap_cont());
+			pstmt.setString(6, dto.getP_delivery());
+			pstmt.setInt(7, dto.getP_qty());
+			pstmt.setString(8, dto.getP_category());
+			pstmt.setInt(9, dto.getP_sold());
+			pstmt.setString(10, dto.getP_seller());
+			pstmt.setInt(11, dto.getP_discount());
+			pstmt.setString(12, dto.getP_name_cont());
+			pstmt.setString(13, dto.getP_image());
+			pstmt.setString(14, dto.getP_contents());
+			pstmt.setString(15, dto.getP_contents_spec());
+			pstmt.setInt(16, dto.getP_num());			
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+			System.out.println("result = " + result);
+		}
+		
+		return result;
+	}
 }

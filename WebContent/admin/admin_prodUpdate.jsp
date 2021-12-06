@@ -39,7 +39,6 @@
 	
 
 	<div id="admin_main">
-	<c:set var="dto" value="${userData}"/>
 		<div id="pManage_content"> 
 
 				<div class="page_aticle aticle_type2">
@@ -71,18 +70,23 @@
 					<%-- 관리자메뉴 중 상품등록 파트 부분 --%>
 					<div class="page_section section_pmanage">
 						<div class="head_aticle">
-							<h2 class="tit">상품등록</h2>
+							<h2 class="tit">상품수정</h2>
 						</div>
 						<div class="admin_pManage">
-					<form method="post" action="${pageContext.request.contextPath}/admin_prod_insert.do" enctype="multipart/form-data">
-							<table class="pManage_table">
+					<c:set var="dto" value="${productDTO}"/>
+					<form method="post" action="${pageContext.request.contextPath}/admin_prod_updating.do" enctype="multipart/form-data">
+							<input type="hidden" name="p_num" value="${dto.getP_num()}">
+							<input type="hidden" name="old_p_image" value="${dto.getP_image()}">
+							<input type="hidden" name="old_p_contents" value="${dto.getP_contents()}">
+							<input type="hidden" name="old_p_contents_spec" value="${dto.getP_contents_spec()}">
+							<table class="pManage_table">								
                 <tr class="fsd">
                     <th>
                        	 카테고리
                     </th>
 
                     <td>
-                        <input type="text" class="form_input" id="p_category" name="p_category" placeholder="A1,B1,C1" required>
+                        <input type="text" class="form_input" id="p_category" name="p_category" value="${dto.getP_category()}" placeholder="A1,B1,C1" required>
                     </td>
                 </tr>               
 
@@ -92,7 +96,7 @@
                     </th>
 
                     <td>
-                        <input type="text" class="form_input" id="p_seller" name="p_seller" required>
+                        <input type="text" class="form_input" id="p_seller" name="p_seller" value="${dto.getP_seller()}" required>
                     </td>
                 </tr>
 
@@ -102,7 +106,7 @@
                     </th>
 
                     <td>
-                        <input type="text" class="form_input" id="p_name" name="p_name" required>
+                        <input type="text" class="form_input" id="p_name" name="p_name" value="${dto.getP_name()}" required>
                     </td>
                 </tr> 
 
@@ -112,7 +116,7 @@
                     </th>
 
                     <td>
-                        <input type="text" class="form_input" id="p_name_cont" name="p_name_cont" placeholder="예)특별한 기회로 만나보는 홍게 간식" required>
+                        <input type="text" class="form_input" id="p_name_cont" name="p_name_cont" value="${dto.getP_name_cont()}" placeholder="예)특별한 기회로 만나보는 홍게 간식" required>
                     </td>
                 </tr>                 
 
@@ -122,7 +126,7 @@
                     </th>
 
                     <td>
-                        <input type="number" class="form_input" id="p_price" name="p_price" placeholder="숫자만 입력" required>
+                        <input type="number" class="form_input" id="p_price" name="p_price" value="${dto.getP_price()}" placeholder="숫자만 입력" required>
                     </td>
                 </tr> 
  
@@ -132,7 +136,7 @@
                     </th>
 
                     <td>
-                        <input type="number" class="form_input" id="p_discount" name="p_discount" placeholder="%를 제외한 숫자만 입력" required>
+                        <input type="number" class="form_input" id="p_discount" name="p_discount" value="${dto.getP_discount()}" placeholder="%를 제외한 숫자만 입력" required>
                     </td>
                 </tr>
 
@@ -142,7 +146,7 @@
                     </th>
 
                     <td>
-                        <input type="number" class="form_input" id="p_point" name="p_point" placeholder="숫자만 입력" required>
+                        <input type="number" class="form_input" id="p_point" name="p_point" value="${dto.getP_point()}" placeholder="숫자만 입력" required>
                     </td>
                 </tr> 
                                                
@@ -152,7 +156,7 @@
                     </th>
 
                     <td>
-                        <input type="text" class="form_input" id="p_unit" name="p_unit" placeholder="단위명 필수 입력" required>
+                        <input type="text" class="form_input" id="p_unit" name="p_unit" value="${dto.getP_unit()}" placeholder="단위명 필수 입력" required>
                     </td>
                 </tr>  
                                
@@ -162,7 +166,7 @@
                     </th>
 
                     <td>
-                        <input type="text" class="form_input" id="p_wrap" name="p_wrap" required>
+                        <input type="text" class="form_input" id="p_wrap" name="p_wrap" value="${dto.getP_wrap()}" required>
                     </td>
                 </tr>
                 
@@ -172,7 +176,7 @@
                     </th>
 
                     <td>
-                        <input type="text" class="form_input" id="p_wrap_cont" name="p_wrap_cont" placeholder="택배배송은 에코포장이 스티로폼으로 대체됩니다." required>
+                        <input type="text" class="form_input" id="p_wrap_cont" name="p_wrap_cont" value="${dto.getP_wrap_cont()}" placeholder="택배배송은 에코포장이 스티로폼으로 대체됩니다." required>
                     </td>
                 </tr>                
                                
@@ -184,7 +188,17 @@
                     </th>
 
                     <td>
-                        <input type="number" class="form_input" id="p_qty" name="p_qty" placeholder="숫자만 입력" required>
+                        <input type="number" class="form_input" id="p_qty" name="p_qty" value="${dto.getP_qty()}" placeholder="숫자만 입력" required>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <th>
+                       	 판매량
+                    </th>
+
+                    <td>
+                        <input type="number" class="form_input" id="p_sold" name="p_sold" value="${dto.getP_sold()}" placeholder="숫자만 입력" required>
                     </td>
                 </tr> 
 
@@ -194,7 +208,7 @@
                     </th>
 
                     <td>
-                        <input type="file" class="form_input" id="p_img" name="p_img">
+                        <input type="file" class="form_input" id="p_img" name="p_img" value="${dto.getP_image()}">
                     </td>
                 </tr>  
  
@@ -221,7 +235,7 @@
             </table>
             
             <div class="form_footer">
-            	<button class="btn_act" id="submit" >상품등록</button>
+            	<button class="btn_act" id="submit" >상품수정</button>
             </div>
         </form>
 						</div>
