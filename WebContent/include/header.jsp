@@ -43,7 +43,7 @@
             			<a href="#">적립금</a>
             		</li>
             		<li>
-            			<a href="#">상품 후기</a>
+            			<a href="${pageContext.request.contextPath }/user_product_review_on_write.do">상품 후기</a>
             		</li>
             		<li>
             			<a href="#">상품 문의</a>

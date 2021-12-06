@@ -21,11 +21,11 @@ public class UserProductReviewOnWriteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 			// DB의 전체 레코드를 View Page로 이동시키는 비지니스 로직
-			int num = Integer.parseInt(request.getParameter("no"));
+			int od_num = Integer.parseInt(request.getParameter("od_num"));
 			
 			OrderDetailDAO dao = OrderDetailDAO.getInstance();
 			
-			List<OrderDetailDTO> olist = dao.getReviewOnList(num);
+			List<OrderDetailDTO> olist = dao.getReviewOnList(od_num);
 			
 			request.setAttribute("OList", olist);
 			

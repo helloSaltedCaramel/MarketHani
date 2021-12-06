@@ -136,6 +136,10 @@ public class ReviewDAO {
 		
 	} //getReviewCount() 메서드 end
 	
+	
+	
+	
+	
 	// kurly_review 테이블에서 현재 페이지에 해당하는 게시물을 조회하는 메서드.
 			public List<ReviewDTO> getReviewList(int page, int rowsize , int p_num) { 
 				//public List<ReviewDTO> getReviewList(int page, int rowsize , int p_num) {
