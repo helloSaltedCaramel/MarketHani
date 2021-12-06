@@ -100,29 +100,39 @@
 
 							<p class="goods_name">
 								<input id="p_num" type="hidden" name="p_num" value="${param.p_num}"/>
-								<input id="p_qty" type="hidden" name="p_qty" value="${dto.getP_qty()}"/>
 								<span class="btn_share">
 									<button id="btnShare" onclick="onDisplay();">공유하기</button>
 								</span> 
 								<strong class="name">[${dto.getP_seller()}]${dto.getP_name() }</strong> 
 								<span class="short_desc">${dto.getP_name_cont() }</span>
 							</p>
-
+							<c:if test="${dto.getP_discount() !=0  }">
+							<p class="goods_dcinfo">회원할인가</p>
+							</c:if>
 							<p class="goods_price">
-								<span class="position"> <span class="dc"> <span
-										class="dc_price"><fmt:formatNumber type="number"
-												value="${dto.getP_price() }" /><span class="won">원</span> </span> <%-- 숫자 3자리 수마다 콤마 금액--%>
-								</span> <%-- --%>
-
-								</span>
-								<%--  --%>
-								<c:if test="${empty user_id }">
-								<span class="not_login"> <%-- --%> 
-								<span>로그인 후,적립혜택이 제공됩니다.</span>
-								</span>
-								</c:if>
-								
+								<%-- 로그인을 했을 경우 --%>
 								<c:if test="${!empty user_id }">
+								<span class="position"> 
+								<span class="dc"> 
+								<span class="dc_price">
+										<fmt:formatNumber value="${dto.getP_price() * (100-dto.getP_discount()) / 100}" pattern="0,000"/><span class="won">원</span>
+								<c:if test="${dto.getP_discount() !=0  }">
+								<span class="dc_percent">${dto.getP_discount() }
+										<span class="per">%</span></span>
+								</c:if>
+						 			 </span> 
+								</span> <%--회원 할인가 end--%>
+ 								
+ 								<%-- 할인 전 금액 --%>
+ 								<c:if test="${dto.getP_discount() !=0  }">
+ 								<a class="original_price">
+ 								<span class="price">
+ 								<fmt:formatNumber type="number" value="${dto.getP_price() }" />원	    
+								</span>
+								<img src="./img/product/question_product.JPG" class="product_ico"></a></c:if>
+								
+								</span><%--position end --%>
+					
 								<span class="txt_benefit">
 								<span class="not_login"> <%-- --%> 
 								<span class="ico_grade grade0">5% 적립</span>
@@ -130,6 +140,33 @@
 								<span class="point">개당 ${dto.getP_point() }원</span>
 								</span>
 								</c:if>
+								
+								<%-- 로그인을 안했을 경우 --%>
+								<c:if test="${empty user_id }">
+								<span class="position">
+								<span class="dc"> 
+								<span class="dc_price">
+										<fmt:formatNumber value="${dto.getP_price() * (100-dto.getP_discount()) / 100}" pattern="0,000"/><span class="won">원</span>
+								<c:if test="${dto.getP_discount() !=0  }">
+								<span class="dc_percent">${dto.getP_discount() }
+										<span class="per">%</span></span>
+								</c:if>
+						 		</span></span><%--회원 할인가 end--%>
+								<%-- 할인 전 금액 --%>
+ 								<c:if test="${dto.getP_discount() !=0  }">
+ 								<a class="original_price">
+ 								<span class="price">
+ 								<fmt:formatNumber type="number" value="${dto.getP_price() }" />원	    
+								</span>
+								<img src="./img/product/question_product.JPG" class="product_ico"></a></c:if>
+								
+								</span><%--position end --%>
+								
+								<span class="not_login"> 
+								<span>로그인 후, 적립혜택이 제공됩니다.</span>
+								</span>
+								</c:if>
+								
 							</p>
 							<%-- --%>
 							<div class="goods_info">
@@ -194,9 +231,9 @@
 											<strong class="tit">총 상품금액 :</strong> 
 											<span class="sum">
 												<span class="num" id="totalPrice">
-													<fmt:formatNumber type="number" value="${dto.getP_price() }" />
-												</span> 
+													<fmt:formatNumber value="${dto.getP_price() * (100-dto.getP_discount()) / 100}" pattern="0,000"/>												
 												<span class="won">원</span>
+												</span>
 											</span>
 										</div>
 										

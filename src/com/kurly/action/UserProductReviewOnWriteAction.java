@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kurly.controller.Action;
 import com.kurly.controller.ActionForward;
+import com.kurly.model.OrderDAO;
 import com.kurly.model.OrderDetailDAO;
 import com.kurly.model.OrderDetailDTO;
+import com.kurly.model.OrderHistoryDTO;
 import com.kurly.model.QnADAO;
 import com.kurly.model.QnADTO;
 import com.kurly.model.ReviewDAO;
@@ -21,7 +23,10 @@ public class UserProductReviewOnWriteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 			// DB의 전체 레코드를 View Page로 이동시키는 비지니스 로직
-			int od_num = Integer.parseInt(request.getParameter("od_num"));
+
+		
+		
+		int od_num = Integer.parseInt(request.getParameter("od_num"));
 			
 			OrderDetailDAO dao = OrderDetailDAO.getInstance();
 			

@@ -35,9 +35,9 @@ public class UserProductReviewListAction implements Action {
 				return forward;
 				 */
 				
-				
+				System.out.println("여기가 나올까?");
 				int p_num = Integer.parseInt(request.getParameter("p_num"));
-				String reviewsort = request.getParameter("reviewsort");
+				String reviewsort = request.getParameter("sort");
 				
 				if(reviewsort == null) {	//첫 호출인 경우 정렬방식 new로 변경
 					reviewsort = "new";
