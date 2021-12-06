@@ -375,7 +375,7 @@ iframe {
 									<caption style="display: none">구매후기 내용</caption>
 									<div class="inner_review">
 										<div class="name_purchase">
-										
+										<br>
 										<strong class="name">[${product.getP_seller() }]${product.getP_name() }</strong>
 										<p></p>
 										
@@ -413,7 +413,7 @@ iframe {
 
 				<p id="p_btnReview">
 						<span id="btnReview" style="line-height:30px; width:130px;" 
-						onclick="location.href='user_product_review_on_write.do?no=${dto.getUser_id() }'">후기쓰기
+						onclick="location.href='user_product_review_write.do?p_num=${dto.getP_num()}'">후기쓰기
 						</span>
 						
 				

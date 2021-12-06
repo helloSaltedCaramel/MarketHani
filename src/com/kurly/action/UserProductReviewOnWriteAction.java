@@ -24,8 +24,23 @@ public class UserProductReviewOnWriteAction implements Action {
 		
 			// DB의 전체 레코드를 View Page로 이동시키는 비지니스 로직
 
+		 ReviewDAO dao = ReviewDAO.getInstance();
+		
+		 List<ReviewDTO> list = dao.getReviewOnList();
+		 
+		 request.setAttribute("List", list);
+		 
+		 
+		ActionForward forward = new ActionForward();
+		
+		forward.setRedirect(false);
+		
+		forward.setPath("user/user_product_review_on_write.jsp");
+		
+		return forward;
 		
 		
+		/*
 		int od_num = Integer.parseInt(request.getParameter("od_num"));
 			
 			OrderDetailDAO dao = OrderDetailDAO.getInstance();
@@ -40,7 +55,7 @@ public class UserProductReviewOnWriteAction implements Action {
 			
 			forward.setPath("user/user_product_review_on_write.jsp");
 			
-			return forward;
+			return forward;*/
 		
 		}
 

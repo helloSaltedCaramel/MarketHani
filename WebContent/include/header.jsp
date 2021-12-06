@@ -44,7 +44,7 @@
 	            			<a href="#">적립금</a>
 	            		</li>
 	            		<li>
-	            			<a href ="${pageContext.request.contextPath}/user_mypage_orderHistory.do">상품 후기</a>
+	            			<a href ="${pageContext.request.contextPath}/user/user_product_review_on_write.jsp">상품 후기</a>
 	            		</li>
 	            		<li>
 	            			<a href="#">상품 문의</a>
@@ -60,7 +60,7 @@
 	            	<a href="${pageContext.request.contextPath}/admin/admin_main.jsp" class="link_menu">${user_name}님</a>
 	            	<ul class="us_sub">
 	            		<li>
-	            			<a href="${pageContext.request.contextPath}/admin/admin_main.jsp">후기관리</a>
+	            			<a href="${pageContext.request.contextPath}/user/user_product_review_on_write.jsp">후기관리</a>
 	            		</li>
 	            		<li>
 	            			<a href="${pageContext.request.contextPath}/admin/admin_main.jsp">문의관리</a>

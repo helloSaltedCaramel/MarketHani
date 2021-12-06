@@ -7,6 +7,29 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <%-- import infoModify.css --%>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin_main.css"/>
+
+    <%-- import header.css --%>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css"/>
+	<link rel="icon" href="<%=request.getContextPath() %>/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script defer src="<%=request.getContextPath() %>/js/header/header.js"></script>
+	<script defer src="<%=request.getContextPath() %>/js/header/location_postcode.js"></script>	
+		
+	<%-- import footer.css --%>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css"/>
+		
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마켓하니 :: 관리자페이지</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/register.css">
+    <link rel="icon" href="${pageContext.request.contextPath}/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
+    <script defer src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script defer src="${pageContext.request.contextPath}/js/admin/pointGenerator.js"></script>
+
 <meta charset="UTF-8">
 <title>마이페이지 후기작성</title>
 <style type="text/css">
@@ -19,6 +42,15 @@ a {
 
 div, th, td, li, dt, dd, p {
     word-break: break-all;
+}
+
+#content {
+    min-width: 1050px;
+    padding-bottom: 60px;
+}
+
+#header, #container, #content {
+    position: relative;
 }
 
 *, *:after, *:before {
@@ -63,6 +95,14 @@ ul {
 
 
 /*왼쪽 탭 end*/
+
+.page_aticle.aticle_type2:after {
+    content: "";
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    clear: both;
+}
 
 .page_aticle.aticle_type2 {
     padding-top: 65px;
@@ -149,10 +189,18 @@ ul {
     text-align: center;
 }/*작성가능 후기가 없습니다.*/
 
+textarea::placeholder {
+ color : #b8b8b8;
+} /*게시글 리스트 마우스 가져다댔을대 호버*/
+
+
 </style>
 </head>
 <body>
 
+	<jsp:include page="../include/header.jsp" />
+	<div id= "main"><%-- main --%>
+	<div id="content"> <%-- content --%>
 	<div class="page_aticle aticle_type2"> <%-- 후기 전체 틀 마이컬리 포함 start --%>
 		<%-- 왼쪽 마이컬리 탭 부분 --%>
 		<div id="snb" class="snb_my">
@@ -269,5 +317,8 @@ ul {
 		
 	</div> <%-- 후기 전체 틀 마이컬리 포함 end --%>
 </div> <%-- 상품 후기 end --%>
-</body>
-</html>
+</div> <%-- content end --%>
+</div> <%-- main end --%>
+<jsp:include page="../include/footer.jsp" />
+<%-- </body>
+</html>--%>
