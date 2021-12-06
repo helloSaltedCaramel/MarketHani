@@ -141,10 +141,11 @@ margin-top: 70px;
 
 
 	<div class="page_aticle aticle_type2"> <%-- 후기 전체 틀 마이컬리 포함 start --%>
-		<%-- 왼쪽 마이컬리 탭 부분 --%>
+		<%-- 
+		왼쪽 마이컬리 탭 부분
 		<div id="snb" class="snb_my">
 			<h2 class="tit_snb">마이하니</h2>
-		<%-- 왼쪽 마이컬리 탭 내부 주문 내역, 선물 내역, 배송지 관리, 상품 후기 --%>
+		왼쪽 마이컬리 탭 내부 주문 내역, 선물 내역, 배송지 관리, 상품 후기
 		<div class="inner_sub">
 			<ul class="list_menu">
 				<li>
@@ -170,9 +171,9 @@ margin-top: 70px;
 				</li>
 			</ul>
 		
-		</div><%-- 왼쪽 마이컬리 탭 내부 주문 내역, 선물 내역, 배송지 관리, 상품 후기  end--%>
-		</div><%-- 왼쪽 마이컬리 탭 부분 end--%>
-
+		</div>왼쪽 마이컬리 탭 내부 주문 내역, 선물 내역, 배송지 관리, 상품 후기  end
+		</div>왼쪽 마이컬리 탭 부분 end
+ --%>
 <div class="page_review"> <%--후기작성 오른쪽 틀  --%>
 		<c:set var="dto" value="${modify }"/>
 			<h2 align="left">후기수정</h2>
