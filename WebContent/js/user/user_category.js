@@ -29,7 +29,7 @@ function display_category(cname){
 	}else if(category == 'C'){
 		
 		str += '<li id="C"><a href="user_category.do?cat=C&sort=new">전체보기</a></li> \
-				<li id="C1"><a href="user_category.do?cat=C1&sort=new">베이커리</a></li> \
+				<li id="C1"><a href="user_category.do?cat=C1&sort=new">식빵·빵류</a></li> \
 				<li id="C2"><a href="user_category.do?cat=C2&sort=new">케이크</a></li> \
 				<li id="C3"><a href="user_category.do?cat=C3&sort=new">커피</a></li>';
 		title += '베이커리, 커피';

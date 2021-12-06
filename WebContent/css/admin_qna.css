@@ -1,4 +1,6 @@
 @charset "UTF-8";
+
+@charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 /*제품 상세페이지 CSS*/
@@ -202,13 +204,13 @@
 	width: 262.5px;
 } /*ul 태그 내용*/
 
-/* *, *:after, *:before {
+*, *:after, *:before {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-}  */
+}  
 
 #sectionView .goods_price .position:after {
 	content: "";
@@ -912,4 +914,470 @@ iframe#inreview {
     line-height: 25px;
     text-align: center;
     font-weight: bold;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@charset "UTF-8";
+
+.qna_content {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.qna_container ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.qna_container{
+	width: 1010px;
+	margin-bottom: 60px;
+}
+
+.qna_header{
+	padding-bottom: 38px;
+   	font-family: Noto Sans;
+}
+
+.qna_header strong {
+    display: block;
+    padding-bottom: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #333;
+}
+
+.qna_header ul {
+    font-family: Noto Sans;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #999;
+    padding: 0;
+}
+
+.qna_header ul li {
+   	padding-left: 12px;
+}
+
+.qna_header ul li:before {
+    display: inline-block;
+    width: 2px;
+    height: 2px;
+    margin: 11px 6px 0 -10px;
+    background: #999;
+    vertical-align: top;
+    content: "";
+}
+
+.qna_header ul li a {
+    font-weight: 700;
+    color: #999;
+    text-decoration: underline;
+}
+
+.qna_content {
+    position: relative;
+    font-family: Noto Sans;
+    border-top: 2px solid #333;
+    width: 1010px;
+}
+
+
+.qna_content_title {
+    display: table;
+    table-layout: fixed;
+    border-bottom: 1px solid #333;
+}
+
+.qna_content_title div {
+    display: table-cell;
+    text-align: center;
+    padding: 18px 0 20px;
+    width: 100px;
+    font-family: Noto Sans;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    letter-spacing: -.5px;
+    color: #333;
+}
+
+.qna_notice_list {
+	position: relative;
+}
+
+.qna_content_list {
+	position: relative;
+}
+
+.qna_button {
+	position: relative;
+}
+
+.qna_notice_item {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    padding: 16px 0;
+    font-family: Noto Sans;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    border-bottom: 1px solid #f4f4f4;
+	padding: 0;
+   	height: 61px;
+}
+
+.qna_content_item {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    padding: 16px 0;
+    font-family: Noto Sans;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    border-bottom: 1px solid #f4f4f4;
+	padding: 0;
+   	height: 61px;
+}
+
+
+.item-cell {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100px;
+    color: #999;
+}
+
+
+.notice-cell {
+	display: table-cell;
+    vertical-align: middle;
+    width: 710px;
+    text-align: left;
+    padding: 0 20px;
+    min-height: 22px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.notice-cell span {
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 4px;
+    margin-right: 12px;
+    margin-top: 6px;
+    padding: 0 8px;
+    font-size: 12px;
+    line-height: 22px;
+    font-weight: 500;
+    color: #666;
+    background: hsla(0,0%,40%,.06);
+    vertical-align: top;
+}
+
+.notice-cell strong {
+    display: inline-block;
+    overflow: hidden;
+    max-width: 613px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 40px;
+    color: #333;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: top;
+}
+
+.content-cell {
+	display: table-cell;
+    vertical-align: middle;
+    width: 710px;
+    text-align: left;
+    padding: 0 20px;
+    min-height: 22px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.content-cell strong {
+    display: inline-block;
+    overflow: hidden;
+    max-width: 613px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 40px;
+    color: #333;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: top;
+}
+
+.content-cell span {
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 4px;
+    margin-right: 12px;
+    margin-top: 6px;
+    padding: 0 8px;
+    font-size: 12px;
+    line-height: 22px;
+    font-weight: 500;
+    color: #666;
+    background: hsla(0,0%,40%,.06);
+    vertical-align: top;
+}
+
+.qna_button_area {
+	position: relative;
+}
+
+.qna_paging_nav {
+	padding-top: 20px;
+   	text-align: center;
+}
+
+.qna_write_btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 120px;
+    height: 44px;
+    font-family: Noto Sans;
+    font-weight: 500;
+    line-height: 1;
+    
+    border: 1px solid #5f0081;
+   	background-color: #5f0080;
+   	color: #fff;
+   	
+   	font-size: 16px;
+   	text-align: center;
+   	border-radius: 4px;
+   	outline: none;
+	
+		max-width: 100%;
+		margin: 0;
+		padding: 0;	
+   	cursor: pointer;
+   	text-transform: none;
+  }
+  
+  .qna_paging_nav button {
+  
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    margin: 0;
+    background: 0;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    cursor: pointer;
+   }
+
+.qna_mark {
+	margin-top: 8px;
+}
+button.prev {
+   	margin-right: 12px;
+   	background: url(../img/product/qna_page_prev.svg) 50% 0 no-repeat;
+}
+
+button.next {
+
+	background: url(../img/product/qna_page_next.svg) 50% 0 no-repeat;
+}
+
+.content-cell.expand span {
+	background: #fafafa;
+} 
+
+.qna_content_item.expand {
+	background: #fafafa;
+}
+
+.expand_div {
+	display: none;
+} /* 질문내용 및 답글내용 숨기기  */ 
+
+.modal_overlay {
+	position: fixed;
+ 		top:0; left: 0; bottom: 0; right: 0;
+	background: rgba(0, 0, 0, 0.4);
+	z-index: 900;
+	width: 100%;
+	height: 100%;
+	backdrop-filter: blur(0.5px);
+	transition: all 0.5s;
+	display: none;
+}
+
+.modal_body {
+	overflow: hidden;
+}
+
+.modal_dialog {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 300px;
+	height: 150px;
+	background-color: #fcfcfc;
+	z-index: 1000;
+	border-radius: 10px;
+	font-size: 16px;
+	display: none;
+}/* 질문내용 및 답글내용 숨기기  */
+
+.modal_dialog p {
+	width: 100%;
+	height: 100px;
+	border-bottom: 1px solid rgb(238, 238, 238);
+	padding: 40px 32px;
+	text-align: center;
+}
+
+.modal_button {
+	color: rgb(95, 0, 128);
+	background: transparent;
+	width: 100%;
+	height: 50px;
+	border: none;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.modal_button.delete1 {
+	border-right: 1px solid rgb(238, 238, 238);
+	float: left;
+	width: 50%;
+}
+
+.modal_button.delete2 {
+	clear: both;
+	width: 50%;
+}
+
+.modal_dialog_qna {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 30px;
+	width: 800px;
+	height: 700px;
+	background-color: #fff;
+	z-index: 1000;
+	border-radius: 12px;
+	font-size: 16px;
+	display: none;
+	/* display: none; */
+}/* 질문하기 버튼 입력창 모달  */
+
+.modal_qna_write {
+	width: 740px;
+	height: 640px;
+	border-collapse: collapse;
+}/* 질문하기 버튼 입력창 테이블 */
+
+.modal_qna_image {
+	width: 72px;
+	height: 72px;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.modal_qna_title {
+	vertical-align: top;
+}
+
+.modal_qna_title strong {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    color: #333;
+    float: left;
+}
+
+.modal_qna_title img {
+	float: right;
+	cursor: pointer;
+} /* 상단 우측 'X'버튼  */
+
+.modal_qna_title img::after {
+	content: "";
+	clear: both;
+}
+
+.modal_qna_header, .modal_write_title, .modal_write_button {
+	border-top: 1px solid #f4f4f4;
+}
+
+.modal_write_content td textarea {
+	width: 100%;
+	height: 260px;
+	padding: 16px 16px 0px;
+}
+
+.modal_write_title {
+	padding-top: 10px;
+}
+
+.modal_write_title td input {
+	width: 100%;
+	height: 44px;
+	padding: 10px 15px;
+}
+
+.modal_write_button button {
+	width: 160px;
+   	height: 56px;
+}
+
+.secret_check{
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+}
+
+.modal_write_secret span {
+	vertical-align: middle;
+}
+
+.secret_check_ico {
+
+	display: inline-block;
+	position: relative;
+	margin-right: 12px;
+	border: 0;
+	background-image: url(../img/product/qna_write_unchecked.svg);
+	background-color: transparent;
+	background-repeat: no-repeat; 
+	background-size: 24px 24px;
+	background-position: 50% 50%;
+	/* vertical-align: -7px; */
+	width: 24px;
+	height: 24px;
+}
+
+.item-cell.update {
+	float: right;
+	vertical-align: middle;
+	margin-top: 14px;
+}
+
+.item-cell.update::after {
+	clear: both;
+}
+
+/* 비밀글 제목 색상 */
+#secret_title {
+	color: #b5b5b5;
 }
