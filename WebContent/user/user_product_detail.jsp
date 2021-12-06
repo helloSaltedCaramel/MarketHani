@@ -100,6 +100,7 @@
 
 							<p class="goods_name">
 								<input id="p_num" type="hidden" name="p_num" value="${param.p_num}"/>
+								<input id="p_qty" type="hidden" name="p_qty" value="${dto.getP_qty()}"/>
 								<span class="btn_share">
 									<button id="btnShare" onclick="onDisplay();">공유하기</button>
 								</span> 
