@@ -55,10 +55,6 @@ public class UserProductQnAWriteAction implements Action {
 		//게시글 작성 DB삽입  결과값 포워드하기
 		request.setAttribute("res", res);
 		
-		//jsp페이지에 부분로딩할 전체 QnA리스트를 받아와 포워드하기
-		List<QnADTO> list = dao.getQnAList(p_num);
-		request.setAttribute("List", list);
-		
 		//페이지 넘어감 방지
 		out.println("<script>");
 		out.println("history.back()");

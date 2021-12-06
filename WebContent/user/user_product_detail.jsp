@@ -3,222 +3,49 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-
 <!DOCTYPE html>
 <html>
 <head>
- <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<%-- import header.css --%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/header.css" />
-<link rel="icon"
-	href="<%=request.getContextPath()%>/img/favicon/favicon-32x32.ico"
-	type="image/x-icon" sizes="16x16">
-<script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script defer src="<%=request.getContextPath()%>/js/header/header.js"></script>
-<script defer
-	src="<%=request.getContextPath()%>/js/header/location_postcode.js"></script>
+	<%-- import header.css --%>
+	<link rel="stylesheet" type="text/css"
+		href="<%=request.getContextPath()%>/css/header.css" />
+	<link rel="icon"
+		href="<%=request.getContextPath()%>/img/favicon/favicon-32x32.ico"
+		type="image/x-icon" sizes="16x16">
+	<script
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script defer src="<%=request.getContextPath()%>/js/header/header.js"></script>
+	<script defer
+		src="<%=request.getContextPath()%>/js/header/location_postcode.js"></script>
 
-<%-- include product_qna.css --%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/product_qna.css" />
-
-<%-- import footer.css --%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/footer.css" />
-
-<%-- jQuery library (served from Google) --%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-<%-- import eventMain.css --%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/product_detail.css">
-
-<script defer src="${pageContext.request.contextPath}/js/product/productqty.js"></script>
-<script type="text/javascript">
-
-
-	function onDisplay() {
-
-		$('#shareLayer').toggle();
-
-	}; // 공유하기 버튼 클릭시 보이고 안보이고
+	<%-- include product_qna.css --%>
+	<link rel="stylesheet" type="text/css"
+		href="<%=request.getContextPath()%>/css/product_qna.css" />
 	
-	  //링크 클릭시 헤당 섹션으로 부드럽게 이동시키기
-	  $(document).on('click','#ul_product a',function(event){
-	  var headerHeight = $('header').outerHeight();
-	  event.preventDefault();
-	  	$("html,body").animate({
-	    	scrollTop : $(this.hash).offset().top - headerHeight
-	    },800)
-	 
-	}); 
-	
-	
-	// 장바구니 버튼 구현
-	function count(type)  {
-  // 결과를 표시할 element
-  const resultElement = document.getElementById('result');
-  
-  // 현재 화면에 표시된 값
-  let number = resultElement.innerText;
-  
-  // 더하기/빼기
-  if(type === 'plus') {
-    number = parseInt(number) + 1;
-  }else if(type === 'minus')  {
-    number = parseInt(number) - 1;
-  }
-  
-  // 결과 출력
-  resultElement.innerText = number;
-}
-	
-	  
-	  //product end
-	  
-	  
+	<%-- import footer.css --%>
+	<link rel="stylesheet" type="text/css"
+		href="<%=request.getContextPath()%>/css/footer.css" />
 
+	<%-- import eventMain.css --%>
+	<link rel="stylesheet" type="text/css"
+		href="<%=request.getContextPath()%>/css/product_detail.css">
 
-function expandQna(num){
-	
-	$('.expand_div#' + num).toggle();
-	
-} // QnA 게시판 제목 클릭시 질문과 답변 토글
-
-function showSecret(){
-	
-	$('.modal_overlay').show();
-	$('.modal_dialog.warning').show();
-	$('body').addClass('modal_body');
-}/* "비밀글입니다" 메시지 보여주기 */
-
-function hideSecret() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog.warning').hide();
-	$('body').removeClass('modal_body');
-}/* "비밀글입니다" 메시지 감추기 */
-
-function showWrite() {
-	
-	$('.modal_overlay').show();
-	$('.modal_dialog_qna.write').show();
-	$('body').addClass('modal_body');
-}/* 질문작성창 보여주기 */
-
-function hideWrite() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog_qna.write').hide();
-	$('body').removeClass('modal_body');
-}/* 질문작성창 감추기 */
-
-function hideWriteConfirm() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog.confirm').hide();
-	$('body').removeClass('modal_body');
-}/* 작성완료 창 감추기 */
-
-function showWriteFailure() {
-	
-	$('.modal_overlay').show();
-	$('.modal_dialog.failure').show();
-	$('body').addClass('modal_body');
-}/* 작성실패창 보여주기 */
-
-function hideWriteFailure() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog.failure').hide();
-	$('body').removeClass('modal_body');
-}/* 작성실패 창 감추기 */
-
-function showWriteConfirm() {
-	
-	$('.modal_overlay').show();
-	$('.modal_dialog.confirm').show();
-	$('body').addClass('modal_body');
-	
-}/* 작성완료 창 보여주기 */
-
-function reloadQnA() {
-	
-	window.location.reload();
-	
-}/* QnA 테이블 새로고침 */
-
-function showDelete() {
-	
-	$('.modal_overlay').show();
-	$('.modal_dialog.delete').show();
-	$('body').addClass('modal_body');
+	<%-- jQuery library (served from Google) --%>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		
-}/* 질문삭제 창 보여주기  */
-
-function hideDelete() {
+	<%-- import product_detail.js --%>
+	<script defer src="${pageContext.request.contextPath}/js/product/product_detail.js"></script>
 	
-	$('.modal_overlay').hide();
-	$('.modal_dialog.delete').hide();
-	$('body').removeClass('modal_body');
-		
-}/* 질문삭제 창 감추기  */
-
-function showDeleteConfirm(){
-	$('.modal_overlay').show();
-	$('.modal_dialog.delete_confirm').show();
-	$('body').addClass('modal_body');
-}/* 삭제확인 창 보여주기 */
-
-function hideDeleteConfirm(){
-	$('.modal_overlay').hide();
-	$('.modal_dialog.delete_confirm').hide();
-	$('body').removeClass('modal_body');
-}/* 삭제확인 창 감추기 */
-
-function showRevise(qna_num, qna_title, qna_content) {
-	
-	//받아온 각 데이터를 수정 폼에 전달
-	$('.qna_revise_title').attr('value', qna_title);
-	$('.qna_revise_content').append(qna_content);
-	$('.modal_dialog_qna.revise').children('form').append('<input type="hidden" name="qna_num" value="' + qna_num + '">')
-	
-	//모달 보여주기
-	$('.modal_overlay').show();
-	$('.modal_dialog_qna.revise').show();
-	$('body').addClass('modal_body');
-		
-}/* 질문수정 창 보여주기  */
-
-function hideRevise() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog_qna.revise').hide();
-	$('body').removeClass('modal_body');
-		
-}/* 질문수정 창 감추기  */
-
-function showReviseConfirm() {
-	
-	$('.modal_overlay').show();
-	$('.modal_dialog.revise_confirm').show();
-	$('body').addClass('modal_body');
-}/* 질문수정완료 창 보여주기  */
-
-function hideReviseConfirm() {
-	
-	$('.modal_overlay').hide();
-	$('.modal_dialog.revise_confirm').hide();
-	$('body').removeClass('modal_body');
-}/* 질문수정완료 창 감추기  */
-
-</script>
-
+	<%-- QnA 게시판 그리기 --%>
+	<script>	
+		$(document).ready(function() {
+			qnaList(${productCont.getP_num()}, 1);
+		});
+	</script>
 </head>
 
 <body>
@@ -266,7 +93,7 @@ function hideReviseConfirm() {
 						
 							<div class="thumb">
 								<img
-									src="<%=request.getContextPath() %>/img/product/${dto.getP_image()}"
+									src="<%=request.getContextPath() %>/upload/product/${dto.getP_image()}"
 									class="bg">
 							</div>
 
@@ -499,14 +326,14 @@ function hideReviseConfirm() {
 			<%-- 상품설명 이미지  --%>
 			<div id="content1">
 					<img
-						src="<%=request.getContextPath() %>/img/product/${dto.getP_contents()}"
+						src="<%=request.getContextPath() %>/upload/product/${dto.getP_contents()}"
 						align="center" width="1010px" height="100%"> 
 			</div> <%-- #content1 scroll end --%>		
 		
 			<%-- 상세정보 이미지  --%>
 			<div id="content2">		
 					<img
-						src="<%=request.getContextPath() %>/img/product/${dto.getP_contents_spec()}"
+						src="<%=request.getContextPath() %>/upload/product/${dto.getP_contents_spec()}"
 						align="center" width="1010px" height="100%"> <br> <br>
 					<br> <br> <br> <br> <br>
 		
@@ -559,123 +386,21 @@ function hideReviseConfirm() {
 							</li>
 						</ul>
 						
-						<%-- QnA 내용부분 --%>
-						<c:set var="list" value="${List }"/>
-						
-						<ul class="qna_content_list">
-						
-						<c:if test="${empty list }">
-							<li><strong>등록된 문의가 없습니다</strong></li>
-						</c:if>
-						
-						<c:if test="${!empty list }">
-						
-							<c:forEach items="${list }" var="q_dto" varStatus="status">
-								<li class="qna_content_item">
-								
-									<c:if test="${q_dto.getQna_secret() == 1}"> <%-- 비밀 글 : 제목 클릭 시 모달 함수 호출("비밀글입니다") --%>
-										<div class="content-cell secret" onclick="showSecret();">	
-											<strong id="secret_title"><font color="#b5b5b5">
-												비밀글입니다.&nbsp;&nbsp;<img src="<%=request.getContextPath() %>/img/product/qna_secret.svg">
-											</font></strong>
-										</div>
-									</c:if>
-									
-									<c:if test="${q_dto.getQna_secret() != 1}"> <%-- 일반 글 : 제목 클릭 시 토글 함수 호출--%>
-										<div class="content-cell" onclick="expandQna(${status.count });">	
-											<strong id="question_title">${q_dto.getQna_title() }</strong>
-										</div>
-									</c:if>											
-								
-									
-									<div class="item-cell"><p>${q_dto.getUser_id() }</p></div>
-									<div class="item-cell"><p>${q_dto.getQna_date() }</p></div>
-									<div class="item-cell">
-										<p>
-										<c:if test="${q_dto.getQna_status() == 1}">
-											<font color="#5f0081">답변완료</font>	
-										</c:if>
-										<c:if test="${q_dto.getQna_status() != 1}">
-											답변대기
-										</c:if>
-										</p>
-									</div>
-								</li>
-								
-								<div class="expand_div" id="${status.count }">	<%-- 토글 함수에 들어가는 id값 설정하기 위한 div --%>
-									
-									<c:if test="${q_dto.getQna_secret() != 1}">	<%-- 비밀글이 아닐 때에만 로딩 --%>
-									
-										<%-- 클릭 시 확장될 질문영역 --%>
-										<c:if test="${!empty q_dto.getQna_content()}">
-											<li class="qna_content_item expand">		
-												<div class="content-cell expand">
-													<span><img class="qna_mark" src="<%=request.getContextPath() %>/img/product/qna_question_mark.svg"></span>
-													<span><strong>${q_dto.getQna_content() }</strong></span>
-													<div class="item-cell update">
-														<p>
-															<a onclick="showRevise(${q_dto.getQna_num() }, '${q_dto.getQna_title() }', 
-																				   '${q_dto.getQna_content() }');">수정</a>&nbsp;&nbsp;&nbsp;
-															<a onclick="if(confirm('작성한 문의를 삭제하시겠습니까?')){
-																			location.href='user_qna_delete.do?qna_num=${q_dto.getQna_num() }';
-																			showDeleteConfirm();
-																	   }else{return; };">삭제</a>
-														</p>
-													</div>
-												</div>									
-											</li>
-										</c:if>
-										
-										<%-- 클릭 시 확장될 답변영역 --%>
-										<c:if test="${!empty q_dto.getQna_answer()}">
-											<li class="qna_content_item expand">
-												<div class="content-cell expand">
-													<span><img class="qna_mark" src="<%=request.getContextPath() %>/img/product/qna_answer_mark.svg"></span>
-													<span><strong>${q_dto.getQna_answer() }</strong></span>
-												</div>
-											</li>
-										</c:if>
-										
-									</c:if>
-								</div>
-							</c:forEach>	
-						</c:if>
-						
-						</ul>
+					
+						<%-- QnA 리스트 받아오는 영역 --%>
+						<ul class="qna_content_list"></ul>						
 						
 						<%-- 문의하기, 페이지 이동 버튼 --%>
 						<div class="qna_button_area">
 							<div class="qna_paging_nav">
-								<button type="button" class="prev" onclick="location.href='user_product'"><span></span></button>
+								<button type="button" class="prev"><span></span></button>
 								<button type="button" class="next"><span></span></button>
 							</div>
+							
 							<button class="qna_write_btn" onclick="showWrite();">
 								<span>문의하기</span>
 							</button>
-							
-							<%-- 페이지네이션--%>
-							<c:if test="${page > block}">
-							<a href="user_qna_page.do?p_num=${dto.getP_num()}&page=1">◀◀</a>
-							<a href="user_qna_page.do?p_num=${dto.getP_num()}&page=${startBlock - 1 }">◀</a>
-							</c:if>
-						
-						
-							<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
-								<c:if test="${i == page }">
-									<b><a href="<%=request.getContextPath() %>/user_qna_page.do?p_num=${dto.getP_num()}&page=${i }">[${i }]</a></b>
-								</c:if>
-								
-								<c:if test="${i != page }">
-									<a href="<%=request.getContextPath() %>/user_qna_page.do?p_num=${dto.getP_num()}&page=${i }">[${i }]</a>
-								</c:if>
-							</c:forEach>
-							
-							<c:if test="${endBlock < allPage}">
-								<a href="user_qna_page.do?p_num=${dto.getP_num()}&page=${endBlock + 1 }">▶</a>
-								<a href="user_qna_page.do?p_num=${dto.getP_num()}&page=${allPage }">▶▶</a>
-							</c:if>
-							
-							<%-- 페이지네이션 끝 --%>
+					
 						</div>
 					</div> <%-- .qna_content end --%>
 				</div>	<%-- .qna_container end --%>	
@@ -742,7 +467,7 @@ function hideReviseConfirm() {
 				<tr class="modal_qna_header" height="90px">
 					<td width="100px">
 						<div class="modal_qna_image">
-							<img width="72px" height="72px" src="<%=request.getContextPath() %>/img/product/${dto.getP_image()}">
+							<img width="72px" height="72px" src="<%=request.getContextPath() %>/upload/product/${dto.getP_image()}">
 						</div>
 					</td>
 					<td><strong>[${dto.p_seller}]${dto.p_name }</strong></td>
@@ -757,7 +482,7 @@ function hideReviseConfirm() {
 				</tr>
 				<tr class="modal_write_secret" height="25px">
 					<td>
-						<label onclick="alert('test');">
+						<label onclick="isSecret();">
 							<input class="secret_check" type="checkbox" name="is_secret"> <%-- 비밀글여부 : is_secret --%>
 							<span class="secret_check_ico"> </span>
 							<span>비밀글로 문의하기</span>
@@ -792,7 +517,7 @@ function hideReviseConfirm() {
 				<tr class="modal_qna_header" height="90px">
 					<td width="100px">
 						<div class="modal_qna_image">
-							<img width="72px" height="72px" src="<%=request.getContextPath() %>/img/product/${dto.getP_image()}">
+							<img width="72px" height="72px" src="<%=request.getContextPath() %>/upload/product/${dto.getP_image()}">
 						</div>
 					</td>
 					<td><strong>[${dto.p_seller}]${dto.p_name }</strong></td>
@@ -824,7 +549,6 @@ function hideReviseConfirm() {
 		</form>				
 	</div><%-- modal_dialog_qna revise end --%>
 		
-	
 	<jsp:include page="../include/footer.jsp" />
 
 <%-- </body>

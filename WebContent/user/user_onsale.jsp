@@ -22,10 +22,36 @@
 <%-- import footer.css --%>
 <link rel="stylesheet" type="text/css" href="css/footer.css"/>
 
+<%-- 20211123: javascript 연동 (허민회) --%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script defer src="${pageContext.request.contextPath}/js/productList/addCart.js"></script>
+
+<!-- jQuery library (served from Google) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script>
+
+//로딩 후 선택된 정렬방식에 css부여 
+let order = 'li#' + '${sortBy}';
+
+$().ready(function(){
+	
+	$(order).css('color', 'black');
+});
+
+function sort(how) {
+	
+	$('.top_line form').attr('action', 'user_onsale.do?sort=' + how); 
+	$('.sort').submit();
+}//제품 리스트 정렬방식을 전달하여 액션을 호출하는 메서드
+
+
+</script>
+
 </head>
 
 <body>
-	
+
 	<jsp:include page="../include/header.jsp"/>
 	
 	<div align="center">
@@ -35,30 +61,38 @@
 			<div class="category"><span>알뜰쇼핑</span></div>
 			
 			<c:set var="list" value="${productList}"/>
-			<c:set var="itemCount" value="${listCount }"/>
-				 
+			<c:set var="itemCount" value="${totalRecord }"/>
+			
+			<%-- 상품 목록 정렬  --%>	 
 			<div class="top_line">
 				<p id="left">총 ${itemCount }개 </p>
-				<ul id="right">
-					<li><a>추천순</a></li>
-					<li><a>신상품순</a></li>
-					<li><a>판매량순</a></li>
-					<li><a>혜택순</a></li>
-					<li><a>낮은 가격순</a></li>
-					<li><a>높은 가격순</a></li>
-				</ul>
+				<form class="sort" method="post">
+					<ul id="right">
+						<li id="recommend" onclick="sort('recommend');">추천순</li>
+						<li id="new" onclick="sort('new');">신상품순</li>
+						<li id="low" onclick="sort('low');">낮은 가격순</li>
+						<li id="high" onclick="sort('high');">높은 가격순</li>
+					</ul>
+				</form>
 			</div>
-		
+			
+			<%-- 상품 디스플레이 --%>
 			<table class="product_table" width="1050">
 				<tr class="product">
 				<c:forEach items="${list}" var="dto">
 					<c:set var="count" value="${count + 1}"/>
-					
-					<td class="item" valign="top">
+					<td class="item" valign="top"> 
 						<div class="image">
-							<img class="product" src="<%=request.getContextPath() %>/img/product/${dto.getP_image()}" width="auto" height="435">
-							<button type="button" class="btn_cart"><img src="<%=request.getContextPath() %>/img/product/btn_cart.svg"></button>
-						</div><br>
+							<a href="<%=request.getContextPath() %>/user_product_view.do?p_num=${dto.getP_num()}">
+								<img class="product" src="<%=request.getContextPath() %>/upload/product/${dto.getP_image()}" width="auto" height="435">
+							</a>
+							<input type="hidden" name="p_num" value="${dto.getP_num()}" /> <%-- 2021123: input hidden 추가 (허민회) --%>
+							<button type="button" class="btn_cart">
+								<img src="<%=request.getContextPath() %>/img/product/btn_cart.svg">
+							</button>
+						</div>
+						
+						<br>
 						<div class="title">[${dto.getP_seller()}] ${dto.getP_name()}</div><br>
 						
 					 	<c:if test="${dto.getP_discount() != 0}">
@@ -75,7 +109,7 @@
 						
 						<div class="contents">${dto.getP_name_cont()}</div><br>
 					</td>
-	
+					
 					<c:if test="${count % 3 == 0}">
 						</tr>
 						
@@ -88,14 +122,48 @@
 				</c:forEach>
 				</tr>
 			</table>
+			
+			<%-- 페이지네이션--%>
+			<div class="pagination" align="center">
+			
+				<c:if test="${page == 1}">
+					<a class="first" href="user_onsale.do?sort=${sortBy}&page=1"><span></span></a>
+					<a class="prev" href="user_onsale.do?sort=${sortBy}&page=1"><span></span></a>
+				</c:if>
+			
+				<c:if test="${page != 1}">
+					<a class="first" href="user_onsale.do?sort=${sortBy}&page=1"><span></span></a>
+					<a class="prev" href="user_onsale.do?sort=${sortBy}&page=${page - 1 }"><span></span></a>
+				</c:if>
+			
+				<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
+					<c:if test="${i == page }">
+						<a id="on" href="<%=request.getContextPath() %>/user_onsale.do?sort=${sortBy}&page=${i }"><span>${i }</span></a>
+					</c:if>
+					
+					<c:if test="${i != page }">
+						<a href="<%=request.getContextPath() %>/user_onsale.do?sort=${sortBy}&page=${i }"><span>${i }</span></a>
+					</c:if>
+				</c:forEach>
+				
+				<c:if test="${page == allPage}">
+					<a class="next" href="user_onsale.do?sort=${sortBy}&page=${allPage }"><span></span></a>
+					<a class="last" href="user_onsale.do?sort=${sortBy}&page=${allPage }"><span></span></a>
+				</c:if>	
+				
+				<c:if test="${page != allPage}">
+					<a class="next" href="user_onsale.do?sort=${sortBy}&page=${page + 1 }"><span></span></a>
+					<a class="last" href="user_onsale.do?sort=${sortBy}&page=${allPage }"><span></span></a>
+				</c:if>
+				
+			</div><%-- 페이지네이션 끝 --%>
 		</div>
 		<%-- 여기까지 --%>
-	
-	</div>
-	
-	<jsp:include page="../include/footer.jsp"/>
 
+	</div>
+		
+	<jsp:include page="../include/footer.jsp"/>
 <%--
 </body>
 </html>
---%>
+ --%>

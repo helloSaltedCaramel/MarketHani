@@ -204,7 +204,7 @@
                     </th>
 
                     <td>
-                        <input type="file"  class="form_input" id="p_contents" name="p_contents">
+                        <input type="file"  class="form_input" id="p_contents" name="p_contents" required>
                     </td>
                 </tr>
                    
@@ -214,7 +214,7 @@
                     </th>
 
                     <td>
-                        <input type="file" class="form_input" id="p_contents_spec" name="p_contents_spec">
+                        <input type="file" class="form_input" id="p_contents_spec" name="p_contents_spec" required>
                     </td>
                 </tr> 
               

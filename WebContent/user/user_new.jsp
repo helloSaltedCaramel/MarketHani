@@ -68,10 +68,8 @@ function sort(how) {
 				<p id="left">총 ${itemCount }개 </p>
 				<form class="sort" method="post">
 					<ul id="right">
-						<li>추천순</li>
+						<li id="recommend" onclick="sort('recommend');">추천순</li>
 						<li id="new" onclick="sort('new');">신상품순</li>
-						<li>판매량순</li>
-						<li>혜택순</li>
 						<li id="low" onclick="sort('low');">낮은 가격순</li>
 						<li id="high" onclick="sort('high');">높은 가격순</li>
 					</ul>
@@ -86,7 +84,7 @@ function sort(how) {
 					<td class="item" valign="top"> 
 						<div class="image">
 							<a href="<%=request.getContextPath() %>/user_product_view.do?p_num=${dto.getP_num()}">
-								<img class="product" src="<%=request.getContextPath() %>/img/product/${dto.getP_image()}" width="auto" height="435">
+								<img class="product" src="<%=request.getContextPath() %>/upload/product/${dto.getP_image()}" width="auto" height="435">
 							</a>
 							<input type="hidden" name="p_num" value="${dto.getP_num()}" /> <%-- 2021123: input hidden 추가 (허민회) --%>
 							<button type="button" class="btn_cart">
@@ -126,28 +124,39 @@ function sort(how) {
 			</table>
 			
 			<%-- 페이지네이션--%>
-			<c:if test="${page > block}">
-			<a href="user_new.do?sort=${sortBy}&page=1">◀◀</a>
-			<a href="user_new.do?sort=${sortBy}&page=${startBlock - 1 }">◀</a>
-			</c:if>
-		
-		
-			<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
-				<c:if test="${i == page }">
-					<b><a href="<%=request.getContextPath() %>/user_new.do?sort=${sortBy}&page=${i }">[${i }]</a></b>
+			<div class="pagination" align="center">
+			
+				<c:if test="${page == 1}">
+					<a class="first" href="user_new.do?sort=${sortBy}&page=1"><span></span></a>
+					<a class="prev" href="user_new.do?sort=${sortBy}&page=1"><span></span></a>
+				</c:if>
+			
+				<c:if test="${page != 1}">
+					<a class="first" href="user_new.do?sort=${sortBy}&page=1"><span></span></a>
+					<a class="prev" href="user_new.do?sort=${sortBy}&page=${page - 1 }"><span></span></a>
+				</c:if>
+			
+				<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
+					<c:if test="${i == page }">
+						<a id="on" href="<%=request.getContextPath() %>/user_new.do?sort=${sortBy}&page=${i }"><span>${i }</span></a>
+					</c:if>
+					
+					<c:if test="${i != page }">
+						<a href="<%=request.getContextPath() %>/user_new.do?sort=${sortBy}&page=${i }"><span>${i }</span></a>
+					</c:if>
+				</c:forEach>
+				
+				<c:if test="${page == allPage}">
+					<a class="next" href="user_new.do?sort=${sortBy}&page=${allPage }"><span></span></a>
+					<a class="last" href="user_new.do?sort=${sortBy}&page=${allPage }"><span></span></a>
+				</c:if>	
+				
+				<c:if test="${page != allPage}">
+					<a class="next" href="user_new.do?sort=${sortBy}&page=${page + 1 }"><span></span></a>
+					<a class="last" href="user_new.do?sort=${sortBy}&page=${allPage }"><span></span></a>
 				</c:if>
 				
-				<c:if test="${i != page }">
-					<a href="<%=request.getContextPath() %>/user_new.do?sort=${sortBy}&page=${i }">[${i }]</a>
-				</c:if>
-			</c:forEach>
-			
-			<c:if test="${endBlock < allPage}">
-				<a href="user_new.do?sort=${sortBy}&page=${endBlock + 1 }">▶</a>
-				<a href="user_new.do?sort=${sortBy}&page=${allPage }">▶▶</a>
-			</c:if>
-			<%-- 페이지네이션 끝 --%>
-			
+			</div><%-- 페이지네이션 끝 --%>
 		</div>
 		<%-- 여기까지 --%>
 
