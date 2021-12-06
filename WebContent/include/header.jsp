@@ -111,8 +111,8 @@
                         
                         <%-- 검색창 --%>
                         <div id="side_search" class="gnb_search">
-                            <form action="/">
-                                    <input type="text" placeholder="검색어를 입력해주세요." class="inp_search"> 
+                            <form action="user_search.do">
+                                    <input type="text" placeholder="검색어를 입력해주세요." class="inp_search" name="search"> 
                                     <input type="image" src="<%=request.getContextPath() %>/img/header/icon_search.png" class="search_icon">
                             </form>          
                         </div> <%-- 검색창 end --%>
