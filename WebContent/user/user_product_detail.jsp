@@ -30,7 +30,7 @@
 	<link rel="stylesheet" type="text/css"
 		href="<%=request.getContextPath()%>/css/footer.css" />
 
-	<%-- import eventMain.css --%>
+	<%-- import product_detail.css --%>
 	<link rel="stylesheet" type="text/css"
 		href="<%=request.getContextPath()%>/css/product_detail.css">
 
@@ -106,7 +106,7 @@
 								<strong class="name">[${dto.getP_seller()}]${dto.getP_name() }</strong> 
 								<span class="short_desc">${dto.getP_name_cont() }</span>
 							</p>
-							<c:if test="${dto.getP_discount() !=0  }">
+						<c:if test="${dto.getP_discount() !=0  }">
 							<p class="goods_dcinfo">회원할인가</p>
 							</c:if>
 							<p class="goods_price">

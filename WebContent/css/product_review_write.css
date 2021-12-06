@@ -1,0 +1,126 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+
+
+/*마이허니 부분*/
+a {
+	background-color: transparent;
+    text-decoration: none;
+    color: inherit;
+}
+
+div, th, td, li, dt, dd, p {
+    word-break: break-all;
+}
+
+*, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*왼쪽 탭*/
+#snb .tit_snb {
+    padding: 5px 0 35px 1px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 35px;
+    color: #333;
+    letter-spacing: -1px;
+} /*마이컬리*/
+
+ul {
+ list-style-type:none; /*ul 태그 옆에 점 제거*/
+}
+
+#snb .list_menu li {
+    border-bottom: 1px solid #f2f2f2;
+}
+#snb .list_menu li a {
+    display: block;
+    overflow: hidden;
+    padding: 14px 0 16px 20px;
+    background: #fff url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    letter-spacing: -.3px;
+ 	text-decoration-line: none;  /*a 태그 아래 밑줄 제거*/
+
+}
+
+#snb .list_menu li.on a, #snb .list_menu li a:hover {
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-weight: 700;
+    color: #5f0080;
+}
+
+
+/*왼쪽 탭 end*/
+
+.page_aticle.aticle_type2 {
+    padding-top: 65px;
+} /*상품 후기 전체 레이아웃*/
+.page_aticle {
+    width: 1050px;
+    margin: 0 auto;
+} /*상품 후기 전체 레이아웃*/
+#snb {
+    float: left;
+    width: 200px;
+} /*왼쪽 마이컬리 부분*/
+
+.page_aticle.aticle_type2 .page_section {
+    float: right;
+    width: 820px;
+} /*상품후기 전체 레이아웃*/
+/*마이허니 end*/
+
+.page_review{
+	float: right;
+    width: 780px;
+}
+}
+
+ #textarea_review {
+    width: 100%;
+    height: 400px;
+   
+    resize: none;
+  } /*후기작성하는 공간*/
+  
+  #th_review {
+   background: #ebebeb;
+  }
+
+
+textarea::placeholder {
+ color : #b8b8b8;
+} /*게시글 리스트 마우스 가져다댔을대 호버*/
+
+#review_product_title{
+float: left;
+margin-top: 25px;
+margin-bottom: 25px;
+} /*후기 작성 상품 이름 타이틀 위치 조정*/
+
+#review_btn{
+line-height:30px; 
+width:130px;
+text-align: center;
+background-color: #795b8f;
+border: 1px solid #5f0080;
+color: #fff;
+font-size: 13px;
+margin: 70px;
+} /*후기 작성 버튼 */
+
+#review_btn:hover {
+    background: #fff; 
+    color: #5f0080;
+}/*후기작성 버튼 색 반전 호버*/
