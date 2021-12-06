@@ -589,11 +589,3 @@ public class ReviewDAO {
 	}  // sequenceUpdate() 메서드 end
 
 }
-	
-	
-
-	
-	
-	
-	
-

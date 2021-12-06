@@ -43,7 +43,7 @@ public class AdminProdInsertAction implements Action{
 		if(multi.getFile("p_contents_spec") != null) {
 			p_contents_spec_name = settingFile(uploadPath, multi.getFile("p_contents_spec"));
 		}
-		
+
 		ProductDTO dto = new ProductDTO();
 		
 		// 서브카테고리, p_date는 DAO에서 기본값으로 추가
@@ -94,7 +94,6 @@ public class AdminProdInsertAction implements Action{
 	}
 	
 	private String settingFile(String uploadPath, File file) {
-		
 		String directory = uploadPath + "/" + getDate();
 
 		File folder = new File(directory);

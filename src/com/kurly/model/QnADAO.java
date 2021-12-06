@@ -81,9 +81,9 @@ public class QnADAO {
 		}  // closeConn() 메서드 end
 		
 		//kurly_qna 테이블에서 전체 리스트를 조회하는 메서드
-		public List<QnADTO> getQnAList(int page, int rowsize, int p_num) {
+		public String getQnAList(int page, int rowsize, int p_num) {
 			
-			List<QnADTO> QnAlist = new ArrayList<QnADTO>();
+			String result = "";
 			
 			int startNo = (page * rowsize) - (rowsize - 1);
 			int endNo = (page * rowsize);				
@@ -96,8 +96,6 @@ public class QnADAO {
 						+ "(select row_number() over(order by qna_num desc) rnum, q.* from kurly_qna q where p_num = ?)"
 						+ "where rnum >= ? and rnum <= ?";
 				
-				//sql = "select * from kurly_qna where p_num = ? order by qna_num desc";
-				
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, p_num);
 				pstmt.setInt(2, startNo);
@@ -105,22 +103,20 @@ public class QnADAO {
 				rs = pstmt.executeQuery();
 				
 				while(rs.next()) {
-					QnADTO dto = new QnADTO();
-					
-					dto.setQna_num(rs.getInt("qna_num"));
-					dto.setUser_id(rs.getString("user_id"));
-					dto.setQna_title(rs.getString("qna_title"));
-					dto.setQna_content(rs.getString("qna_content"));
-					dto.setQna_date(rs.getString("qna_date").substring(0, 10));
-					dto.setQna_answer(rs.getString("qna_answer"));
-					dto.setQna_answer_date(rs.getString("qna_answer_date"));
-					dto.setQna_status(rs.getInt("qna_status"));
-					dto.setQna_secret(rs.getInt("qna_secret"));
-					dto.setP_num(rs.getInt("p_num"));
-					
-					QnAlist.add(dto);
+					result += "<qna>";
+					result += "<qna_num>" + rs.getInt("qna_num") + "</qna_num>";
+					result += "<user_id>" + rs.getString("user_id") + "</user_id>";
+					result += "<qna_title>" + rs.getString("qna_title") + "</qna_title>";
+					result += "<qna_content>" + rs.getString("qna_content") + "</qna_content>";
+					result += "<qna_date>" + rs.getString("qna_date").substring(0, 10) + "</qna_date>";
+					result += "<qna_answer>" + rs.getString("qna_answer") + "</qna_answer>";
+					result += "<qna_answer_date>" + rs.getString("qna_answer_date") + "</qna_answer_date>";
+					result += "<qna_status>" + rs.getInt("qna_status") + "</qna_status>";
+					result += "<qna_secret>" + rs.getInt("qna_secret") + "</qna_secret>";
+					result += "<p_num>" + rs.getInt("p_num") + "</p_num>";
+					result += "</qna>";
 				}
-				
+			
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -128,8 +124,7 @@ public class QnADAO {
 				closeConn(rs, pstmt, con);
 			}
 			
-			
-			return QnAlist;
+			return result;
 			
 		} //getQnAList() 메서드 end
 

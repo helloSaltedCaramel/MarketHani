@@ -36,9 +36,9 @@
 	     		 	 	</div>
 	     		 		<h3 class="lnb_title">미리 만나는 크리스마스</h3>
 	     		 		<ul class="list">
-	     		 			<li><a class>디저트&간식</a></li>
-	     		 			<li><a class>크리스마스용품</a></li>
-	     		 			<li><a class>크리스마스선물</a></li>	     		 			
+	     		 			<li><a class>크리스마스 에디션</a></li>
+	     		 			<li><a class>파티 메인요리</a></li>
+	     		 			<li><a class>시즌 디저트</a></li>	     		 			
 	     		 		</ul>
 	     		 	</div>
 	     		</div> <%-- lnbmenu end --%>

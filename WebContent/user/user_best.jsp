@@ -41,7 +41,7 @@ $().ready(function(){
 
 function sort(how) {
 	
-	$('.top_line form').attr('action', 'user_onsale.do?sort=' + how); 
+	$('.top_line form').attr('action', 'user_best.do?sort=' + how); 
 	$('.sort').submit();
 }//제품 리스트 정렬방식을 전달하여 액션을 호출하는 메서드
 
@@ -58,7 +58,7 @@ function sort(how) {
 		
 		<%-- 여기서부터가 본문에 쓰일 내용 --%>
 		<div class="article" align="center">
-			<div class="category"><span>알뜰쇼핑</span></div>
+			<div class="category"><span>베스트</span></div>
 			
 			<c:set var="list" value="${productList}"/>
 			<c:set var="itemCount" value="${totalRecord }"/>
@@ -127,33 +127,33 @@ function sort(how) {
 			<div class="pagination" align="center">
 			
 				<c:if test="${page == 1}">
-					<a class="first" href="user_onsale.do?sort=${sortBy}&page=1"><span></span></a>
-					<a class="prev" href="user_onsale.do?sort=${sortBy}&page=1"><span></span></a>
+					<a class="first" href="user_best.do?sort=${sortBy}&page=1"><span></span></a>
+					<a class="prev" href="user_best.do?sort=${sortBy}&page=1"><span></span></a>
 				</c:if>
 			
 				<c:if test="${page != 1}">
-					<a class="first" href="user_onsale.do?sort=${sortBy}&page=1"><span></span></a>
-					<a class="prev" href="user_onsale.do?sort=${sortBy}&page=${page - 1 }"><span></span></a>
+					<a class="first" href="user_best.do?sort=${sortBy}&page=1"><span></span></a>
+					<a class="prev" href="user_best.do?sort=${sortBy}&page=${page - 1 }"><span></span></a>
 				</c:if>
 			
 				<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
 					<c:if test="${i == page }">
-						<a id="on" href="<%=request.getContextPath() %>/user_onsale.do?sort=${sortBy}&page=${i }"><span>${i }</span></a>
+						<a id="on" href="<%=request.getContextPath() %>/user_best.do?sort=${sortBy}&page=${i }"><span>${i }</span></a>
 					</c:if>
 					
 					<c:if test="${i != page }">
-						<a href="<%=request.getContextPath() %>/user_onsale.do?sort=${sortBy}&page=${i }"><span>${i }</span></a>
+						<a href="<%=request.getContextPath() %>/user_best.do?sort=${sortBy}&page=${i }"><span>${i }</span></a>
 					</c:if>
 				</c:forEach>
 				
 				<c:if test="${page == allPage}">
-					<a class="next" href="user_onsale.do?sort=${sortBy}&page=${allPage }"><span></span></a>
-					<a class="last" href="user_onsale.do?sort=${sortBy}&page=${allPage }"><span></span></a>
+					<a class="next" href="user_best.do?sort=${sortBy}&page=${allPage }"><span></span></a>
+					<a class="last" href="user_best.do?sort=${sortBy}&page=${allPage }"><span></span></a>
 				</c:if>	
 				
 				<c:if test="${page != allPage}">
-					<a class="next" href="user_onsale.do?sort=${sortBy}&page=${page + 1 }"><span></span></a>
-					<a class="last" href="user_onsale.do?sort=${sortBy}&page=${allPage }"><span></span></a>
+					<a class="next" href="user_best.do?sort=${sortBy}&page=${page + 1 }"><span></span></a>
+					<a class="last" href="user_best.do?sort=${sortBy}&page=${allPage }"><span></span></a>
 				</c:if>
 				
 			</div><%-- 페이지네이션 끝 --%>
