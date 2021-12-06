@@ -15,7 +15,7 @@ public class ProductDTO {
 	private int p_qty;
 	private int p_point;
 	private String p_category;
-	private String p_sub_category;
+	private int p_sold;
 	private String p_seller;
 	private int p_discount;    
 	private String p_contents;
@@ -96,11 +96,12 @@ public class ProductDTO {
 	public void setP_category(String p_category) {
 		this.p_category = p_category;
 	}
-	public String getP_sub_category() {
-		return p_sub_category;
+	
+	public int getP_sold() {
+		return p_sold;
 	}
-	public void setP_sub_category(String p_sub_category) {
-		this.p_sub_category = p_sub_category;
+	public void setP_sold(int p_sold) {
+		this.p_sold = p_sold;
 	}
 	public String getP_seller() {
 		return p_seller;

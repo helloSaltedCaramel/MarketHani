@@ -45,7 +45,6 @@ function sort(how) {
 	$('.sort').submit();
 }//제품 리스트 정렬방식을 전달하여 액션을 호출하는 메서드
 
-
 </script>
 
 </head>
