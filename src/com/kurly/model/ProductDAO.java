@@ -517,4 +517,96 @@ public class ProductDAO {
 		
 		return count;
 	}//getOnsaleCount() end
+
+	public List<ProductDTO> getSearchProductList(int page, String search, int rowsize, String sortby) {
+
+		List<ProductDTO> list = new ArrayList<ProductDTO>();
+		
+		int startNo = (page * rowsize) - (rowsize - 1);
+		int endNo = (page * rowsize);
+		
+		String order = null;
+		
+		try {
+			openConn();
+			
+			//전달된 정렬방식에 따라 쿼리문 작성
+			if(sortby.equals("new"))
+				order = "p_date desc";
+			else if(sortby.equals("low"))
+				order = "p_price";
+			else if(sortby.equals("high"))
+				order = "p_price desc";
+			else if(sortby.equals("recommend"))
+				order = "p_date desc, p_discount desc, p_price desc";
+			
+			//페이지네이션 적용 쿼리문
+			sql = "select * from (select row_number() over(order by " + order 
+					+ ") rnum, p.* from kurly_product p where p_name like '%" + search + "%') where rnum >= ? and rnum <= ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startNo);
+			pstmt.setInt(2, endNo);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				ProductDTO dto = new ProductDTO();
+				
+				dto.setP_num(rs.getInt("p_num"));
+				dto.setP_image(rs.getString("p_image"));
+				dto.setP_price(rs.getInt("p_price"));
+				dto.setP_name(rs.getString("p_name"));
+				dto.setP_name_cont(rs.getString("p_name_cont"));
+				dto.setP_unit(rs.getString("p_unit"));
+				dto.setP_wrap(rs.getString("p_wrap"));
+				dto.setP_wrap_cont(rs.getString("p_wrap_cont"));
+				dto.setP_delivery(rs.getString("p_delivery"));
+				dto.setP_qty(rs.getInt("p_qty"));
+				dto.setP_point(rs.getInt("p_point"));
+				dto.setP_category(rs.getString("p_category"));
+				dto.setP_sold(rs.getInt("p_sold"));
+				dto.setP_seller(rs.getString("p_seller"));
+				dto.setP_discount(rs.getInt("p_discount"));
+				dto.setP_contents(rs.getString("p_contents"));
+				dto.setP_date(rs.getString("p_date"));
+				dto.setP_contents_spec(rs.getString("p_contents_spec"));
+				
+				list.add(dto);
+			}	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+	
+		return list;	
+	}
+
+	public int getSearchCount(String search) {
+	
+		int count = 0;
+		
+		try {
+			openConn();
+			
+			sql = "select count(*) from kurly_product where p_name like '%" + search + "%'";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+			rs.close(); pstmt.close(); con.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return count;
+	}
 }
