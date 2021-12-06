@@ -112,8 +112,8 @@
 	            <div class="list_goods_0">
 	                <%-- slide --%>
 	                <ul class="bannerSlide">
-	                    <li><a href="<%=request.getContextPath() %>/user/user_event_ban1.jsp"><img src="<%=request.getContextPath() %>/img/main/banner1.jpg" alt="이벤트배너"></a></li>
 	                    <li><a href="<%=request.getContextPath() %>/user/user_event_ban2.jsp"><img src="<%=request.getContextPath() %>/img/main/banner3.jpg" alt="이벤트배너"></a></li>
+	                    <li><a href="<%=request.getContextPath() %>/user/user_event_ban1.jsp"><img src="<%=request.getContextPath() %>/img/main/banner1.jpg" alt="이벤트배너"></a></li>
 	                    <li><a href="<%=request.getContextPath() %>/user/user_event_ban3.jsp"><img src="<%=request.getContextPath() %>/img/main/banner7.jpg" alt="이벤트배너"></a></li>
 	               <%-- <li><a href="#"><img src="<%=request.getContextPath() %>/img/main/banner2.jpg" alt="이벤트배너"></a></li>  --%> 
 	                </ul>
