@@ -54,7 +54,7 @@ public class CartDataDAO {
 		List<CartDataDTO> list = new ArrayList<>();
 		
 		final String sql = 
-				"select c.cart_num, c.cart_pnum, p.p_image, p.p_name, p.p_price, ROUND(p.p_price*(1-p.p_discount*0.01)) salePrice, p.p_point, c.cart_qty " + 
+				"select c.cart_num, c.cart_pnum, p.p_image, p.p_name, p.p_price, ROUND(p.p_price*(1-p.p_discount*0.01)) salePrice, p.p_point, p.p_qty, c.cart_qty " + 
 				"from kurly_cart c " + 
 				"join kurly_product p " + 
 				"on c.cart_pnum = p.p_num " + 
@@ -76,6 +76,7 @@ public class CartDataDAO {
 				dto.setSalePrice(rs.getInt("saleprice"));
 				dto.setP_point(rs.getInt("p_point"));
 				dto.setCart_qty(rs.getInt("cart_qty"));
+				dto.setP_qty(rs.getInt("p_qty"));
 				
 				list.add(dto);
 			}

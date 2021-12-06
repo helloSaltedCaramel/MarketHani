@@ -73,7 +73,7 @@ const decreaseQty = (e) => {
 			if(isSuccess === "updated") {
 				
 				// 수량을 1 감소시키고 상품금액, 결제예정금액, 상품할인금액을 제품의 원가, 할인가 만큼 감소시킨다.
-				$quantity_num.stepDown();
+				$quantity_num.value = parseInt($quantity_num.value) - 1;
 				costPrice -= p_price;
 				totalPrice -= sale_price;
 				discountedPrice -= p_discountedPrice;
@@ -104,8 +104,15 @@ const decreaseQty = (e) => {
 // 각 제품의 '+' 버튼을 클릭하면 수량이 증가하는 함수이다.
 const increaseQty = (e) => {
 	// 수량, 제품번호 가져오기
-	let $quantity_num = e.target.previousElementSibling;
+	const $quantity_num = e.target.previousElementSibling;
 	const $cartNum = e.target.parentNode.firstChild.nextElementSibling.value;
+	const p_qty = parseInt(e.target.nextElementSibling.value);
+
+	// 이벤트 발생한 제품의 최대수량 이상으로 증가시킬 경우 메시지 출력
+	if(parseInt($quantity_num.value) === p_qty) {
+		alert('해당 제품의 주문가능한 최대 수량은 ' + p_qty + '개 입니다.');
+		return;
+	}
 	
 	// 제품 원가, 할인 가격 가져오기
 	const childNodes = e.target.parentNode.childNodes;
@@ -134,7 +141,7 @@ const increaseQty = (e) => {
 			
 			if(isSuccess === "updated") {
 				
-				$quantity_num.stepUp();
+				$quantity_num.value = parseInt($quantity_num.value) + 1;
 				costPrice += p_price;
 				totalPrice += sale_price;
 				discountedPrice += p_discountedPrice;

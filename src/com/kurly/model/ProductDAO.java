@@ -609,4 +609,35 @@ public class ProductDAO {
 		
 		return count;
 	}
+	
+	public int updateQtySold(List<CartDataDTO> cartList) {
+		int result = -1;
+		
+		final String sql = "update kurly_product set p_qty = p_qty - ?, p_sold = p_sold + ? where p_num = ?";
+				
+		openConn();
+		
+		try {
+			
+			for(CartDataDTO dto : cartList) {
+				int qty = dto.getCart_qty();
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, qty);
+				pstmt.setInt(2, qty);
+				pstmt.setString(3, dto.getCart_pnum());
+				
+				result = pstmt.executeUpdate();
+				
+				pstmt.close();
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return result;
+	}
 }
