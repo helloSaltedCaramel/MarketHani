@@ -112,7 +112,7 @@
 	            <div class="list_goods_0">
 	                <%-- slide --%>
 	                <ul class="bannerSlide">
-	                    <li><a href="<%=request.getContextPath() %>/user/user_event_ban2.jsp"><img src="<%=request.getContextPath() %>/img/main/banner3.jpg" alt="이벤트배너"></a></li>
+	                    <li><a href="<%=request.getContextPath() %>/user_category.do?cat=A1&sort=new"><img src="<%=request.getContextPath() %>/img/main/mainBanner.png" alt="이벤트배너"></a></li>
 	                    <li><a href="<%=request.getContextPath() %>/user/user_event_ban1.jsp"><img src="<%=request.getContextPath() %>/img/main/banner1.jpg" alt="이벤트배너"></a></li>
 	                    <li><a href="<%=request.getContextPath() %>/user/user_event_ban3.jsp"><img src="<%=request.getContextPath() %>/img/main/banner7.jpg" alt="이벤트배너"></a></li>
 	               <%-- <li><a href="#"><img src="<%=request.getContextPath() %>/img/main/banner2.jpg" alt="이벤트배너"></a></li>  --%> 
@@ -133,50 +133,46 @@
 	                <%-- slide --%>
 	                <div class="list_goods">
 	                    <ul class="itemSlide">
-	                        <li><div><a href=""><img src="<%=request.getContextPath() %>/upload/product/old/산양유.jpg" alt="산양유 상품사진"></a></div>
+	                        <li><div><a href=""><img src="<%=request.getContextPath() %>/upload/product/2021-12-6/edition18.jpg"></a></div>
 	                        <div class="info_goods">
-	                            <span class="name"><a class="txt">[조공] PET 나 산양유 좋아해 스틱</a></span>
-	                            <span class="price"></span>5,000원 </span> 
+	                            <span class="name"><a class="txt">[르자당] 레드 플라워 화병 꽂이</a></span>
+	                            <span class="price"></span>200,000원 </span> 
 	                            <%-- <span class="cost">5,000원</span> --%>
 	                        </div>
 	                        </li>
-	                        <li><a href=""><img src="<%=request.getContextPath() %>/upload/product/old/게살.jpg" alt=""></a>
+	                        <li><a href=""><img src="<%=request.getContextPath() %>/upload/product/2021-12-4/beat1.jpg" alt=""></a>
 	                        <div class="info_goods">
-	                            <span class="name"><a class="txt">[조공] PET 나 게살 좋아해 스틱</a></span>
-	                            <span class="price">2,900원 </span> 
+	                            <span class="name"><a class="txt">[KF365] PET 비트 2kg 박스</a></span>
+	                            <span class="price">6,490원 </span> 
 	                            <%--<span class="cost">12,530원</span>--%>
 	                        </div>
 	                        </li>
 	                        <li>
-	                            <a href=""><img src="<%=request.getContextPath() %>/upload/product/old/산양유.jpg" alt=""></a>
+	                            <a href=""><img src="<%=request.getContextPath() %>/upload/product/2021-12-6/edition16.jpg" alt=""></a>
 	                            <div class="info_goods">
-	                                <span class="name"><a class="txt">[구스티] 유기농 아마씨오일</a></span>
-	                                <span class="price"><span class="dc">10%</span>11,277원 </span> 
-	                                <span class="cost">12,530원</span>
+	                                <span class="name"><a class="txt">[랑꼬뉴]딸기 샤를로뜨 케이크</a></span>
+	                                <span class="price">62,000원</span>
 	                            </div>
 	                        </li>                    
 	                        <li>
-	                            <a href=""><img src="<%=request.getContextPath() %>/upload/product/old/게살.jpg" alt=""></a>
+	                            <a href=""><img src="<%=request.getContextPath() %>/upload/product/2021-12-5/stapleFood20.jpg" alt=""></a>
 	                            <div class="info_goods">
-	                                <span class="name"><a class="txt">[구스티] 유기농 아마씨오일</a></span>
-	                                <span class="price"><span class="dc">10%</span>11,277원 </span> 
-	                                <span class="cost">12,530원</span>
+	                                <span class="name"><a class="txt">[오쥬 바이 로우즈] 치킨 파우치</a></span>
+	                                <span class="price">3,500원</span>
 	                            </div>
 	                        </li>                    
 	                        <li>
-	                            <a href=""><img src="<%=request.getContextPath() %>/upload/product/old/산양유.jpg" alt=""></a>
+	                            <a href=""><img src="<%=request.getContextPath() %>/upload/product/2021-12-6/edition9.jpg" alt=""></a>
 	                            <div class="info_goods">
-	                                <span class="name"><a class="txt">[구스티] 유기농 아마씨오일</a></span>
-	                                <span class="price"><span class="dc">10%</span>11,277원 </span> 
-	                                <span class="cost">12,530원</span>
+	                                <span class="name"><a class="txt">[네기] 스키야끼 2인 세트</a></span> 
+	                                <span class="price">100,000원</span>
 	                            </div>
 	                        </li>
 	                        <li>
-	                            <a href=""><img src="<%=request.getContextPath() %>/upload/product/old/게살.jpg" alt=""></a>
+	                            <a href=""><img src="<%=request.getContextPath() %>/upload/product/2021-12-4/paprika1.jpg" alt=""></a>
 	                            <div class="info_goods">
-	                                <span class="name"><a class="txt">[구스티] 유기농 아마씨오일</a></span>
-	                                <span class="price"><span class="dc">10%</span>11,277원 </span> 
-	                                <span class="cost">12,530원</span>
+	                                <span class="name"><a class="txt">[KF365] 미니 파프리카 200g</a></span>
+	                                <span class="price">3,990원</span>
 	                            </div>
 	                        </li>                    
 	                    </ul>
@@ -198,30 +194,31 @@
 	                </div>
 	                <div class="list_goods">
 	                    <ul data-title="특가/혜택" data-section="event" class="list">
-	                        <li data-index="1"><a href="#" class="thumb_goods"><img src="<%=request.getContextPath() %>/upload/product/old/게살.jpg"></a>
-	                            <div class="info_goods"><span class="name"><a class="txt">춘천 감자빵 오리지널</a></span> <span class="price">16,000원</span></div>
-	                        </li>
-	                        <li data-index="2"><a href="#" class="thumb_goods"><img src="<%=request.getContextPath() %>/upload/product/old/산양유.jpg"></a>                           
+	                        <li data-index="1"><a href="#" class="thumb_goods"><img src="<%=request.getContextPath() %>/upload/product/2021-12-6/seasonDessert24.jpg"></a>
 	                            <div class="info_goods">
-	                                <div class="inner_info"><span class="name"><a class="txt">디저트 최대 60% 할인</a></span> <span class="desc"><a
-	                                            class="txt">커피부터 빵까지</a></span></div>
+	                           	 	<span class="name">
+	                            		<a class="txt">[르자당] 레드 플라워 화병 꽂이</a>
+	                            	</span> 
+	                            </div>		                   
+	                        </li>
+	                        <li data-index="2"><a href="#" class="thumb_goods"><img src="<%=request.getContextPath() %>/upload/product/2021-12-4/cauliflower.jpg"></a>                           
+	                            <div class="info_goods">
+	                                <div class="inner_info">
+		                                <span class="name">
+		                                	<a class="txt">[KF365]콜리플라워 1입</a>
+		                                </span>	                              
+	                                 </div>
 	                            </div>
 	                        </li>
-	                        <li data-index="3"><a href="#" class="thumb_goods"><img src="<%=request.getContextPath() %>/upload/product/old/게살.jpg"></a>
+	                        <li data-index="3"><a href="#" class="thumb_goods"><img src="<%=request.getContextPath() %>/upload/product/2021-12-5/goods16.jpg"></a>
 	                                
 	                            <div class="info_goods">
-	                                <div class="inner_info"><span class="name"><a class="txt">신선 식품 20%
-	                                            할인</a></span> <span class="desc"><a class="txt">밥상 물가
-	                                            걱정 없이</a></span></div>
+	                                <div class="inner_info">
+	                                	<span class="name">
+	                                		<a class="txt">[바잇미X히끄]고양이 장난감 </a>
+	                                	</span> 
 	                            </div>
 	                        </li>
-	                        <li data-index="4"><a href="#" class="thumb_goods"><img src="<%=request.getContextPath() %>/img/main/pc_img_1637144079.jpg"></a>
-	                                
-	                            <div class="info_goods">
-	                                <div class="inner_info"><span class="name"><a class="txt">신선 식품 20%
-	                                            할인</a></span> <span class="desc"><a class="txt">밥상 물가
-	                                            걱정 없이</a></span></div>
-	                            </div>
 	                    </ul>
 	                </div>
 	

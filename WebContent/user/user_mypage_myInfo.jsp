@@ -45,9 +45,9 @@
 
 				<div class="page_aticle aticle_type2">
 				
-				    <%-- 마이 할리 좌측 메뉴 --%> 
+				    <%-- 마이 하니 좌측 메뉴 --%> 
 					<div id="snb" class="snb_my">
-						<h2 class="tit_snb">마이할리</h2>
+						<h2 class="tit_snb">마이하니</h2>
 						<div class="inner_snb">
 							<ul class="list_menu">
 								<li>
