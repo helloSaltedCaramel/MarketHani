@@ -82,7 +82,7 @@ public class OrderDetailDAO {
 		}  // closeConn() 메서드 end
 	
 	//kurly_order_detail 테이블에서 전체 리스트를 조회하는 메서드
-	public List<OrderDetailDTO> getReviewOnList(int num) {
+	public List<OrderDetailDTO> getReviewOnList(int od_num) {
 		
 		List<OrderDetailDTO> olist = new ArrayList<OrderDetailDTO>();
 		
@@ -90,7 +90,7 @@ public class OrderDetailDAO {
 
 			openConn();
 			
-			sql = "select * from kurly_order_detail order by od_num desc";
+			sql = "select * from kurly_order_detail order by od_num desc where user_id = ?";
 			
 			pstmt = con.prepareStatement(sql);
 			
