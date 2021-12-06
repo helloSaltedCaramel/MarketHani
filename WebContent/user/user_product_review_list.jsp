@@ -274,10 +274,12 @@ iframe {
 </style>
 <script type="text/javascript">
 
-function sort(how) {
+function sort(p_num, how) {
 	
-	$('.top_line form').attr('action', 'user_product_review_list.do?sort=' + how); 
-	$('.sort').submit();
+	location.href='user_product_review_list.do?p_num=' + p_num + '&sort=' + how; 
+	
+	console.log(p_num);
+	
 }//제품 리스트 정렬방식을 전달하여 액션을 호출하는 메서드
 
 
@@ -295,9 +297,6 @@ function sort(how) {
 			<div class="board">
 				<span class="line"></span>
 				<form name="frmList">
-					<input type="hidden" name="sort" value> <input
-						type="hidden" name="page_num" value> <input type="hidden"
-						name="goodsno" value="56491">
 
 					<div class="title_txt">
 						<h2>PRODUCT REVIEW</h2>
@@ -313,12 +312,12 @@ function sort(how) {
 
 
 							<div class="sort" style="bottom: -9px">
-								<select
-									onchange="this.form.sort.value=this.value;this.form.submit()">
-									<option value="1" onclick="sort('new');">최근등록순</option>
-									<option value="2" >좋아요많은순</option>
-									<option value="3" onclick="sort('hit')">조회많은순</option>
-								</select>
+									<button onclick="sort('${productNo }', 'new')">테스트</button>
+									<select onclick="sort('${productNo}', value)">
+										<option value="new">최근등록순</option>
+										<option value="2" >좋아요많은순</option>
+										<option value="hit">조회많은순</option>
+									</select>
 							</div>
 						</div>
 					</div>
@@ -480,6 +479,7 @@ function sort(how) {
 		<a class="prev" 
 			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${startBlock-1}&p_num=${productNo }"></a>
 	</c:if>
+	
 
 	<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
 		<c:if test="${i == page }">
@@ -505,6 +505,7 @@ function sort(how) {
 		<a class="last"
 		    href="<%=request.getContextPath() %>/user_product_review_list.do?page=${allPage}&p_num=${productNo }"></a>
 	</c:if>
+	
 	
 	</div>  <%-- 페이징 처리 div end--%>
 	</div>
