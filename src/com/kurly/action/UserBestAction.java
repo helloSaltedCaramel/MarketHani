@@ -16,7 +16,7 @@ public class UserBestAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		//페이징 작업
-		int rowsize = 9;	//한 페이지에 보여질 게시물 수
+		int rowsize = 12;	//한 페이지에 보여질 게시물 수
 		int block = 5;		//아래에 보여질 페이지의 최대 수 [1][2][3][4]...
 		int totalRecord = 0;//DB상의 게시물 전체 수
 		int allPage = 0;	//현재 페이지 수

@@ -13,7 +13,7 @@ body { font-family: 'Noto Sans KR', sans-serif; }
 #footer { width: 1050px; margin: 0 auto; padding-bottom: 60px; font-weight: 400; letter-spacing: -.2px;}
 
 /*top_footer 영역*/
-#footer .top_footer { overflow: hidden; padding-bottom: 20px;  width: 100%; }  
+#footer .top_footer { overflow: hidden; padding-bottom: 20px;  width: 100%; text-align: left;}  
 /*footer_left 영역*/
 #footer .footer_left { float: left; width: 50%; box-sizing: border-box; }
 #footer .cs_call { padding: 29 px0 2px; font-weight: 700; font-size: 20px; color: #333; line-height: 24px; padding-top: 20px;}
