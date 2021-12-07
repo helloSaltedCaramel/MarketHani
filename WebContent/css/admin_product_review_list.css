@@ -1,0 +1,432 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+
+*게시글 수정 시작*/
+
+/*중복*/
+body, input, select, textarea, button {
+	font-family: noto sans, malgun gothic, AppleGothic, dotum;
+	line-height: 1;
+	letter-spacing: -.05em;
+	color: #4c4c4c;
+	font-size: 12px;
+	max-width: 100%;
+} /*게시판 글씨 크기 조정 */
+body * {
+	font-family: 'Noto Sans';
+	font-weight: 400;
+	letter-spacing: 0;
+} /*게시판 글씨 간격 조정 */
+
+#p_btnReview {
+	padding: 10px 0;
+    text-align: right;
+    width: 100%;
+    display: table;
+    border-top: 1px solid #6a3664;
+}
+#btnReview {	
+	display: inline-block;
+    line-height: 40px;
+    text-align: center;
+    background-color: #795b8f;
+    border: 1px solid #5f0080;
+    color: #fff;
+    float: right;
+} /*후기쓰기 버튼 위치 조정*/
+
+a {
+text-decoration: none;
+color: #4c4c4c;
+
+}
+
+*, *:after, *:before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin: 0; /*게시글 전체틀 마진 0*/
+	line-height: 1;
+	color: #4c4c4c;
+	max-width: 100
+}
+
+h2 {
+	display: block;
+	font-size: 1.5em;
+	margin-block-start: 0.83em;
+	margin-block-end: 0.83em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+} /*게시글 왼쪽으로 이동*/
+.xans-product-additional table.xans-board-listheader th {
+	padding: 25px 0 23px;
+	vertical-align: middle;
+	font-size: 12px;
+}
+
+.screen_out {
+	display: block;
+	overflow: hidden;
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	font-size: 0;
+	line-height: 0;
+	text-indent: -9999px;
+} /*회원등급 안보이게하는 것*/
+.goods_board .tbl_newtype1 .subject {
+	padding-left: 50px;
+	text-align: left;
+} /*제목 위치 정렬*/
+.xans-product-additional table.xans-board-listheaderd td {
+	padding: 25px 3px 23px;
+	border-top: 1px solid #e3e3e3;
+	vertical-align: middle;
+	text-align: center;
+} /*리뷰 밑에 선 그어지고 간격 조정*/
+.goods_board .tbl_newtype1 .time {
+	color: #939393;
+} /*작성일 글씨 색 회색*/
+.xans-product-additional div.board h2 {
+	font-size: 13px;
+	font-weight: 700;
+	padding-bottom: 5px;
+}
+
+.xans-product-additional .sort-wrap {
+	position: relative;
+}
+
+.xans-product-additional .sort {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 10px;
+	text-align: right;
+} /*최근등록일 순 정리등 select 위치*/
+ul {
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-start: 40px;
+	list-style-type: none; /*도트 제거*/
+	padding: 0; /*도트 사이 왼쪽 여백 없애기*/
+}
+
+.list_type1.old .ico {
+	float: left;
+	width: 4px;
+	height: 4px;
+	margin: 7px 8px 0 0;
+	background-color: #514859;
+	vertical-align: 2px;
+} /*도트 표시를 사각형으로 표시*/
+.list_type1.old .txt {
+	overflow: hidden;
+	padding: 0; /*아래 위 글자간 간격 조정*/
+	font-size: 12px;
+	color: #666;
+	line-height: 18px; /*아래 위 글자간 간격 조정*/
+	letter-spacing: -.3px; /*오른쪽 왼쪽 글자간 간격 조정*/
+} /*도트 부분 글씨 조정 */
+.xans-product-additional .sort select {
+	margin: 0 2px 0 0;
+	border: 1px solid #bfbfbf;
+	line-height: 34px;
+	height: 34px;
+	vertical-align: middle;
+	padding-bottom: 5px;
+} /*최근등록일 순 정리등 select */
+.xans-product-additional table.xans-board-listheader {
+	margin: 15px 0 0;
+	color: #353535;
+	font-size: 12px;
+	line-height: 140%;
+	table-layout: fixed;
+}
+
+.xans-board-listheader {
+	border-top: 2px solid #522772;
+	font-size: 13px;
+	line-height: 140%;
+}
+
+colgroup {
+	display: table-column-group;
+}
+
+tbody {
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+} /*게시글 상단 이름*/
+.goods-view-infomation-board {
+	width: 100%;
+} /*게시글 전체 틀*/
+iframe[Attributes Style] {
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	height: 730px;
+}
+
+iframe {
+	border-width: 2px;
+	border-style: inset;
+	border-color: initial;
+	border-image: initial;
+	
+}
+
+/*리뷰 리스트 호버*/
+.reviewlist:hover {
+ background: #f3f3f3;
+}
+
+/*페이징 처리 css*/
+.page_wrap {
+	text-align:center;
+	font-size:0;
+ }
+.page_nation {
+	display:inline-block;
+}
+.page_nation .none {
+	display:none;
+}
+.page_nation a {
+	display:block;
+	margin:0 3px; 
+	float:left;
+	border:1px solid #e6e6e6;
+	width:28px;
+	height:28px;
+	line-height:28px;
+	text-align:center;
+	background-color:#fff;
+	font-size:13px;
+	text-decoration:none;
+}
+.page_nation .arrow {
+	border:1px solid #ccc;
+}
+
+.page_nation a.active {
+	background-color:#42454c;
+	color:#fff;
+	border:1px solid #42454c;
+}
+
+.page_nation a:hover {
+    background: #f3f3f3 ;
+   
+}/*페이징 호버*/
+
+.next {
+    background-image: url(../img/product/pagination-next.webp);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.last {
+    background-image: url(../img/product/pagination-last.webp);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.first {
+    background-image: url(../img/product/pagination-first.webp);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.prev {
+    background-image: url(../img/product/pagination-prev.webp);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+#btnReview:hover {
+    background: #fff; 
+    color: #5f0080;
+}/*등록하기 버튼 색 반전 호버*/
+
+/*페이징 처리 css end*/
+
+/*전체 admin 틀*/
+* {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.page_aticle {
+    width: 1050px;
+    margin: 0 auto;
+    padding-top: 65px;
+}
+
+.page_aticle button, .page_aticle input, .page_aticle select, .page_aticle * {
+    font-family: noto sans;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+
+#pManage_content{
+    min-width: 1050px;
+    padding-bottom: 60px;
+}
+
+
+
+/*마이 할리 좌측 메뉴 css*/
+#snb {
+    float: left;
+    width: 200px;
+}
+
+#snb .inner_snb {
+    border: 1px solid #f2f2f2;
+    border-bottom: 0;
+}
+
+#snb .tit_snb {
+    padding: 5px 0 35px 1px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 35px;
+    color: #333;
+    letter-spacing: -1px;
+}
+
+#snb .inner_snb {
+    border: 1px solid #f2f2f2;
+    border-bottom: 0;
+}
+
+#snb .list_menu li {
+    border-bottom: 1px solid #f2f2f2;
+}
+
+#snb .list_menu li a {
+    display: block;
+    overflow: hidden;
+    padding: 14px 0 16px 20px;
+    background: #fff url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    letter-spacing: -.3px;
+}
+
+#snb .list_menu li.on a, #snb .list_menu li a:hover {
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-weight: 700;
+    color: #5f0080;
+}
+
+
+/* 개인 정보 수정 전체 css*/
+.page_aticle.aticle_type2 .page_section {
+    width: 1050px;
+}
+
+
+ /* 개인 정보 수정 제목 css */ 
+.page_aticle .head_aticle {
+    padding: 5px 0 34px;
+}
+
+.page_aticle .head_aticle .tit {
+    height: 36px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #333;
+    letter-spacing: -.5px;
+}
+
+.member_mod {
+    width: 820px;
+}
+
+/* 테이블 전체*/
+.pManage_table {
+    width: 100%;
+    border-top: 2px solid #333;
+}
+
+/*공통 th td*/
+.pManage_table th {
+    width: 157px;
+    padding: 29px 0 0 185px;
+    font-weight: 700;
+    color: #333;
+    line-height: 20px;
+    text-align: left;
+}
+
+.pManage_table input {
+	height: 44px;
+    padding: 0 14px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    border-radius: 3px;
+    background: #fff;
+    outline: none;
+    vertical-align: top;
+}
+
+.pManage_table input{
+    width: 500px;
+}
+
+/*특정 th,td*/
+.pManage_table .fsd td {
+    padding-top: 26px;
+}
+
+
+.pManage_table input[type=number]{
+    width: 400px;
+}
+
+
+
+/*파일첨부 input*/
+
+
+
+/*form footer 부분*/
+.admin_pManage .form_footer {
+    padding: 40px 0 100px 0;
+    text-align: center;
+}
+.btn_act {
+    margin: 0 auto;
+    border: 1px solid #5f0081;
+    background-color: #5f0080;
+    border-radius: 5px;
+    color: #fff;
+    width: 250px;
+    height: 60px;
+    font-size: 16px;
+}
+
+
+/*전체 admin 틀 end*/
+
+
+

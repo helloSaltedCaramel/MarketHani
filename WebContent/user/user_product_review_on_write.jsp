@@ -209,7 +209,7 @@ textarea::placeholder {
 		<div class="inner_sub">
 			<ul class="list_menu">
 				<li>
-					<a href = "" >주문 내역</a>
+					<a href="${pageContext.request.contextPath}/user_mypage_orderHistory.do">주문 내역</a>
 				</li>
 				<li>
 					<a href = "" >선물 내역</a>
@@ -218,7 +218,7 @@ textarea::placeholder {
 					<a href = "" >배송지 관리</a>
 				</li>
 				<li>
-					<a href = "" >상품 후기</a>
+					<a href ="${pageContext.request.contextPath}/user/user_product_review_on_write.jsp">상품 후기</a>
 				</li>
 				<li>
 					<a href = "" >적립금</a>
