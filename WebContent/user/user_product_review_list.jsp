@@ -53,7 +53,7 @@ function sort(p_num, how) {
 
 
 							<div class="sort" style="bottom: -9px">
-									<button onclick="location.href='user_product_review_list.do?sort='new'&p_num=227">테스트</button>
+									<%-- <button onclick="location.href='user_product_review_list.do?sort='new'&p_num=227">테스트</button> --%>
 									<select onclick="sort('${productNo}', value)">
 										<option value="new">최근등록순</option>
 										<option value="2" >좋아요많은순</option>

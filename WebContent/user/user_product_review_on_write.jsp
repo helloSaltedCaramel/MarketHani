@@ -212,22 +212,17 @@ textarea::placeholder {
 					<a href="${pageContext.request.contextPath}/user_mypage_orderHistory.do">주문 내역</a>
 				</li>
 				<li>
-					<a href = "" >선물 내역</a>
+					<a href="#" >적립금</a>
 				</li>
 				<li>
-					<a href = "" >배송지 관리</a>
+					<a href="${pageContext.request.contextPath}/user/user_product_review_on_write.jsp">상품 후기</a>
 				</li>
 				<li>
-					<a href ="${pageContext.request.contextPath}/user/user_product_review_on_write.jsp">상품 후기</a>
+					<a href="#">상품 문의</a>
 				</li>
+
 				<li>
-					<a href = "" >적립금</a>
-				</li>
-				<li>
-					<a href = "" >쿠폰</a>
-				</li>
-				<li>
-					<a href = "" >개인 정보 수정</a>
+					<a href="#" >개인 정보 수정</a>
 				</li>
 			</ul>
 		

@@ -255,13 +255,13 @@
 	width: 262.5px;
 } /*ul 태그 내용*/
 
-/* *, *:after, *:before {
+*, *:after, *:before {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-}  */
+} 
 
 #sectionView .goods_price .position:after {
 	content: "";

@@ -86,6 +86,7 @@
 						<div
 							class="xans-element- xans-product xans-product-additional detail_board  ">
 							<div class="board">
+								<h2 class="tit">후기 관리</h2>
 								<span class="line"></span>
 								<form name="frmList">
 									<div class="title_txt">

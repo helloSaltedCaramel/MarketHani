@@ -82,9 +82,7 @@ ul {
 /*마이허니 end*/
 
 .page_review{
-	float: right;
-    width: 780px;
-}
+    width: 750px;
 }
 
  #textarea_review {
@@ -98,6 +96,11 @@ ul {
    background: #ebebeb;
   }
 
+#review_title {
+	float: left;
+	padding-left: 15px;
+	padding-bottom: 15px;
+}
 
 textarea::placeholder {
  color : #b8b8b8;

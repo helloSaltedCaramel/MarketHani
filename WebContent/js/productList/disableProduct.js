@@ -6,7 +6,7 @@ const disableCheck = (e) => {
 	const p_num = $parentNode.querySelector('#productNum');
 	
 	if(confirm('제품을 비활성화 시킬 경우 제품목록에 보이지 않게됩니다.')) {
-		location.href= getContextPath() + '/admin_prod_disable.do?p_num=' + p_num.value + '&url=user_best.do';
+		location.href= getContextPath() + '/admin_prod_disable.do?p_num=' + p_num.value + '&url=user_new.do';
 	}
 }
 

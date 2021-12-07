@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 
-*게시글 수정 시작*/
+/*게시글 수정 시작*/
 
 /*중복*/
 body, input, select, textarea, button {
@@ -13,8 +13,9 @@ body, input, select, textarea, button {
 	font-size: 12px;
 	max-width: 100%;
 } /*게시판 글씨 크기 조정 */
+
 body * {
-	font-family: 'Noto Sans';
+	font-family: 'Noto Sans KR';
 	font-weight: 400;
 	letter-spacing: 0;
 } /*게시판 글씨 간격 조정 */
@@ -55,7 +56,7 @@ body {
 	max-width: 100
 }
 
-h2 {
+/* h2 {
 	display: block;
 	font-size: 1.5em;
 	margin-block-start: 0.83em;
@@ -63,7 +64,8 @@ h2 {
 	margin-inline-start: 0px;
 	margin-inline-end: 0px;
 	font-weight: bold;
-} /*게시글 왼쪽으로 이동*/
+} 게시글 왼쪽으로 이동 */
+
 .xans-product-additional table.xans-board-listheader th {
 	padding: 25px 0 23px;
 	vertical-align: middle;
@@ -138,6 +140,16 @@ ul {
 	line-height: 18px; /*아래 위 글자간 간격 조정*/
 	letter-spacing: -.3px; /*오른쪽 왼쪽 글자간 간격 조정*/
 } /*도트 부분 글씨 조정 */
+
+.page_aticle .board .tit {
+	height: 36px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #333;
+    letter-spacing: -.5px;
+}
+
 .xans-product-additional .sort select {
 	margin: 0 2px 0 0;
 	border: 1px solid #bfbfbf;

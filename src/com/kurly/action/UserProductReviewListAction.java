@@ -48,7 +48,7 @@ public class UserProductReviewListAction implements Action {
 				 
 				// 페이징 작업
 		
-				int rowsize = 5;       // 한페이지당 보여질 게시물의 수
+				int rowsize = 10;       // 한페이지당 보여질 게시물의 수
 				int block = 10;        // 아래에 보여질 페이지의 최대 수
 				int totalRecord = 0;   // DB 상의 게시물 전체 수
 				int allPage = 0;       // 전체 페이지 수

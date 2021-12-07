@@ -197,6 +197,10 @@ iframe {
 	border-image: initial;
 }
 
+.inner_review {
+	padding: 15px;
+}
+
 .review_photo img {
     display: block;
     max-width: 600px;

@@ -28,7 +28,7 @@ public class UserProductReviewWriteOkAction implements Action {
 		
 		//첨부파일이 저장될 경로
 		
-		String saveFolder = "C:\\Users\\amorf\\git\\MarketHani\\WebContent\\upload\\review";
+		String saveFolder = "C:\\Users\\HOIT\\git\\MarketHani\\WebContent\\upload\\review";
 		/*
 		 * String saveFolder =
 		 * request.getSession().getServletContext().getContext("/upload").getRealPath(
