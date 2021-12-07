@@ -131,6 +131,29 @@ img.product{
     margin-bottom: 20px;
 }
 
+.manage_btn {
+	position: absolute;
+	z-index: 2;
+	width: 45px;
+	height: 45px;
+	border: 0;
+	margin-bottom: 20px;
+	opacity: 0.8;
+	border-radius: 50px;
+}
+
+.manage_btn.update {
+	top: 377px;
+	left: 15px;
+	background-color: #2565ae;
+}
+
+.manage_btn.delete {
+	top: 377px;
+	left: 70px;
+	background-color: salmon;
+}
+
 ul#sub_category {
 	
 	margin-top: 23px;

@@ -29,6 +29,9 @@
 <!-- jQuery library (served from Google) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
+<%-- icon kit --%>
+<script src="https://kit.fontawesome.com/2c8a84bfa2.js" crossorigin="anonymous"></script>
+
 <script>
 
 //로딩 후 선택된 정렬방식에 css부여 
@@ -90,6 +93,15 @@ function sort(how) {
 							<button type="button" class="btn_cart">
 								<img src="<%=request.getContextPath() %>/img/product/btn_cart.svg">
 							</button>
+							
+							<c:if test="${user_id eq 'haniadmin'}">
+								<button type="button" class="manage_btn update" onclick="location.href='${pageContext.request.contextPath}/admin_prod_update.do?p_num=${dto.getP_num()}'">
+									<i class="fas fa-wrench fa-2x" style="color: #fff;"></i>
+								</button>
+								<button type="button" class="manage_btn delete" onclick="location.href='${pageContext.request.contextPath}/admin_prod_delete.do?p_num=${dto.getP_num()}'">
+									<i class="fas fa-trash-alt fa-2x" style="color: #fff;"></i>
+								</button>
+							</c:if>
 						</div>
 						
 						<br>

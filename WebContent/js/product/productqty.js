@@ -18,7 +18,6 @@ const toMonetary = (price) => {
 }
 
 const p_qty = parseInt(document.getElementById('p_qty').value);
-console.log(p_qty);
 
 // 총 상품금액, 수량 변수 저장
 const totalPrice = toNumber($totalPrice); // 2900
