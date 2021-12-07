@@ -136,7 +136,7 @@
 	                        <li><div><a href=""><img src="<%=request.getContextPath() %>/upload/product/2021-12-6/edition18.jpg"></a></div>
 	                        <div class="info_goods">
 	                            <span class="name"><a class="txt">[르자당] 레드 플라워 화병 꽂이</a></span>
-	                            <span class="price"></span>200,000원 </span> 
+	                            <span class="price">200,000원 </span> 
 	                            <%-- <span class="cost">5,000원</span> --%>
 	                        </div>
 	                        </li>
@@ -148,7 +148,7 @@
 	                        </div>
 	                        </li>
 	                        <li>
-	                            <a href=""><img src="<%=request.getContextPath() %>/upload/product/2021-12-6/edition16.jpg" alt=""></a>
+	                            <a href="<%=request.getContextPath() %>/user_product_view.do?p_num=165"><img src="<%=request.getContextPath() %>/upload/product/2021-12-6/edition16.jpg" alt=""></a>
 	                            <div class="info_goods">
 	                                <span class="name"><a class="txt">[랑꼬뉴]딸기 샤를로뜨 케이크</a></span>
 	                                <span class="price">62,000원</span>
@@ -232,39 +232,39 @@
 	            <div class="tit_goods">
 	                <h3 class="tit">
 	                	<a href="#" class="name">
-	                		<span class="link_x1">컬리의 레시피</span>
+	                		<span class="link_x1">연말을 위한 하니 레시피</span>
 	                	</a>
 	                </h3>
 	            </div>
 	            <ul class="recipeSlide">
-					<li><a href="#"><img src="<%=request.getContextPath() %>/img/main/main_v2_92f3d901eee3a760.jpg"></a>
+					<li><a href="#"><img src="<%=request.getContextPath() %>/img/main/recipe1.png"></a>
 	                    <div class="info_goods">
-	                        <span class="name"><a class="txt">팔보채</a></span>
+	                        <span class="name"><a class="txt">나폴리탄 파스타</a></span>
 	                    </div>
 					</li>
-					<li><a href="#"><img src="<%=request.getContextPath() %>/img/main/main_v2_92f3d901eee3a760.jpg"></a>
+					<li><a href="#"><img src="<%=request.getContextPath() %>/img/main/recipe2.png"></a>
 						<div class="info_goods">
-	                        <span class="name"><a class="txt">팔보채</a></span>
+	                        <span class="name"><a class="txt">플랫 브레드 루꼴라 피자</a></span>
 	                    </div>
 					</li>
-					<li><a href="#"><img src="<%=request.getContextPath() %>/img/main/main_v2_92f3d901eee3a760.jpg"></a>
+					<li><a href="#"><img src="<%=request.getContextPath() %>/img/main/recipe3.png"></a>
 						<div class="info_goods">
-	                        <span class="name"><a class="txt">팔보채</a></span>
+	                        <span class="name"><a class="txt">토마토 스튜</a></span>
 	                    </div>
 					</li>
-					<li><a href="#"><img src="<%=request.getContextPath() %>/img/main/main_v2_92f3d901eee3a760.jpg"></a>
+					<li><a href="#"><img src="<%=request.getContextPath() %>/img/main/recipe4.png"></a>
 						<div class="info_goods">
-	                        <span class="name"><a class="txt">팔보채</a></span>
+	                        <span class="name"><a class="txt">채끝 찹스테이크</a></span>
 	                    </div>
 					</li>
-					<li><a href="#"><img src="<%=request.getContextPath() %>/img/main/main_v2_92f3d901eee3a760.jpg"></a>
+					<li><a href="#"><img src="<%=request.getContextPath() %>/img/main/recipe5.png"></a>
 						<div class="info_goods">
-	                        <span class="name"><a class="txt">팔보채</a></span>
+	                        <span class="name"><a class="txt">램 케서롤</a></span>
 	                    </div>
 					</li>
-					<li><a href="#"><img src="img/main/main_v2_92f3d901eee3a760.jpg"></a>
+					<li><a href="#"><img src="<%=request.getContextPath() %>/img/main/recipe6.png"></a>
 	                    <div class="info_goods">
-	                        <span class="name"><a class="txt">팔보채</a></span>
+	                        <span class="name"><a class="txt">라자냐</a></span>
 	                    </div>
 	                </li>
 				</ul>                
