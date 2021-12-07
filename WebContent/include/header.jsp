@@ -63,7 +63,7 @@
 	            			<a href="${pageContext.request.contextPath}/admin/admin_product_review_list.jsp">후기관리</a>
 	            		</li>
 	            		<li>
-	            			<a href="${pageContext.request.contextPath}/admin/admin_main.jsp">문의관리</a>
+	            			<a href="${pageContext.request.contextPath}/admin/admin_qna.jsp">문의관리</a>
 	            		</li>
 	            	</ul>
 	            </li>

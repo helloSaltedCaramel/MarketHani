@@ -15,7 +15,7 @@
 </head>
 <body>
 
-	<div class="page_aticle aticle_type2"> <%-- 후기 전체 틀 마이컬리 포함 start --%>
+	<div class="page_aticle aticle_type2" align="center"> <%-- 후기 전체 틀 마이컬리 포함 start --%>
 		<%-- 
 		왼쪽 마이컬리 탭 부분
 		<div id="snb" class="snb_my">
@@ -51,8 +51,8 @@
  --%>
 	<div class="page_review"> <%--후기작성 오른쪽 틀  --%>
 		
-			<h2 align="left">후기작성</h2>
-		<hr width="95%" color="#5f0080">
+			<h2 id="review_title" align="left">후기작성</h2>
+		<hr width="100%" color="#5f0080">
 		<br><br>	
 		
 		<form method="post" enctype="multipart/form-data" 
@@ -68,7 +68,7 @@
 			
 			<tr>
 				<th id="th_review">아이디</th>
-				<td><input name="user_id" placeholder="아이디를 입력하세요"></td>
+				<td><input name="user_id" value="${user_id}" placeholder="아이디를 입력하세요" readonly></td>
 			</tr>
 			
 			<tr>

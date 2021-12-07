@@ -112,10 +112,10 @@
 	            <div class="list_goods_0">
 	                <%-- slide --%>
 	                <ul class="bannerSlide">
-	                    <li><a href="<%=request.getContextPath() %>/user_category.do?cat=A1&sort=new"><img src="<%=request.getContextPath() %>/img/main/mainBanner.png" alt="이벤트배너"></a></li>
-	                    <li><a href="<%=request.getContextPath() %>/user/user_event_ban1.jsp"><img src="<%=request.getContextPath() %>/img/main/banner1.jpg" alt="이벤트배너"></a></li>
-	                    <li><a href="<%=request.getContextPath() %>/user/user_event_ban3.jsp"><img src="<%=request.getContextPath() %>/img/main/banner7.jpg" alt="이벤트배너"></a></li>
-	               <%-- <li><a href="#"><img src="<%=request.getContextPath() %>/img/main/banner2.jpg" alt="이벤트배너"></a></li>  --%> 
+	                    <li><a href="<%=request.getContextPath() %>/user_category.do?cat=A1&sort=new"><img src="<%=request.getContextPath() %>/img/main/9714a8f5-db34-45aa-ac9a-adbca7584f4e.webp" alt="이벤트배너"></a></li>
+	                    <li><a href="<%=request.getContextPath() %>/user/user_event.jsp"><img src="<%=request.getContextPath() %>/img/main/2abed505-2b13-4d4d-878d-98ab6b8bee7a.webp" alt="이벤트배너"></a></li>
+	                    <li><a href="<%=request.getContextPath() %>/user/user_event.jsp"><img src="<%=request.getContextPath() %>/img/main/e21e2f45-cd30-4eb8-b0f0-c818f6691f89.webp" alt="이벤트배너"></a></li>
+	               			<li><a href="<%=request.getContextPath() %>/user/user_event.jsp"><img src="<%=request.getContextPath() %>/img/main/ec535b68-4063-4e73-a89e-34b1256a39ad.jpg" alt="이벤트배너"></a></li>
 	                </ul>
 	            </div>
 	        </div> <%-- main_type1 end --%>
@@ -133,47 +133,73 @@
 	                <%-- slide --%>
 	                <div class="list_goods">
 	                    <ul class="itemSlide">
-	                        <li><div><a href=""><img src="<%=request.getContextPath() %>/upload/product/2021-12-6/edition18.jpg"></a></div>
-	                        <div class="info_goods">
-	                            <span class="name"><a class="txt">[르자당] 레드 플라워 화병 꽂이</a></span>
-	                            <span class="price">200,000원 </span> 
-	                            <%-- <span class="cost">5,000원</span> --%>
-	                        </div>
-	                        </li>
-	                        <li><a href=""><img src="<%=request.getContextPath() %>/upload/product/2021-12-4/beat1.jpg" alt=""></a>
-	                        <div class="info_goods">
-	                            <span class="name"><a class="txt">[KF365] PET 비트 2kg 박스</a></span>
-	                            <span class="price">6,490원 </span> 
-	                            <%--<span class="cost">12,530원</span>--%>
-	                        </div>
+	                        <li>
+		                        <div class="good_thumb">
+			                        <a href="">
+			                        	<img src="<%=request.getContextPath() %>/upload/product/2021-12-6/edition18.jpg">
+			                        </a>
+		                        </div>
+		                        <div class="info_goods">
+		                            <span class="name"><a class="txt">[르자당] 레드 플라워 화병 꽂이</a></span>
+		                            <span class="price">200,000원 </span> 
+		                            <%-- <span class="cost">5,000원</span> --%>
+		                        </div>
 	                        </li>
 	                        <li>
-	                            <a href="<%=request.getContextPath() %>/user_product_view.do?p_num=165"><img src="<%=request.getContextPath() %>/upload/product/2021-12-6/edition16.jpg" alt=""></a>
-	                            <div class="info_goods">
-	                                <span class="name"><a class="txt">[랑꼬뉴]딸기 샤를로뜨 케이크</a></span>
-	                                <span class="price">62,000원</span>
-	                            </div>
+		                        <div class="good_thumb">
+			                        <a href="">
+			                        	<img src="<%=request.getContextPath() %>/upload/product/2021-12-4/beat1.jpg" alt="">
+			                        </a>
+		                       	</div>
+		                        <div class="info_goods">
+		                            <span class="name"><a class="txt">[KF365] PET 비트 2kg 박스</a></span>
+		                            <span class="price">6,490원 </span> 
+		                            <%--<span class="cost">12,530원</span>--%>
+		                        </div>
+	                        </li>
+	                        <li>
+	                        	<div class="good_thumb">
+	                            <a href="<%=request.getContextPath() %>/user_product_view.do?p_num=165">
+	                            	<img src="<%=request.getContextPath() %>/upload/product/2021-12-6/edition16.jpg" alt="">
+	                            </a>
+	                          </div>
+	                          <div class="info_goods">
+	                            <span class="name"><a class="txt">[랑꼬뉴]딸기 샤를로뜨 케이크</a></span>
+	                            <span class="price">62,000원</span>
+	                          </div>
 	                        </li>                    
 	                        <li>
-	                            <a href=""><img src="<%=request.getContextPath() %>/upload/product/2021-12-5/stapleFood20.jpg" alt=""></a>
+	                        	<div class="good_thumb">
+	                            <a href="">
+	                            	<img src="<%=request.getContextPath() %>/upload/product/2021-12-5/stapleFood20.jpg" alt="">
+	                            </a>
+	                          </div>
 	                            <div class="info_goods">
 	                                <span class="name"><a class="txt">[오쥬 바이 로우즈] 치킨 파우치</a></span>
 	                                <span class="price">3,500원</span>
 	                            </div>
 	                        </li>                    
 	                        <li>
-	                            <a href=""><img src="<%=request.getContextPath() %>/upload/product/2021-12-6/edition9.jpg" alt=""></a>
-	                            <div class="info_goods">
-	                                <span class="name"><a class="txt">[네기] 스키야끼 2인 세트</a></span> 
-	                                <span class="price">100,000원</span>
-	                            </div>
+	                        	<div class="good_thumb">
+	                            <a href="">
+	                            	<img src="<%=request.getContextPath() %>/upload/product/2021-12-6/edition9.jpg" alt="">
+	                            </a>
+	                          </div>
+	                          <div class="info_goods">
+	                            <span class="name"><a class="txt">[네기] 스키야끼 2인 세트</a></span> 
+	                            <span class="price">100,000원</span>
+	                          </div>
 	                        </li>
 	                        <li>
-	                            <a href=""><img src="<%=request.getContextPath() %>/upload/product/2021-12-4/paprika1.jpg" alt=""></a>
-	                            <div class="info_goods">
-	                                <span class="name"><a class="txt">[KF365] 미니 파프리카 200g</a></span>
-	                                <span class="price">3,990원</span>
-	                            </div>
+	                        	<div class="good_thumb">
+	                            <a href="">
+	                            	<img src="<%=request.getContextPath() %>/upload/product/2021-12-4/paprika1.jpg" alt="">
+	                            </a>
+	                          </div>
+	                          <div class="info_goods">
+	                            <span class="name"><a class="txt">[KF365] 미니 파프리카 200g</a></span>
+	                            <span class="price">3,990원</span>
+	                          </div>
 	                        </li>                    
 	                    </ul>
 	                </div>
@@ -194,14 +220,24 @@
 	                </div>
 	                <div class="list_goods">
 	                    <ul data-title="특가/혜택" data-section="event" class="list">
-	                        <li data-index="1"><a href="#" class="thumb_goods"><img src="<%=request.getContextPath() %>/upload/product/2021-12-6/seasonDessert24.jpg"></a>
+	                        <li data-index="1">
+	                        	<div class="good_thumb">
+		                        	<a href="#" class="thumb_goods">
+		                        		<img src="<%=request.getContextPath() %>/upload/product/2021-12-6/seasonDessert24.jpg">
+		                        	</a>
+		                        </div>
 	                            <div class="info_goods">
 	                           	 	<span class="name">
-	                            		<a class="txt">[르자당] 레드 플라워 화병 꽂이</a>
+	                            		<a class="txt">[오설록] 한라산 녹차케이크</a>
 	                            	</span> 
 	                            </div>		                   
 	                        </li>
-	                        <li data-index="2"><a href="#" class="thumb_goods"><img src="<%=request.getContextPath() %>/upload/product/2021-12-4/cauliflower.jpg"></a>                           
+	                        <li data-index="2">
+	                        		<div class="good_thumb">
+		                        		<a href="#" class="thumb_goods">
+		                        			<img src="<%=request.getContextPath() %>/upload/product/2021-12-4/cauliflower.jpg">
+		                        		</a>
+	                        		</div>                           
 	                            <div class="info_goods">
 	                                <div class="inner_info">
 		                                <span class="name">
@@ -210,13 +246,18 @@
 	                                 </div>
 	                            </div>
 	                        </li>
-	                        <li data-index="3"><a href="#" class="thumb_goods"><img src="<%=request.getContextPath() %>/upload/product/2021-12-5/goods16.jpg"></a>
-	                                
+	                        <li data-index="3">
+	                        		<div class="good_thumb">
+		                        		<a href="#" class="thumb_goods">
+		                        			<img src="<%=request.getContextPath() %>/upload/product/2021-12-5/goods16.jpg">
+		                        		</a>
+	                            </div>    
 	                            <div class="info_goods">
-	                                <div class="inner_info">
-	                                	<span class="name">
-	                                		<a class="txt">[바잇미X히끄]고양이 장난감 </a>
-	                                	</span> 
+	                              <div class="inner_info">
+	                                <span class="name">
+	                                  <a class="txt">[바잇미X히끄]고양이 장난감 </a>
+	                                </span> 
+	                              </div>
 	                            </div>
 	                        </li>
 	                    </ul>
@@ -237,37 +278,67 @@
 	                </h3>
 	            </div>
 	            <ul class="recipeSlide">
-					<li><a href="#"><img src="<%=request.getContextPath() %>/img/main/recipe1.png"></a>
-	                    <div class="info_goods">
-	                        <span class="name"><a class="txt">나폴리탄 파스타</a></span>
-	                    </div>
-					</li>
-					<li><a href="#"><img src="<%=request.getContextPath() %>/img/main/recipe2.png"></a>
-						<div class="info_goods">
-	                        <span class="name"><a class="txt">플랫 브레드 루꼴라 피자</a></span>
-	                    </div>
-					</li>
-					<li><a href="#"><img src="<%=request.getContextPath() %>/img/main/recipe3.png"></a>
-						<div class="info_goods">
-	                        <span class="name"><a class="txt">토마토 스튜</a></span>
-	                    </div>
-					</li>
-					<li><a href="#"><img src="<%=request.getContextPath() %>/img/main/recipe4.png"></a>
-						<div class="info_goods">
-	                        <span class="name"><a class="txt">채끝 찹스테이크</a></span>
-	                    </div>
-					</li>
-					<li><a href="#"><img src="<%=request.getContextPath() %>/img/main/recipe5.png"></a>
-						<div class="info_goods">
-	                        <span class="name"><a class="txt">램 케서롤</a></span>
-	                    </div>
-					</li>
-					<li><a href="#"><img src="<%=request.getContextPath() %>/img/main/recipe6.png"></a>
-	                    <div class="info_goods">
-	                        <span class="name"><a class="txt">라자냐</a></span>
-	                    </div>
-	                </li>
-				</ul>                
+								<li>
+									<div class="good_thumb">
+										<a href="#">
+											<img src="<%=request.getContextPath() %>/img/main/recipe1.png">
+										</a>
+									</div>
+				          <div class="info_goods">
+				            <span class="name"><a class="txt">나폴리탄 파스타</a></span>
+				          </div>
+								</li>
+								<li>
+									<div class="good_thumb">
+										<a href="#">
+											<img src="<%=request.getContextPath() %>/img/main/recipe2.png">
+										</a>
+									</div>
+									<div class="info_goods">
+				            <span class="name"><a class="txt">플랫 브레드 루꼴라 피자</a></span>
+				          </div>
+								</li>
+								<li>
+									<div class="good_thumb">
+										<a href="#">
+											<img src="<%=request.getContextPath() %>/img/main/recipe3.png">
+										</a>
+									</div>
+									<div class="info_goods">
+				            <span class="name"><a class="txt">토마토 스튜</a></span>
+				          </div>
+								</li>
+								<li>
+									<div class="good_thumb">
+										<a href="#">
+											<img src="<%=request.getContextPath() %>/img/main/recipe4.png">
+										</a>
+									</div>
+									<div class="info_goods">
+				            <span class="name"><a class="txt">채끝 찹스테이크</a></span>
+				          </div>
+								</li>
+								<li>
+									<div class="good_thumb">
+										<a href="#">
+											<img src="<%=request.getContextPath() %>/img/main/recipe5.png">
+										</a>
+									</div>
+									<div class="info_goods">
+				            <span class="name"><a class="txt">램 케서롤</a></span>
+				          </div>
+								</li>
+								<li>
+									<div class="good_thumb">
+										<a href="#">
+											<img src="<%=request.getContextPath() %>/img/main/recipe6.png">
+										</a>
+									</div>
+				          <div class="info_goods">
+				            <span class="name"><a class="txt">라자냐</a></span>
+				          </div>
+				         </li>
+							</ul>                
 	        </div>                
 	    </div> <%-- main_type4 end --%>
 	

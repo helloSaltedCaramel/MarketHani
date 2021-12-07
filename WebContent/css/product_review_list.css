@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 
-*게시글 수정 시작*/
+/*게시글 수정 시작*/
 
 /*중복*/
 body, input, select, textarea, button {
@@ -172,6 +172,7 @@ tbody {
 .goods-view-infomation-board {
 	width: 100%;
 } /*게시글 전체 틀*/
+
 iframe[Attributes Style] {
 	border-top-width: 0px;
 	border-right-width: 0px;
@@ -185,13 +186,17 @@ iframe {
 	border-style: inset;
 	border-color: initial;
 	border-image: initial;
-	
 }
 
 /*리뷰 리스트 호버*/
 .reviewlist:hover {
  background: #f3f3f3;
 }
+
+.inner_review {
+	padding: 15px;
+}
+
 
 /*페이징 처리 css*/
 .page_wrap {

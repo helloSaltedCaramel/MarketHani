@@ -109,19 +109,26 @@ body { font-family: 'Noto Sans KR', sans-serif; }
 }
 
 /*이미지 클릭시 사진 확대*/
-.list_goods ul li img:hover{
-    transform: scale(1.03);
+.good_thumb img:hover{
+  transform: scale(1.03);
+  transition: transform 0.3s;
 }
 
+.good_thumb img:not(:hover) {
+	transform: scale(1.00);
+  transition: transform 0.3s;
+}
+
+
+.good_thumb {
+	overflow: hidden;
+}
 
 
 .info_goods{
-    margin: 10px;
-    text-align: center;
+  margin: 10px;
+  text-align: center;
 }
-
-
-
 
 /* 메인유형3 css*/
 .main_event .list_goods .inner_info {text-align: center; margin:14px;}

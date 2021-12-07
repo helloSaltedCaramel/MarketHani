@@ -34,15 +34,15 @@
         		<div id="mainEvent" class="page_section_event">
         		 	<ul class="list">
         		 		<li>
-        		 			<a href="<%=request.getContextPath() %>../user/user_event_ban1.jsp">
+        		 			<a href="<%=request.getContextPath() %>/user/user_event_ban1.jsp">
         		 			<img alt="이벤트 배너1" src="<%=request.getContextPath() %>/img/main/banner1.jpg"></a>
         		 		</li>
         		 		<li>
-        		 			<a href="<%=request.getContextPath() %>../user/user_event_ban2.jsp" >
+        		 			<a href="<%=request.getContextPath() %>/user/user_event_ban2.jsp" >
         		 			<img alt="이벤트 배너2" src="<%=request.getContextPath() %>/img/main/banner3.jpg"></a>
         		 		</li>
         		 		<li>
-        		 			<a href="<%=request.getContextPath() %>../user/user_event_ban3.jsp" >
+        		 			<a href="<%=request.getContextPath() %>/user/user_event_ban3.jsp" >
         		 			<img alt="이벤트 배너3" src="<%=request.getContextPath() %>/img/main/banner7.jpg"></a>
         		 		</li>
         		 		<li>
