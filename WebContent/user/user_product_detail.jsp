@@ -21,10 +21,6 @@
 	<script defer src="<%=request.getContextPath()%>/js/header/header.js"></script>
 	<script defer
 		src="<%=request.getContextPath()%>/js/header/location_postcode.js"></script>
-
-	<%-- include product_qna.css --%>
-	<link rel="stylesheet" type="text/css"
-		href="<%=request.getContextPath()%>/css/product_qna.css" />
 	
 	<%-- import footer.css --%>
 	<link rel="stylesheet" type="text/css"
@@ -33,6 +29,10 @@
 	<%-- import product_detail.css --%>
 	<link rel="stylesheet" type="text/css"
 		href="<%=request.getContextPath()%>/css/product_detail.css">
+
+	<%-- include product_qna.css --%>
+	<link rel="stylesheet" type="text/css"
+		href="<%=request.getContextPath()%>/css/product_qna.css" />
 
 	<%-- jQuery library (served from Google) --%>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -43,9 +43,13 @@
 	
 	<%-- QnA 게시판 그리기 --%>
 	<script>	
+	
+		let p_num = ${productCont.getP_num()};
+		
 		$(document).ready(function() {
-			qnaList(${productCont.getP_num()}, 1);
+			qnaList(p_num, 1, '${user_id }');
 		});
+		
 	</script>
 </head>
 
@@ -413,7 +417,8 @@
 					</iframe>
 				</div>
 			</div> <%-- #content3 scroll end --%>
-	
+		
+		<div class="qna_area">
 		<%-- 상품 문의 게시판  --%>
 		<div id="content4">	
 			<div class="qna_container">
@@ -516,7 +521,7 @@
 		<form action="user_qna_write.do" method="post">	<%-- 작성시 write_qna.do로 맵핑 --%>
 			
 			<input type="hidden" value="${dto.getP_num() }" name="p_num">	<%-- 제품번호 : p_num --%>
-			<input type="hidden" value="test_user" name="user_id"> <%-- 세션에서 user_id 갖고와야함 --%>
+			<input type="hidden" value="${user_id }" name="user_id"> <%-- 세션에서 user_id 갖고와야함 --%>
 			
 			<table class="modal_qna_write">
 				<tr class="modal_qna_title" height="53px">
@@ -609,7 +614,7 @@
 			</table>
 		</form>				
 	</div><%-- modal_dialog_qna revise end --%>
-		
+	</div>	
 	<jsp:include page="../include/footer.jsp" />
 
 <%-- </body>

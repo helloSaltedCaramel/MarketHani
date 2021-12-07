@@ -1,12 +1,12 @@
 /*제품 상세 페이지 스크립트*/
 
 
-
 //페이지 로딩 시 비동기식 처리를 통해 QnA 전체 리스트를 보여주는 함수  
-function qnaList(p_num, page, id) {
+function qnaListadmin(page) {
 	
 	$.ajax({
-		url : "user_qna_select.do?p_num=" + p_num +"&page=" + page, 
+		type: "post",
+		url : "../admin_qna_select.do?page=" + page,
 		datatype : "xml",
 		success : function(data) {
 	
@@ -34,7 +34,7 @@ function qnaList(p_num, page, id) {
 					
 					str += "<div class='content-cell secret' onclick='showSecret();'>\
 									<strong id='secret_title'>\
-										비밀글입니다.&nbsp;&nbsp;<img src='./img/product/qna_secret.svg'>\
+										비밀글입니다.&nbsp;&nbsp;<img src='../img/product/qna_secret.svg'>\
 									</strong>\
 								</div>";
 				}else{
@@ -72,10 +72,10 @@ function qnaList(p_num, page, id) {
 						
 						str += '<li class="qna_content_item expand">\
 										<div class="content-cell expand">\
-											<span><img class="qna_mark" src="./img/product/qna_question_mark.svg"></span>\
+											<span><img class="qna_mark" src="../img/product/qna_question_mark.svg"></span>\
 											<span><strong>' + content + '</strong></span>';
 											
-						if(user_id === id){
+						/*if(user_id === id){
 							
 							str +=			'<div class="item-cell update">\
 												<p>\
@@ -91,7 +91,7 @@ function qnaList(p_num, page, id) {
 													</a>\
 												</p>\
 											</div>';
-						}						
+						}	*/					
 						
 					str +=				'</div>\
 								</li>';
@@ -100,10 +100,10 @@ function qnaList(p_num, page, id) {
 						
 						str += '<li class="qna_content_item expand">\
 										<div class="content-cell expand">\
-											<span><img class="qna_mark" src="./img/product/qna_question_mark.svg"></span>\
+											<span><img class="qna_mark" src="../img/product/qna_question_mark.svg"></span>\
 											<span><strong><font color="#5f0081">작성하신 내용이 없습니다</font></strong></span>';
 								
-						if(user_id === id){
+						/*if(user_id === id){
 							
 								str +=		'<div class="item-cell update">\
 												<p>\
@@ -119,7 +119,7 @@ function qnaList(p_num, page, id) {
 													</a>\
 												</p>\
 											</div>';
-						}						
+						}	*/					
 								
 											
 							str +=		'</div> \
@@ -131,7 +131,7 @@ function qnaList(p_num, page, id) {
 						
 						str += '<li class="qna_content_item expand">\
 									<div class="content-cell expand">\
-										<span><img class="qna_mark" src="./img/product/qna_answer_mark.svg"></span>\
+										<span><img class="qna_mark" src="../img/product/qna_answer_mark.svg"></span>\
 										<span><strong>'+ answer +'</strong></span>\
 									</div>\
 							   </li>' 
@@ -148,23 +148,22 @@ function qnaList(p_num, page, id) {
 			
 			if(page == 1){
 				$('.prev').attr('disabled', true);
-				$('.prev').css('background', 'url(./img/product/qna_page_prev_disabled.svg) 50% 0 no-repeat');
+				$('.prev').css('background', 'url(../img/product/qna_page_prev_disabled.svg) 50% 0 no-repeat');
 			}else{
 				$('.prev').attr('disabled', false);
-				$('.prev').attr('onclick', 'qnaList(' + p_num + ', ' + (page - 1) + ')');	
-				$('.prev').css('background', 'url(./img/product/qna_page_prev.svg) 50% 0 no-repeat');
+				$('.prev').attr('onclick', 'qnaListadmin(' + (page - 1) + ')');	
+				$('.prev').css('background', 'url(../img/product/qna_page_prev.svg) 50% 0 no-repeat');
 			}
 			
 			if(page == allPage){
 				$('.next').attr('disabled', true);
-				$('.next').css('background', 'url(./img/product/qna_page_next_disabled.svg) 50% 0 no-repeat');
+				$('.next').css('background', 'url(../img/product/qna_page_next_disabled.svg) 50% 0 no-repeat');
 			}else{
 				$('.next').attr('disabled', false);
-				$('.next').attr('onclick', 'qnaList(' + p_num + ', ' + (page + 1) + ')');
-				$('.next').css('background', 'url(./img/product/qna_page_next.svg) 50% 0 no-repeat');
+				$('.next').attr('onclick', 'qnaListadmin(' + (page + 1) + ')');
+				$('.next').css('background', 'url(../img/product/qna_page_next.svg) 50% 0 no-repeat');
 			}
-				
-			
+		
 		},
 		
 		error : function(){
@@ -179,11 +178,11 @@ function isSecret() {
 	if($('.secret_check').prop('checked') == false){
 		
 		$('.secret_check').prop('checked', true);
-		$('.secret_check_ico').css('background-image', 'url(./img/product/qna_write_checked.svg)');
+		$('.secret_check_ico').css('background-image', 'url(../img/product/qna_write_checked.svg)');
 	}else{
 		
 		$('.secret_check').prop('checked', false);
-		$('.secret_check_ico').css('background-image', 'url(./img/product/qna_write_unchecked.svg)');
+		$('.secret_check_ico').css('background-image', 'url(../img/product/qna_write_unchecked.svg)');
 	}
 	
 	console.log($('.secret_check').prop('checked')); 

@@ -240,9 +240,76 @@ public class QnADAO {
 			}
 			
 			return count;
-		}
+		} //getQnaCount() end
 
-	
+		public int getAdminQnaCount() {
+			
+			int count = 0;
+			
+			try {
+				openConn();
+				sql = "select count(*) from kurly_qna";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			
+			return count;
+		} //getAdminQnaCount() end
+
+		public String getAdminQnAList(int page, int rowsize) {
+			
+			String result = "";
+			
+			int startNo = (page * rowsize) - (rowsize - 1);
+			int endNo = (page * rowsize);				
+			
+			try {
+
+				openConn();
+				
+				sql = "select * from "
+						+ "(select row_number() over(order by qna_num desc) rnum, q.* from kurly_qna q)"
+						+ "where rnum >= ? and rnum <= ?";
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, startNo);
+				pstmt.setInt(2, endNo);				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					result += "<qna>";
+					result += "<qna_num>" + rs.getInt("qna_num") + "</qna_num>";
+					result += "<user_id>" + rs.getString("user_id") + "</user_id>";
+					result += "<qna_title>" + rs.getString("qna_title") + "</qna_title>";
+					result += "<qna_content>" + rs.getString("qna_content") + "</qna_content>";
+					result += "<qna_date>" + rs.getString("qna_date").substring(0, 10) + "</qna_date>";
+					result += "<qna_answer>" + rs.getString("qna_answer") + "</qna_answer>";
+					result += "<qna_answer_date>" + rs.getString("qna_answer_date") + "</qna_answer_date>";
+					result += "<qna_status>" + rs.getInt("qna_status") + "</qna_status>";
+					result += "<qna_secret>" + rs.getInt("qna_secret") + "</qna_secret>";
+					result += "<p_num>" + rs.getInt("p_num") + "</p_num>";
+					result += "</qna>";
+				}
+			
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeConn(rs, pstmt, con);
+			}
+			
+			return result;
+		} //getAdminQnAList() end
 }
 
 	

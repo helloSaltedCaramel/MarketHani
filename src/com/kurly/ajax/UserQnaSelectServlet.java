@@ -2,38 +2,32 @@ package com.kurly.ajax;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.kurly.controller.ActionForward;
 import com.kurly.model.QnADAO;
-import com.kurly.model.QnADTO;
+
 
 
 @WebServlet("/user_qna_select.do")
-public class QnaSelectServlet extends HttpServlet {
+public class UserQnaSelectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public QnaSelectServlet() {
+    public UserQnaSelectServlet() {
         super();
-       
+ 
     }
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//해당 페이지의 QnA 게시글을 찾아 넘겨주는 비지니스 로직 
-	
 		
 		//페이징 작업
-		int rowsize = 6;	//한 페이지에 보여질 게시물 수
+		int rowsize = 12;	//한 페이지에 보여질 게시물 수
 		int block = 5;		//아래에 보여질 페이지의 최대 수 [1][2][3][4]...
 		int totalRecord = 0;//DB상의 게시물 전체 수
 		int allPage = 0;	//현재 페이지 수
-
 		int page = 0; 	//현재 페이지 변수
 
 		if(request.getParameter("page") != null) {
@@ -41,7 +35,9 @@ public class QnaSelectServlet extends HttpServlet {
 		}else {	//page값 없이 호출되었을 때 1에서 시작 
 			page = 1;
 		}
-	
+		
+		
+		System.out.println("page");
 		
 		//해당 페이지에서 시작 번호
 		int startNo = (page * rowsize) - (rowsize - 1);
