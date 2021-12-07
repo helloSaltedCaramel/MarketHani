@@ -60,7 +60,7 @@
 	            			<a href="${pageContext.request.contextPath}/admin/admin_main.jsp">상품등록</a>
 	            		</li>
 	            		<li>
-	            			<a href="${pageContext.request.contextPath}/user/user_product_review_on_write.jsp">후기관리</a>
+	            			<a href="${pageContext.request.contextPath}/admin/admin_product_review_list.jsp">후기관리</a>
 	            		</li>
 	            		<li>
 	            			<a href="${pageContext.request.contextPath}/admin/admin_main.jsp">문의관리</a>
