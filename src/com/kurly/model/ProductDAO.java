@@ -155,7 +155,7 @@ public class ProductDAO {
 			
 			//페이지네이션 적용 쿼리문
 			sql = "select * from (select row_number() over(order by " + order 
-					+ ") rnum, p.* from kurly_product p) where rnum >= ? and rnum <= ?";
+					+ ") rnum, p.* from kurly_product p where not p_qty = -1) where rnum >= ? and rnum <= ?";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startNo);
@@ -218,7 +218,7 @@ public class ProductDAO {
 				order = "p_price desc";
 			
 			sql = "select * from (select row_number() over(order by " + order 
-					+ ") rnum, p.* from kurly_product p where p_category like '" + category + "%') where rnum >= ? and rnum <= ?";
+					+ ") rnum, p.* from kurly_product p where p_category like '" + category + "%' and not p_qty = -1) where rnum >= ? and rnum <= ?";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startNo);
@@ -283,7 +283,7 @@ public class ProductDAO {
 			
 			//페이지네이션 적용 쿼리문
 			sql = "select * from (select row_number() over(order by " + order 
-					+ ") rnum, p.* from kurly_product p where p_discount > 0) where rnum >= ? and rnum <= ?";
+					+ ") rnum, p.* from kurly_product p where p_discount > 0 and not p_qty = -1) where rnum >= ? and rnum <= ?";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startNo);
@@ -381,7 +381,7 @@ public class ProductDAO {
 		try {
 			openConn();
 			
-			sql = "select count(*) from kurly_product";
+			sql = "select count(*) from kurly_product where not p_qty = -1";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -408,7 +408,7 @@ public class ProductDAO {
 		try {
 			openConn();
 			
-			sql = "select count(*) from kurly_product where p_category like '" + category + "%'";
+			sql = "select count(*) from kurly_product where p_category like '" + category + "%' and not p_qty = -1";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -498,7 +498,7 @@ public class ProductDAO {
 		try {
 			openConn();
 			
-			sql = "select count(*) from kurly_product where p_discount > 0";
+			sql = "select count(*) from kurly_product where p_discount > 0 and not p_qty = -1";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -542,7 +542,7 @@ public class ProductDAO {
 			
 			//페이지네이션 적용 쿼리문
 			sql = "select * from (select row_number() over(order by " + order 
-					+ ") rnum, p.* from kurly_product p where p_name like '%" + search + "%') where rnum >= ? and rnum <= ?";
+					+ ") rnum, p.* from kurly_product p where p_name like '%" + search + "%' and not p_qty = -1) where rnum >= ? and rnum <= ?";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startNo);
@@ -590,7 +590,7 @@ public class ProductDAO {
 		try {
 			openConn();
 			
-			sql = "select count(*) from kurly_product where p_name like '%" + search + "%'";
+			sql = "select count(*) from kurly_product where p_name like '%" + search + "%' and not p_qty = -1";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -679,6 +679,27 @@ public class ProductDAO {
 		} finally {
 			closeConn(rs, pstmt, con);
 			System.out.println("result = " + result);
+		}
+		
+		return result;
+	}
+	
+	public int disableProduct(int p_num) {
+		int result = -1;
+				
+		final String sql = "update kurly_product set p_qty = -1 where p_num = ?";
+		
+		openConn();
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, p_num);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
 		}
 		
 		return result;

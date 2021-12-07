@@ -87,7 +87,7 @@
 									</div>
 									<div class="order_info">
 										<div class="thumb">
-											<img src="${pageContext.request.contextPath}/img/product/${dto.getP_image()}" alt="주문 대표 사진">
+											<img src="${pageContext.request.contextPath}/upload/product/${dto.getP_image()}" alt="주문 대표 사진">
 										</div>
 										<div class="desc">
 											<dl>
