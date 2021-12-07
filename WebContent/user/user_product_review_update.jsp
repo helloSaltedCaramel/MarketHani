@@ -190,7 +190,7 @@ margin-top: 70px;
 		<table border="0" cellspacing="0" width="700" >
 			
 			<tr>
-			<th><img width="72px" height="72px" src="<%=request.getContextPath() %>/img/product/${product.getP_image()}"></th>
+			<th><img width="72px" height="72px" src="<%=request.getContextPath() %>/upload/product/${product.getP_image()}"></th>
 			<th id="review_product_title">[${product.getP_seller()}] ${product.getP_name() }</th>
 			</tr>
 			

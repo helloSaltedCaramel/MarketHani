@@ -77,39 +77,40 @@ public class ReviewDAO {
 
 	} // closeConn() 메서드 end
 
-	/*
-	 * //kurly_review 테이블에서 전체 리스트를 조회하는 메서드 public List<ReviewDTO> getReviewList()
-	 * { List<ReviewDTO> list = new ArrayList<ReviewDTO>();
-	 * 
-	 * try {
-	 * 
-	 * openConn();
-	 * 
-	 * sql = "select * from kurly_review order by r_num desc";
-	 * 
-	 * pstmt = con.prepareStatement(sql);
-	 * 
-	 * rs = pstmt.executeQuery();
-	 * 
-	 * while(rs.next()) { ReviewDTO dto = new ReviewDTO();
-	 * 
-	 * dto.setR_num(rs.getInt("r_num")); dto.setUser_id(rs.getString("user_id"));
-	 * dto.setP_num(rs.getInt("p_num")); dto.setR_title(rs.getString("r_title"));
-	 * dto.setR_content(rs.getString("r_content"));
-	 * dto.setR_image(rs.getString("r_image"));
-	 * dto.setR_date(rs.getString("r_date").substring(0,10)); 뒤에 시분초 자르는 방법
-	 * dto.setR_hit(rs.getInt("r_hit"));
-	 * 
-	 * list.add(dto); }
-	 * 
-	 * } catch (SQLException e) { // TODO Auto-generated catch block
-	 * e.printStackTrace(); }finally { closeConn(rs, pstmt, con); }
-	 * 
-	 * 
-	 * return list;
-	 * 
-	 * } //getReviewList() 메서드 end
-	 */
+	  // 관리자 페이지에서 클릭했을 때 나타나는 리스트를 조회하는  메서드
+	  //kurly_review 테이블에서 전체 리스트를 조회하는 메서드
+	   public List<ReviewDTO> getReviewOnList() { 
+	   List<ReviewDTO> list = new ArrayList<ReviewDTO>();
+	  
+	  try {
+	  
+	  openConn();
+	  
+	  sql = "select * from kurly_review order by r_num desc";
+	  
+	  pstmt = con.prepareStatement(sql);
+	  
+	  rs = pstmt.executeQuery();
+	  
+	  while(rs.next()) { ReviewDTO dto = new ReviewDTO();
+	  
+	  dto.setR_num(rs.getInt("r_num")); dto.setUser_id(rs.getString("user_id"));
+	  dto.setP_num(rs.getInt("p_num")); dto.setR_title(rs.getString("r_title"));
+	  dto.setR_content(rs.getString("r_content"));
+	  dto.setR_image(rs.getString("r_image"));
+	  dto.setR_date(rs.getString("r_date").substring(0,10)); //뒤에 시분초 자르는 방법
+	  dto.setR_hit(rs.getInt("r_hit"));
+	  
+	  list.add(dto); }
+	  
+	  } catch (SQLException e) { // TODO Auto-generated catch block
+	  e.printStackTrace(); }finally { closeConn(rs, pstmt, con); }
+	  
+	  
+	  return list;
+	  
+	  } //getReviewOnList() 메서드 end
+	
 
 	// kurly_review 테이블의 전체 게시물 수를 조회하는 메서드
 	public int getReviewCount(int p_num) {

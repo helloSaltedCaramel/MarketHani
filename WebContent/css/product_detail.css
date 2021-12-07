@@ -3,6 +3,17 @@
 
 /*제품 상세페이지 CSS*/
 
+#sectionView .goods_dcinfo {
+    float: right;
+    width: 560px;
+    padding-right: 21px;
+    font-size: 14px;
+    line-height: 20px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}/*회원 할인가*/
+
 /*로그인 시 변화되는 css*/
 #sectionView .goods_price .txt_benefit {
     display: block;
@@ -42,6 +53,48 @@
     line-height: 34px;
 }/*포인트 표시*/
 
+
+#sectionView .goods_price .dc_percent {
+    font-weight: 700;
+    font-size: 28px;
+    color: #fa622f;
+    line-height: 30px;
+    letter-spacing: -5px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}/*discount percent*/
+
+#sectionView .goods_price .dc_percent .per {
+    font-weight: 700;
+    font-size: 28px;
+    color: #fa622f;
+    line-height: 30px;
+    letter-spacing: 0;
+}/*discount percent*/
+
+#sectionView .goods_price .dc {
+    display: block;
+    padding-top: 4px;
+}/*회원 할인가 영역 discount percent*/
+
+#sectionView .goods_price .original_price {
+    float: left;
+    padding-top: 7px;
+}
+
+#sectionView .goods_price .price {
+    font-size: 16px;
+    color: #999;
+    line-height: 24px;
+    text-decoration: line-through;
+}/*할인 되기전 원래 금액*/
+
+#sectionView .goods_price .product_ico {
+    width: 24px;
+    height: 24px;
+    vertical-align: -6px;
+}/*product question button*/
 
 /*로그인 시 변화되는 css end*/
 
