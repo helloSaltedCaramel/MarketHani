@@ -33,7 +33,7 @@
 	<link rel="stylesheet" type="text/css"
 		href="<%=request.getContextPath()%>/css/admin_qna.css" />
 
-	<%-- import product_detail.js --%>
+	<%-- import admin_qna.js --%>
 	<script defer src="${pageContext.request.contextPath}/js/admin/admin_qna.js"></script>
 	
 	<%-- jQuery library (served from Google) --%>
@@ -57,58 +57,69 @@
 	
 	<c:set var="dto" value="${userData}"/>
 	
-	
-	<div class="page_section section_pmanage" align="center">
-		<div class="head_aticle">
-			<h2 class="tit">고객 질문 관리</h2>
-		</div>
-			
-		<%-- 상품 문의 게시판  --%>
-		<div id="content4">	
-			<div class="qna_container">
-					
-				<div class="qna_content">
-					<div class="qna_content_title">
-						<div style="width: 710px;">제목</div>
-						<div>작성자</div>
-						<div>작성일</div>
-						<div>답변상태</div>
-					</div>
-					
-					
-					<%-- QnA 공지부분 --%>
-					<ul class="qna_notice_list">
-						<li class="qna_notice_item">
-							<div class="notice-cell">
-								<span>공지</span>
-								<strong>판매 (일시)중단 제품 안내 (21-11-12 업데이트)</strong>
-							</div>
-							<div class="item-cell"><p>Marketkurly</p></div>
-							<div class="item-cell"><p>2021-11-18</p></div>
-							<div class="item-cell"><p>-</p></div>
-						</li>
-					</ul>
-					
+	<div id="admin_main">
+	<c:set var="dto" value="${userData}"/>
+		<div id="pManage_content"> 
+			<div class="page_aticle aticle_type2">
 				
-					<%-- QnA 리스트 받아오는 영역 --%>
-					<ul class="qna_content_list"></ul>						
-					
-					<%-- 문의하기, 페이지 이동 버튼 --%>
-					<div class="qna_button_area">
-						<div class="qna_paging_nav">
-							<button type="button" class="prev"><span></span></button>
-							<button type="button" class="next"><span></span></button>
-						</div>
-						
-						<button class="qna_write_btn" onclick="showWrite();">
-							<span>문의하기</span>
-						</button>
-					
+				<%-- 관리자메뉴 : 고객 문의 관리 --%>
+				<div class="page_section section_pmanage">
+					<div class="head_aticle">
+						<h2 class="tit">고객 문의 관리</h2>
 					</div>
-				</div> 
-			</div>		
-		</div> 
-	</div>
+				
+				<%-- 게시판 영역 --%>
+				<div id="content4">	
+					<div class="qna_container">
+							
+						<div class="qna_content">
+							<div class="qna_content_title">
+								<div style="width: 710px;">제목</div>
+								<div>작성자</div>
+								<div>작성일</div>
+								<div>답변상태</div>
+							</div>
+							
+							
+							<%-- QnA 공지부분 --%>
+							<ul class="qna_notice_list">
+								<li class="qna_notice_item">
+									<div class="notice-cell">
+										<span>공지</span>
+										<strong>판매 (일시)중단 제품 안내 (21-11-12 업데이트)</strong>
+									</div>
+									<div class="item-cell"><p>Marketkurly</p></div>
+									<div class="item-cell"><p>2021-11-18</p></div>
+									<div class="item-cell"><p>-</p></div>
+								</li>
+							</ul>
+							
+						
+							<%-- QnA 리스트 받아오는 영역 --%>
+							<ul class="qna_content_list"></ul>						
+							
+							<%-- 문의하기, 페이지 이동 버튼 --%>
+							<div class="qna_button_area">
+								<div class="qna_paging_nav">
+									<button type="button" class="prev"><span></span></button>
+									<button type="button" class="next"><span></span></button>
+								</div>
+								
+								<button class="qna_write_btn" onclick="showWrite();">
+									<span>문의하기</span>
+								</button>
+							
+							</div>
+						</div> 
+					</div>		
+				</div>
+					
+				</div> <%-- page_section section_myinfo end --%>
+			</div> <%-- page_aticle aticle_type2 end --%>
+		</div> <%-- infoModify_content end --%>	
+	</div> <%-- infoModify_main end --%>
+	
+
 	
 	<%-- 모달 오버레이(공용) --%>
 	<div class="modal_overlay">
@@ -122,7 +133,7 @@
 	
 	<%-- 모달: 작성 완료 메시지 --%>
 	<div class="modal_dialog confirm">
-		<p>문의가 정상적으로 등록되었습니다.</p>
+		<p>답변이 정상적으로 등록되었습니다.</p>
 		<button class="modal_button" onclick="hideWriteConfirm(); location.reload();"><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
 	</div>
 	
@@ -155,41 +166,19 @@
 	<div class="modal_dialog_qna write">
 		<form action="user_qna_write.do" method="post">	<%-- 작성시 write_qna.do로 맵핑 --%>
 		
-		<input type="hidden" value="${dto.getP_num() }" name="p_num">	<%-- 제품번호 : p_num --%>
-		<input type="hidden" value="${user_id }" name="user_id"> <%-- 세션에서 user_id 갖고와야함 --%>
-		
 		<table class="modal_qna_write">
 			<tr class="modal_qna_title" height="53px">
 				<td colspan="2">
-					<strong>상품 문의하기</strong>
+					<strong>답변 작성하기</strong>
 					<img src="<%=request.getContextPath() %>/img/product/qna_close.svg" onclick="hideWrite();"> <%-- 상단 우측 'X' 버튼 --%>
 				</td>
 			</tr>
-			<tr class="modal_qna_header" height="90px">
-				<td width="100px">
-					<div class="modal_qna_image">
-						<img width="72px" height="72px" src="<%=request.getContextPath() %>/upload/product/${dto.getP_image()}">
-					</div>
-				</td>
-				<td><strong>[${dto.p_seller}]${dto.p_name }</strong></td>
+						
+			<tr class="modal_write_content" height="100px">
+				<td width="100px" rowspan="2">답변 작성</td>				
+				<td><textarea maxlength="500" name="qna_content"></textarea></td>
 			</tr>
-			<tr class="modal_write_title" height="50px">
-				<td width="100px">제목</td>
-				<td><input name="qna_title"></td>	<%-- 제목 : qna_title --%>
-			</tr>
-			<tr class="modal_write_content" height="260px">
-				<td width="100px" rowspan="2">내용</td>					<%-- 내용 : qna_content --%>
-				<td><textarea maxlength="5000" name="qna_content"></textarea></td>
-			</tr>
-			<tr class="modal_write_secret" height="25px">
-				<td>
-					<label onclick="isSecret();">
-						<input class="secret_check" type="checkbox" name="is_secret"> <%-- 비밀글여부 : is_secret --%>
-						<span class="secret_check_ico"> </span>
-						<span>비밀글로 문의하기</span>
-					</label>
-				</td>
-			</tr>
+			
 			<tr class="modal_write_button" height="77px" align="center">
 				<td colspan="2">
 					<button onclick="hideWrite();">취소</button>
@@ -211,7 +200,7 @@
 		<table class="modal_qna_write">
 			<tr class="modal_qna_title" height="53px">
 				<td colspan="2">
-					<strong>문의내용 수정</strong>
+					<strong>답변내용 수정</strong>
 					<img src="<%=request.getContextPath() %>/img/product/qna_close.svg" onclick="hideRevise();"> <%-- 상단 우측 'X' 버튼 --%>
 				</td>
 			</tr>

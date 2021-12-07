@@ -30,21 +30,14 @@ function qnaListadmin(page) {
 				str += '<li class="qna_content_item">';
 				
 				// 비밀 글 : 제목 클릭 시 모달 함수 호출("비밀글입니다")				
-				if(secret == 1){
-					
-					str += "<div class='content-cell secret' onclick='showSecret();'>\
-									<strong id='secret_title'>\
-										비밀글입니다.&nbsp;&nbsp;<img src='../img/product/qna_secret.svg'>\
-									</strong>\
-								</div>";
-				}else{
 				
-					str += "<div class='content-cell' onclick='expandQna(" + i + ");'>\
-									<strong id='question_title'>"
-										+ title + 
-									"</strong>\
-								</div>";
-				}
+				
+				str += "<div class='content-cell' onclick='expandQna(" + i + ");'>\
+								<strong id='question_title'>"
+									+ title + 
+								"</strong>\
+							</div>";
+				
 				
 				str += '<div class="item-cell"><p>' + user_id + '</p></div>\
 						    <div class="item-cell"><p>' + date + '</p></div>';
@@ -64,80 +57,69 @@ function qnaListadmin(page) {
 				// 토글 함수에 들어가는 id값 설정하기 위한 div 
 				str += '<div class="expand_div" id="' + i + '">';
 				
-				// 비밀 글이 아닐 때에만 질문/답변 확장 영역 로딩 
-				if(secret != 1){
+				// 비밀 글 여부에 관계없이 아래 영역 로딩					
+				// 질문 영역 
+				if(content != 'null'){
 					
-					// 질문 영역 
-					if(content != 'null'){
-						
-						str += '<li class="qna_content_item expand">\
-										<div class="content-cell expand">\
-											<span><img class="qna_mark" src="../img/product/qna_question_mark.svg"></span>\
-											<span><strong>' + content + '</strong></span>';
-											
-						/*if(user_id === id){
-							
-							str +=			'<div class="item-cell update">\
-												<p>\
-													<a onclick="showRevise(' + 
-														num + ", '" + title + "', '" + content + "'" + ');">\
-														수정\
-													</a>&nbsp;&nbsp;&nbsp;\
-													<a onclick="if(confirm(' + "'작성한 문의를 삭제하시겠습니까?'" + ')){'
-														+ 'location.href=' +"'user_qna_delete.do?qna_num=" + num + "'" + ';'
-														+ 'showDeleteConfirm();\
-													}else{return; };">\
-														삭제\
-													</a>\
-												</p>\
-											</div>';
-						}	*/					
-						
-					str +=				'</div>\
-								</li>';
-								
-					}else if(content == 'null'){
-						
-						str += '<li class="qna_content_item expand">\
-										<div class="content-cell expand">\
-											<span><img class="qna_mark" src="../img/product/qna_question_mark.svg"></span>\
-											<span><strong><font color="#5f0081">작성하신 내용이 없습니다</font></strong></span>';
-								
-						/*if(user_id === id){
-							
-								str +=		'<div class="item-cell update">\
-												<p>\
-													<a onclick="showRevise(' + 
-														num + ", '" + title + "', '" + content + "'" + ');">\
-														수정\
-													</a>&nbsp;&nbsp;&nbsp;\
-													<a onclick="if(confirm(' + "'작성한 문의를 삭제하시겠습니까?'" + ')){'
-														+ 'location.href=' +"'user_qna_delete.do?qna_num=" + num + "'" + ';'
-														+ 'showDeleteConfirm();\
-													}else{return; };">\
-														삭제\
-													</a>\
-												</p>\
-											</div>';
-						}	*/					
-								
-											
-							str +=		'</div> \
-								</li>';
-					}
-					
-					// 답변 영역  - 답변이 있을 경우에만
-					if(answer != 'null'){
-						
-						str += '<li class="qna_content_item expand">\
+					str += '<li class="qna_content_item expand">\
 									<div class="content-cell expand">\
-										<span><img class="qna_mark" src="../img/product/qna_answer_mark.svg"></span>\
-										<span><strong>'+ answer +'</strong></span>\
-									</div>\
-							   </li>' 
-					}
+										<span><img class="qna_mark" src="../img/product/qna_question_mark.svg"></span>\
+										<span><strong>' + content + '</strong></span>';
+					
+					if(status == 0){	//답변 대기 중인 게시물에만 '답글달기' 표기				
+						str +=			'<div class="item-cell update">\
+												<p>\
+													<a onclick="showWrite();">\
+														답글달기\
+													</a>&nbsp;&nbsp;&nbsp;\
+												</p>\
+										 </div>';
+					}		
+						
+					str +=			'</div>\
+							</li>';
+							
+				}else if(content == 'null'){
+					
+					str += '<li class="qna_content_item expand">\
+								<div class="content-cell expand">\
+									<span><img class="qna_mark" src="../img/product/qna_question_mark.svg"></span>\
+									<span><strong><font color="#5f0081">작성하신 내용이 없습니다</font></strong></span>';
+						
+								
+						
+									
+					str +=		'</div> \
+							</li>';
 				}
 				
+				// 답변 영역  - 답변이 있을 경우에만 답변부분 로딩 (답변수정, 답변삭제 기능)
+				if(answer != 'null'){
+					
+					str += '<li class="qna_content_item expand">\
+								<div class="content-cell expand">\
+									<span><img class="qna_mark" src="../img/product/qna_answer_mark.svg"></span>\
+									<span><strong>'+ answer +'</strong></span>\
+								</div>';
+					
+						
+					str+=	'<div class="item-cell update">\
+									<p>\
+										<a onclick="showRevise(' + 
+											num + ", '" + title + "', '" + content + "'" + ');">\
+											수정\
+										</a>&nbsp;&nbsp;&nbsp;\
+										<a onclick="if(confirm(' + "'작성한 답변을 삭제하시겠습니까?'" + ')){'
+											+ 'location.href=' +"'user_qna_delete.do?qna_num=" + num + "'" + ';'
+											+ 'showDeleteConfirm();\
+										}else{return; };">\
+											삭제\
+										</a>\
+									</p>\
+								</div>';
+					}	
+					str += '</li>'; 
+					
 				str += '</div>';
 		
 			});
