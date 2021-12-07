@@ -336,7 +336,7 @@ iframe {
 						<td><span class="review-hit-cnt">235169</span></td><%--공지글 임의로 작성 end --%>
 						</table>
 
-								
+						
 						<c:set var="dto" value="${Cont }" />
 							<div>
 									<table class="xans-board-listheaderd tbl_newtype1" width="100%"
@@ -390,12 +390,15 @@ iframe {
 									</div>
 								</table>
 								<div class="review_content_btn" align="right">
+								<c:if test="${user_id ==dto.getUser_id() }"> <%-- user_id가 같을 경우에 보이는 버튼 --%>
 								<input id="review_content_button" type="button" value="글수정"
 									onclick="location.href='user_product_review_update.do?p_num=${dto.getP_num()}&no=${dto.getR_num()}&page=${page }'">
+								
 								<input id="review_content_button" type="button" value="글삭제"
 									onclick="if(confirm('정말로 삭제하시겠습니까?')) {
 									location.href='user_product_review_delete.do?r_num=${dto.getR_num() }'
 									}else {return; }">
+								</c:if>
 								<input id="review_content_button" type="button" value="목록으로"
 									onclick="location.href='user_product_review_list.do?p_num=${dto.getP_num()}'">
 								</div>

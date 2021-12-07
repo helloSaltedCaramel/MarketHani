@@ -236,9 +236,9 @@
 											<strong class="tit">총 상품금액 :</strong> 
 											<span class="sum">
 												<span class="num" id="totalPrice">
-													<fmt:formatNumber value="${dto.getP_price() * (100-dto.getP_discount()) / 100}" pattern="0,000"/>												
-												<span class="won">원</span>
+													<fmt:formatNumber value="${dto.getP_price() * (100-dto.getP_discount()) / 100}" pattern="0,000"/>													
 												</span>
+												<span class="won">원</span>
 											</span>
 										</div>
 										
