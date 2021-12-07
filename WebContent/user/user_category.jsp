@@ -25,6 +25,7 @@
 <%-- 20211123: javascript 연동 (허민회) --%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script defer src="${pageContext.request.contextPath}/js/productList/addCart.js"></script>
+<script defer src="${pageContext.request.contextPath}/js/productList/disableProduct.js"></script>
 
 <%-- jQuery library (served from Google) --%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -112,7 +113,7 @@ $().ready(function(){
 								<a href="<%=request.getContextPath() %>/user_product_view.do?p_num=${dto.getP_num()}">
 									<img class="product" src="<%=request.getContextPath() %>/upload/product/${dto.getP_image()}" width="auto" height="435">
 								</a>
-								<input type="hidden" name="p_num" value="${dto.getP_num()}" /> <%-- 2021123: input hidden 추가 (허민회) --%>
+								<input id="productNum" type="hidden" name="p_num" value="${dto.getP_num()}" /> <%-- 2021123: input hidden 추가 (허민회) --%>
 								<button type="button" class="btn_cart">
 									<img src="<%=request.getContextPath() %>/img/product/btn_cart.svg">
 								</button>
@@ -121,8 +122,8 @@ $().ready(function(){
 								<button type="button" class="manage_btn update" onclick="location.href='${pageContext.request.contextPath}/admin_prod_update.do?p_num=${dto.getP_num()}'">
 									<i class="fas fa-wrench fa-2x" style="color: #fff;"></i>
 								</button>
-								<button type="button" class="manage_btn delete" onclick="location.href='${pageContext.request.contextPath}/admin_prod_delete.do?p_num=${dto.getP_num()}'">
-									<i class="fas fa-trash-alt fa-2x" style="color: #fff;"></i>
+								<button type="button" class="manage_btn delete">
+									<i class="fas fa-ban fa-2x" style="color: #fff;"></i>
 								</button>
 							</c:if>
 							</div>

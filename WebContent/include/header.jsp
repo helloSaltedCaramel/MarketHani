@@ -32,16 +32,13 @@
           <c:if test="${!empty user_id}">
           	<c:if test="${!(user_id eq 'haniadmin')}">
 	          	<li class="menu user">
-	            	<a href="${pageContext.request.contextPath}/user/user_register.jsp" class="link_menu">${user_name }님</a>
+	            	<a href="#" class="link_menu">${user_name }님</a>
 	            	<ul class="us_sub">
 	            		<li>
 	            			<a href="${pageContext.request.contextPath}/user_mypage_orderHistory.do">주문내역</a>
 	            		</li>
 	            		<li>
-	            			<a href="#">배송지 관리</a>
-	            		</li>
-	            		<li>
-	            			<a href="#">적립금</a>
+	            			<a href="${pageContext.request.contextPath}/user/user_mypage_emoney.jsp">적립금</a>
 	            		</li>
 	            		<li>
 	            			<a href ="${pageContext.request.contextPath}/user/user_product_review_on_write.jsp">상품 후기</a>
@@ -57,8 +54,11 @@
             </c:if>
             <c:if test="${user_id eq 'haniadmin'}">
 	          	<li class="menu user">
-	            	<a href="${pageContext.request.contextPath}/admin/admin_main.jsp" class="link_menu">${user_name}님</a>
+	            	<a href="#" class="link_menu">${user_name}님</a>
 	            	<ul class="us_sub">
+	            		<li>
+	            			<a href="${pageContext.request.contextPath}/admin/admin_main.jsp">상품등록</a>
+	            		</li>
 	            		<li>
 	            			<a href="${pageContext.request.contextPath}/user/user_product_review_on_write.jsp">후기관리</a>
 	            		</li>
