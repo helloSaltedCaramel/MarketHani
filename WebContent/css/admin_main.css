@@ -10,11 +10,11 @@
     padding-top: 65px;
 }
 
-.page_aticle button, .page_aticle input, .page_aticle select, .page_aticle * {
+/* .page_aticle button, .page_aticle input, .page_aticle select, .page_aticle * {
     font-family: noto sans;
     font-weight: 700;
     letter-spacing: 0;
-}
+} */
 
 
 #pManage_content{

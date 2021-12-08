@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마켓하니 :: 오늘의 장보기, 마켓하니</title>
 <style type="text/css">
 
 /*게시글 수정 시작*/
@@ -386,7 +386,7 @@ iframe {
 										</div>
 									
 										<div class="review_photo">
-											<img src="<%=request.getContextPath() %>/upload/review/${dto.getR_image() }" alt=""/>
+											<img src="<%=request.getContextPath() %>/upload/${dto.getR_image() }" alt=""/>
 										<br><br>
 										${dto.getR_content() }	
 										</div>

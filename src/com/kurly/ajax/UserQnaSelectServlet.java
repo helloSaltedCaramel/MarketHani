@@ -24,7 +24,7 @@ public class UserQnaSelectServlet extends HttpServlet {
 		//해당 페이지의 QnA 게시글을 찾아 넘겨주는 비지니스 로직 
 		
 		//페이징 작업
-		int rowsize = 12;	//한 페이지에 보여질 게시물 수
+		int rowsize = 8;	//한 페이지에 보여질 게시물 수
 		int block = 5;		//아래에 보여질 페이지의 최대 수 [1][2][3][4]...
 		int totalRecord = 0;//DB상의 게시물 전체 수
 		int allPage = 0;	//현재 페이지 수

@@ -17,7 +17,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마켓하니 :: 내일의 장보기 마켓하니</title>
+    <title>마켓하니 :: 오늘의 장보기, 마켓하니</title>
 
     <%-- import eventMain.css --%>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/event.css">

@@ -16,11 +16,11 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css"/>
 
 		<meta charset="UTF-8">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ordered.css">
-		<title>Insert title here</title>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ordered.css">
+		<title>마켓하니 :: 오늘의 장보기, 마켓하니</title>
 </head>
 <body>
 	<jsp:include page="/include/header.jsp"/>

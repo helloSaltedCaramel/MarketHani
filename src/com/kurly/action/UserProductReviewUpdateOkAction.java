@@ -25,7 +25,7 @@ public class UserProductReviewUpdateOkAction implements Action {
 		ReviewDTO dto = new ReviewDTO();
 
 		// 첨부파일이 저장될 경로(위치)
-		String saveFolder = "C:\\Users\\amorf\\git\\MarketHani\\WebContent\\upload\\review";
+		String saveFolder = "C:\\Users\\ahn28\\git\\MarketHani\\WebContent\\upload";
 
 		// 첨부파일 최대 크기
 		int fileSize = 10 * 1024 * 1024; // 10MB

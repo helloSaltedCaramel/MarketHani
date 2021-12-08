@@ -23,7 +23,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마켓하니 :: 내일의 장보기 마켓하니</title>
+    <title>마켓하니 :: 오늘의 장보기, 마켓하니</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/register.css">
     <link rel="icon" href="${pageContext.request.contextPath}/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
     <script defer src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -60,7 +60,7 @@
 									<a href ="${pageContext.request.contextPath}/user/user_product_review_on_write.jsp">상품 후기</a>
 								</li>
 								<li>
-									<a href="">상품 문의</a>
+									<a href="${pageContext.request.contextPath}/user_mypage_qna.do?user_id=${user_id }">상품 문의</a>
 								</li>
 								<li>
 									<a href="#">개인 정보 수정</a>

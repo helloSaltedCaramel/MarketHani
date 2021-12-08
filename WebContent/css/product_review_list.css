@@ -193,6 +193,8 @@ iframe {
  background: #f3f3f3;
 }
 
+
+
 .inner_review {
 	padding: 15px;
 }
@@ -221,6 +223,11 @@ iframe {
 	background-color:#fff;
 	font-size:13px;
 	text-decoration:none;
+}
+
+.page_nation a#on {
+	background-color: #f7f7f7;
+	color: #5f0080;
 }
 .page_nation .arrow {
 	border:1px solid #ccc;

@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>마켓하니 :: 오늘의 장보기, 마켓하니</title>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -363,10 +364,12 @@
 			</div>
 		</div> <%-- div.main end --%>
 		</c:if>
-		
+	
 		<%-- 페이지 위로 올리는 버튼  --%>
+		<div id="topUp">
 		<a href="#top" id="pageTop" class="on"
-			style="opacity: 1; bottom: 25px;">맨 위로가기</a>
+		   style="opacity: 1; bottom: 25px;">맨 위로가기</a>
+		</div>
 	
 			<%-- 상단 탭  --%>
 		
@@ -418,10 +421,10 @@
 				</div>
 			</div> <%-- #content3 scroll end --%>
 		
-		<div class="qna_area">
-		<%-- 상품 문의 게시판  --%>
-		<div id="content4">	
-			<div class="qna_container">
+		<div class="qna_area"> <%-- box-sizing: border-box; 적용 --%>
+			<%-- 상품 문의 게시판  --%>
+			<div id="content4">	
+				<div class="qna_container">
 					<div class="qna_header" align="left">
 						<strong>PRODUCT Q&A</strong>
 						<ul>
@@ -463,157 +466,168 @@
 								<button type="button" class="next"><span></span></button>
 							</div>
 							
-							<button class="qna_write_btn" onclick="showWrite();">
-								<span>문의하기</span>
-							</button>
-					
+							<c:if test="${empty user_id }">
+								<button class="qna_write_btn" onclick="alert('로그인 후 작성하실 수 있습니다');">
+									<span>문의하기</span>
+								</button>
+							</c:if>
+							
+							<c:if test="${!empty user_id }">
+								<button class="qna_write_btn" onclick="showWrite();">
+									<span>문의하기</span>
+								</button>
+							</c:if>
+							
 						</div>
-					</div> <%-- .qna_content end --%>
-				</div>	<%-- .qna_container end --%>	
-			</div> <%-- #tab_04 scroll --%>
-		</div> <%-- .contents_top --%>
-	</div> <%-- #body_product end --%>
+					</div> 
+				</div>		
+			</div> 
+		</div> 
+	</div> 
 	
+	<div class="qna_area"> <%-- box-sizing: border-box; 적용 --%>	
+		<%-- 모달 오버레이(공용) --%>
+		<div class="modal_overlay">
+		</div>
 		
-	<%-- 모달 오버레이(공용) --%>
-	<div class="modal_overlay">
-	</div>
-	
-	<%-- 모달: "비밀글입니다" 경고창 --%>
-	<div class="modal_dialog warning">
-		<p>비밀글입니다</p>
-		<button class="modal_button" onclick="hideSecret();"><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
-	</div>
-	
-	<%-- 모달: 작성 완료 메시지 --%>
-	<div class="modal_dialog confirm">
-		<p>문의가 정상적으로 등록되었습니다.</p>
-		<button class="modal_button" onclick="hideWriteConfirm(); location.reload();"><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
-	</div>
-	
-	<%-- 모달: 작성 실패 메시지 --%>
-	<div class="modal_dialog failure">
-		<p>문의 등록에 실패하였습니다</p>
-		<button class="modal_button" onclick="hideWriteFailure();"><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
-	</div>
-	
-	<%-- 모달: "작성한 문의를 삭제하시겠습니까?"  --%>
-	<div class="modal_dialog delete">
-		<p>작성한 문의를 삭제하시겠습니까?</p>
-		<button class="modal_button delete1" onclick="hideDelete();"><strong>취소</strong></button>
-		<button class="modal_button delete2" onclick=""><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
-	</div>
-	
-	<%-- 모달: 삭제 완료 메시지 --%>
-	<div class="modal_dialog delete_confirm">
-		<p>삭제되었습니다</p>
-		<button class="modal_button" onclick="hideDeleteConfirm(); location.reload();"><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
-	</div>
-	
-	<%-- 모달: 수정 완료 메시지 --%>
-	<div class="modal_dialog revise_confirm">
-		<p>수정이 완료되었습니다</p>
-		<button class="modal_button" onclick="hideReviseConfirm(); location.reload();"><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
-	</div>
-	
-	<%-- 문의하기 버튼 클릭 시 모달로 띄워줄 질문 작성창 --%>
-	<div class="modal_dialog_qna write">
-		<form action="user_qna_write.do" method="post">	<%-- 작성시 write_qna.do로 맵핑 --%>
-			
-			<input type="hidden" value="${dto.getP_num() }" name="p_num">	<%-- 제품번호 : p_num --%>
-			<input type="hidden" value="${user_id }" name="user_id"> <%-- 세션에서 user_id 갖고와야함 --%>
-			
-			<table class="modal_qna_write">
-				<tr class="modal_qna_title" height="53px">
-					<td colspan="2">
-						<strong>상품 문의하기</strong>
-						<img src="<%=request.getContextPath() %>/img/product/qna_close.svg" onclick="hideWrite();"> <%-- 상단 우측 'X' 버튼 --%>
-					</td>
-				</tr>
-				<tr class="modal_qna_header" height="90px">
-					<td width="100px">
-						<div class="modal_qna_image">
-							<img width="72px" height="72px" src="<%=request.getContextPath() %>/upload/product/${dto.getP_image()}">
-						</div>
-					</td>
-					<td><strong>[${dto.p_seller}]${dto.p_name }</strong></td>
-				</tr>
-				<tr class="modal_write_title" height="50px">
-					<td width="100px">제목</td>
-					<td><input name="qna_title"></td>	<%-- 제목 : qna_title --%>
-				</tr>
-				<tr class="modal_write_content" height="260px">
-					<td width="100px" rowspan="2">내용</td>					<%-- 내용 : qna_content --%>
-					<td><textarea maxlength="5000" name="qna_content"></textarea></td>
-				</tr>
-				<tr class="modal_write_secret" height="25px">
-					<td>
-						<label onclick="isSecret();">
-							<input class="secret_check" type="checkbox" name="is_secret"> <%-- 비밀글여부 : is_secret --%>
-							<span class="secret_check_ico"> </span>
-							<span>비밀글로 문의하기</span>
-						</label>
-					</td>
-				</tr>
-				<tr class="modal_write_button" height="77px" align="center">
-					<td colspan="2">
-						<button onclick="hideWrite();">취소</button>
-						<button onclick="hideWrite(); showWriteConfirm();" type="submit">등록</button>
-					</td>
-				</tr>
-			</table>
-		</form>				
-	</div><%-- .modal_dialog qna_write end --%>	
-	
-	<%-- 수정하기 버튼 클릭 시 모달로 띄워줄 작성창 --%>
-	<div class="modal_dialog_qna revise">
+		<%-- 모달: "비밀글입니다" 경고창 --%>
+		<div class="modal_dialog warning">
+			<p>비밀글입니다</p>
+			<button class="modal_button" onclick="hideSecret();"><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
+		</div>
 		
-		<form action="user_qna_revise.do" method="post">	<%-- 작성시 revise_qna.do로 맵핑 --%>
+		<%-- 모달: 작성 완료 메시지 --%>
+		<div class="modal_dialog confirm">
+			<p>문의가 정상적으로 등록되었습니다.</p>
+			<button class="modal_button" onclick="location.reload(); hideWriteConfirm();"><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
+		</div>
+		
+		<%-- 모달: 작성 실패 메시지 --%>
+		<div class="modal_dialog failure">
+			<p>문의 등록에 실패하였습니다</p>
+			<button class="modal_button" onclick="hideWriteFailure();"><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
+		</div>
+		
+		<%-- 모달: "작성한 문의를 삭제하시겠습니까?"  --%>
+		<div class="modal_dialog delete">
+			<p>작성한 문의를 삭제하시겠습니까?</p>
+			<button class="modal_button delete1" onclick="hideDelete();"><strong>취소</strong></button>
+			<button class="modal_button delete2" onclick=""><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
+		</div>
+		
+		<%-- 모달: 삭제 완료 메시지 --%>
+		<div class="modal_dialog delete_confirm">
+			<p>삭제되었습니다</p>
+			<button class="modal_button" onclick="hideDeleteConfirm(); location.reload();"><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
+		</div>
+		
+		<%-- 모달: 수정 완료 메시지 --%>
+		<div class="modal_dialog revise_confirm">
+			<p>수정이 완료되었습니다</p>
+			<button class="modal_button" onclick="hideReviseConfirm(); location.reload();"><strong>확인</strong></button> <%-- 확인버튼 클릭 시 모달함수 호출 --%>
+		</div>
+		
+		<%-- 문의하기 버튼 클릭 시 모달로 띄워줄 질문 작성창 --%>
+		<div class="modal_dialog_qna write">
+			<form action="user_qna_write.do" method="post">	<%-- 작성시 write_qna.do로 맵핑 --%>
+				
+				<input type="hidden" value="${dto.getP_num() }" name="p_num">	<%-- 제품번호 : p_num --%>
+				<input type="hidden" value="${user_id }" name="user_id"> <%-- 세션에서 user_id 갖고와야함 --%>
+				
+				<table class="modal_qna_write">
+					<tr class="modal_qna_title" height="53px">
+						<td colspan="2">
+							<strong>상품 문의하기</strong>
+							<img src="<%=request.getContextPath() %>/img/product/qna_close.svg" onclick="hideWrite();"> <%-- 상단 우측 'X' 버튼 --%>
+						</td>
+					</tr>
+					<tr class="modal_qna_header" height="90px">
+						<td width="100px">
+							<div class="modal_qna_image">
+								<img width="72px" height="72px" src="<%=request.getContextPath() %>/upload/product/${dto.getP_image()}">
+							</div>
+						</td>
+						<td><strong>[${dto.p_seller}]${dto.p_name }</strong></td>
+					</tr>
+					<tr class="modal_write_title" height="70px">
+						<td width="100px">제목</td>
+						<td><input class="modal_input_title" name="qna_title"></td>	<%-- 제목 : qna_title --%>
+					</tr>
+					<tr class="modal_write_content" height="260px">
+						<td width="100px" rowspan="2">내용</td>					<%-- 내용 : qna_content --%>
+						<td><textarea class="modal_input_content" maxlength="5000" name="qna_content"></textarea></td>
+					</tr>
+					<tr class="modal_write_secret" height="50px">
+						<td>
+							<label onclick="isSecret();">
+								<input class="secret_check" type="checkbox" name="is_secret"> <%-- 비밀글여부 : is_secret --%>
+								<span class="secret_check_ico"> </span>
+								<span>비밀글로 문의하기</span>
+							</label>
+						</td>
+					</tr>
+					<tr class="modal_write_button" height="77px" align="center">
+						<td colspan="2">
+							<button onclick="hideWrite();">취소</button>
+							<button onclick="hideWrite(); showWriteConfirm();" type="submit">등록</button>
+						</td>
+					</tr>
+				</table>
+			</form>				
+		</div><%-- .modal_dialog qna_write end --%>	
+		
+		<%-- 수정하기 버튼 클릭 시 모달로 띄워줄 작성창 --%>
+		<div class="modal_dialog_qna revise">
 			
-			<input type="hidden" value="${dto.getP_num() }" name="p_num">	<%-- 제품번호 : p_num --%>
-			<input type="hidden" value="test_user" name="user_id"> <%-- 세션에서 user_id 갖고와야함 --%>
-			
-			<table class="modal_qna_write">
-				<tr class="modal_qna_title" height="53px">
-					<td colspan="2">
-						<strong>문의내용 수정</strong>
-						<img src="<%=request.getContextPath() %>/img/product/qna_close.svg" onclick="hideRevise();"> <%-- 상단 우측 'X' 버튼 --%>
-					</td>
-				</tr>
-				<tr class="modal_qna_header" height="90px">
-					<td width="100px">
-						<div class="modal_qna_image">
-							<img width="72px" height="72px" src="<%=request.getContextPath() %>/upload/product/${dto.getP_image()}">
-						</div>
-					</td>
-					<td><strong>[${dto.p_seller}]${dto.p_name }</strong></td>
-				</tr>
-				<tr class="modal_write_title" height="50px">
-					<td width="100px">제목</td>
-					<td><input class="qna_revise_title" name="qna_title" value=""></td>	<%-- 제목 : qna_title --%>
-				</tr>
-				<tr class="modal_write_content" height="260px">
-					<td width="100px" rowspan="2">내용</td>					<%-- 내용 : qna_content --%>
-					<td><textarea class="qna_revise_content" maxlength="5000" name="qna_content"></textarea></td>
-				</tr>
-				<tr class="modal_write_secret" height="25px">
-					<td>
-						<label onclick="alert('test');">
-							<input class="secret_check" type="checkbox" name="is_secret"> <%-- 비밀글여부 : is_secret --%>
-							<span class="secret_check_ico"> </span>
-							<span>비밀글로 문의하기</span>
-						</label>
-					</td>
-				</tr>
-				<tr class="modal_write_button" height="77px" align="center">
-					<td colspan="2">
-						<button onclick="hideRevise();">취소</button>
-						<button onclick="hideRevise(); showReviseConfirm();" type="submit">등록</button>
-					</td>
-				</tr>
-			</table>
-		</form>				
-	</div><%-- modal_dialog_qna revise end --%>
+			<form action="user_qna_revise.do" method="post">	<%-- 작성시 revise_qna.do로 맵핑 --%>
+				
+				<input type="hidden" value="${dto.getP_num() }" name="p_num">	<%-- 제품번호 : p_num --%>
+				<input type="hidden" value="test_user" name="user_id"> <%-- 세션에서 user_id 갖고와야함 --%>
+				
+				<table class="modal_qna_write">
+					<tr class="modal_qna_title" height="53px">
+						<td colspan="2">
+							<strong>문의내용 수정</strong>
+							<img src="<%=request.getContextPath() %>/img/product/qna_close.svg" onclick="hideRevise();"> <%-- 상단 우측 'X' 버튼 --%>
+						</td>
+					</tr>
+					<tr class="modal_qna_header" height="90px">
+						<td width="100px">
+							<div class="modal_qna_image">
+								<img width="72px" height="72px" src="<%=request.getContextPath() %>/upload/product/${dto.getP_image()}">
+							</div>
+						</td>
+						<td><strong>[${dto.p_seller}]${dto.p_name }</strong></td>
+					</tr>
+					<tr class="modal_write_title" height="70px">
+						<td width="100px">제목</td>
+						<td><input class="modal_input_title revise" name="qna_title" value=""></td>	<%-- 제목 : qna_title --%>
+					</tr>
+					<tr class="modal_write_content" height="220px">
+						<td width="100px" rowspan="2">내용</td>					<%-- 내용 : qna_content --%>
+						<td><textarea class="modal_input_content revise" maxlength="5000" name="qna_content"></textarea></td>
+					</tr>
+					<tr class="modal_write_secret" height="50px">
+						<td>
+							<label onclick="isSecretRevise();">
+								<input class="secret_check revise" type="checkbox" name="is_secret"> <%-- 비밀글여부 : is_secret --%>
+								<span class="secret_check_ico revise"> </span>
+								<span>비밀글로 문의하기</span>
+							</label>
+							<br><br>
+						</td>
+					</tr>
+					<tr class="modal_write_button" height="77px" align="center">
+						<td colspan="2">
+							<button onclick="hideRevise();">취소</button>
+							<button onclick="hideRevise(); showReviseConfirm();" type="submit">등록</button>
+						</td>
+					</tr>
+				</table>
+			</form>				
+		</div><%-- modal_dialog_qna revise end --%>
+	</div><%-- qna_area end --%>
+	
 	</div>	
 	<jsp:include page="../include/footer.jsp" />
 

@@ -51,6 +51,7 @@ function qnaList(p_num, page, id) {
 		
 				str += '<div class="item-cell"><p>';
 				
+				
 				if(status == 1){
 
 					str += '<font color="#5f0081">답변완료</font>';
@@ -186,7 +187,20 @@ function isSecret() {
 		$('.secret_check_ico').css('background-image', 'url(./img/product/qna_write_unchecked.svg)');
 	}
 	
-	console.log($('.secret_check').prop('checked')); 
+}
+
+function isSecretRevise() {
+
+	if($('.secret_check.revise').prop('checked') == false){
+		
+		$('.secret_check.revise').prop('checked', true);
+		$('.secret_check_ico.revise').css('background-image', 'url(./img/product/qna_write_checked.svg)');
+	}else{
+		
+		$('.secret_check.revise').prop('checked', false);
+		$('.secret_check_ico.revise').css('background-image', 'url(./img/product/qna_write_unchecked.svg)');
+	}
+	
 }
 
 function onDisplay() {
@@ -196,13 +210,29 @@ function onDisplay() {
 } // 공유하기 버튼 클릭시 보이고 안보이고
 
 $(document).on('click','#ul_product a',function(event){
-	var headerHeight = $('header').outerHeight();
-  	event.preventDefault();
-  	
-	$("html,body").animate({
-  		scrollTop : $(this.hash).offset().top - headerHeight
-  	},800);
-});//링크 클릭시 헤당 섹션으로 부드럽게 이동시키기
+  var headerHeight = $('header').outerHeight();
+  event.preventDefault();
+     $("html,body").animate({
+       scrollTop : $(this.hash).offset().top - headerHeight
+    },400)
+});//탭 클릭시 헤당 섹션으로 부드럽게 이동시키기
+
+$(window).scroll(function () {
+   var scroll = $(window).scrollTop();
+      if (scroll < 700) {
+      $("#topUp a").stop().animate({
+      'right':"50px",
+         opacity: "0",
+          }, 200);
+
+	  }else {
+        $("#topUp a").stop().animate({
+           'right': "60px",
+           opacity: "1",
+        }, 200);
+      }
+});
+//위로 가기 버튼 클릭시 헤당 섹션으로 부드럽게 이동시키기
 
 function expandQna(num){
 	
@@ -304,8 +334,8 @@ function hideDeleteConfirm(){
 function showRevise(qna_num, qna_title, qna_content) {
 	
 	//받아온 각 데이터를 수정 폼에 전달
-	$('.qna_revise_title').attr('value', qna_title);
-	$('.qna_revise_content').append(qna_content);
+	$('.modal_input_title.revise').attr('value', qna_title);
+	$('.modal_input_content.revise').append(qna_content);
 	$('.modal_dialog_qna.revise').children('form').append('<input type="hidden" name="qna_num" value="' + qna_num + '">')
 	
 	//모달 보여주기

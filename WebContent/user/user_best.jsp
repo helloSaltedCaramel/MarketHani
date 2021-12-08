@@ -85,7 +85,7 @@ function sort(how) {
 				<tr class="product">
 				<c:forEach items="${list}" var="dto">
 					<c:set var="count" value="${count + 1}"/>
-					<td class="item" valign="top"> 
+					<td class="item" valign="top" width="347.33px"> 
 						<div class="image">
 							<a href="<%=request.getContextPath() %>/user_product_view.do?p_num=${dto.getP_num()}">
 								<img class="product" src="<%=request.getContextPath() %>/upload/product/${dto.getP_image()}" width="auto" height="435">

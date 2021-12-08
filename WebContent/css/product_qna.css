@@ -417,9 +417,26 @@ button.next {
 	padding: 10px 15px;
 }
 
+.modal_write_button td {
+	margin-top: 15px;
+}
+
 .modal_write_button button {
 	width: 160px;
    	height: 56px;
+    font-family: Noto Sans;
+    font-weight: 500;
+    line-height: 1;
+    border: 1px solid #5f0081;
+    background-color: #5f0080;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 4px;
+    outline: none;
+    max-width: 100%;
+	margin-left: 20px;
+    cursor: pointer;
 }
 
 .secret_check{
@@ -461,4 +478,13 @@ button.next {
 /* 비밀글 제목 색상 */
 #secret_title {
 	color: #b5b5b5;
+}
+
+.qna_area * {
+	box-sizing: border-box;
+}
+
+.modal_input_title, .modal_input_content{
+	border: 2px solid #f4f4f4;
+	border-radius: 4px;	
 }
