@@ -44,7 +44,7 @@
 	            			<a href ="${pageContext.request.contextPath}/user/user_product_review_on_write.jsp">상품 후기</a>
 	            		</li>
 	            		<li>
-	            			<a href="#">상품 문의</a>
+	            			<a href="${pageContext.request.contextPath}/user_mypage_qna.do?user_id=${user_id }">상품 문의</a>
 	            		</li>
 	            		<li>
 	            			<a href="${pageContext.request.contextPath}/user_userInfo.do">개인정보 수정</a>
@@ -60,10 +60,10 @@
 	            			<a href="${pageContext.request.contextPath}/admin/admin_main.jsp">상품등록</a>
 	            		</li>
 	            		<li>
-	            			<a href="${pageContext.request.contextPath}/admin/admin_product_review_list.jsp">후기관리</a>
+	            			<a href="${pageContext.request.contextPath}/admin_qna.do">문의관리</a>
 	            		</li>
 	            		<li>
-	            			<a href="${pageContext.request.contextPath}/admin/admin_qna.jsp">문의관리</a>
+	            			<a href="${pageContext.request.contextPath}/admin/admin_product_review_list.jsp">후기관리</a>
 	            		</li>
 	            	</ul>
 	            </li>

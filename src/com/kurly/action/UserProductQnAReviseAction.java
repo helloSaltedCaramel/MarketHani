@@ -21,10 +21,19 @@ public class UserProductQnAReviseAction implements Action {
 		String qna_title = request.getParameter("qna_title");
 		String qna_content = request.getParameter("qna_content");
 		
+		//비밀글 여부 지정
+		int qna_secret = -1;
+		
+		if(request.getParameter("is_secret") != null)
+			qna_secret = 1;
+		else
+			qna_secret = 0;
+		
 		QnADTO dto = new QnADTO(); 
 		dto.setQna_num(qna_num);
 		dto.setQna_title(qna_title);
 		dto.setQna_content(qna_content);
+		dto.setQna_secret(qna_secret);
 		
 		//QnA 글 수정 메서드 호출
 		QnADAO dao = QnADAO.getInstance();

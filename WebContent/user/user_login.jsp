@@ -17,7 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css"/>
 	
 	<meta charset="UTF-8">
-	<title>마켓하니 :: 내일의 장보기 마켓하니</title>
+	<title>마켓하니 :: 오늘의 장보기, 마켓하니</title>
 	<link rel="stylesheet" type="text/css" href="../css/login.css">
 	<link rel="icon" href="../img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
 </head>

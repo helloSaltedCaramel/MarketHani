@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">	
-<title>메인 화면</title>
+<title>마켓하니 :: 오늘의 장보기, 마켓하니</title>
 
 <%-- import main.css --%>
 <link rel="stylesheet" type="text/css" href="css/main.css"/>

@@ -17,7 +17,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마켓하니 :: 내일의 장보기 마켓하니</title>
+    <title>마켓하니 :: 오늘의 장보기, 마켓하니</title>
 
     <%-- import eventMain.css --%>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/event.css">
@@ -38,7 +38,7 @@
         		 			<img alt="이벤트 배너1" src="<%=request.getContextPath() %>/img/main/banner1.jpg"></a>
         		 		</li>
         		 		<li>
-        		 			<a href="<%=request.getContextPath() %>/user/user_event_ban2.jsp" >
+        		 			<a href="<%=request.getContextPath() %>/user_category.do?cat=A" >
         		 			<img alt="이벤트 배너2" src="<%=request.getContextPath() %>/img/main/banner3.jpg"></a>
         		 		</li>
         		 		<li>

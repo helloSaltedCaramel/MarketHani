@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마켓하니 :: 오늘의 장보기, 마켓하니</title>
 </head>
 <body>
 

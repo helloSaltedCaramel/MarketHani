@@ -542,7 +542,7 @@ public class ProductDAO {
 			
 			//페이지네이션 적용 쿼리문
 			sql = "select * from (select row_number() over(order by " + order 
-					+ ") rnum, p.* from kurly_product p where p_name like '%" + search + "%' and not p_qty = -1) where rnum >= ? and rnum <= ?";
+					+ ") rnum, p.* from kurly_product p where p_name like '%" + search + "%' or p_seller like '%" + search + "%' and not p_qty = -1) where rnum >= ? and rnum <= ?";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startNo);
@@ -590,7 +590,7 @@ public class ProductDAO {
 		try {
 			openConn();
 			
-			sql = "select count(*) from kurly_product where p_name like '%" + search + "%' and not p_qty = -1";
+			sql = "select count(*) from kurly_product where p_name like '%" + search + "%' or p_seller like '%" + search + "%' and not p_qty = -1";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			

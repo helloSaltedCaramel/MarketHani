@@ -17,25 +17,6 @@ public class UserProductReviewListAction implements Action {
 				// kurly_review 테이블에 있는 전체 레코드를 조회하여 
 				// 해당 데이터를 View Page로 이동시키는 비지니스 로직.
 				
-		
-				/*
-				 * ReviewDAO dao = ReviewDAO.getInstance();
-				 * 
-				 * List<ReviewDTO> list = dao.getReviewList();
-				 * 
-				 * request.setAttribute("List", list);
-				 * 
-				 * 
-				ActionForward forward = new ActionForward();
-				
-				forward.setRedirect(false);
-				
-				forward.setPath("user/user_product_review_list.jsp");
-				
-				return forward;
-				 */
-				
-				System.out.println("여기가 나올까?");
 				int p_num = Integer.parseInt(request.getParameter("p_num"));
 				String reviewsort = request.getParameter("sort");
 				
@@ -81,10 +62,9 @@ public class UserProductReviewListAction implements Action {
 				// 전체 게시물의 수를 한페이지당 보여질 게시물의 수로 나누어주어야 함.
 				// 이 과정을 거치면 전체 페이지 수가 나오게 됨.
 				// 전체 페이지 수가 나올 때 나머지가 있으면 무조건 페이지 수를 하나 올려 주어야함.
-				
+								
 				allPage = (int)Math.ceil(totalRecord / (double)rowsize);  //나머지가 생기면 무조건 올려주는 함수 , 형변환이 필요 
-				
-				System.out.println("page >>>" + Math.ceil(totalRecord / rowsize));
+
 				
 				if(endBlock > allPage) {
 					endBlock = allPage;  // 필요없는 블럭 제거
@@ -106,8 +86,6 @@ public class UserProductReviewListAction implements Action {
 				request.setAttribute("endBlock", endBlock);
 				request.setAttribute("List", pageList);
 				
-			
-				// 
 				request.setAttribute("productNo", p_num);
 				
 				// 게시글 정렬

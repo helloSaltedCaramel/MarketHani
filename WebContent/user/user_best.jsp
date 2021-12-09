@@ -60,6 +60,11 @@ function sort(how) {
 	
 	<div align="center">
 		
+		<%-- 배너 표시 영역 --%>
+		<div class="category_banner" align="center" width="1050px" height="100%">
+			<img src="./img/main/categoryBanner4.png" width="1050px" width="100%">
+		</div>
+		
 		<%-- 여기서부터가 본문에 쓰일 내용 --%>
 		<div class="article" align="center">
 			<div class="category"><span>베스트</span></div>
@@ -85,7 +90,7 @@ function sort(how) {
 				<tr class="product">
 				<c:forEach items="${list}" var="dto">
 					<c:set var="count" value="${count + 1}"/>
-					<td class="item" valign="top"> 
+					<td class="item" valign="top" width="347.33px"> 
 						<div class="image">
 							<a href="<%=request.getContextPath() %>/user_product_view.do?p_num=${dto.getP_num()}">
 								<img class="product" src="<%=request.getContextPath() %>/upload/product/${dto.getP_image()}" width="auto" height="435">

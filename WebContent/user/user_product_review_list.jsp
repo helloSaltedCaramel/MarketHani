@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마켓하니 :: 오늘의 장보기, 마켓하니</title>
 <%-- import product_review_list.css --%>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/product_review_list.css" />
@@ -207,24 +207,24 @@ function sort(p_num, how) {
 	<br>
 	<div class="page_wrap">
 	<div class="page_nation" align="center"> <%-- 페이징 처리 div --%>
-	<c:if test="${page > block }">
+	<c:if test="${page == 1 }">
 		<a class="first" 
-			href="<%=request.getContextPath()%>/user_product_review_list.do?page=1&p_num=${productNo }"></a>
+			href="<%=request.getContextPath()%>/user_product_review_list.do?page=1&p_num=${productNo }&page=1"></a>
 		<a class="prev" 
-			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${startBlock-1}&p_num=${productNo }"></a>
+			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${startBlock}&p_num=${productNo }&page=1"></a>
 	</c:if>
 	
-	<c:if test="${page != allPage }">
+	<c:if test="${page != 1 }">
 		<a class="first" 
-			href="<%=request.getContextPath()%>/user_product_review_list.do?page=1&p_num=${productNo }"></a>
+			href="<%=request.getContextPath()%>/user_product_review_list.do?page=1&p_num=${productNo }&page=1"></a>
 		<a class="prev" 
-			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${startBlock-1}&p_num=${productNo }"></a>
+			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${startBlock}&p_num=${productNo }"></a>
 	</c:if>
 	
 
 	<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
 		<c:if test="${i == page }">
-			<b><a
+			<b><a id="on"
 				href="<%=request.getContextPath() %>/user_product_review_list.do?page=${i}&p_num=${productNo }">${i }</a></b>
 		</c:if>
 
@@ -233,16 +233,16 @@ function sort(p_num, how) {
 		</c:if>
 	</c:forEach>
 
-	<c:if test="${endBlock < allPage }">
+	<c:if test="${page == allPage }">
 		<a class="next" 
-			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${endBlock+1}&p_num=${productNo }"></a>
+			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${allPage}&p_num=${productNo }"></a>
 		<a class="last" 
 			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${allPage}&p_num=${productNo }"></a>
 	</c:if>
 	
 	<c:if test="${page != allPage }">
 		<a class="next"
-			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${endBlock+1}&p_num=${productNo }"></a>
+			href="<%=request.getContextPath() %>/user_product_review_list.do?page=${page+1 }&p_num=${productNo }"></a>
 		<a class="last"
 		    href="<%=request.getContextPath() %>/user_product_review_list.do?page=${allPage}&p_num=${productNo }"></a>
 	</c:if>

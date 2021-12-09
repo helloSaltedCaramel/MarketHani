@@ -16,7 +16,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마켓하니 :: 내일의 장보기 마켓하니</title>
+    <title>마켓하니 :: 오늘의 장보기, 마켓하니</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/register.css">
     <link rel="icon" href="${pageContext.request.contextPath}/img/favicon/favicon-32x32.ico" type="image/x-icon" sizes="16x16">
     <script defer src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
