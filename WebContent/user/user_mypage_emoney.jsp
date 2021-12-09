@@ -54,7 +54,7 @@
 									<a href="${pageContext.request.contextPath}/user/user_mypage_emoney.jsp">적립금</a>
 								</li>
 								<li>
-									<a href="${pageContext.request.contextPath}/user/#.jsp">상품 후기</a>
+									<a href="${pageContext.request.contextPath}/user/user_product_review_on_write.jsp">상품 후기</a>
 								</li>
 								<li>
 									<a href="${pageContext.request.contextPath}/user_mypage_qna.do?user_id=${user_id }">상품 문의</a>

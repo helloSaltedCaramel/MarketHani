@@ -38,7 +38,7 @@
         		 			<img alt="이벤트 배너1" src="<%=request.getContextPath() %>/img/main/banner1.jpg"></a>
         		 		</li>
         		 		<li>
-        		 			<a href="<%=request.getContextPath() %>/user/user_event_ban2.jsp" >
+        		 			<a href="<%=request.getContextPath() %>/user_category.do?cat=A" >
         		 			<img alt="이벤트 배너2" src="<%=request.getContextPath() %>/img/main/banner3.jpg"></a>
         		 		</li>
         		 		<li>

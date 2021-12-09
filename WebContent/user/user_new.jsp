@@ -59,6 +59,11 @@ function sort(how) {
 	
 	<div align="center">
 		
+		<%-- 배너 표시 영역 --%>
+		<div class="category_banner" align="center" width="1050px" height="100%">
+			<img src="./img/main/categoryBanner3.png" width="1050px" width="100%">
+		</div>
+		
 		<%-- 여기서부터가 본문에 쓰일 내용 --%>
 		<div class="article" align="center">
 			<div class="category"><span>신상품</span></div>

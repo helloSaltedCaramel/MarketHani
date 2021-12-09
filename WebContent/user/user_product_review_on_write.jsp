@@ -212,7 +212,7 @@ textarea::placeholder {
 					<a href="${pageContext.request.contextPath}/user_mypage_orderHistory.do">주문 내역</a>
 				</li>
 				<li>
-					<a href="#" >적립금</a>
+					<a href="${pageContext.request.contextPath}/user/user_mypage_emoney.jsp">적립금</a>
 				</li>
 				<li>
 					<a href="${pageContext.request.contextPath}/user/user_product_review_on_write.jsp">상품 후기</a>
