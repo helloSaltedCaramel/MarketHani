@@ -77,7 +77,7 @@
                     </li>
                 </ul>
 
-                <a href="#" class="orderlist_btn">주문 상세보기</a>
+                <a href="user_mypage_orderHistory.do" class="orderlist_btn">주문내역 보기</a>
                 <a href="${pageContext.request.contextPath}/main.jsp" class="continue_btn">쇼핑 계속하기</a>
             </div>
         </div>
